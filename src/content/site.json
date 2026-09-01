@@ -1,0 +1,48 @@
+{
+  "brand": "Pehchan",
+  "wordmark": "PEHCHAN",
+  "descriptor": "Journeys & Stays",
+  "promise": "Handcrafted journeys. Beautiful stays. Stories worth travelling for.",
+  "positioning": "A global travel discovery platform helping modern travellers discover exceptional destinations, stays, experiences and thoughtfully designed journeys.",
+  "origin": "https://pehchanthetraveller19.github.io",
+  "basePath": "",
+  "legalEntity": "Pehchan Travel Studio",
+  "contactEmail": "hello@pehchan.travel",
+  "partnerEmail": "partners@pehchan.travel",
+  "founded": "2024",
+  "newsletterName": "The Weekly Escape",
+  "locale": "en",
+  "locales": ["en"],
+  "currencies": [
+    { "code": "USD", "symbol": "$", "label": "US Dollar" },
+    { "code": "EUR", "symbol": "€", "label": "Euro" },
+    { "code": "GBP", "symbol": "£", "label": "British Pound" },
+    { "code": "INR", "symbol": "₹", "label": "Indian Rupee" },
+    { "code": "AED", "symbol": "AED", "label": "UAE Dirham" },
+    { "code": "SGD", "symbol": "S$", "label": "Singapore Dollar" },
+    { "code": "AUD", "symbol": "A$", "label": "Australian Dollar" },
+    { "code": "JPY", "symbol": "¥", "label": "Japanese Yen" }
+  ],
+  "analytics": {
+    "provider": null,
+    "ga4MeasurementId": null,
+    "plausibleDomain": null,
+    "endpoint": null,
+    "debug": false
+  },
+  "affiliate": {
+    "networks": [
+      { "id": "hotel-network", "label": "Hotel booking network", "type": "stay", "status": "pending" },
+      { "id": "activity-network", "label": "Tours & activities network", "type": "experience", "status": "pending" },
+      { "id": "transport-network", "label": "Flights & transport network", "type": "transport", "status": "pending" }
+    ],
+    "disclosureShort": "Some links on this page are affiliate links. If you book through them we may earn a commission at no extra cost to you.",
+    "note": "No partner contracts are active yet. Every booking module below is a live, tracked slot waiting for a partner link — nothing on this site fabricates prices, availability or offers."
+  },
+  "social": [
+    { "label": "Instagram", "href": "#" },
+    { "label": "YouTube", "href": "#" },
+    { "label": "Pinterest", "href": "#" }
+  ],
+  "sampleContentNotice": "Stays and experiences in this catalogue are illustrative sample listings created to demonstrate the page structure and booking flow. They are clearly labelled and will be replaced by verified, first-hand reviewed properties as partnerships are confirmed."
+}

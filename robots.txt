@@ -1,0 +1,7 @@
+# Pehchan
+User-agent: *
+Allow: /
+Disallow: /search/
+Disallow: /dashboard/
+
+Sitemap: https://pehchanthetraveller19.github.io/sitemap.xml

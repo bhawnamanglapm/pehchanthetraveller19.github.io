@@ -216,3 +216,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- Pehchan site build ---------------------------------------------------
+# The stock Python template above ignores lib/, build/ and dist/ anywhere in the
+# tree, which would silently swallow src/lib/ — the generator's own modules.
+!src/lib/
+!src/lib/**
+
+# Local tooling
+node_modules/
+.DS_Store
+*.log
