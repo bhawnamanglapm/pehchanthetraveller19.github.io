@@ -1,0 +1,93 @@
+{
+  "stayCategories": [
+    { "slug": "luxury-hotels", "name": "Luxury Hotels", "intro": "Properties where the service, the setting or the architecture is the reason to travel, not simply the place you sleep.", "art": "europe-coast" },
+    { "slug": "boutique-hotels", "name": "Boutique Hotels", "intro": "Small, owner-shaped properties — usually under thirty rooms, usually in a building with a history.", "art": "asia-temple" },
+    { "slug": "resorts", "name": "Resorts", "intro": "Larger properties where the grounds, pools and dining are part of the reason you booked.", "art": "asia-beach" },
+    { "slug": "mountain-retreats", "name": "Mountain Retreats", "intro": "Lodges, bungalows and cabins at altitude, where the view from the room does most of the work.", "art": "europe-alps" },
+    { "slug": "beach-resorts", "name": "Beach Resorts", "intro": "Properties with direct or near-direct beach access, chosen for the stretch of coast rather than the brand.", "art": "asia-beach" },
+    { "slug": "villas", "name": "Villas", "intro": "Private houses and pool villas for families, groups or anyone who wants their own kitchen and their own hours.", "art": "asia-jungle" },
+    { "slug": "unique-stays", "name": "Unique Stays", "intro": "Desert camps, tea bungalows, root-bridge village houses — places that could not exist anywhere else.", "art": "desert-dune" },
+    { "slug": "wellness-retreats", "name": "Wellness Retreats", "intro": "Properties with a serious wellness programme rather than a treatment menu bolted onto a spa room.", "art": "asia-terrace" },
+    { "slug": "romantic-stays", "name": "Romantic Stays", "intro": "Honeymoons, anniversaries and the trips where the room genuinely matters.", "art": "india-palace" },
+    { "slug": "family-stays", "name": "Family Stays", "intro": "Connecting rooms, kitchens, pools that work for children, and staff who are used to them.", "art": "rockies" },
+    { "slug": "solo-friendly-stays", "name": "Solo Traveller Friendly", "intro": "Properties where arriving alone is normal — communal tables, safe neighbourhoods, staff who help you plan.", "art": "europe-city" }
+  ],
+  "experienceCategories": [
+    { "slug": "adventure", "name": "Adventure", "intro": "Scrambles, high passes and days that ask something of you." },
+    { "slug": "food-culinary", "name": "Food & Culinary", "intro": "Market walks, cooking classes and meals that explain a place faster than a museum." },
+    { "slug": "culture", "name": "Culture", "intro": "Craft trades, ceremonies, architecture and the people who keep them going." },
+    { "slug": "wellness", "name": "Wellness", "intro": "Practices with real traditions behind them, taught rather than performed." },
+    { "slug": "nature", "name": "Nature", "intro": "Landscape at close range — gorges, deserts, fiords, forests." },
+    { "slug": "wildlife", "name": "Wildlife", "intro": "Responsible wildlife encounters with operators who put the animals first." },
+    { "slug": "hiking-trekking", "name": "Hiking & Trekking", "intro": "Day walks and multi-day routes, graded honestly." },
+    { "slug": "photography", "name": "Photography", "intro": "Experiences timed for the light rather than for the schedule." },
+    { "slug": "luxury-experiences", "name": "Luxury Experiences", "intro": "Private, small-group and once-only, where the premium buys access rather than branding." },
+    { "slug": "family-activities", "name": "Family Activities", "intro": "Things that work for adults and children at the same time." },
+    { "slug": "nightlife", "name": "Nightlife", "intro": "Evenings with a local logic — fado rooms, night markets, food trails." },
+    { "slug": "local-experiences", "name": "Local Experiences", "intro": "Time with families, cooperatives and workshops rather than with tour companies." },
+    { "slug": "day-trips", "name": "Day Trips", "intro": "Full-day excursions worth taking from a base you are already staying in." }
+  ],
+  "storyCategories": [
+    { "slug": "travel-stories", "name": "Travel Stories", "intro": "The full archive — everything we have written from the road." },
+    { "slug": "solo-travel", "name": "Solo Travel", "intro": "Travelling alone, honestly: the good days, the flat ones and what to do about them." },
+    { "slug": "luxury-travel", "name": "Luxury Travel", "intro": "What a premium actually buys, and when it does not." },
+    { "slug": "mountain-stories", "name": "Mountain Stories", "intro": "High places, long drives and weather that decides your itinerary." },
+    { "slug": "culture", "name": "Culture", "intro": "People, craft and the systems behind a place." },
+    { "slug": "food", "name": "Food", "intro": "Eating as the fastest route into a city." },
+    { "slug": "adventure", "name": "Adventure", "intro": "Days that ask something of you." },
+    { "slug": "spiritual-journeys", "name": "Spiritual Journeys", "intro": "Monasteries, pilgrim routes and the quiet parts of travel." },
+    { "slug": "hidden-gems", "name": "Hidden Gems", "intro": "Places that have not yet been optimised for visitors." },
+    { "slug": "slow-travel", "name": "Slow Travel", "intro": "Fewer places, longer stays, better trips." },
+    { "slug": "travel-lessons", "name": "Travel Lessons", "intro": "What we got wrong, and what we would do differently." }
+  ],
+  "collections": [
+    { "slug": "luxury-escapes", "type": "style", "title": "Luxury Escapes", "intro": "Destinations and stays where the premium buys access, setting or craft — not simply thread count.", "filter": { "destinationTags": ["luxury", "luxury-budget", "premium"], "stayCategories": ["luxury-hotels"], "itineraryStyles": ["luxury"] }, "art": "india-palace" },
+    { "slug": "solo-escapes", "type": "style", "title": "Solo Escapes", "intro": "Places that are safe, walkable and easy to arrive in alone — with stays where a table for one is normal.", "filter": { "destinationTags": ["solo"], "stayCategories": ["solo-friendly-stays"], "itineraryStyles": ["solo"] }, "art": "europe-city" },
+    { "slug": "romantic-escapes", "type": "style", "title": "Romantic Escapes", "intro": "Honeymoons and anniversaries — the trips where the room and the view genuinely matter.", "filter": { "destinationTags": ["romantic"], "stayCategories": ["romantic-stays"], "itineraryStyles": ["romantic"] }, "art": "asia-terrace" },
+    { "slug": "adventure-trips", "type": "style", "title": "Adventure Trips", "intro": "High passes, long trails and days that ask something of you.", "filter": { "destinationTags": ["adventure"], "experienceCategories": ["adventure", "hiking-trekking"], "itineraryStyles": ["adventure"] }, "art": "andes" },
+    { "slug": "slow-travel", "type": "style", "title": "Slow Travel", "intro": "Fewer places, longer stays. The single highest-return change most travellers can make.", "filter": { "destinationTags": ["slow-travel"], "itineraryStyles": ["slow-travel"] }, "art": "india-tea" },
+    { "slug": "wellness", "type": "style", "title": "Wellness", "intro": "Retreats and practices with real traditions behind them.", "filter": { "destinationTags": ["wellness"], "stayCategories": ["wellness-retreats"], "experienceCategories": ["wellness"] }, "art": "asia-jungle" },
+    { "slug": "digital-nomad", "type": "style", "title": "Digital Nomad Bases", "intro": "Cities and towns that work for a month rather than a week — connectivity, cost and community.", "filter": { "destinationTags": ["digital-nomad"] }, "art": "asia-hills" },
+    { "slug": "family-travel", "type": "style", "title": "Family Travel", "intro": "Destinations and stays that work with children without becoming only about them.", "filter": { "destinationTags": ["family"], "stayCategories": ["family-stays"], "experienceCategories": ["family-activities"] }, "art": "rockies" },
+
+    { "slug": "mountains", "type": "landscape", "title": "Mountains", "intro": "Altitude, ridgelines and the valleys underneath them.", "filter": { "destinationTags": ["mountains"], "stayCategories": ["mountain-retreats"] }, "art": "himalaya" },
+    { "slug": "beaches", "type": "landscape", "title": "Beaches", "intro": "Coastlines worth building a trip around.", "filter": { "destinationTags": ["beaches"], "stayCategories": ["beach-resorts"] }, "art": "asia-beach" },
+    { "slug": "deserts", "type": "landscape", "title": "Deserts", "intro": "Sandstone, dunes and the darkest skies you will ever stand under.", "filter": { "destinationTags": ["deserts"] }, "art": "desert-dune" },
+    { "slug": "islands", "type": "landscape", "title": "Islands", "intro": "Places where the ferry timetable sets the pace.", "filter": { "destinationTags": ["beaches", "romantic"] }, "art": "europe-coast" },
+    { "slug": "forests", "type": "landscape", "title": "Forests", "intro": "Cloud forest, cedar and rainforest — travel under a canopy.", "filter": { "destinationTags": ["forests", "nature"] }, "art": "india-forest" },
+    { "slug": "lakes", "type": "landscape", "title": "Lakes", "intro": "Alpine water, palace lakes and the towns built to face them.", "filter": { "destinationTags": ["lakes"] }, "art": "fiord" },
+    { "slug": "cities", "type": "landscape", "title": "Cities", "intro": "Urban destinations with enough depth for a week rather than a weekend.", "filter": { "destinationTags": ["cities"] }, "art": "europe-city" },
+
+    { "slug": "weekend-trips", "type": "length", "title": "Weekend Trips", "intro": "Two to three nights, one place, no transfers in the middle.", "filter": { "destinationTags": ["weekend"], "itineraryDays": [1, 4] }, "art": "desert-dune" },
+    { "slug": "3-5-days", "type": "length", "title": "3–5 Days", "intro": "A short break with room for one day trip.", "filter": { "destinationTags": ["3-5-days"], "itineraryDays": [3, 5] }, "art": "europe-cliff" },
+    { "slug": "7-days", "type": "length", "title": "7 Days", "intro": "The classic week — one country, one or two bases.", "filter": { "destinationTags": ["7-days"], "itineraryDays": [6, 9] }, "art": "asia-temple" },
+    { "slug": "10-14-days", "type": "length", "title": "10–14 Days", "intro": "Enough time for two regions, or one region properly.", "filter": { "itineraryDays": [10, 16] }, "art": "asia-hills" },
+    { "slug": "long-journeys", "type": "length", "title": "Long Journeys", "intro": "Sabbaticals, career breaks and trips measured in weeks.", "filter": { "destinationTags": ["long-journey"], "itineraryDays": [17, 400] }, "art": "himalaya" },
+
+    { "slug": "budget", "type": "budget", "title": "Budget", "intro": "Destinations where a good trip does not require a large one.", "filter": { "destinationTags": ["budget"], "priceBands": [1] }, "art": "india-forest" },
+    { "slug": "mid-range", "type": "budget", "title": "Mid-range", "intro": "The band where most good travel actually happens.", "filter": { "destinationTags": ["mid-range"], "priceBands": [2] }, "art": "asia-river" },
+    { "slug": "premium", "type": "budget", "title": "Premium", "intro": "A meaningful step up in setting and service without the top tier.", "filter": { "destinationTags": ["premium"], "priceBands": [3] }, "art": "rockies" },
+    { "slug": "luxury", "type": "budget", "title": "Luxury", "intro": "The properties and journeys at the top of the market, assessed honestly.", "filter": { "destinationTags": ["luxury-budget"], "priceBands": [4] }, "art": "savanna" }
+  ],
+  "dealCategories": [
+    { "slug": "hotel-deals", "name": "Hotel Deals", "note": "Rate offers surfaced directly from booking partners once integrations are live." },
+    { "slug": "luxury-hotel-offers", "name": "Luxury Hotel Offers", "note": "Value-add offers — resort credit, upgrades, extra nights — from premium partner programmes." },
+    { "slug": "flight-deals", "name": "Flight Deals", "note": "Fare alerts from flight partners, filtered to routes serving our destinations." },
+    { "slug": "tour-deals", "name": "Tour Deals", "note": "Multi-day tour and small-group journey offers from operator partners." },
+    { "slug": "experience-deals", "name": "Experience Deals", "note": "Activity and day-tour offers from experience marketplace partners." },
+    { "slug": "seasonal-offers", "name": "Seasonal Offers", "note": "Shoulder-season and off-peak offers, which are usually the genuinely good ones." }
+  ],
+  "tools": [
+    { "slug": "trip-budget-calculator", "name": "Trip Budget Calculator", "blurb": "Estimate a realistic trip budget from your own numbers — stays, food, transport, experiences and a contingency.", "phase": "mvp" },
+    { "slug": "currency-converter", "name": "Currency Converter", "blurb": "Convert between the currencies our destinations use, with your own rate so nothing is ever out of date.", "phase": "mvp" },
+    { "slug": "packing-list-generator", "name": "Packing List Generator", "blurb": "Build a packing list from your destination type, season, trip length and activities.", "phase": "mvp" },
+    { "slug": "trip-duration-calculator", "name": "Trip Duration Calculator", "blurb": "Work out how many usable days a trip actually has once travel, jet lag and transfers are removed.", "phase": "mvp" },
+    { "slug": "best-time-to-visit", "name": "Best Time to Visit", "blurb": "Compare seasons across every destination in our guides — weather, crowds and price.", "phase": "mvp" },
+    { "slug": "travel-checklist", "name": "Travel Checklist", "blurb": "A pre-departure checklist that saves your progress in your browser.", "phase": "mvp" },
+    { "slug": "destination-comparison", "name": "Destination Comparison", "blurb": "Put two destinations side by side — season, days needed, budget band and what each is best for.", "phase": "mvp" },
+    { "slug": "visa-information", "name": "Visa Information", "blurb": "Entry-requirement starting points for every country we cover, with links to official sources.", "phase": "mvp" },
+    { "slug": "hotel-comparison", "name": "Hotel Comparison", "blurb": "Compare stays on the criteria that matter — who it suits, what it lacks, what it costs in bands.", "phase": "phase-2" },
+    { "slug": "itinerary-generator", "name": "Itinerary Generator", "blurb": "Generate a day-by-day plan. Available now as part of the AI Trip Planner.", "phase": "mvp", "redirect": "/plan/" },
+    { "slug": "distance-route-planner", "name": "Distance & Route Planner", "blurb": "Estimate realistic travel times between destinations, including the transfer overhead itineraries usually forget.", "phase": "phase-2" }
+  ]
+}

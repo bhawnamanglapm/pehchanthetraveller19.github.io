@@ -1,0 +1,126 @@
+/* ==========================================================================
+   PEHCHAN — Design tokens
+   Editorial travel aesthetic: ink on paper, deep jade accent, bronze commerce.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Palette: light ---- */
+  --paper:        #FCFAF7;
+  --paper-2:      #F5F1EA;
+  --paper-3:      #EDE7DD;
+  --ink:          #191411;
+  --ink-2:        #43392F;
+  --muted:        #6F6459;
+  --line:         #E2DACE;
+  --line-strong:  #CDC2B2;
+
+  --accent:       #1D4E45;   /* deep jade — brand, links, editorial */
+  --accent-soft:  #E7EFEB;
+  --accent-ink:   #0F332C;
+  --bronze:       #9A6B36;   /* commerce: booking CTAs, price bands */
+  --bronze-soft:  #F3E9DC;
+  --sponsored:    #7A5C1E;
+
+  --surface:      #FFFFFF;
+  --surface-2:    #FAF7F2;
+  --overlay:      rgba(25, 20, 17, .58);
+  --on-accent:    #FBF9F6;
+
+  /* ---- Type ---- */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+                  "Hoefler Text", Georgia, "Times New Roman", serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+             Arial, "Noto Sans", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  --t-xs:   0.75rem;
+  --t-sm:   0.8125rem;
+  --t-base: 0.9375rem;
+  --t-md:   1.0625rem;
+  --t-lg:   clamp(1.125rem, 0.95rem + 0.6vw, 1.375rem);
+  --t-xl:   clamp(1.375rem, 1.05rem + 1.2vw, 1.875rem);
+  --t-2xl:  clamp(1.75rem, 1.25rem + 2.1vw, 2.75rem);
+  --t-3xl:  clamp(2.125rem, 1.35rem + 3.3vw, 4rem);
+  --t-4xl:  clamp(2.5rem, 1.4rem + 4.6vw, 5.25rem);
+
+  --lh-tight: 1.08;
+  --lh-snug:  1.28;
+  --lh-body:  1.68;
+  --ls-caps:  .14em;
+
+  /* ---- Space ---- */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --section-y: clamp(56px, 8vw, 120px);
+  --measure: 68ch;
+
+  /* ---- Shape & depth ---- */
+  --r-sm: 3px; --r-md: 6px; --r-lg: 14px; --r-pill: 999px;
+  --shadow-1: 0 1px 2px rgba(25,20,17,.05), 0 6px 18px -12px rgba(25,20,17,.28);
+  --shadow-2: 0 2px 6px rgba(25,20,17,.06), 0 24px 48px -28px rgba(25,20,17,.42);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --dur-1: 140ms; --dur-2: 260ms; --dur-3: 520ms;
+
+  --max: 1320px;
+  --max-prose: 720px;
+  --header-h: 68px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper:       #121110;
+    --paper-2:     #191715;
+    --paper-3:     #221F1C;
+    --ink:         #F2EDE6;
+    --ink-2:       #D6CDC2;
+    --muted:       #9E9488;
+    --line:        #2E2A26;
+    --line-strong: #443E38;
+
+    --accent:      #7FB8A8;
+    --accent-soft: #1B2E29;
+    --accent-ink:  #A8D3C6;
+    --bronze:      #D2A470;
+    --bronze-soft: #2B2118;
+    --sponsored:   #C9A961;
+
+    --surface:     #1A1816;
+    --surface-2:   #201D1A;
+    --overlay:     rgba(8, 7, 6, .68);
+    --on-accent:   #0E1C18;
+
+    --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px -12px rgba(0,0,0,.7);
+    --shadow-2: 0 2px 6px rgba(0,0,0,.45), 0 24px 48px -28px rgba(0,0,0,.85);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper:       #121110;
+  --paper-2:     #191715;
+  --paper-3:     #221F1C;
+  --ink:         #F2EDE6;
+  --ink-2:       #D6CDC2;
+  --muted:       #9E9488;
+  --line:        #2E2A26;
+  --line-strong: #443E38;
+
+  --accent:      #7FB8A8;
+  --accent-soft: #1B2E29;
+  --accent-ink:  #A8D3C6;
+  --bronze:      #D2A470;
+  --bronze-soft: #2B2118;
+  --sponsored:   #C9A961;
+
+  --surface:     #1A1816;
+  --surface-2:   #201D1A;
+  --overlay:     rgba(8, 7, 6, .68);
+  --on-accent:   #0E1C18;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 6px 18px -12px rgba(0,0,0,.7);
+  --shadow-2: 0 2px 6px rgba(0,0,0,.45), 0 24px 48px -28px rgba(0,0,0,.85);
+}
