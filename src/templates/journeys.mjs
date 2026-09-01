@@ -37,7 +37,7 @@ ${pageHero("Curated journeys", "Itineraries built to be travelled",
     description: "Curated day-by-day itineraries: 7 days in Japan, 10 in Italy, 14 in Thailand and more — with stays, experiences, transport and budget bands.",
     body, ogArt: "journeys",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Journeys", href: "/journeys/" }],
-    schema: { "@type": "CollectionPage", name: "Curated journeys", url: g.site.origin + "/journeys/" }
+    schema: { "@type": "CollectionPage", name: "Curated journeys", url: g.site.siteUrl + "/journeys/" }
   };
 }
 

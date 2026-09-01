@@ -31,7 +31,7 @@ ${list(groups, (type, n) => `<section class="section section--tight${n % 2 ? " s
     description: "Curated travel collections: luxury escapes, solo trips, slow travel, mountains, beaches, deserts, weekend breaks and every budget band.",
     body, ogArt: "collections",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Collections", href: "/collections/" }],
-    schema: { "@type": "CollectionPage", name: "Travel collections", url: g.site.origin + "/collections/" }
+    schema: { "@type": "CollectionPage", name: "Travel collections", url: g.site.siteUrl + "/collections/" }
   };
 }
 
@@ -74,7 +74,7 @@ ${c.experiences_.length ? `<section class="section section--tinted"><div class="
     url: c.url, template: "collection", title: fitTitle([c.title, "Curated Travel Collection", "Pehchan"]),
     description: truncate(c.intro, 155), body, ogArt: `col-${c.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Collections", href: "/collections/" }, { label: c.title, href: c.url }],
-    schema: { "@type": "CollectionPage", name: c.title, description: c.intro, url: g.site.origin + c.url }
+    schema: { "@type": "CollectionPage", name: c.title, description: c.intro, url: g.site.siteUrl + c.url }
   };
 }
 
@@ -101,6 +101,6 @@ ${list(byRegion, ({ r, dests }, n) => `<section class="section section--tight${n
     description: "Full-length destination guides: why to visit, the best time to go, how many days you need, where to stay, what to do, food and budget.",
     body, ogArt: "guides",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Guides", href: "/guides/" }],
-    schema: { "@type": "CollectionPage", name: "Travel guides", url: g.site.origin + "/guides/" }
+    schema: { "@type": "CollectionPage", name: "Travel guides", url: g.site.siteUrl + "/guides/" }
   };
 }

@@ -6,6 +6,9 @@
 import { track, autoTrack } from "./analytics.js";
 import { store } from "./account.js";
 
+/** Base path for a project-site subpath deploy; empty at a domain root. */
+const BASE = document.body.dataset.base || "";
+
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
@@ -59,7 +62,7 @@ let index = null, activeIdx = -1;
 
 async function loadIndex() {
   if (index) return index;
-  const res = await fetch("/assets/search-index.json");
+  const res = await fetch(BASE + "/assets/search-index.json");
   index = await res.json();
   return index;
 }
@@ -117,7 +120,7 @@ function renderResults(list, target, query) {
   if (!query.trim()) { target.innerHTML = `<li class="search-empty">Search destinations, stays, experiences, journeys and stories.</li>`; return; }
   if (!list.length) {
     target.innerHTML = `<li class="search-empty">Nothing matched “${query.replace(/</g, "&lt;")}”.
-      Try a place, a kind of stay, or a trip length — or <a href="/destinations/">browse destinations</a>.</li>`;
+      Try a place, a kind of stay, or a trip length — or <a href="${BASE}/destinations/">browse destinations</a>.</li>`;
     track("search", { query, resultCount: 0 });
     return;
   }

@@ -12,6 +12,9 @@ const read = (f) => JSON.parse(readFileSync(join(DIR, f), "utf8"));
  */
 export function buildGraph() {
   const site = read("site.json");
+  // Single source of truth for absolute URLs. Templates and the shell must use
+  // this, never `origin` alone, or a subpath deploy loses the base path.
+  site.siteUrl = site.origin + (site.basePath || "");
   const regions = read("regions.json");
   const countries = read("countries.json");
   const destinations = read("destinations.json");

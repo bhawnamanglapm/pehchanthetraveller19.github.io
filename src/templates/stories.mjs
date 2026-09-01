@@ -37,7 +37,7 @@ ${pageHero("Travel stories", "Writing from the road",
     description: "Personal travel writing on solo travel, mountains, food, culture, slow travel and the lessons that only come from getting it wrong.",
     body, ogArt: "stories",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stories", href: "/stories/" }],
-    schema: { "@type": "Blog", name: "Pehchan Travel Stories", url: g.site.origin + "/stories/" }
+    schema: { "@type": "Blog", name: "Pehchan Travel Stories", url: g.site.siteUrl + "/stories/" }
   };
 }
 
@@ -58,7 +58,7 @@ ${pageHero("Stories", c.name, c.intro)}
     description: truncate(`${c.intro} ${c.stories_.length} ${c.stories_.length === 1 ? "story" : "stories"} from the road.`, 155),
     body, ogArt: `story-cat-${c.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stories", href: "/stories/" }, { label: c.name, href: c.url }],
-    schema: { "@type": "CollectionPage", name: c.name, url: g.site.origin + c.url }
+    schema: { "@type": "CollectionPage", name: c.name, url: g.site.siteUrl + c.url }
   };
 }
 
@@ -124,7 +124,7 @@ ${related.length ? `<section class="section section--tight"><div class="wrap">
     description: truncate(s.dek, 155), body, ogArt: `story-${s.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stories", href: "/stories/" }, { label: s.title, href: s.url }],
     schema: { "@type": "Article", headline: s.title, description: s.dek, datePublished: s.publishedAt,
-      author: { "@type": "Organization", name: s.author }, publisher: { "@id": g.site.origin + "/#org" },
-      mainEntityOfPage: g.site.origin + s.url, articleSection: s.categories[0] }
+      author: { "@type": "Organization", name: s.author }, publisher: { "@id": g.site.siteUrl + "/#org" },
+      mainEntityOfPage: g.site.siteUrl + s.url, articleSection: s.categories[0] }
   };
 }

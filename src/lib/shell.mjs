@@ -146,7 +146,7 @@ function searchOverlay() {
 /** JSON-LD graph. We emit only schema we can genuinely substantiate. */
 function jsonLd(page, g) {
   const { site } = g;
-  const base = site.origin;
+  const base = site.siteUrl;
   const nodes = [];
   if (page.isHome) {
     nodes.push({
@@ -185,9 +185,10 @@ function jsonLd(page, g) {
  */
 export function page(p, g) {
   const { site } = g;
-  const canonical = site.origin + p.url;
-  const title = p.title.length > 62 ? p.title : p.title;
-  const ogImage = site.origin + "/assets/og/" + (p.ogArt || "default") + ".svg";
+  const base = site.basePath || "";
+  const canonical = site.siteUrl + p.url;
+  const title = p.title;
+  const ogImage = site.siteUrl + "/assets/og/" + (p.ogArt || "default") + ".svg";
   return `<!doctype html>
 <html lang="${esc(site.locale)}">
 <head>
@@ -217,7 +218,7 @@ ${p.noindex ? '<meta name="robots" content="noindex,follow">' : '<meta name="rob
 <script>try{var t=localStorage.getItem("pehchan-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 ${jsonLd(p, g)}
 </head>
-<body${p.bodyClass ? ` class="${esc(p.bodyClass)}"` : ""} data-template="${esc(p.template || "page")}"${p.dataAttrs || ""}>
+<body${p.bodyClass ? ` class="${esc(p.bodyClass)}"` : ""} data-template="${esc(p.template || "page")}" data-base="${esc(base)}"${p.dataAttrs || ""}>
 <a class="skip-link" href="#main">Skip to content</a>
 ${masthead(g)}
 <main id="main">

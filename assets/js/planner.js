@@ -19,12 +19,15 @@
 import { track } from "./analytics.js";
 import { store } from "./account.js";
 
+/** Base path for a project-site subpath deploy; empty at a domain root. */
+const BASE = document.body.dataset.base || "";
+
 const form = document.getElementById("planner");
 const out = document.getElementById("planner-result");
 if (form && out) init();
 
 async function init() {
-  const catalog = await (await fetch("/assets/catalog.json")).json();
+  const catalog = await (await fetch(BASE + "/assets/catalog.json")).json();
 
   // Deep-links from destination guides, hotel pages and curated journeys.
   const params = new URLSearchParams(location.search);
@@ -284,7 +287,7 @@ function renderPlan(plan, brief, catalog) {
 planning assumptions for a ${"$".repeat(brief.budget)} trip — ${money(BAND_RATES[brief.budget].stay)}/night per room,
 ${money(BAND_RATES[brief.budget].food)}/person/day for food, plus local transport, experiences and a 12% contingency.
 It excludes international flights. It is not a quote, and no price on this site is taken from a live booking system.
-Put your own numbers into the <a href="/tools/trip-budget-calculator/">budget calculator</a> for something firmer.</p>
+Put your own numbers into the <a href="${BASE}/tools/trip-budget-calculator/">budget calculator</a> for something firmer.</p>
 
 <div class="grid grid--asym" style="margin-top:var(--s-7)">
   <div>
@@ -317,7 +320,7 @@ Put your own numbers into the <a href="/tools/trip-budget-calculator/">budget ca
           `<div><span>${label}</span><span class="bar"><i style="width:${(v / est.total * 100).toFixed(1)}%"></i></span><span>${money(v)}</span></div>`).join("")}
       </div>
       <p class="affiliate-note" style="margin-top:var(--s-4)">Excludes international flights. Booking links may earn us a
-      commission at no cost to you. <a href="/legal/affiliate-disclosure/">Details</a>.</p>
+      commission at no cost to you. <a href="${BASE}/legal/affiliate-disclosure/">Details</a>.</p>
     </div>
 
     <div class="booking">
@@ -339,7 +342,7 @@ Put your own numbers into the <a href="/tools/trip-budget-calculator/">budget ca
       <div class="booking__head"><h3>Want this designed properly?</h3></div>
       <p class="affiliate-note">Premium trip planning — bookings handled, restaurants reserved, the logistics checked by
       someone who has been there. Not yet live; register interest and we will tell you when it opens.</p>
-      <a class="btn btn--primary btn--block" href="/partner/#enquiry" data-track="premium_planning_interest">Register interest</a>
+      <a class="btn btn--primary btn--block" href="${BASE}/partner/#enquiry" data-track="premium_planning_interest">Register interest</a>
     </div>
   </aside>
 </div>
@@ -351,7 +354,7 @@ Put your own numbers into the <a href="/tools/trip-budget-calculator/">budget ca
       .slice(0, 3).map(i => `<a class="card" href="${i.url}"><div class="card__body">
         <span class="card__kicker">${i.days} days · ${esc(i.style.replace(/-/g, " "))}</span>
         <h4 class="card__title" style="font-size:var(--t-md)">${esc(i.title)}</h4></div></a>`).join("")
-      || `<p class="muted">No curated journey covers this combination yet — <a href="/journeys/">browse all journeys</a>.</p>`}
+      || `<p class="muted">No curated journey covers this combination yet — <a href="${BASE}/journeys/">browse all journeys</a>.</p>`}
   </div>
 </div>`;
 }

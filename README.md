@@ -83,6 +83,38 @@ The build **fails rather than publishing a defect**. It rejects:
 every push to `main`. Generated HTML is committed, so the workflow needs no build
 step; run `node src/build.mjs` and commit the result before pushing.
 
+**Live URL:** https://bhawnamanglapm.github.io/pehchanthetraveller19.github.io/
+
+### About that URL — and the `basePath` setting
+
+GitHub publishes a *user site* at `https://<account>.github.io/` only when the
+repository is named `<account>.github.io`. This account is `bhawnamanglapm`, so a
+user site would need a repo named `bhawnamanglapm.github.io`. The name
+`pehchanthetraveller19.github.io` merely *looks* like a domain, so GitHub treats
+this as an ordinary **project site** and serves it from a subpath.
+
+Every internal link and asset reference would 404 at a subpath if it were
+root-relative, so `src/content/site.json` carries:
+
+```json
+"origin":   "https://bhawnamanglapm.github.io",
+"basePath": "/pehchanthetraveller19.github.io"
+```
+
+Templates author clean URLs (`/stay/…`); `src/build.mjs` applies `basePath` once
+at write time, and a build guard fails if any URL escapes it. `site.siteUrl`
+(`origin + basePath`) is the single source for canonicals, Open Graph, JSON-LD,
+the sitemap and the feed.
+
+**If you move the site, this is a one-line change.** Set `basePath` to `""` and
+update `origin`, then rebuild:
+
+| Destination | `origin` | `basePath` |
+|---|---|---|
+| Custom domain (e.g. `pehchan.travel`) | `https://pehchan.travel` | `""` |
+| Rename repo to `bhawnamanglapm.github.io` | `https://bhawnamanglapm.github.io` | `""` |
+| Current project site | `https://bhawnamanglapm.github.io` | `/pehchanthetraveller19.github.io` |
+
 ## Honesty constraints
 
 These are enforced in the code, not just stated in a policy page:
