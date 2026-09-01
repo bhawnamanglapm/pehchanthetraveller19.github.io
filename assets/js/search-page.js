@@ -2,6 +2,9 @@
 import { track } from "./analytics.js";
 import { search } from "./site.js";
 
+/** Base path for a project-site subpath deploy; empty at a domain root. */
+const BASE = document.body.dataset.base || "";
+
 const form = document.querySelector("[data-search-page]");
 const results = document.querySelector("[data-search-page-results]");
 const count = document.querySelector("[data-search-count]");
@@ -13,7 +16,7 @@ const TYPE_LABEL = { destination: "Destination", stay: "Stay", experience: "Expe
 let index = null;
 
 async function load() {
-  if (!index) index = await (await fetch("/assets/search-index.json")).json();
+  if (!index) index = await (await fetch(BASE + "/assets/search-index.json")).json();
   return index;
 }
 
@@ -26,7 +29,7 @@ function render(list, query) {
   count.textContent = `${list.length} result${list.length === 1 ? "" : "s"} for “${query}”`;
   if (!list.length) {
     results.innerHTML = `<li class="search-empty">Nothing matched. Try a place name, a kind of stay, or a trip length —
-      or <a href="/destinations/">browse destinations</a>.</li>`;
+      or <a href="${BASE}/destinations/">browse destinations</a>.</li>`;
     track("search", { query, resultCount: 0 });
     return;
   }

@@ -1,6 +1,9 @@
 /** Travel tools. Each runs entirely in the browser; nothing is transmitted. */
 import { track } from "./analytics.js";
 
+/** Base path for a project-site subpath deploy; empty at a domain root. */
+const BASE = document.body.dataset.base || "";
+
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s = "") => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -41,8 +44,8 @@ function budget(root) {
           .map(([l, v]) => `<div><span>${esc(l)}</span><span class="bar"><i style="width:${total ? (v / total * 100).toFixed(1) : 0}%"></i></span><span>${money(v, cur)}</span></div>`).join("")}
       </div>
       <p class="muted" style="margin-top:var(--s-5);font-size:var(--t-sm)">These are your numbers, not ours — we do not
-      ship estimates of what a destination "should" cost. <a href="/plan/">Plan the trip</a> and
-      <a href="/collections/">browse by budget band</a>.</p>`);
+      ship estimates of what a destination "should" cost. <a href="${BASE}/plan/">Plan the trip</a> and
+      <a href="${BASE}/collections/">browse by budget band</a>.</p>`);
   });
 }
 
@@ -143,7 +146,7 @@ function duration(root) {
       <p class="muted" style="margin-top:var(--s-5);font-size:var(--t-sm)">
       ${bases > 1 ? `Each move between bases costs roughly half a day once you count packing, checkout, transfer and check-in. With ${bases} bases that is ${transfers} days. ` : ""}
       ${usable / total < 0.6 ? "<strong>You are spending more of this trip in transit than on the ground.</strong> Cut a base or add days." : "That ratio is healthy."}
-      <a href="/plan/">Build an itinerary that fits</a>.</p>`);
+      <a href="${BASE}/plan/">Build an itinerary that fits</a>.</p>`);
   });
 }
 
@@ -202,7 +205,7 @@ function checklist(root) {
 
 /* ---------------- destination comparison ------------------------------ */
 async function compare(root) {
-  const catalog = await (await fetch("/assets/catalog.json")).json();
+  const catalog = await (await fetch(BASE + "/assets/catalog.json")).json();
   root.addEventListener("submit", (e) => {
     e.preventDefault();
     const f = new FormData(root);
@@ -232,7 +235,7 @@ async function compare(root) {
       <div class="btn-row" style="margin-top:var(--s-5)">
         <a class="btn btn--ghost btn--sm" href="${a.url}">${esc(a.name)} guide</a>
         <a class="btn btn--ghost btn--sm" href="${b.url}">${esc(b.name)} guide</a>
-        <a class="btn btn--primary btn--sm" href="/plan/">Plan a trip</a>
+        <a class="btn btn--primary btn--sm" href="${BASE}/plan/">Plan a trip</a>
       </div>`);
   });
 }

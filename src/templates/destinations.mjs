@@ -39,7 +39,7 @@ ${pageHero("Destinations", "Every region, one consistent standard",
     description: "Destination guides across Asia, Europe, the Middle East, Africa, the Americas, Oceania and India — when to go, how long to stay, where to sleep.",
     body, ogArt: "destinations",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" }],
-    schema: { "@type": "CollectionPage", name: "Travel Destinations", url: g.site.origin + "/destinations/" }
+    schema: { "@type": "CollectionPage", name: "Travel Destinations", url: g.site.siteUrl + "/destinations/" }
   };
 }
 
@@ -88,7 +88,7 @@ ${pageHero(`Destinations · ${r.name}`, r.name, r.blurb)}
     description: truncate(`${r.blurb} Destination guides, boutique stays and curated itineraries across ${r.countries.map(c => c.name).join(", ")}.`, 155),
     body, ogArt: `region-${r.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" }, { label: r.name, href: r.url }],
-    schema: { "@type": "CollectionPage", name: `${r.name} travel guides`, url: g.site.origin + r.url }
+    schema: { "@type": "CollectionPage", name: `${r.name} travel guides`, url: g.site.siteUrl + r.url }
   };
 }
 
@@ -132,7 +132,7 @@ ${c.destinations.some(d => d.hotels.length) ? `<section class="section section--
     body, ogArt: `country-${c.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
       { label: c.region_.name, href: c.region_.url }, { label: c.name, href: c.url }],
-    schema: { "@type": "CollectionPage", name: `${c.name} travel guide`, url: g.site.origin + c.url }
+    schema: { "@type": "CollectionPage", name: `${c.name} travel guide`, url: g.site.siteUrl + c.url }
   };
 }
 
@@ -261,7 +261,7 @@ ${d.stories.length ? `<section class="section section--tight"><div class="wrap">
       { label: d.name, href: d.url }],
     schema: [
       { "@type": "TouristDestination", name: d.name, description: d.summary,
-        url: g.site.origin + d.url,
+        url: g.site.siteUrl + d.url,
         address: { "@type": "PostalAddress", addressCountry: d.country_.name },
         geo: { "@type": "GeoCoordinates", latitude: d.coords[0], longitude: d.coords[1] },
         touristType: d.tags.map(t => t.replace(/-/g, " ")) },

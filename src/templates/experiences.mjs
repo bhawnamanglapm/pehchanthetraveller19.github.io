@@ -35,7 +35,7 @@ ${pageHero("Experiences", "The reason you went",
     description: "A curated global experiences catalogue: adventure, food, culture, wellness, wildlife, hiking and local experiences, with honest difficulty notes.",
     body, ogArt: "experiences",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Experiences", href: "/experiences/" }],
-    schema: { "@type": "CollectionPage", name: "Travel experiences", url: g.site.origin + "/experiences/" }
+    schema: { "@type": "CollectionPage", name: "Travel experiences", url: g.site.siteUrl + "/experiences/" }
   };
 }
 
@@ -62,7 +62,7 @@ ${pageHero("Experiences", c.name, c.intro)}
     description: truncate(`${c.intro} ${c.experiences_.length} curated ${c.name.toLowerCase()} experiences across our destinations.`, 155),
     body, ogArt: `exp-${c.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Experiences", href: "/experiences/" }, { label: c.name, href: c.url }],
-    schema: { "@type": "CollectionPage", name: c.name, url: g.site.origin + c.url }
+    schema: { "@type": "CollectionPage", name: c.name, url: g.site.siteUrl + c.url }
   };
 }
 
@@ -147,7 +147,7 @@ ${d.hotels.length ? `<section class="section section--tinted"><div class="wrap">
     body, ogArt: `exp-item-${e.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Experiences", href: "/experiences/" },
       { label: d.name, href: d.url }, { label: e.name, href: e.url }],
-    schema: { "@type": "TouristAttraction", name: e.name, description: e.description, url: g.site.origin + e.url,
+    schema: { "@type": "TouristAttraction", name: e.name, description: e.description, url: g.site.siteUrl + e.url,
       address: { "@type": "PostalAddress", addressLocality: d.name, addressCountry: d.country_.name },
       touristType: e.idealTraveller }
   };

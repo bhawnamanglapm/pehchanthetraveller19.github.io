@@ -46,7 +46,7 @@ ${pageHero("Stay", "Where you sleep is half the journey",
     description: "Luxury and boutique stays worldwide: hotels, resorts, mountain retreats, villas and unique stays — assessed on who they genuinely suit.",
     body, ogArt: "stay",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stay", href: "/stay/" }],
-    schema: { "@type": "CollectionPage", name: "Where to stay", url: g.site.origin + "/stay/" }
+    schema: { "@type": "CollectionPage", name: "Where to stay", url: g.site.siteUrl + "/stay/" }
   };
 }
 
@@ -75,7 +75,7 @@ ${pageHero("Stay", c.name, c.intro)}
     description: truncate(`${c.intro} ${c.hotels_.length} properties across our destinations, with an honest note on who each one suits.`, 155),
     body, ogArt: `stay-${c.slug}`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stay", href: "/stay/" }, { label: c.name, href: c.url }],
-    schema: { "@type": "CollectionPage", name: c.name, url: g.site.origin + c.url }
+    schema: { "@type": "CollectionPage", name: c.name, url: g.site.siteUrl + c.url }
   };
 }
 
@@ -186,7 +186,7 @@ ${h.alternatives_.length ? `<section class="section" id="alternatives"><div clas
       { label: d.name, href: d.url }, { label: h.name, href: h.url }],
     // Hotel schema without review/rating: we hold no first-party review data,
     // so emitting AggregateRating here would be fabrication.
-    schema: { "@type": "Hotel", name: h.name, description: h.overview, url: g.site.origin + h.url,
+    schema: { "@type": "Hotel", name: h.name, description: h.overview, url: g.site.siteUrl + h.url,
       address: { "@type": "PostalAddress", addressLocality: d.name, addressCountry: d.country_.name },
       amenityFeature: h.amenities.map(a => ({ "@type": "LocationFeatureSpecification", name: a, value: true })),
       priceRange: "$".repeat(h.priceBand) }

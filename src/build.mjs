@@ -137,7 +137,33 @@ function main() {
     process.exit(1);
   }
 
-  for (const [p, htmlOut] of rendered) write(urlToFile(p.url), htmlOut);
+  // Templates author clean root-relative URLs ("/stay/…"). The base path is
+  // applied once here — after the integrity checks have validated those routes —
+  // so a project-site subpath, a rename, or a custom domain is one config change
+  // rather than an edit to every template.
+  const BASE = g.site.basePath || "";
+  const applyBase = (html) => BASE
+    ? html.replace(/\b(href|src)="\/(?!\/)/g, `$1="${BASE}/`)
+    : html;
+
+  // Guard: after prefixing, no root-relative URL may be missing the base. This is
+  // the bug that shipped a site whose every link and asset 404'd at a project-site
+  // subpath, so it fails the build rather than relying on a manual check.
+  const escaped = [];
+  for (const [p, htmlOut] of rendered) {
+    const out = applyBase(htmlOut);
+    if (BASE) {
+      for (const m of out.matchAll(/(?:href|src)="(\/[^"]*)"/g)) {
+        if (!m[1].startsWith(BASE + "/") && m[1] !== BASE) escaped.push(`${p.url}: ${m[1]}`);
+      }
+    }
+    write(urlToFile(p.url), out);
+  }
+  if (escaped.length) {
+    console.error("\nBase-path check failed — these URLs would 404 at the deploy subpath:");
+    [...new Set(escaped)].slice(0, 20).forEach(e => console.error("  ✗ " + e));
+    process.exit(1);
+  }
 
   /* ---- Open Graph share images -------------------------------------- */
   const ogSpecs = new Map();
@@ -188,30 +214,32 @@ function main() {
     { t: "collection", u: "/deals/", n: "Travel Deals", d: "Hotel, flight, tour and experience offers from booking partners.", k: "deals offers discounts" },
     { t: "collection", u: "/partner/", n: "Partner With Us", d: "Sponsored stories, hotel features and destination campaigns.", k: "brands hotels tourism boards b2b" }
   ];
+  for (const entry of index) entry.u = BASE + entry.u;
   write("assets/search-index.json", JSON.stringify(index));
 
   /* ---- planner catalogue --------------------------------------------- */
   // The planner matches against this rather than against scraped listings, so
   // every recommendation it makes resolves to a real page on this site.
+  const withBase = (u) => BASE + u;
   write("assets/catalog.json", JSON.stringify({
     destinations: g.destinations.map(d => ({
-      slug: d.slug, name: d.name, url: d.url, country: d.country_.name, region: d.region_.name,
+      slug: d.slug, name: d.name, url: withBase(d.url), country: d.country_.name, region: d.region_.name,
       summary: d.summary, tags: d.tags, days: d.howManyDays, bestTime: d.bestTime,
       whereToStay: d.whereToStay, thingsToDo: d.thingsToDo, food: d.food, budgetNotes: d.budgetNotes,
       culture: d.culture, safety: d.safety, currency: d.country_.currency, coords: d.coords,
       gettingThere: d.gettingThere
     })),
     hotels: g.hotels.map(h => ({
-      slug: h.slug, name: h.name, url: h.url, destination: h.destination, kicker: h.kicker,
+      slug: h.slug, name: h.name, url: withBase(h.url), destination: h.destination, kicker: h.kicker,
       categories: h.categories, priceBand: h.priceBand, bestFor: h.bestFor, sample: !!h.sample
     })),
     experiences: g.experiences.map(e => ({
-      slug: e.slug, name: e.name, url: e.url, destination: e.destination, categories: e.categories,
+      slug: e.slug, name: e.name, url: withBase(e.url), destination: e.destination, categories: e.categories,
       duration: e.duration, difficulty: e.difficulty, recommendedTime: e.recommendedTime,
       description: e.description, sample: !!e.sample
     })),
     itineraries: g.itineraries.map(i => ({
-      slug: i.slug, title: i.title, url: i.url, days: i.days, style: i.style,
+      slug: i.slug, title: i.title, url: withBase(i.url), days: i.days, style: i.style,
       destinations: i.destinations, budgetBand: i.budgetBand
     }))
   }));
@@ -223,17 +251,17 @@ function main() {
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
     indexable.map(p => {
       const pri = p.url === "/" ? "1.0" : p.url.split("/").filter(Boolean).length <= 1 ? "0.9" : "0.7";
-      return `  <url><loc>${g.site.origin}${p.url}</loc><lastmod>${today}</lastmod><priority>${pri}</priority></url>`;
+      return `  <url><loc>${g.site.siteUrl}${p.url}</loc><lastmod>${today}</lastmod><priority>${pri}</priority></url>`;
     }).join("\n") + `\n</urlset>\n`);
 
-  write("robots.txt", `# ${g.site.brand}\nUser-agent: *\nAllow: /\nDisallow: /search/\nDisallow: /dashboard/\n\nSitemap: ${g.site.origin}/sitemap.xml\n`);
+  write("robots.txt", `# ${g.site.brand}\nUser-agent: *\nAllow: /\nDisallow: ${BASE}/search/\nDisallow: ${BASE}/dashboard/\n\nSitemap: ${g.site.siteUrl}/sitemap.xml\n`);
 
   write("feed.xml",
     `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n` +
-    `<title>${esc(g.site.brand)} — Travel Stories</title>\n<link>${g.site.origin}/stories/</link>\n` +
+    `<title>${esc(g.site.brand)} — Travel Stories</title>\n<link>${g.site.siteUrl}/stories/</link>\n` +
     `<description>${esc(g.site.promise)}</description>\n<language>en</language>\n` +
-    g.stories.map(s => `<item><title>${esc(s.title)}</title><link>${g.site.origin}${s.url}</link>` +
-      `<guid>${g.site.origin}${s.url}</guid><pubDate>${new Date(s.publishedAt).toUTCString()}</pubDate>` +
+    g.stories.map(s => `<item><title>${esc(s.title)}</title><link>${g.site.siteUrl}${s.url}</link>` +
+      `<guid>${g.site.siteUrl}${s.url}</guid><pubDate>${new Date(s.publishedAt).toUTCString()}</pubDate>` +
       `<description>${esc(s.dek)}</description></item>`).join("\n") +
     `\n</channel></rss>\n`);
 

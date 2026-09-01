@@ -137,7 +137,7 @@ ${crumbs({ label: "Plan" })}
     description: "Enter your destination, dates, budget, pace and interests, and get a day-by-day itinerary with stays, experiences, transport and a budget estimate.",
     body, ogArt: "planner", scripts: ["/assets/js/planner.js"],
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Plan", href: "/plan/" }],
-    schema: { "@type": "WebApplication", name: "Pehchan AI Trip Planner", url: g.site.origin + "/plan/",
+    schema: { "@type": "WebApplication", name: "Pehchan AI Trip Planner", url: g.site.siteUrl + "/plan/",
       applicationCategory: "TravelApplication", operatingSystem: "Any modern browser",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }
   };
@@ -312,7 +312,7 @@ ${crumbs({ label: "Tools" })}
     description: "Free travel tools: trip budget calculator, currency converter, packing list generator, best time to visit, travel checklist and visa information.",
     body, ogArt: "tools",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Tools", href: "/tools/" }],
-    schema: { "@type": "CollectionPage", name: "Travel planning tools", url: g.site.origin + "/tools/" }
+    schema: { "@type": "CollectionPage", name: "Travel planning tools", url: g.site.siteUrl + "/tools/" }
   };
 }
 
@@ -340,7 +340,7 @@ ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
     url: `/tools/${t.slug}/`, template: "tool", title: fitTitle([t.name, "Free Travel Tool", "Pehchan"]),
     description: truncate(t.blurb, 155), body, ogArt: `tool-${t.slug}`, scripts: ["/assets/js/tools.js"],
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Tools", href: "/tools/" }, { label: t.name, href: `/tools/${t.slug}/` }],
-    schema: { "@type": "WebApplication", name: t.name, url: g.site.origin + `/tools/${t.slug}/`,
+    schema: { "@type": "WebApplication", name: t.name, url: g.site.siteUrl + `/tools/${t.slug}/`,
       applicationCategory: "TravelApplication", operatingSystem: "Any modern browser",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }
   };
@@ -448,7 +448,7 @@ ${crumbs({ label: "Partner" })}
     description: "Work with us on sponsored destination stories, hotel features, social campaigns, UGC and photography. Transparent labelling, honest editorial.",
     body, ogArt: "partner", scripts: ["/assets/js/forms.js"],
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Partner", href: "/partner/" }],
-    schema: { "@type": "WebPage", name: "Partner With Us", url: g.site.origin + "/partner/" }
+    schema: { "@type": "WebPage", name: "Partner With Us", url: g.site.siteUrl + "/partner/" }
   };
 }
 
@@ -513,7 +513,7 @@ ${crumbs({ label: "About" })}
     description: "A global travel discovery platform: complete destination guides, a curated catalogue of stays and experiences, and a planner that builds the trip.",
     body, ogArt: "about",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "About", href: "/about/" }],
-    schema: { "@type": "AboutPage", name: "About Pehchan", url: g.site.origin + "/about/" }
+    schema: { "@type": "AboutPage", name: "About Pehchan", url: g.site.siteUrl + "/about/" }
   };
 }
 
