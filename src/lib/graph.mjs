@@ -12,6 +12,12 @@ const read = (f) => JSON.parse(readFileSync(join(DIR, f), "utf8"));
  */
 export function buildGraph() {
   const site = read("site.json");
+  // A custom domain always serves from its own root, so it overrides both the
+  // origin and the subpath. One field to move the whole site.
+  if (site.customDomain) {
+    site.origin = "https://" + site.customDomain;
+    site.basePath = "";
+  }
   // Single source of truth for absolute URLs. Templates and the shell must use
   // this, never `origin` alone, or a subpath deploy loses the base path.
   site.siteUrl = site.origin + (site.basePath || "");
