@@ -18,7 +18,7 @@ ${pageHero("Collections", "Browse by how you want to travel",
 ${list(groups, (type, n) => `<section class="section section--tight${n % 2 ? " section--tinted" : ""}"><div class="wrap">
   ${sectionHead({ eyebrow: TYPE_LABEL[type], title: TYPE_LABEL[type].replace("By ", "").replace(/^./, c => c.toUpperCase()) })}
   <div class="grid grid--4">
-    ${list(g.taxonomies.collections.filter(c => c.type === type), (c) => {
+    ${list(g.taxonomies.collections.filter(c => c.type === type && c.total), (c) => {
       const total = c.destinations_.length + c.hotels_.length + c.experiences_.length + c.itineraries_.length;
       return card({ href: c.url, title: c.title, kicker: TYPE_LABEL[c.type], desc: c.intro, entity: c, ratio: "4x3",
         flush: true, footLeft: `${total} entries` });
@@ -40,7 +40,7 @@ export function collectionPage(c, g) {
 ${pageHero(TYPE_LABEL[c.type], c.title, c.intro)}
 <div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Collections", href: "/collections/" }, { label: c.title }])}</div>
 <section class="section section--tight"><div class="wrap">
-  <div class="btn-row">${list(g.taxonomies.collections.filter(o => o.type === c.type),
+  <div class="btn-row">${list(g.taxonomies.collections.filter(o => o.type === c.type && o.total),
     (o) => o === c ? `<span class="chip chip--on">${esc(o.title)}</span>` : chip(o.title, o.url))}</div>
 </div></section>
 ${c.destinations_.length ? `<section class="section section--tight"><div class="wrap">

@@ -24,7 +24,7 @@ ${crumbs({ label: "Plan" })}
 
 <section class="section section--tight"><div class="wrap">
   <p class="engine-note"><strong>How this planner works, honestly.</strong> Version one runs entirely in your browser: a
-  deterministic matching engine over our own curated catalogue of ${g.published.length} destinations,
+  deterministic matching engine over our own curated catalogue of ${g.published.length} published destination${g.published.length === 1 ? "" : "s"},
   ${g.hotels.length} stays and ${g.experiences.length} experiences. It sends nothing to a server and stores nothing about you.
   It is designed as a drop-in for a language-model provider — see <code>plannerProvider</code> in
   <code>assets/js/planner.js</code> — so a live model can be connected without changing the interface or the funnel.
@@ -38,8 +38,8 @@ ${crumbs({ label: "Plan" })}
       <p>Pick a destination we cover, or let the planner suggest one from your interests.</p>
       <div class="field-grid">
         <div class="field"><label for="p-dest">Destination</label>
-          <select id="p-dest" name="destination">
-            <option value="">Suggest one for me</option>
+          <select id="p-dest" name="destination"${g.published.length ? "" : " disabled"}>
+            <option value="">${g.published.length ? "Suggest one for me" : "No guides published yet"}</option>
             ${list(g.regions.filter(r => r.countries.some(c => c.publishedDestinations.length)), (r) => `<optgroup label="${esc(r.name)}">${
               list(r.countries.flatMap(c => c.publishedDestinations), (d) => opt(d.slug, `${d.name}, ${d.country_.name}`))
             }</optgroup>`)}
@@ -318,18 +318,19 @@ ${crumbs({ label: "Tools" })}
 
 export function toolPage(t, g) {
   const panel = TOOL_PANELS[t.slug] ? TOOL_PANELS[t.slug](g) : PHASE2_PANEL(t);
-  const related = t.slug === "trip-budget-calculator" ? g.taxonomies.collections.filter(c => c.type === "budget")
-    : t.slug === "best-time-to-visit" ? g.taxonomies.collections.filter(c => c.type === "landscape").slice(0, 4)
-    : g.taxonomies.collections.filter(c => c.type === "length");
+  const pool = g.taxonomies.collections.filter(c => c.total);
+  const related = (t.slug === "trip-budget-calculator" ? pool.filter(c => c.type === "budget")
+    : t.slug === "best-time-to-visit" ? pool.filter(c => c.type === "landscape")
+    : pool.filter(c => c.type === "length")).slice(0, 4);
   const body = `
 ${pageHero("Travel tools", t.name, t.blurb)}
 ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
 <section class="section section--tight"><div class="wrap wrap--narrow">${panel}</div></section>
-<section class="section section--tight"><div class="wrap">
+${related.length ? `<section class="section section--tight"><div class="wrap">
   ${sectionHead({ eyebrow: "Related", title: "Where this leads" })}
   <div class="grid grid--4">${list(related, (c) => card({ href: c.url, title: c.title, kicker: "Collection",
     desc: c.intro, entity: c, ratio: "4x3", flush: true }))}</div>
-</div></section>
+</div></section>` : ""}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
     { href: "/plan/", title: "Plan the trip", desc: "Turn the numbers into a day-by-day itinerary." },
@@ -614,7 +615,7 @@ ${crumbs({ label: "Deals" })}
   ${sectionHead({ eyebrow: "In the meantime", title: "Genuinely good value, without a countdown timer",
     intro: "The most reliable saving in travel is not a flash sale. It is going in the right month and staying in the right town." })}
   <div class="grid grid--4">
-    ${list(g.taxonomies.collections.filter(c => c.type === "budget"), (c) => card({ href: c.url, title: c.title,
+    ${list(g.taxonomies.collections.filter(c => c.type === "budget" && c.total), (c) => card({ href: c.url, title: c.title,
       kicker: "By budget", desc: c.intro, entity: c, ratio: "4x3", flush: true }))}
   </div>
 </div></section>
@@ -622,7 +623,7 @@ ${crumbs({ label: "Deals" })}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Better than a deal page", steps: [
     { href: "/tools/best-time-to-visit/", title: "Check the quiet season", desc: "Shoulder-season timing beats most discounts." },
-    { href: "/collections/budget/", title: "Browse by budget", desc: "Destinations where a good trip is not an expensive one." },
+    { href: "/collections/", title: "Browse collections", desc: "By style, landscape, trip length and budget." },
     { href: "/plan/", title: "Plan around a budget", desc: "The planner works in bands you set." }
   ]})}</div></section>`;
   return {
@@ -643,7 +644,7 @@ ${crumbs({ label: "Search" })}
 <section class="section section--tight"><div class="wrap wrap--narrow">
   <form data-search-page role="search">
     <div class="field"><label for="q">Search</label>
-      <input id="q" name="q" type="search" placeholder="Try “mountain luxury hotels in India” or “7 day itinerary Japan”" autocomplete="off"></div>
+      <input id="q" name="q" type="search" placeholder="Try a place, a state or a region" autocomplete="off"></div>
     <div class="choice-row" style="margin-top:var(--s-4)">
       ${list(["All", "Destinations", "Stays", "Experiences", "Journeys", "Stories", "Collections"], (t, i) =>
         `<label class="choice"><input type="radio" name="type" value="${esc(t.toLowerCase())}"${i === 0 ? " checked" : ""}> ${esc(t)}</label>`)}
@@ -657,8 +658,7 @@ ${crumbs({ label: "Search" })}
 <section class="section section--tight"><div class="wrap">
   ${sectionHead({ eyebrow: "Popular searches", title: "Try one of these" })}
   <div class="btn-row">
-    ${list(["mountain luxury hotels in India", "best time to visit Kyoto", "7 day itinerary Japan", "solo travel Vietnam",
-      "desert camps", "safari conservancy", "boutique hotels Lisbon", "slow travel"],
+    ${list([...g.destinations.slice(0, 6).map(d => d.name), ...g.indiaRegions.slice(0, 2).map(r => r.name)],
       (q) => `<a class="chip" href="/search/?q=${encodeURIComponent(q)}">${esc(q)}</a>`)}
   </div>
 </div></section>`;

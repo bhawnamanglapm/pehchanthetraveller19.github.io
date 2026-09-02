@@ -1,5 +1,5 @@
 import { esc, list, card, sectionHead, figure, chip, breadcrumbs, atAGlance, nextSteps, bookingModule,
-         newsletterBlock, priceBand, truncate, badge, saveButton, factList, fitTitle } from "../lib/html.mjs";
+         newsletterBlock, priceBand, truncate, badge, saveButton, factList, fitTitle, emptyState } from "../lib/html.mjs";
 
 const pageHero = (kicker, title, sub, extra = "") => `
 <section class="hero hero--page"><div class="hero__inner">
@@ -13,6 +13,23 @@ const sampleNotice = (site) => `<div class="disclosure">
 
 export function stayIndex(g) {
   const { taxonomies, hotels, site } = g;
+  if (!hotels.length) {
+    const body = `
+${pageHero("Stay", "Where you sleep is half the journey",
+  "Places actually stayed in — reviewed first-hand, with who they suit and what they lack.")}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Stay" }])}</div>
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${emptyState({
+    title: "No stays published yet",
+    body: "A stay only appears here once someone from this team has actually slept in it. That is slower than listing hotels from a booking feed, and it is the entire point — a review of a room nobody has seen is worth nothing to you.",
+    actions: [{ href: "/india/", label: "Explore destinations", primary: true }, { href: "/partner/", label: "Hotels: work with us" }]
+  })}
+</div></section>
+<section class="section section--tight"><div class="wrap">${newsletterBlock(site, "stay-empty")}</div></section>`;
+    return { url: "/stay/", template: "stay-index", title: "Where to Stay | Pehchan",
+      description: "First-hand reviewed stays across India and beyond. The first properties are being written up.",
+      body, ogArt: "stay", breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stay", href: "/stay/" }] };
+  }
   const body = `
 ${pageHero("Stay", "Where you sleep is half the journey",
   "Boutique houses, mountain lodges, desert camps, estate bungalows and design hotels — assessed on who they suit and what they lack.")}

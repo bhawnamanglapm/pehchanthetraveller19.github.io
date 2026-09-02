@@ -1,5 +1,5 @@
 import { esc, list, card, sectionHead, figure, chip, breadcrumbs, atAGlance, nextSteps, bookingModule,
-         newsletterBlock, truncate, badge, saveButton, factList, priceBand, fitTitle } from "../lib/html.mjs";
+         newsletterBlock, truncate, badge, saveButton, factList, priceBand, fitTitle, emptyState } from "../lib/html.mjs";
 
 const pageHero = (kicker, title, sub) => `
 <section class="hero hero--page"><div class="hero__inner">
@@ -10,6 +10,23 @@ const pageHero = (kicker, title, sub) => `
 
 export function experiencesIndex(g) {
   const { taxonomies, experiences, site } = g;
+  if (!experiences.length) {
+    const body = `
+${pageHero("Experiences", "The reason you went",
+  "Things actually done — with an honest note on how hard they are and who should skip them.")}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Experiences" }])}</div>
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${emptyState({
+    title: "No experiences published yet",
+    body: "An experience is listed here once it has been done, not once it has been found. Difficulty, timing and who should skip it are the useful parts, and none of them can be written from a brochure.",
+    actions: [{ href: "/india/", label: "Explore destinations", primary: true }, { href: "/plan/", label: "Plan a trip" }]
+  })}
+</div></section>
+<section class="section section--tight"><div class="wrap">${newsletterBlock(site, "experiences-empty")}</div></section>`;
+    return { url: "/experiences/", template: "experiences-index", title: "Travel Experiences | Pehchan",
+      description: "First-hand travel experiences with honest difficulty and timing notes. The first are being written up.",
+      body, ogArt: "experiences", breadcrumbs: [{ label: "Home", href: "/" }, { label: "Experiences", href: "/experiences/" }] };
+  }
   const body = `
 ${pageHero("Experiences", "The reason you went",
   "Craft workshops, market kitchens, high scrambles, dawn game drives and desert nights — run by the people who live there.")}

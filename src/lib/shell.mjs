@@ -14,23 +14,23 @@ export function navModel(g) {
     { label: "International", href: "/international/", columns: [
       { title: "By region", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })) },
       { title: "Guides", links: g.intlDestinations.slice(0, 8).map(d => ({ label: d.name, href: d.url })) },
-      { title: "Collections", links: taxonomies.collections.filter(c => c.type === "landscape").slice(0, 5).map(c => ({ label: c.title, href: c.url })) }
+      { title: "Collections", links: taxonomies.collections.filter(c => c.type === "landscape" && c.total).slice(0, 5).map(c => ({ label: c.title, href: c.url })) }
     ]},
     { label: "Stay", href: "/stay/", columns: [
-      { title: "By type", links: taxonomies.stayCategories.slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
-      { title: "By traveller", links: taxonomies.stayCategories.slice(6).map(c => ({ label: c.name, href: c.url })) },
+      { title: "By type", links: taxonomies.stayCategories.filter(c => c.hotels_.length).slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
+      { title: "By traveller", links: taxonomies.stayCategories.filter(c => c.hotels_.length).slice(6).map(c => ({ label: c.name, href: c.url })) },
       { title: "Featured stays", links: g.hotels.slice(0, 5).map(h => ({ label: h.name, href: h.url })) }
     ]},
     { label: "Experiences", href: "/experiences/", columns: [
-      { title: "By interest", links: taxonomies.experienceCategories.slice(0, 7).map(c => ({ label: c.name, href: c.url })) },
-      { title: "More", links: taxonomies.experienceCategories.slice(7).map(c => ({ label: c.name, href: c.url })) }
+      { title: "By interest", links: taxonomies.experienceCategories.filter(c => c.experiences_.length).slice(0, 7).map(c => ({ label: c.name, href: c.url })) },
+      { title: "More", links: taxonomies.experienceCategories.filter(c => c.experiences_.length).slice(7).map(c => ({ label: c.name, href: c.url })) }
     ]},
     { label: "Journeys", href: "/journeys/", columns: [
       { title: "Curated itineraries", links: itineraries.slice(0, 6).map(i => ({ label: i.title, href: i.url })) },
-      { title: "By trip length", links: taxonomies.collections.filter(c => c.type === "length").map(c => ({ label: c.title, href: c.url })) }
+      { title: "By trip length", links: taxonomies.collections.filter(c => c.type === "length" && c.total).map(c => ({ label: c.title, href: c.url })) }
     ]},
     { label: "Stories", href: "/stories/", columns: [
-      { title: "Categories", links: taxonomies.storyCategories.slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
+      { title: "Categories", links: taxonomies.storyCategories.filter(c => c.stories_.length).slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
       { title: "Latest", links: g.stories.slice(0, 5).map(s => ({ label: s.title, href: s.url })) }
     ]},
     { label: "Plan", href: "/plan/", columns: [
@@ -69,7 +69,7 @@ function masthead(g) {
     </div>
   </div>
   ${list(nav, (item, i) => `<div class="mega" id="mega-${i}" data-mega-panel="${i}"><div class="mega__inner">
-    ${list(item.columns, (col) => `<div><h3>${esc(col.title)}</h3><ul>${list(col.links, (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}</ul></div>`)}
+    ${list(item.columns.filter(c => c.links.length), (col) => `<div><h3>${esc(col.title)}</h3><ul>${list(col.links, (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}</ul></div>`)}
     <div><h3>&nbsp;</h3><a class="btn btn--ghost btn--sm" href="${esc(item.href)}">All ${esc(item.label.toLowerCase())}</a></div>
   </div></div>`)}
   <div class="drawer" data-drawer>
@@ -140,7 +140,7 @@ function searchOverlay() {
     <div class="search-panel__head">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
       <label class="visually-hidden" for="site-search">Search destinations, stays, experiences, journeys and stories</label>
-      <input id="site-search" type="search" placeholder="Try “mountain luxury hotels in India”" autocomplete="off" data-search-input>
+      <input id="site-search" type="search" placeholder="Search places, regions and guides" autocomplete="off" data-search-input>
       <button class="icon-btn" type="button" data-search-close aria-label="Close search">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>

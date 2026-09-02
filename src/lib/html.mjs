@@ -190,3 +190,18 @@ export function fitTitle(parts, max = 68) {
   }
   return truncate(segs[0], max);
 }
+
+
+/**
+ * Shown where a section has nothing published yet. Says what will be there and
+ * why it is not — never an empty grid, never filler to cover the gap.
+ */
+export function emptyState({ title, body, actions = [] }) {
+  return `<div class="empty-state">
+    <h2 class="display">${esc(title)}</h2>
+    <p>${esc(body)}</p>
+    ${actions.length ? `<div class="btn-row" style="margin-top:var(--s-6)">
+      ${list(actions, (a) => `<a class="btn ${a.primary ? "btn--primary" : "btn--ghost"}" href="${esc(a.href)}">${esc(a.label)}</a>`)}
+    </div>` : ""}
+  </div>`;
+}

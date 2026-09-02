@@ -1,5 +1,5 @@
 import { esc, list, card, sectionHead, figure, chip, breadcrumbs, atAGlance, nextSteps,
-         newsletterBlock, priceBand, truncate, saveButton, fitTitle } from "../lib/html.mjs";
+         newsletterBlock, priceBand, truncate, saveButton, fitTitle, emptyState } from "../lib/html.mjs";
 
 const pageHero = (kicker, title, sub) => `
 <section class="hero hero--page"><div class="hero__inner">
@@ -9,6 +9,23 @@ const pageHero = (kicker, title, sub) => `
 </div></section>`;
 
 export function journeysIndex(g) {
+  if (!g.itineraries.length) {
+    const body = `
+${pageHero("Curated journeys", "Itineraries built to be travelled",
+  "Day-by-day routes, with the stays, the experiences and the transfers.")}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Journeys" }])}</div>
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${emptyState({
+    title: "No journeys published yet",
+    body: "An itinerary is only useful if someone has travelled the route and knows where the days break. These are built from the destination guides as those are written, so they arrive after the guides, not before.",
+    actions: [{ href: "/plan/", label: "Use the trip planner", primary: true }, { href: "/india/", label: "Explore India" }]
+  })}
+</div></section>
+<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "journeys-empty")}</div></section>`;
+    return { url: "/journeys/", template: "journeys-index", title: "Curated Travel Itineraries | Pehchan",
+      description: "Day-by-day travel itineraries built from first-hand routes. The first journeys are being written.",
+      body, ogArt: "journeys", breadcrumbs: [{ label: "Home", href: "/" }, { label: "Journeys", href: "/journeys/" }] };
+  }
   const body = `
 ${pageHero("Curated journeys", "Itineraries built to be travelled",
   "Day by day, with the stays, the experiences, the transfers and an honest note on what each day costs you in time.")}

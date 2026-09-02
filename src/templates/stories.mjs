@@ -1,4 +1,4 @@
-import { esc, list, card, sectionHead, figure, chip, breadcrumbs, nextSteps, newsletterBlock, truncate, fitTitle } from "../lib/html.mjs";
+import { esc, list, card, sectionHead, figure, chip, breadcrumbs, nextSteps, newsletterBlock, truncate, fitTitle, emptyState } from "../lib/html.mjs";
 
 const pageHero = (kicker, title, sub) => `
 <section class="hero hero--page"><div class="hero__inner">
@@ -8,6 +8,7 @@ const pageHero = (kicker, title, sub) => `
 </div></section>`;
 
 export function storiesIndex(g) {
+  if (!g.stories.length) return storiesEmpty(g);
   const [lead, ...rest] = g.stories;
   const body = `
 ${pageHero("Travel stories", "Writing from the road",
@@ -126,5 +127,27 @@ ${related.length ? `<section class="section section--tight"><div class="wrap">
     schema: { "@type": "Article", headline: s.title, description: s.dek, datePublished: s.publishedAt,
       author: { "@type": "Organization", name: s.author }, publisher: { "@id": g.site.siteUrl + "/#org" },
       mainEntityOfPage: g.site.siteUrl + s.url, articleSection: s.categories[0] }
+  };
+}
+
+
+function storiesEmpty(g) {
+  const body = `
+${pageHero("Travel stories", "Writing from the road",
+  "First-person writing about places actually travelled — not yet published.")}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Stories" }])}</div>
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${emptyState({
+    title: "No stories published yet",
+    body: "Stories are the part of this site that has to sound like one person and nobody else, so they are written rather than assembled. The first ones land alongside the destination guides they belong to.",
+    actions: [{ href: "/india/", label: "Explore India", primary: true }, { href: "/newsletter/", label: "Get told when they land" }]
+  })}
+</div></section>
+<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "stories-empty")}</div></section>`;
+  return {
+    url: "/stories/", template: "stories-index", title: "Travel Stories | Pehchan",
+    description: "First-person travel writing from places actually travelled. The first stories are being written.",
+    body, ogArt: "stories",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Stories", href: "/stories/" }]
   };
 }
