@@ -46,7 +46,8 @@ export function badge(kind) {
     editorial: ["badge--editorial", "Editorial pick"],
     affiliate: ["badge--affiliate", "Affiliate links"],
     sponsored: ["badge--sponsored", "Sponsored"],
-    sample: ["badge--placeholder", "Sample listing"]
+    sample: ["badge--placeholder", "Sample listing"],
+    draft: ["badge--draft", "Guide in progress"]
   };
   const [cls, text] = map[kind] || map.editorial;
   return `<span class="badge ${cls}">${text}</span>`;

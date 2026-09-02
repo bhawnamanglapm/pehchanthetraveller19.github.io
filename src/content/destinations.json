@@ -77,7 +77,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "hoi-an",
@@ -157,7 +158,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "chiang-mai",
@@ -238,7 +240,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "ubud",
@@ -318,7 +321,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "amalfi-coast",
@@ -398,7 +402,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "lisbon",
@@ -479,7 +484,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "lauterbrunnen",
@@ -559,7 +565,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "alula",
@@ -639,7 +646,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "wadi-rum",
@@ -719,7 +727,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "marrakech",
@@ -799,7 +808,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "maasai-mara",
@@ -879,7 +889,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "banff",
@@ -960,7 +971,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "oaxaca",
@@ -1040,7 +1052,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "el-chalten",
@@ -1121,7 +1134,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "cusco-sacred-valley",
@@ -1201,7 +1215,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "queenstown",
@@ -1282,7 +1297,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "munnar",
@@ -1362,7 +1378,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "udaipur",
@@ -1442,7 +1459,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "spiti-valley",
@@ -1523,7 +1541,8 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
   },
   {
     "slug": "meghalaya",
@@ -1604,6 +1623,381 @@
       "notes": null
     },
     "personalNote": null,
-    "visited": null
+    "visited": null,
+    "status": "published"
+  },
+  {
+    "slug": "kedarnath",
+    "name": "Kedarnath",
+    "country": "uttarakhand",
+    "kicker": "Uttarakhand \u00b7 Char Dham",
+    "art": "himalaya",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "badrinath",
+    "name": "Badrinath",
+    "country": "uttarakhand",
+    "kicker": "Uttarakhand \u00b7 Char Dham",
+    "art": "himalaya",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "gangotri",
+    "name": "Gangotri",
+    "country": "uttarakhand",
+    "kicker": "Uttarakhand \u00b7 Char Dham",
+    "art": "himalaya",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "uttarkashi",
+    "name": "Uttarkashi",
+    "country": "uttarakhand",
+    "kicker": "Uttarakhand \u00b7 Char Dham base",
+    "art": "himalaya",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "jim-corbett",
+    "name": "Jim Corbett",
+    "country": "uttarakhand",
+    "kicker": "Uttarakhand \u00b7 Wildlife",
+    "art": "india-forest",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "bir-billing",
+    "name": "Bir Billing",
+    "country": "himachal-pradesh",
+    "kicker": "Himachal Pradesh \u00b7 Paragliding",
+    "art": "asia-hills",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "shimla",
+    "name": "Shimla",
+    "country": "himachal-pradesh",
+    "kicker": "Himachal Pradesh \u00b7 Hill station",
+    "art": "europe-alps",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "vaishno-devi",
+    "name": "Vaishno Devi",
+    "country": "jammu-kashmir",
+    "kicker": "Jammu & Kashmir \u00b7 Katra",
+    "art": "himalaya",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "ayodhya",
+    "name": "Ayodhya",
+    "country": "uttar-pradesh",
+    "kicker": "Uttar Pradesh \u00b7 Temple city",
+    "art": "india-palace",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "vrindavan",
+    "name": "Vrindavan",
+    "country": "uttar-pradesh",
+    "kicker": "Uttar Pradesh \u00b7 Braj",
+    "art": "india-palace",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "barsana",
+    "name": "Barsana",
+    "country": "uttar-pradesh",
+    "kicker": "Uttar Pradesh \u00b7 Braj",
+    "art": "india-palace",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "amritsar",
+    "name": "Amritsar",
+    "country": "punjab",
+    "kicker": "Punjab \u00b7 Golden Temple",
+    "art": "india-palace",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "khatu-shyam-ji",
+    "name": "Khatu Shyam Ji",
+    "country": "rajasthan",
+    "kicker": "Rajasthan \u00b7 Sikar",
+    "art": "desert-dune",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "salasar-balaji",
+    "name": "Salasar Balaji",
+    "country": "rajasthan",
+    "kicker": "Rajasthan \u00b7 Churu",
+    "art": "desert-dune",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "delhi",
+    "name": "Delhi",
+    "country": "delhi",
+    "kicker": "Delhi \u00b7 Capital",
+    "art": "europe-city",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "chandigarh",
+    "name": "Chandigarh",
+    "country": "chandigarh",
+    "kicker": "Chandigarh \u00b7 Planned city",
+    "art": "europe-city",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "mumbai",
+    "name": "Mumbai",
+    "country": "maharashtra",
+    "kicker": "Maharashtra \u00b7 Coastal metro",
+    "art": "europe-city",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "pune",
+    "name": "Pune",
+    "country": "maharashtra",
+    "kicker": "Maharashtra \u00b7 Deccan",
+    "art": "asia-hills",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "goa",
+    "name": "Goa",
+    "country": "goa",
+    "kicker": "Goa \u00b7 Konkan coast",
+    "art": "asia-beach",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "ujjain",
+    "name": "Ujjain",
+    "country": "madhya-pradesh",
+    "kicker": "Madhya Pradesh \u00b7 Mahakaleshwar",
+    "art": "india-palace",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "bangalore",
+    "name": "Bangalore",
+    "country": "karnataka",
+    "kicker": "Karnataka \u00b7 Deccan plateau",
+    "art": "asia-hills",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
+  },
+  {
+    "slug": "dubai",
+    "name": "Dubai",
+    "country": "uae",
+    "kicker": "United Arab Emirates",
+    "art": "desert-dune",
+    "status": "draft",
+    "personalNote": null,
+    "visited": null,
+    "verification": {
+      "status": "pending",
+      "verifiedBy": null,
+      "verifiedOn": null,
+      "notes": null
+    },
+    "tags": []
   }
 ]

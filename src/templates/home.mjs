@@ -1,7 +1,8 @@
 import { esc, list, card, feature, sectionHead, figure, newsletterBlock, chip, priceBand, truncate } from "../lib/html.mjs";
 
 export function home(g) {
-  const { site, destinations, hotels, experiences, itineraries, stories, taxonomies } = g;
+  const { site, hotels, experiences, itineraries, stories, taxonomies } = g;
+  const destinations = g.published;
   const trending = [destinations[16], destinations[7], destinations[13], destinations[1]].filter(Boolean);
   const featuredDest = destinations.filter(d => ["kyoto", "amalfi-coast", "wadi-rum", "banff", "munnar", "queenstown", "marrakech", "cusco-sacred-valley"].includes(d.slug));
   const featuredStays = hotels.filter(h => ["the-lantern-ryokan-arashiyama", "sayan-gorge-retreat-ubud", "murren-cliff-lodge", "riad-nine-doors-marrakech"].includes(h.slug));

@@ -204,6 +204,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 .badge--affiliate { background: var(--bronze-soft); color: var(--sponsored); }
 .badge--sponsored { background: var(--sponsored); color: #fff; }
 .badge--placeholder { background: var(--paper-3); color: var(--muted); }
+.badge--draft { background: var(--accent); color: var(--on-accent); }
 
 .price-band { font-family: var(--font-mono); font-size: var(--t-sm); letter-spacing: .1em; color: var(--bronze); }
 .price-band span { opacity: .3; }
