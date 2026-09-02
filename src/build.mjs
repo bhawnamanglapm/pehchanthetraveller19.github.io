@@ -16,7 +16,7 @@ import { buildGraph } from "./lib/graph.mjs";
 import { page as renderPage, ogCard } from "./lib/shell.mjs";
 import { esc, truncate, clean } from "./lib/html.mjs";
 import { home } from "./templates/home.mjs";
-import { destinationsIndex, regionPage, countryPage, destinationPage } from "./templates/destinations.mjs";
+import { indiaIndex, internationalIndex, regionPage, countryPage, destinationPage } from "./templates/destinations.mjs";
 import { stayIndex, stayCategoryPage, hotelPage } from "./templates/stay.mjs";
 import { experiencesIndex, experienceCategoryPage, experiencePage } from "./templates/experiences.mjs";
 import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
@@ -59,9 +59,12 @@ function main() {
   /* ---- route table ------------------------------------------------- */
   const pages = [
     home(g),
-    destinationsIndex(g),
+    indiaIndex(g),
+    internationalIndex(g),
     ...g.regions.map(r => regionPage(r, g)),
-    ...g.countries.map(c => countryPage(c, g)),
+    // Only states/countries with at least one guide get a page — see the
+    // "no thin programmatic pages" rule in docs/03-seo-and-roadmap.md.
+    ...g.countries.filter(c => c.destinations.length).map(c => countryPage(c, g)),
     ...g.destinations.map(d => destinationPage(d, g)),
     stayIndex(g),
     ...g.taxonomies.stayCategories.map(c => stayCategoryPage(c, g)),

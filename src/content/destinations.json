@@ -75,7 +75,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "hoi-an",
@@ -153,7 +155,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "chiang-mai",
@@ -232,7 +236,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "ubud",
@@ -310,7 +316,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "amalfi-coast",
@@ -388,7 +396,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "lisbon",
@@ -467,7 +477,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "lauterbrunnen",
@@ -545,7 +557,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "alula",
@@ -623,7 +637,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "wadi-rum",
@@ -701,7 +717,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "marrakech",
@@ -779,7 +797,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "maasai-mara",
@@ -857,7 +877,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "banff",
@@ -936,7 +958,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "oaxaca",
@@ -1014,7 +1038,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "el-chalten",
@@ -1093,7 +1119,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "cusco-sacred-valley",
@@ -1171,7 +1199,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "queenstown",
@@ -1250,7 +1280,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "munnar",
@@ -1328,7 +1360,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "udaipur",
@@ -1406,7 +1440,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "spiti-valley",
@@ -1485,7 +1521,9 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   },
   {
     "slug": "meghalaya",
@@ -1564,6 +1602,8 @@
       "verifiedBy": null,
       "verifiedOn": null,
       "notes": null
-    }
+    },
+    "personalNote": null,
+    "visited": null
   }
 ]

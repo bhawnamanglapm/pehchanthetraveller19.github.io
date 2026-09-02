@@ -48,6 +48,68 @@
     "type": "country"
   },
   {
+    "slug": "malaysia",
+    "region": "asia",
+    "name": "Malaysia",
+    "currency": "MYR",
+    "type": "country",
+    "languages": [
+      "Malay",
+      "English"
+    ],
+    "bestMonths": "Dec\u2013Feb, Jun\u2013Aug",
+    "visaNote": "Visa-free or e-visa for many nationalities; check the official portal for yours."
+  },
+  {
+    "slug": "nepal",
+    "region": "asia",
+    "name": "Nepal",
+    "currency": "NPR",
+    "type": "country",
+    "languages": [
+      "Nepali"
+    ],
+    "bestMonths": "Oct\u2013Nov, Mar\u2013Apr",
+    "visaNote": "Visa on arrival for most nationalities; Indian citizens do not require a visa."
+  },
+  {
+    "slug": "uae",
+    "region": "middle-east",
+    "name": "United Arab Emirates",
+    "currency": "AED",
+    "type": "country",
+    "languages": [
+      "Arabic",
+      "English"
+    ],
+    "bestMonths": "Nov\u2013Mar",
+    "visaNote": "Visa on arrival or e-visa depending on nationality; check the official portal."
+  },
+  {
+    "slug": "saudi-arabia",
+    "region": "middle-east",
+    "name": "Saudi Arabia",
+    "currency": "SAR",
+    "languages": [
+      "Arabic"
+    ],
+    "bestMonths": "Nov\u2013Mar",
+    "visaNote": "Tourist e-visa available to many nationalities through the official portal.",
+    "type": "country"
+  },
+  {
+    "slug": "jordan",
+    "region": "middle-east",
+    "name": "Jordan",
+    "currency": "JOD",
+    "languages": [
+      "Arabic"
+    ],
+    "bestMonths": "Mar\u2013May, Sep\u2013Nov",
+    "visaNote": "Visa on arrival for many passports; the Jordan Pass bundles entry and site access.",
+    "type": "country"
+  },
+  {
     "slug": "italy",
     "region": "europe",
     "name": "Italy",
@@ -84,30 +146,6 @@
     ],
     "bestMonths": "Jun\u2013Sep, Dec\u2013Mar",
     "visaNote": "Schengen area rules apply.",
-    "type": "country"
-  },
-  {
-    "slug": "saudi-arabia",
-    "region": "middle-east",
-    "name": "Saudi Arabia",
-    "currency": "SAR",
-    "languages": [
-      "Arabic"
-    ],
-    "bestMonths": "Nov\u2013Mar",
-    "visaNote": "Tourist e-visa available to many nationalities through the official portal.",
-    "type": "country"
-  },
-  {
-    "slug": "jordan",
-    "region": "middle-east",
-    "name": "Jordan",
-    "currency": "JOD",
-    "languages": [
-      "Arabic"
-    ],
-    "bestMonths": "Mar\u2013May, Sep\u2013Nov",
-    "visaNote": "Visa on arrival for many passports; the Jordan Pass bundles entry and site access.",
     "type": "country"
   },
   {
@@ -201,8 +239,170 @@
     "type": "country"
   },
   {
+    "slug": "uttarakhand",
+    "region": "himalayan-north",
+    "name": "Uttarakhand",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi",
+      "Garhwali",
+      "Kumaoni"
+    ],
+    "bestMonths": "Apr\u2013Jun, Sep\u2013Oct (shrines); Nov\u2013Feb (Corbett)",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "himachal-pradesh",
+    "region": "himalayan-north",
+    "name": "Himachal Pradesh",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi",
+      "Pahari"
+    ],
+    "bestMonths": "Mar\u2013Jun, Sep\u2013Nov",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "jammu-kashmir",
+    "region": "himalayan-north",
+    "name": "Jammu & Kashmir",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Dogri",
+      "Urdu",
+      "Hindi"
+    ],
+    "bestMonths": "Mar\u2013Jun, Sep\u2013Oct",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "delhi",
+    "region": "north-plains",
+    "name": "Delhi",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi",
+      "English",
+      "Punjabi"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "uttar-pradesh",
+    "region": "north-plains",
+    "name": "Uttar Pradesh",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi",
+      "Awadhi",
+      "Braj Bhasha"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "punjab",
+    "region": "north-plains",
+    "name": "Punjab",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Punjabi",
+      "Hindi"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "rajasthan",
+    "region": "north-plains",
+    "name": "Rajasthan",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi",
+      "Rajasthani"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "chandigarh",
+    "region": "north-plains",
+    "name": "Chandigarh",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Punjabi",
+      "Hindi",
+      "English"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "maharashtra",
+    "region": "west-india",
+    "name": "Maharashtra",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Marathi",
+      "Hindi",
+      "English"
+    ],
+    "bestMonths": "Oct\u2013Feb",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "goa",
+    "region": "west-india",
+    "name": "Goa",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Konkani",
+      "Marathi",
+      "English"
+    ],
+    "bestMonths": "Nov\u2013Feb",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "madhya-pradesh",
+    "region": "central-india",
+    "name": "Madhya Pradesh",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Hindi"
+    ],
+    "bestMonths": "Oct\u2013Mar",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
+    "slug": "karnataka",
+    "region": "south-india",
+    "name": "Karnataka",
+    "currency": "INR",
+    "type": "state",
+    "languages": [
+      "Kannada",
+      "English"
+    ],
+    "bestMonths": "Oct\u2013Feb",
+    "visaNote": "India e-visa available to most nationalities via the official government portal."
+  },
+  {
     "slug": "kerala",
-    "region": "india",
+    "region": "south-india",
     "name": "Kerala",
     "currency": "INR",
     "languages": [
@@ -214,36 +414,8 @@
     "type": "state"
   },
   {
-    "slug": "rajasthan",
-    "region": "india",
-    "name": "Rajasthan",
-    "currency": "INR",
-    "languages": [
-      "Hindi",
-      "Rajasthani",
-      "English"
-    ],
-    "bestMonths": "Oct\u2013Mar",
-    "visaNote": "India e-visa available to most nationalities via the official portal.",
-    "type": "state"
-  },
-  {
-    "slug": "himachal-pradesh",
-    "region": "india",
-    "name": "Himachal Pradesh",
-    "currency": "INR",
-    "languages": [
-      "Hindi",
-      "Pahari",
-      "English"
-    ],
-    "bestMonths": "Mar\u2013Jun, Sep\u2013Oct",
-    "visaNote": "India e-visa available; inner-line permits needed for some border areas.",
-    "type": "state"
-  },
-  {
     "slug": "meghalaya",
-    "region": "india",
+    "region": "east-northeast",
     "name": "Meghalaya",
     "currency": "INR",
     "languages": [

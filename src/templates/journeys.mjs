@@ -28,7 +28,7 @@ ${pageHero("Curated journeys", "Itineraries built to be travelled",
   intro: "The planner builds one around your own dates, budget and pace.",
   steps: [
     { href: "/plan/", title: "Use the AI Trip Planner", desc: "A day-by-day plan in about a minute." },
-    { href: "/destinations/", title: "Start from a destination", desc: "Pick the place, then shape the days." },
+    { href: "/india/", title: "Start from a destination", desc: "Pick the place, then shape the days." },
     { href: "/partner/", title: "Have it designed for you", desc: "Premium trip planning — enquire about availability." }
   ]})}</div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "journeys-index")}</div></section>`;

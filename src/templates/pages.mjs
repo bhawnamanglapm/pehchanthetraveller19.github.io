@@ -126,7 +126,7 @@ ${crumbs({ label: "Plan" })}
   title: "Prefer a ready-made plan?",
   steps: [
     { href: "/journeys/", title: "Browse curated journeys", desc: `${g.itineraries.length} itineraries, written day by day.` },
-    { href: "/destinations/", title: "Start from a destination", desc: "Read the guide first, plan second." },
+    { href: "/india/", title: "Start from a destination", desc: "India by region, or travel international." },
     { href: "/partner/", title: "Have it designed for you", desc: "Premium trip planning — enquire about availability." }
   ]})}</div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "planner")}</div></section>`;
@@ -261,7 +261,7 @@ const TOOL_PANELS = {
   <div class="table-scroll" style="margin-top:var(--s-5)">
     <table class="data"><thead><tr><th>Country</th><th>Region</th><th>General entry note</th></tr></thead>
     <tbody data-rows>${list(g.countries, (c) => `<tr data-text="${esc((c.name + " " + c.region_.name).toLowerCase())}">
-      <td><strong><a href="${esc(c.url)}">${esc(c.name)}</a></strong></td><td>${esc(c.region_.name)}</td>
+      <td><strong>${c.destinations.length ? `<a href="${esc(c.url)}">${esc(c.name)}</a>` : esc(c.name)}</strong></td><td>${esc(c.region_.name)}</td>
       <td>${esc(c.visaNote)}</td></tr>`)}</tbody></table>
   </div>
 </div>`
@@ -333,7 +333,7 @@ ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
     { href: "/plan/", title: "Plan the trip", desc: "Turn the numbers into a day-by-day itinerary." },
-    { href: "/destinations/", title: "Pick a destination", desc: "Full guides with timing and budget notes." },
+    { href: "/india/", title: "Pick a destination", desc: "India by region, or travel international." },
     { href: "/tools/", title: "Other tools", desc: "Budget, packing, visas, comparison and more." }
   ]})}</div></section>`;
   return {
@@ -503,7 +503,7 @@ ${crumbs({ label: "About" })}
 </div></section>
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Start somewhere", steps: [
-    { href: "/destinations/", title: "Explore destinations", desc: "Eight regions, one consistent standard." },
+    { href: "/india/", title: "Explore India", desc: "Six regions, from the Himalaya to the coast." },
     { href: "/plan/", title: "Plan a trip", desc: "The trip planner, in about a minute." },
     { href: "/partner/", title: "Work with us", desc: "Hotels, tourism boards and travel brands." }
   ]})}</div></section>
@@ -881,7 +881,7 @@ ${pageHero("404", "That page does not exist",
 <section class="section section--tight"><div class="wrap">
   <div class="grid grid--4">
     ${list([
-      ["Destinations", "/destinations/", "Eight regions, one consistent standard."],
+      ["India", "/india/", "Six regions, from the Himalaya to the coast."],
       ["Where to stay", "/stay/", "Boutique houses, lodges and camps."],
       ["Experiences", "/experiences/", "The reason you went."],
       ["AI Trip Planner", "/plan/", "A day-by-day plan in about a minute."]

@@ -66,7 +66,7 @@ ${pageHero("Stay", c.name, c.intro)}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next",
   steps: [
-    { href: "/destinations/", title: "Explore destinations", desc: "Find the place first, then the property." },
+    { href: "/india/", title: "Explore destinations", desc: "Find the place first, then the property." },
     { href: "/experiences/", title: "Explore experiences", desc: "What you will actually do while you are there." },
     { href: "/plan/", title: "Plan the trip", desc: "Generate a day-by-day itinerary around a stay." }
   ]})}</div></section>`;

@@ -16,7 +16,7 @@ export function home(g) {
     <p class="hero__sub">Discover remarkable places, beautiful stays and unforgettable experiences — thoughtfully curated for the way you want to travel.</p>
     <div class="btn-row" style="margin-top:var(--s-3)">
       <a class="btn btn--light" href="/plan/" data-track="cta_primary" data-track-label="Plan My Trip">Plan My Trip</a>
-      <a class="btn btn--ghost" href="/destinations/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Explore Destinations">Explore Destinations</a>
+      <a class="btn btn--ghost" href="/india/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Explore India">Explore India</a>
     </div>
     <div class="hero__meta">
       <span>${destinations.length} destination guides</span>
@@ -29,7 +29,7 @@ export function home(g) {
 
 <section class="section section--tight">
   <div class="wrap">
-    ${sectionHead({ eyebrow: "Trending now", title: "Where travellers are looking this month", intro: "The guides and journeys drawing the most attention right now, across seven continents.", link: { href: "/destinations/", label: "All destinations" } })}
+    ${sectionHead({ eyebrow: "Trending now", title: "Where travellers are looking this month", intro: "The guides and journeys drawing the most attention right now, across seven continents.", link: { href: "/india/", label: "Explore India" } })}
     <div class="grid grid--4" data-reveal>
       ${list(trending, (d) => card({
         href: d.url, title: d.name, kicker: d.kicker, desc: d.summary, entity: d, ratio: "4x3", flush: true,
@@ -41,7 +41,7 @@ export function home(g) {
 
 <section class="section section--tinted">
   <div class="wrap">
-    ${sectionHead({ eyebrow: "Destinations worth discovering", title: "Eight regions, one way of travelling", intro: "Every guide follows the same structure — why go, when to go, how long to stay, where to sleep and what is genuinely worth your time.", link: { href: "/destinations/", label: "Browse by region" } })}
+    ${sectionHead({ eyebrow: "Destinations worth discovering", title: "India, region by region — and the world beyond it", intro: "Every guide follows the same structure — why go, when to go, how long to stay, where to sleep and what is genuinely worth your time.", link: { href: "/international/", label: "Travel international" } })}
     <div class="grid grid--4" data-reveal>
       ${list(featuredDest, (d) => card({
         href: d.url, title: d.name, kicker: d.kicker, desc: d.summary, entity: d, ratio: "3x2",
@@ -49,7 +49,8 @@ export function home(g) {
       }))}
     </div>
     <div class="btn-row" style="margin-top:var(--s-6);justify-content:center">
-      ${list(g.regions, (r) => chip(r.name, r.url))}
+      ${list(g.indiaRegions, (r) => chip(r.name, r.url))}
+      ${list(g.intlRegions, (r) => chip(r.name, r.url))}
     </div>
   </div>
 </section>

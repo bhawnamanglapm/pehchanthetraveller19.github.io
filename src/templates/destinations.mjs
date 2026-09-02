@@ -9,45 +9,90 @@ const pageHero = (kicker, title, sub, extra = "") => `
   ${extra}
 </div></section>`;
 
-export function destinationsIndex(g) {
+/** Shared body for the two destination trees. */
+function scopeIndex(g, { scope, url, kicker, title, sub, intro, template, ogArt, title_, description }) {
+  const regions = scope === "india" ? g.indiaRegions : g.intlRegions;
+  const dests = scope === "india" ? g.indiaDestinations : g.intlDestinations;
+  const label = scope === "india" ? "India" : "International";
   const body = `
-${pageHero("Destinations", "Every region, one consistent standard",
-  "Eight regions, structured the same way — so a guide to the Bernese Oberland is as useful as a guide to Kerala, and comparable to it.")}
-<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Destinations" }])}</div>
+${pageHero(kicker, title, sub)}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: label }])}</div>
 <section class="section section--tight"><div class="wrap">
-  <div class="grid grid--2">
-    ${list(g.regions, (r) => `<article class="card">
-      ${figure(r, { ratio: "3x2", label: r.name })}
-      <div class="card__body">
-        <span class="card__kicker">${esc(r.kicker)}</span>
-        <h2 class="card__title" style="font-size:var(--t-xl)"><a class="card__link" href="${esc(r.url)}">${esc(r.name)}</a></h2>
-        <p class="card__desc">${esc(r.blurb)}</p>
-        <div class="card__foot"><span>${r.countries.length} ${r.countries.length === 1 ? "country" : "countries"}</span>
-        <span>${r.countries.reduce((n, c) => n + c.destinations.length, 0)} guides</span></div>
-      </div></article>`)}
+  <div class="prose" style="max-width:70ch"><p class="lede">${esc(intro)}</p></div>
+</div></section>
+<section class="section section--tight"><div class="wrap">
+  ${sectionHead({ eyebrow: "By region", title: scope === "india" ? "Choose a part of the country" : "Choose a region" })}
+  <div class="grid grid--3">
+    ${list(regions, (r) => {
+      const n = r.countries.reduce((t, c) => t + c.destinations.length, 0);
+      return `<article class="card">
+        ${figure(r, { ratio: "3x2", label: r.name })}
+        <div class="card__body">
+          <span class="card__kicker">${esc(r.kicker || r.countries.map(c => c.name).join(" · "))}</span>
+          <h2 class="card__title"><a class="card__link" href="${esc(r.url)}">${esc(r.name)}</a></h2>
+          <p class="card__desc">${esc(r.blurb)}</p>
+          <div class="card__foot"><span>${r.countries.length} ${scope === "india" ? (r.countries.length === 1 ? "state" : "states") : (r.countries.length === 1 ? "country" : "countries")}</span>
+          <span>${n} ${n === 1 ? "guide" : "guides"}</span></div>
+        </div></article>`;
+    })}
   </div>
 </div></section>
-<section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "All destination guides", title: "Browse every guide", intro: "Each one covers why to visit, when to go, how many days, where to stay, what to do, food, budget, safety and culture." })}
+${dests.length ? `<section class="section section--tinted"><div class="wrap">
+  ${sectionHead({ eyebrow: "All guides", title: `Every ${label.toLowerCase()} guide` })}
   <div class="grid grid--4">
-    ${list(g.destinations, (d) => card({ href: d.url, title: d.name, kicker: d.kicker, desc: d.summary, entity: d, ratio: "4x3", flush: true }))}
+    ${list(dests, (d) => card({ href: d.url, title: d.name, kicker: d.kicker, desc: d.summary, entity: d,
+      ratio: "4x3", flush: true, footLeft: esc(d.country_.name) }))}
   </div>
-</div></section>
-<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "destinations-index")}</div></section>`;
+</div></section>` : ""}
+<section class="section section--tight"><div class="wrap">${nextSteps({
+  title: "Next",
+  steps: [
+    { href: scope === "india" ? "/international/" : "/india/",
+      title: scope === "india" ? "Travel international" : "Travel in India",
+      desc: scope === "india" ? "Asia, the Gulf and beyond." : "Six regions, from the Himalaya to the coast." },
+    { href: "/plan/", title: "Plan a trip", desc: "A day-by-day itinerary in about a minute." },
+    { href: "/stories/", title: "Read the stories", desc: "The writing behind the guides." }
+  ]})}</div></section>
+<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, template)}</div></section>`;
   return {
-    url: "/destinations/", template: "destinations-index", title: "Travel Destinations — Guides to Every Region | Pehchan",
-    description: "Destination guides across Asia, Europe, the Middle East, Africa, the Americas, Oceania and India — when to go, how long to stay, where to sleep.",
-    body, ogArt: "destinations",
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" }],
-    schema: { "@type": "CollectionPage", name: "Travel Destinations", url: g.site.siteUrl + "/destinations/" }
+    url, template, title: title_, description, body, ogArt,
+    breadcrumbs: [{ label: "Home", href: "/" }, { label, href: url }],
+    schema: { "@type": "CollectionPage", name: title_, url: g.site.siteUrl + url }
   };
+}
+
+export function indiaIndex(g) {
+  return scopeIndex(g, {
+    scope: "india", url: "/india/", kicker: "India", title: "Travel in India, region by region",
+    sub: "Six regions, from the Char Dham shrines and Himalayan ridges to the Konkan coast and the southern backwaters.",
+    intro: "India does not travel like one country. The mountain states run on a season that opens and closes; the plains hold the densest pilgrimage routes anywhere; the coast and the south move at an entirely different pace. Pick the part of the country first — the itinerary follows from that.",
+    template: "india-index", ogArt: "india",
+    title_: "Travel in India — Guides by Region | Pehchan",
+    description: "India travel guides by region: the Himalayan north, the northern plains and temple towns, west India and the coast, central India, the south, and the northeast."
+  });
+}
+
+export function internationalIndex(g) {
+  return scopeIndex(g, {
+    scope: "international", url: "/international/", kicker: "International", title: "Travel beyond India",
+    sub: "Asia and the Gulf first — the trips that are short, straightforward and worth taking more than once — then further afield.",
+    intro: "International travel from India starts closer than most people assume. Southeast Asia and the Gulf are short flights with simple entry, and they reward a second and third visit far more than a single sweep. Everything here is organised by region so it can keep growing.",
+    template: "international-index", ogArt: "international",
+    title_: "International Travel Guides | Pehchan",
+    description: "International travel guides by region — Asia, the Middle East, Europe, Africa, the Americas and Oceania — written for travellers heading out from India."
+  });
 }
 
 export function regionPage(r, g) {
   const dests = r.countries.flatMap(c => c.destinations);
+  // A state with no guide yet gets no page of its own — an empty page is a thin
+  // page. It is listed here as planned coverage instead.
+  const covered = r.countries.filter(c => c.destinations.length);
+  const planned = r.countries.filter(c => !c.destinations.length);
   const body = `
-${pageHero(`Destinations · ${r.name}`, r.name, r.blurb)}
-<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" }, { label: r.name }])}</div>
+${pageHero(`${r.scope === "india" ? "India" : "International"} · ${esc(r.kicker || r.countries.map(c => c.name).join(" · "))}`, r.name, r.blurb)}
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" },
+  { label: r.scope === "india" ? "India" : "International", href: r.root + "/" }, { label: r.name }])}</div>
 <section class="section section--tight"><div class="wrap">
   <div class="split">
     <div>${figure(r, { ratio: "4x3", label: r.name })}</div>
@@ -57,24 +102,30 @@ ${pageHero(`Destinations · ${r.name}`, r.name, r.blurb)}
   </div>
 </div></section>
 <section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "Countries", title: `Where we travel in ${r.name}` })}
-  <div class="grid grid--3">
-    ${list(r.countries, (c) => `<article class="card">
+  ${sectionHead({ eyebrow: r.scope === "india" ? "States" : "Countries", title: `Where we travel in ${r.name}` })}
+  ${covered.length ? `<div class="grid grid--3">
+    ${list(covered, (c) => `<article class="card">
       <div class="card__body">
         <span class="card__kicker">${esc(c.currency)} · ${esc(c.languages.join(", "))}</span>
         <h3 class="card__title"><a class="card__link" href="${esc(c.url)}">${esc(c.name)}</a></h3>
         <p class="card__desc">Best months: ${esc(c.bestMonths)}</p>
         <div class="card__foot"><span>${c.destinations.length} ${c.destinations.length === 1 ? "guide" : "guides"}</span><span>→</span></div>
       </div></article>`)}
-  </div>
+  </div>` : ""}
+  ${planned.length ? `<div style="margin-top:${covered.length ? "var(--s-7)" : "0"}">
+    <span class="eyebrow">Coverage in progress</span>
+    <p class="muted" style="max-width:60ch;margin-bottom:var(--s-4)">Guides for these are being written from first-hand
+    travel. They appear here as they are finished — we do not publish a page before there is something worth reading on it.</p>
+    <div class="tag-row">${list(planned, (c) => `<span class="chip">${esc(c.name)}</span>`)}</div>
+  </div>` : ""}
 </div></section>
-<section class="section"><div class="wrap">
+${dests.length ? `<section class="section"><div class="wrap">
   ${sectionHead({ eyebrow: "Guides", title: `Destination guides in ${r.name}` })}
   <div class="grid grid--3">
     ${list(dests, (d) => card({ href: d.url, title: d.name, kicker: d.kicker, desc: d.summary, entity: d, ratio: "3x2",
       footLeft: esc(d.country_.name), footRight: esc(d.howManyDays.split(";")[0]) }))}
   </div>
-</div></section>
+</div></section>` : ""}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Keep going",
   intro: `Everything in ${r.name} connects — guides to stays, stays to experiences, experiences to a plan.`,
@@ -86,8 +137,9 @@ ${pageHero(`Destinations · ${r.name}`, r.name, r.blurb)}
   return {
     url: r.url, template: "region", title: fitTitle([`${r.name} Travel Guide`, "Destinations, Stays & Journeys", "Pehchan"]),
     description: truncate(`${r.blurb} Destination guides, boutique stays and curated itineraries across ${r.countries.map(c => c.name).join(", ")}.`, 155),
-    body, ogArt: `region-${r.slug}`,
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" }, { label: r.name, href: r.url }],
+    body, ogArt: `region-${r.slug}`, noindex: dests.length === 0,
+    breadcrumbs: [{ label: "Home", href: "/" },
+      { label: r.scope === "india" ? "India" : "International", href: r.root + "/" }, { label: r.name, href: r.url }],
     schema: { "@type": "CollectionPage", name: `${r.name} travel guides`, url: g.site.siteUrl + r.url }
   };
 }
@@ -96,7 +148,8 @@ export function countryPage(c, g) {
   const body = `
 ${pageHero(`${c.region_.name} · ${c.type === "state" ? "State" : "Country"}`, c.name,
   `${c.destinations.length} destination ${c.destinations.length === 1 ? "guide" : "guides"} in ${c.name}. Best months: ${c.bestMonths}.`)}
-<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" },
+  { label: c.scope === "india" ? "India" : "International", href: c.region_.root + "/" },
   { label: c.region_.name, href: c.region_.url }, { label: c.name }])}</div>
 <section class="section section--tight"><div class="wrap">
   ${atAGlance([
@@ -130,7 +183,8 @@ ${c.destinations.some(d => d.hotels.length) ? `<section class="section section--
     url: c.url, template: "country", title: fitTitle([`${c.name} Travel Guide`, "Where to Go & When to Visit", "Pehchan"]),
     description: truncate(`Travel guide to ${c.name}: ${c.destinations.map(d => d.name).join(", ")}. Best time to visit, where to stay, entry requirements and curated journeys.`, 155),
     body, ogArt: `country-${c.slug}`,
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
+    breadcrumbs: [{ label: "Home", href: "/" },
+      { label: c.scope === "india" ? "India" : "International", href: c.region_.root + "/" },
       { label: c.region_.name, href: c.region_.url }, { label: c.name, href: c.url }],
     schema: { "@type": "CollectionPage", name: `${c.name} travel guide`, url: g.site.siteUrl + c.url }
   };
@@ -153,7 +207,8 @@ export function destinationPage(d, g) {
     </div>
   </div>
 </section>
-<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
+<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" },
+  { label: d.scope === "india" ? "India" : "International", href: d.region_.root + "/" },
   { label: d.region_.name, href: d.region_.url }, { label: d.country_.name, href: d.country_.url }, { label: d.name }])}</div>
 
 ${sec("glance", "", atAGlance([
@@ -164,6 +219,14 @@ ${sec("glance", "", atAGlance([
   ["Stays listed", String(d.hotels.length)],
   ["Experiences", String(d.experiences.length)]
 ]))}
+
+${d.personalNote ? `<section class="section section--tight"><div class="wrap">
+  <aside class="personal">
+    <span class="eyebrow">From my own journey${d.visited ? ` · ${esc(d.visited)}` : ""}</span>
+    <blockquote>${esc(d.personalNote)}</blockquote>
+    <p class="personal__by">— ${esc(g.site.brand)}</p>
+  </aside>
+</div></section>` : ""}
 
 ${sec("why-visit", "", `<div class="grid grid--asym">
   <div class="prose"><h2 style="margin-top:0">Why visit ${esc(d.name)}</h2><p class="drop-cap">${esc(d.whyVisit)}</p>
@@ -236,7 +299,7 @@ ${d.stories.length ? `<section class="section section--tight"><div class="wrap">
 <section class="section section--tight"><div class="wrap">
   ${sectionHead({ eyebrow: "Related", title: "Where else to look" })}
   <div class="grid grid--4">${list(
-    g.destinations.filter(o => o !== d && (o.region === d.region || o.tags.some(t => d.tags.includes(t)))).slice(0, 4),
+    g.destinations.filter(o => o !== d && o.scope === d.scope && (o.region === d.region || o.tags.some(t => d.tags.includes(t)))).slice(0, 4),
     (o) => card({ href: o.url, title: o.name, kicker: o.country_.name, desc: o.summary, entity: o, ratio: "4x3", flush: true }))}</div>
 </div></section>
 
@@ -256,7 +319,8 @@ ${d.stories.length ? `<section class="section section--tight"><div class="wrap">
     title: fitTitle([`${d.name} Travel Guide`, "Best Time to Visit & Where to Stay", "Pehchan"]),
     description: truncate(`${d.summary} Best time to visit, how many days you need, where to stay and the experiences worth travelling for.`, 155),
     body, ogArt: `dest-${d.slug}`,
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
+    breadcrumbs: [{ label: "Home", href: "/" },
+      { label: d.scope === "india" ? "India" : "International", href: d.region_.root + "/" },
       { label: d.region_.name, href: d.region_.url }, { label: d.country_.name, href: d.country_.url },
       { label: d.name, href: d.url }],
     schema: [
