@@ -13,7 +13,8 @@ import { track } from "./analytics.js";
 const form = document.querySelector("[data-partner-form]");
 if (form) {
   const status = form.querySelector(".form-status");
-  const PARTNER_EMAIL = "partners@pehchan.travel";
+  // Read from the rendered form so site.json stays the single source of truth.
+  const PARTNER_EMAIL = form.dataset.partnerEmail || "";
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
