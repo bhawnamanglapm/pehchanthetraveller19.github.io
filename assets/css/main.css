@@ -37,8 +37,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
 
 /* ===== Layout ============================================================ */
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
-.wrap--narrow { max-width: 940px; }
-.wrap--prose { max-width: var(--max-prose); }
+/* Constrain the *content*, not the container: centring a narrow wrapper under a
+   left-aligned hero puts two different left edges on the same page. */
+.wrap--narrow > *, .wrap--prose > * { max-width: 940px; }
+.wrap--prose > * { max-width: var(--max-prose); }
 .section { padding-block: var(--section-y); }
 .section--tight { padding-block: clamp(36px, 5vw, 68px); }
 .section--tinted { background: var(--paper-2); }
@@ -559,9 +561,17 @@ table.data tr:last-child td { border-bottom: 0; }
 .footer { background: var(--ink); color: rgba(252,250,247,.72); padding-block: var(--s-8) var(--s-6); margin-top: var(--section-y); }
 .footer a { color: rgba(252,250,247,.72); }
 .footer a:hover { color: #fff; }
-.footer__top { display: grid; gap: var(--s-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+.footer__top { display: grid; gap: var(--s-6); grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+/* Explicit tracks at desktop: auto-fit wraps the last column onto a row of its
+   own, which reads as a mistake rather than as a layout. */
+@media (min-width: 1100px) {
+  .footer__top { grid-template-columns: 1.6fr repeat(5, 1fr); }
+  /* Brand occupies one track here, so brand + 5 link columns fill the row exactly
+     and no column is left stranded on a second row. */
+  .footer__brand { grid-column: span 1; }
+}
 .footer__brand { grid-column: 1 / -1; max-width: 34ch; }
-@media (min-width: 900px) { .footer__brand { grid-column: span 2; } }
+@media (min-width: 900px) and (max-width: 1099px) { .footer__brand { grid-column: span 2; } }
 .footer__brand .wordmark { color: var(--paper); }
 .footer__brand p { margin-top: var(--s-4); font-size: var(--t-sm); line-height: 1.7; }
 .footer h3 { font-size: 10px; letter-spacing: var(--ls-caps); text-transform: uppercase; color: rgba(252,250,247,.45); margin-bottom: var(--s-4); }

@@ -81,7 +81,7 @@ function masthead(g) {
 function footer(g) {
   const { site, taxonomies, regions } = g;
   const cols = [
-    { title: "Destinations", links: regions.slice(0, 6).map(r => ({ label: r.name, href: r.url })).concat([{ label: "All destinations", href: "/destinations/" }]) },
+    { title: "Destinations", links: regions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All destinations", href: "/destinations/" }]) },
     { title: "Discover", links: [
       { label: "Stay", href: "/stay/" }, { label: "Experiences", href: "/experiences/" },
       { label: "Curated Journeys", href: "/journeys/" }, { label: "Travel Guides", href: "/guides/" },
@@ -114,6 +114,10 @@ function footer(g) {
       </div>
       ${list(cols, (c) => `<div><h3>${esc(c.title)}</h3><ul>${list(c.links, (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}</ul></div>`)}
     </div>
+    ${(site.social || []).some(x => x.href && x.href !== "#") ? `<div style="margin-top:var(--s-6);display:flex;gap:var(--s-4)">
+      ${list((site.social || []).filter(x => x.href && x.href !== "#"),
+        (x) => `<a href="${esc(x.href)}" rel="me noopener" target="_blank" style="font-size:var(--t-sm)">${esc(x.label)}</a>`)}
+    </div>` : ""}
     <div class="footer__bottom">
       <span>© ${new Date().getFullYear()} ${esc(site.legalEntity)}. All rights reserved.</span>
       <span>Some links are affiliate links — <a href="/legal/affiliate-disclosure/">what that means</a>.</span>
