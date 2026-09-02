@@ -62,7 +62,9 @@ export function itineraryPage(i, g) {
 <section class="section section--tight"><div class="wrap">
   ${atAGlance([
     ["Duration", `${i.days} days`],
-    ["Countries", i.countries_.map(c => c.name).join(", ")],
+    // A route can cross states the content model does not index as countries,
+    // so an explicit `covers` string wins over the resolved country list.
+    ["Where", i.covers || i.countries_.map(c => c.name).join(", ")],
     ["Style", i.style.replace(/-/g, " ")],
     ["Budget band", "$".repeat(i.budgetBand) + " (indicative)"],
     ["Best time", i.bestTime],

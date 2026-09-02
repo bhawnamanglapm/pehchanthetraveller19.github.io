@@ -406,7 +406,7 @@ ${crumbs({ label: "Partner" })}
 
 <section class="section section--tight" id="enquiry"><div class="wrap wrap--narrow">
   ${sectionHead({ eyebrow: "Enquiry", title: "Start a partnership", intro: "Tell us what you are trying to achieve and we will reply with what we can realistically deliver, and what we cannot." })}
-  <form class="tool-panel" data-partner-form novalidate>
+  <form class="tool-panel" data-partner-form data-partner-email="${esc(g.site.partnerEmail)}" novalidate>
     <div class="field-grid">
       <div class="field"><label for="pf-name">Name *</label><input id="pf-name" name="name" required autocomplete="name"></div>
       <div class="field"><label for="pf-company">Company *</label><input id="pf-company" name="company" required autocomplete="organization"></div>

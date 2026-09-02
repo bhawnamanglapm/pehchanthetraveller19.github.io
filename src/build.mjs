@@ -271,6 +271,13 @@ function main() {
 
   write(".nojekyll", "");
 
+  // GitHub Pages reads CNAME to bind a custom domain. Written only when one is
+  // configured, and removed when it is not — a stale CNAME silently breaks the
+  // site by pointing Pages at a domain that no longer resolves here.
+  const cnamePath = join(ROOT, "CNAME");
+  if (g.site.customDomain) write("CNAME", g.site.customDomain + "\n");
+  else if (existsSync(cnamePath)) rmSync(cnamePath);
+
   /* ---- report -------------------------------------------------------- */
   let bytes = 0, files = 0;
   const walk = (d) => { for (const f of readdirSync(d)) {

@@ -115,6 +115,43 @@ update `origin`, then rebuild:
 | Rename repo to `bhawnamanglapm.github.io` | `https://bhawnamanglapm.github.io` | `""` |
 | Current project site | `https://bhawnamanglapm.github.io` | `/pehchanthetraveller19.github.io` |
 
+### Moving to a custom domain
+
+Set **one** field in `src/content/site.json` and rebuild:
+
+```json
+"customDomain": "pehchan.travel"
+```
+
+That overrides `origin` and `basePath`, re-points canonicals, Open Graph, JSON-LD,
+the sitemap and the feed at the domain, drops the subpath from every internal
+URL, and emits the `CNAME` file GitHub Pages reads. Clearing it back to `null`
+removes `CNAME` and restores the subpath — a stale `CNAME` is worse than none,
+because Pages keeps serving a domain that no longer resolves.
+
+**Order matters. Configure DNS first, then set the field.** Setting it before DNS
+resolves makes the live site unreachable, because Pages stops answering on the
+`github.io` URL.
+
+**DNS records** (confirm against GitHub's current documentation before relying on
+these — the addresses are long-standing but GitHub is the authority):
+
+| Type | Host | Value |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153` |
+| AAAA | `@` | `2606:50c0:8001::153` |
+| AAAA | `@` | `2606:50c0:8002::153` |
+| AAAA | `@` | `2606:50c0:8003::153` |
+| CNAME | `www` | `bhawnamanglapm.github.io.` |
+
+Then: repo **Settings → Pages → Custom domain**, enter the domain, wait for the
+DNS check to pass, and tick **Enforce HTTPS** once the certificate is issued
+(usually minutes, occasionally up to 24 hours).
+
 ## Honesty constraints
 
 These are enforced in the code, not just stated in a policy page:

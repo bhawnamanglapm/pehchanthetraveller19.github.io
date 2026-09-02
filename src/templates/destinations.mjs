@@ -94,7 +94,7 @@ ${pageHero(`Destinations · ${r.name}`, r.name, r.blurb)}
 
 export function countryPage(c, g) {
   const body = `
-${pageHero(`${c.region_.name} · Country`, c.name,
+${pageHero(`${c.region_.name} · ${c.type === "state" ? "State" : "Country"}`, c.name,
   `${c.destinations.length} destination ${c.destinations.length === 1 ? "guide" : "guides"} in ${c.name}. Best months: ${c.bestMonths}.`)}
 <div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, { label: "Destinations", href: "/destinations/" },
   { label: c.region_.name, href: c.region_.url }, { label: c.name }])}</div>
@@ -157,8 +157,8 @@ export function destinationPage(d, g) {
   { label: d.region_.name, href: d.region_.url }, { label: d.country_.name, href: d.country_.url }, { label: d.name }])}</div>
 
 ${sec("glance", "", atAGlance([
-  ["Country", d.country_.name],
-  ["How many days", d.howManyDays],
+  [d.country_.type === "state" ? "State" : "Country", d.country_.name],
+  ["How many days", d.howManyDays.split(";")[0]],
   ["Best time", d.bestTime[0].split(":")[0].split(" —")[0]],
   ["Currency", d.country_.currency],
   ["Stays listed", String(d.hotels.length)],

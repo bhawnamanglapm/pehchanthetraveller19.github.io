@@ -5,10 +5,12 @@
   "promise": "Handcrafted journeys. Beautiful stays. Stories worth travelling for.",
   "positioning": "A global travel discovery platform helping modern travellers discover exceptional destinations, stays, experiences and thoughtfully designed journeys.",
   "origin": "https://bhawnamanglapm.github.io",
+  "customDomain": null,
+  "customDomainNote": "Set this to a bare domain (e.g. \"pehchan.travel\") once its DNS points at GitHub Pages. It then overrides origin/basePath and the build emits a CNAME file. Do NOT set it before DNS resolves \u2014 GitHub will start serving the custom domain and the site becomes unreachable until DNS is correct.",
   "basePath": "/pehchanthetraveller19.github.io",
   "legalEntity": "Pehchan Travel Studio",
-  "contactEmail": "hello@pehchan.travel",
-  "partnerEmail": "partners@pehchan.travel",
+  "contactEmail": "pehchanthetraveller@gmail.com",
+  "partnerEmail": "pehchanthetraveller@gmail.com",
   "founded": "2024",
   "newsletterName": "The Weekly Escape",
   "locale": "en",
@@ -91,17 +93,9 @@
   "social": [
     {
       "label": "Instagram",
-      "href": "#"
-    },
-    {
-      "label": "YouTube",
-      "href": "#"
-    },
-    {
-      "label": "Pinterest",
-      "href": "#"
+      "href": "https://www.instagram.com/pehchaan_thetraveller"
     }
   ],
   "sampleContentNotice": "Stays and experiences in this catalogue are illustrative sample listings created to demonstrate the page structure and booking flow. They are clearly labelled and will be replaced by verified, first-hand reviewed properties as partnerships are confirmed.",
-  "basePathNote": "GitHub serves a user site only when the repo is named <account>.github.io. This repo is a project site, so it lives under a subpath. Set basePath to \"\" if the repo is renamed to bhawnamanglapm.github.io or a custom domain is added."
+  "basePathNote": "GitHub serves a user site only when the repo is named <account>.github.io. This repo is a project site, so it lives under a subpath. Ignored when customDomain is set."
 }
