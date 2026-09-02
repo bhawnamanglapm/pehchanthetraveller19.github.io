@@ -627,3 +627,13 @@ table.data tr:last-child td { border-bottom: 0; }
   margin-top: var(--s-4); font-size: var(--t-xs); letter-spacing: .1em;
   text-transform: uppercase; color: var(--accent-ink); opacity: .8;
 }
+
+
+/* ===== Empty state ====================================================== */
+.empty-state {
+  border: 1px dashed var(--line-strong); border-radius: var(--r-lg);
+  padding: clamp(32px, 6vw, 72px); text-align: center; background: var(--surface);
+}
+.empty-state h2 { font-size: var(--t-xl); margin-bottom: var(--s-4); }
+.empty-state p { color: var(--muted); max-width: 56ch; margin-inline: auto; line-height: 1.7; }
+.empty-state .btn-row { justify-content: center; }

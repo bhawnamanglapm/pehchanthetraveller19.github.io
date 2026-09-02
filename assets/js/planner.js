@@ -54,6 +54,22 @@ async function init() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const brief = readBrief(form);
+    // The planner refuses to plan from an empty catalogue rather than inventing
+    // a destination. It plans only over guides that have actually been written.
+    if (!catalog.destinations.length) {
+      out.innerHTML = `<div class="empty-state" style="margin-top:var(--s-8)">
+        <h2 class="display">Nothing to plan with yet</h2>
+        <p>This planner builds itineraries only from guides published on this site, so it cannot suggest a place it has
+        not been told about. The first guides are being written — it opens as they land.</p>
+        <div class="btn-row" style="margin-top:var(--s-6);justify-content:center">
+          <a class="btn btn--primary" href="${BASE}/india/">See where we have been</a>
+          <a class="btn btn--ghost" href="${BASE}/newsletter/">Get told when it opens</a>
+        </div></div>`;
+      out.dataset.ready = "";
+      out.scrollIntoView({ behavior: "smooth", block: "start" });
+      track("planner_generate", { result: "empty_catalog" });
+      return;
+    }
     const plan = plannerProvider(brief, catalog);
     out.innerHTML = renderPlan(plan, brief, catalog);
     out.dataset.ready = "";

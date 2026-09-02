@@ -47,7 +47,7 @@ export function buildGraph() {
     r.root = rootFor(r.scope);
     r.url = `${r.root}/${r.slug}/`;
     r.countries = countries.filter(c => c.region === r.slug);
-    if (!r.countries.length) errors.push(`region ${r.slug}: no countries or states`);
+
   }
   for (const c of countries) {
     if (!byRegion.has(c.region)) { errors.push(`country ${c.slug}: unknown region "${c.region}"`); continue; }
@@ -180,8 +180,7 @@ export function buildGraph() {
     col.itineraries_ = itineraries.filter(i =>
       (f.itineraryStyles || []).includes(i.style) ||
       (f.itineraryDays ? i.days >= f.itineraryDays[0] && i.days <= f.itineraryDays[1] : false));
-    if (!col.destinations_.length && !col.hotels_.length && !col.experiences_.length && !col.itineraries_.length)
-      errors.push(`collection ${col.slug}: filter matches nothing`);
+    col.total = col.destinations_.length + col.hotels_.length + col.experiences_.length + col.itineraries_.length;
   }
   for (const c of taxonomies.stayCategories) { c.url = `/stay/category/${c.slug}/`; c.hotels_ = g.hotelsIn(c.slug); }
   for (const c of taxonomies.experienceCategories) { c.url = `/experiences/category/${c.slug}/`; c.experiences_ = g.expIn(c.slug); }
