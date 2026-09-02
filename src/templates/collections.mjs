@@ -79,7 +79,7 @@ ${c.experiences_.length ? `<section class="section section--tinted"><div class="
 }
 
 export function guidesIndex(g) {
-  const byRegion = g.regions.map(r => ({ r, dests: r.countries.flatMap(c => c.destinations) })).filter(x => x.dests.length);
+  const byRegion = g.regions.map(r => ({ r, dests: r.countries.flatMap(c => c.publishedDestinations) })).filter(x => x.dests.length);
   const body = `
 ${pageHero("Travel guides", "Every guide, one structure",
   "Why visit, best time to visit, how to get there, how many days, where to stay, best things to do, food, budget, safety, culture, FAQs.")}

@@ -53,7 +53,7 @@ ${pageHero("Experiences", c.name, c.intro)}
   : `<p class="muted">Nothing in this category yet. <a href="/experiences/">Browse all experiences</a>.</p>`}
 </div></section>
 <section class="section section--tight"><div class="wrap">${nextSteps({ title: "Next", steps: [
-  { href: "/destinations/", title: "Explore destinations", desc: "Where these experiences actually are." },
+  { href: "/india/", title: "Explore destinations", desc: "Where these experiences actually are." },
   { href: "/stay/", title: "Find a stay nearby", desc: "Book the bed before the activity." },
   { href: "/plan/", title: "Build an itinerary", desc: "Fit them into a day-by-day plan." }
 ]})}</div></section>`;

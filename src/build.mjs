@@ -16,7 +16,7 @@ import { buildGraph } from "./lib/graph.mjs";
 import { page as renderPage, ogCard } from "./lib/shell.mjs";
 import { esc, truncate, clean } from "./lib/html.mjs";
 import { home } from "./templates/home.mjs";
-import { destinationsIndex, regionPage, countryPage, destinationPage } from "./templates/destinations.mjs";
+import { indiaIndex, internationalIndex, regionPage, countryPage, destinationPage, destinationDraftPage } from "./templates/destinations.mjs";
 import { stayIndex, stayCategoryPage, hotelPage } from "./templates/stay.mjs";
 import { experiencesIndex, experienceCategoryPage, experiencePage } from "./templates/experiences.mjs";
 import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
@@ -59,10 +59,14 @@ function main() {
   /* ---- route table ------------------------------------------------- */
   const pages = [
     home(g),
-    destinationsIndex(g),
+    indiaIndex(g),
+    internationalIndex(g),
     ...g.regions.map(r => regionPage(r, g)),
-    ...g.countries.map(c => countryPage(c, g)),
-    ...g.destinations.map(d => destinationPage(d, g)),
+    // Only states/countries with at least one guide get a page — see the
+    // "no thin programmatic pages" rule in docs/03-seo-and-roadmap.md.
+    ...g.countries.filter(c => c.destinations.length).map(c => countryPage(c, g)),
+    ...g.published.map(d => destinationPage(d, g)),
+    ...g.drafts.map(d => destinationDraftPage(d, g)),
     stayIndex(g),
     ...g.taxonomies.stayCategories.map(c => stayCategoryPage(c, g)),
     ...g.hotels.map(h => hotelPage(h, g)),
@@ -193,8 +197,12 @@ function main() {
 
   /* ---- search index -------------------------------------------------- */
   const index = [
-    ...g.destinations.map(d => ({ t: "destination", u: d.url, n: d.name,
+    ...g.published.map(d => ({ t: "destination", u: d.url, n: d.name,
       d: truncate(d.summary, 120), k: [d.country_.name, d.region_.name, ...d.tags, ...d.thingsToDo.slice(0, 2)].join(" ") })),
+    // Drafts are findable on the site but say plainly that they are unwritten.
+    ...g.drafts.map(d => ({ t: "destination", u: d.url, n: d.name,
+      d: `Guide in progress — ${d.country_.name}, ${d.region_.name}.`,
+      k: [d.country_.name, d.region_.name, d.kicker].join(" ") })),
     ...g.countries.map(c => ({ t: "destination", u: c.url, n: c.name,
       d: `${c.destinations.length} destination guides. Best months: ${c.bestMonths}.`, k: `${c.region_.name} country ${c.languages.join(" ")}` })),
     ...g.regions.map(r => ({ t: "destination", u: r.url, n: r.name, d: truncate(r.blurb, 120), k: "region " + r.kicker })),
@@ -222,7 +230,7 @@ function main() {
   // every recommendation it makes resolves to a real page on this site.
   const withBase = (u) => BASE + u;
   write("assets/catalog.json", JSON.stringify({
-    destinations: g.destinations.map(d => ({
+    destinations: g.published.map(d => ({
       slug: d.slug, name: d.name, url: withBase(d.url), country: d.country_.name, region: d.region_.name,
       summary: d.summary, tags: d.tags, days: d.howManyDays, bestTime: d.bestTime,
       whereToStay: d.whereToStay, thingsToDo: d.thingsToDo, food: d.food, budgetNotes: d.budgetNotes,

@@ -5,10 +5,16 @@ import { art } from "./art.mjs";
 export function navModel(g) {
   const { site, regions, taxonomies, itineraries } = g;
   return [
-    { label: "Destinations", href: "/destinations/", columns: [
-      { title: "By region", links: regions.map(r => ({ label: r.name, href: r.url })) },
-      { title: "Popular guides", links: g.destinations.slice(0, 6).map(d => ({ label: d.name, href: d.url })) },
-      { title: "Collections", links: taxonomies.collections.filter(c => c.type === "landscape").slice(0, 6).map(c => ({ label: c.title, href: c.url })) }
+    // Two separate trees in the nav, so each grows without crowding the other.
+    { label: "India", href: "/india/", columns: [
+      { title: "By region", links: g.indiaRegions.map(r => ({ label: r.name, href: r.url })) },
+      { title: "By state", links: g.indiaRegions.flatMap(r => r.countries).filter(c => c.destinations.length).slice(0, 8).map(c => ({ label: c.name, href: c.url })) },
+      ...(g.indiaDestinations.length ? [{ title: "Guides", links: g.indiaDestinations.slice(0, 6).map(d => ({ label: d.name, href: d.url })) }] : [])
+    ]},
+    { label: "International", href: "/international/", columns: [
+      { title: "By region", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })) },
+      { title: "Guides", links: g.intlDestinations.slice(0, 8).map(d => ({ label: d.name, href: d.url })) },
+      { title: "Collections", links: taxonomies.collections.filter(c => c.type === "landscape").slice(0, 5).map(c => ({ label: c.title, href: c.url })) }
     ]},
     { label: "Stay", href: "/stay/", columns: [
       { title: "By type", links: taxonomies.stayCategories.slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
@@ -81,7 +87,8 @@ function masthead(g) {
 function footer(g) {
   const { site, taxonomies, regions } = g;
   const cols = [
-    { title: "Destinations", links: regions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All destinations", href: "/destinations/" }]) },
+    { title: "India", links: g.indiaRegions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All of India", href: "/india/" }]) },
+    { title: "International", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All international", href: "/international/" }]) },
     { title: "Discover", links: [
       { label: "Stay", href: "/stay/" }, { label: "Experiences", href: "/experiences/" },
       { label: "Curated Journeys", href: "/journeys/" }, { label: "Travel Guides", href: "/guides/" },

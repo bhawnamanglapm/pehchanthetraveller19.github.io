@@ -24,7 +24,7 @@ ${crumbs({ label: "Plan" })}
 
 <section class="section section--tight"><div class="wrap">
   <p class="engine-note"><strong>How this planner works, honestly.</strong> Version one runs entirely in your browser: a
-  deterministic matching engine over our own curated catalogue of ${g.destinations.length} destinations,
+  deterministic matching engine over our own curated catalogue of ${g.published.length} destinations,
   ${g.hotels.length} stays and ${g.experiences.length} experiences. It sends nothing to a server and stores nothing about you.
   It is designed as a drop-in for a language-model provider — see <code>plannerProvider</code> in
   <code>assets/js/planner.js</code> — so a live model can be connected without changing the interface or the funnel.
@@ -40,8 +40,8 @@ ${crumbs({ label: "Plan" })}
         <div class="field"><label for="p-dest">Destination</label>
           <select id="p-dest" name="destination">
             <option value="">Suggest one for me</option>
-            ${list(g.regions, (r) => `<optgroup label="${esc(r.name)}">${
-              list(r.countries.flatMap(c => c.destinations), (d) => opt(d.slug, `${d.name}, ${d.country_.name}`))
+            ${list(g.regions.filter(r => r.countries.some(c => c.publishedDestinations.length)), (r) => `<optgroup label="${esc(r.name)}">${
+              list(r.countries.flatMap(c => c.publishedDestinations), (d) => opt(d.slug, `${d.name}, ${d.country_.name}`))
             }</optgroup>`)}
           </select></div>
         <div class="field"><label for="p-start">Start date</label><input id="p-start" name="start" type="date"></div>
@@ -126,7 +126,7 @@ ${crumbs({ label: "Plan" })}
   title: "Prefer a ready-made plan?",
   steps: [
     { href: "/journeys/", title: "Browse curated journeys", desc: `${g.itineraries.length} itineraries, written day by day.` },
-    { href: "/destinations/", title: "Start from a destination", desc: "Read the guide first, plan second." },
+    { href: "/india/", title: "Start from a destination", desc: "India by region, or travel international." },
     { href: "/partner/", title: "Have it designed for you", desc: "Premium trip planning — enquire about availability." }
   ]})}</div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "planner")}</div></section>`;
@@ -222,7 +222,7 @@ const TOOL_PANELS = {
   <div class="table-scroll" style="margin-top:var(--s-5)">
     <table class="data"><thead><tr><th>Destination</th><th>Country</th><th>Best months</th><th>Days needed</th><th></th></tr></thead>
     <tbody data-rows>
-      ${list(g.destinations, (d) => `<tr data-text="${esc((d.name + " " + d.country_.name + " " + d.region_.name).toLowerCase())}">
+      ${list(g.published, (d) => `<tr data-text="${esc((d.name + " " + d.country_.name + " " + d.region_.name).toLowerCase())}">
         <td><strong>${esc(d.name)}</strong></td><td>${esc(d.country_.name)}</td>
         <td>${esc(d.bestTime[0].replace(/^([^:]*):.*$/, "$1"))}</td>
         <td>${esc(d.howManyDays.split(";")[0])}</td>
@@ -242,9 +242,9 @@ const TOOL_PANELS = {
 <form class="tool-panel" data-tool="compare">
   <div class="field-grid">
     <div class="field"><label for="cmp-a">Destination A</label><select id="cmp-a" name="a">${
-      list(g.destinations, (d, i) => `<option value="${esc(d.slug)}"${i === 0 ? " selected" : ""}>${esc(d.name)}, ${esc(d.country_.name)}</option>`)}</select></div>
+      list(g.published, (d, i) => `<option value="${esc(d.slug)}"${i === 0 ? " selected" : ""}>${esc(d.name)}, ${esc(d.country_.name)}</option>`)}</select></div>
     <div class="field"><label for="cmp-b">Destination B</label><select id="cmp-b" name="b">${
-      list(g.destinations, (d, i) => `<option value="${esc(d.slug)}"${i === 16 ? " selected" : ""}>${esc(d.name)}, ${esc(d.country_.name)}</option>`)}</select></div>
+      list(g.published, (d, i) => `<option value="${esc(d.slug)}"${i === 16 ? " selected" : ""}>${esc(d.name)}, ${esc(d.country_.name)}</option>`)}</select></div>
   </div>
   <div class="btn-row" style="margin-top:var(--s-5)"><button class="btn btn--primary" type="submit">Compare</button></div>
   <div class="tool-output" data-output hidden></div>
@@ -261,7 +261,7 @@ const TOOL_PANELS = {
   <div class="table-scroll" style="margin-top:var(--s-5)">
     <table class="data"><thead><tr><th>Country</th><th>Region</th><th>General entry note</th></tr></thead>
     <tbody data-rows>${list(g.countries, (c) => `<tr data-text="${esc((c.name + " " + c.region_.name).toLowerCase())}">
-      <td><strong><a href="${esc(c.url)}">${esc(c.name)}</a></strong></td><td>${esc(c.region_.name)}</td>
+      <td><strong>${c.destinations.length ? `<a href="${esc(c.url)}">${esc(c.name)}</a>` : esc(c.name)}</strong></td><td>${esc(c.region_.name)}</td>
       <td>${esc(c.visaNote)}</td></tr>`)}</tbody></table>
   </div>
 </div>`
@@ -333,7 +333,7 @@ ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
     { href: "/plan/", title: "Plan the trip", desc: "Turn the numbers into a day-by-day itinerary." },
-    { href: "/destinations/", title: "Pick a destination", desc: "Full guides with timing and budget notes." },
+    { href: "/india/", title: "Pick a destination", desc: "India by region, or travel international." },
     { href: "/tools/", title: "Other tools", desc: "Budget, packing, visas, comparison and more." }
   ]})}</div></section>`;
   return {
@@ -493,7 +493,7 @@ ${crumbs({ label: "About" })}
       ${atAGlance([
         ["Founded", g.site.founded],
         ["Regions covered", String(g.regions.length)],
-        ["Destination guides", String(g.destinations.length)],
+        ["Destination guides", String(g.published.length)],
         ["Stays", String(g.hotels.length)],
         ["Experiences", String(g.experiences.length)],
         ["Curated journeys", String(g.itineraries.length)]
@@ -503,7 +503,7 @@ ${crumbs({ label: "About" })}
 </div></section>
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Start somewhere", steps: [
-    { href: "/destinations/", title: "Explore destinations", desc: "Eight regions, one consistent standard." },
+    { href: "/india/", title: "Explore India", desc: "Six regions, from the Himalaya to the coast." },
     { href: "/plan/", title: "Plan a trip", desc: "The trip planner, in about a minute." },
     { href: "/partner/", title: "Work with us", desc: "Hotels, tourism boards and travel brands." }
   ]})}</div></section>
@@ -881,7 +881,7 @@ ${pageHero("404", "That page does not exist",
 <section class="section section--tight"><div class="wrap">
   <div class="grid grid--4">
     ${list([
-      ["Destinations", "/destinations/", "Eight regions, one consistent standard."],
+      ["India", "/india/", "Six regions, from the Himalaya to the coast."],
       ["Where to stay", "/stay/", "Boutique houses, lodges and camps."],
       ["Experiences", "/experiences/", "The reason you went."],
       ["AI Trip Planner", "/plan/", "A day-by-day plan in about a minute."]

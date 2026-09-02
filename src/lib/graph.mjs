@@ -38,23 +38,44 @@ export function buildGraph() {
   const byExp = new Map(experiences.map(e => [e.slug, e]));
   const byItin = new Map(itineraries.map(i => [i.slug, i]));
 
-  for (const c of countries) {
-    if (!byRegion.has(c.region)) errors.push(`country ${c.slug}: unknown region "${c.region}"`);
-    c.region_ = byRegion.get(c.region);
-    c.url = `/destinations/${c.region}/${c.slug}/`;
-    c.destinations = [];
-  }
+  // Two independent trees, so each can grow without disturbing the other:
+  //   /international/{region}/{country}/{destination}/
+  //   /india/{region}/{state}/{destination}/
+  const rootFor = (scope) => scope === "india" ? "/india" : "/international";
   for (const r of regions) {
-    r.url = `/destinations/${r.slug}/`;
+    if (!["international", "india"].includes(r.scope)) errors.push(`region ${r.slug}: bad scope "${r.scope}"`);
+    r.root = rootFor(r.scope);
+    r.url = `${r.root}/${r.slug}/`;
     r.countries = countries.filter(c => c.region === r.slug);
+    if (!r.countries.length) errors.push(`region ${r.slug}: no countries or states`);
   }
+  for (const c of countries) {
+    if (!byRegion.has(c.region)) { errors.push(`country ${c.slug}: unknown region "${c.region}"`); continue; }
+    c.region_ = byRegion.get(c.region);
+    c.scope = c.region_.scope;
+    c.url = `${c.region_.root}/${c.region}/${c.slug}/`;
+    c.destinations = []; c.publishedDestinations = []; c.draftDestinations = [];
+  }
+  const GUIDE_FIELDS = ["summary", "whyVisit", "bestTime", "gettingThere", "howManyDays",
+                        "whereToStay", "thingsToDo", "food", "budgetNotes", "safety", "culture", "faqs"];
   for (const d of destinations) {
+    d.status = d.status || "published";
     const c = byCountry.get(d.country);
     if (!c) { errors.push(`destination ${d.slug}: unknown country "${d.country}"`); continue; }
+    // A draft is a deliberate placeholder: name, place and nothing invented.
+    // A published guide must be complete — the build refuses a half-written one.
+    if (d.status === "published") {
+      const missing = GUIDE_FIELDS.filter(f => !d[f] || (Array.isArray(d[f]) && !d[f].length));
+      if (missing.length) errors.push(`destination ${d.slug}: published but missing ${missing.join(", ")}`);
+    } else if (d.status !== "draft") {
+      errors.push(`destination ${d.slug}: bad status "${d.status}"`);
+    }
     d.country_ = c; d.region_ = c.region_; d.region = c.region;
-    d.url = `/destinations/${c.region}/${c.slug}/${d.slug}/`;
+    d.scope = c.scope;
+    d.url = `${c.region_.root}/${c.region}/${c.slug}/${d.slug}/`;
     d.hotels = []; d.experiences = []; d.stories = []; d.itineraries = [];
     c.destinations.push(d);
+    (d.status === "draft" ? (c.draftDestinations ||= []) : (c.publishedDestinations ||= [])).push(d);
   }
   for (const h of hotels) {
     const d = byDest.get(h.destination);
@@ -130,6 +151,14 @@ export function buildGraph() {
 
   const g = {
     site, regions, countries, destinations, hotels, experiences, itineraries, stories, taxonomies,
+    intlRegions: regions.filter(r => r.scope === "international"),
+    indiaRegions: regions.filter(r => r.scope === "india"),
+    intlDestinations: destinations.filter(d => d.scope === "international" && d.status === "published"),
+    indiaDestinations: destinations.filter(d => d.scope === "india" && d.status === "published"),
+    intlDrafts: destinations.filter(d => d.scope === "international" && d.status === "draft"),
+    indiaDrafts: destinations.filter(d => d.scope === "india" && d.status === "draft"),
+    published: destinations.filter(d => d.status === "published"),
+    drafts: destinations.filter(d => d.status === "draft"),
     byRegion, byCountry, byDest, byHotel, byExp, byItin,
     hotelsIn: (cat) => hotels.filter(h => h.categories.includes(cat)),
     expIn: (cat) => experiences.filter(e => e.categories.includes(cat)),
