@@ -163,10 +163,13 @@ inbound to India. Offered as the strongest interpretation, not as a decision.
 
 ## 9. Open items
 
-1. **Instagram handle discrepancy.** `site.json` links
-   `instagram.com/pehchaan_thetraveller` (double "a"); the founder's stated
-   handle is `pehchan_thetraveller`. One is a dead link on the live site.
+1. ~~**Instagram handle discrepancy.**~~ Resolved 24 Sep 2026: the founder
+   confirmed `pehchan_thetraveller` is correct. `site.json` had been linking
+   `pehchaan_thetraveller` (double "a") — a dead link in the footer of all 90
+   pages — and has been corrected and rebuilt.
 2. **Which corridor first** — Dubai, Thailand, Vietnam, Malaysia or Nepal.
 3. **Entity and compliance scope**, before Phase 3.
 4. **Custom domain**, still unset. The project-site subpath is poor for both SEO
    and supplier credibility.
+5. **Brand copy in `site.json`** still carries the superseded media-era
+   descriptor and promise (see §8).
