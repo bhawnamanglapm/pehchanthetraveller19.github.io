@@ -898,3 +898,83 @@ ${pageHero("404", "That page does not exist",
     description: "The page you were looking for does not exist.", body, noindex: true, ogArt: "404",
     breadcrumbs: [{ label: "Home", href: "/" }] };
 }
+
+/* ===================== WOMEN & TRAVEL RESEARCH ========================== */
+
+export function womenAndTravelPage(g) {
+  const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSeyPQU29lfXT9xK4wh24XoBr5gygs0vQQEIW7-7hv48Cs--DA/viewform";
+  const cta = (label) => `<div class="btn-row">
+    <a class="btn btn--primary" href="${FORM}" target="_blank" rel="noopener"
+       data-track="research_form_click">${esc(label)}</a></div>`;
+
+  const body = `
+${pageHero("Research", "How do you really travel?",
+  "We are building a travel service for women, and we would rather ask than assume. This is the survey that decides what it becomes.",
+  cta("Take the survey"))}
+${crumbs({ label: "Women & Travel" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Your answers are anonymous.</strong> The survey asks nothing that identifies you.
+  The last question invites an email, Instagram handle or phone number so we can follow up with a longer
+  conversation — that field is optional, and leaving it blank changes nothing about the rest. Responses are read
+  only by us, are never sold or shared, and are used to decide what gets built. Some questions ask about
+  harassment and safety; skip anything you would rather not answer.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap">
+  ${sectionHead({ eyebrow: "Why this exists", title: "Most travel companies guess what women want",
+    intro: "They add a pink filter and call it a women's trip. Nobody asks about the conversation you have to have at home before you can go anywhere at all." })}
+  <div class="grid grid--3">
+    ${list([
+      ["The permission problem", "For a lot of women the first obstacle is not the booking. It is a parent, a partner or a family who needs convincing — and no travel company builds for that."],
+      ["Safety as a feature, not a slogan", "Verified drivers, female trip leads, live location, real emergency contacts. We want to know which of these actually matter to you and which are theatre."],
+      ["What you would pay for", "Whether a service built properly around this is worth paying more for, or whether price wins. There is no right answer and we are not assuming one."]
+    ], ([t, d]) => `<article class="card"><div class="card__body">
+      <h3 class="card__title" style="font-size:var(--t-md)">${esc(t)}</h3><p class="card__desc">${esc(d)}</p></div></article>`)}
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What it covers", title: "Ten to fifteen minutes, mostly tick-boxes" })}
+  ${factList([
+    ["How you travel now", "Frequency, who with, where you have been, whether you have gone alone"],
+    ["What you are comfortable with", "Overnight trains, hostels, remote places, renting a scooter, group tours with strangers"],
+    ["The conversation at home", "Who has a say in whether you go, what they worry about, what would reassure them"],
+    ["Safety", "Which measures would genuinely change your mind, and which would not"],
+    ["Money and planning", "What you spend, what you would pay more for, and which part of planning you hate most"],
+    ["Your ideal trip", "One you would book tomorrow, if it existed"]
+  ])}
+  ${cta("Start the survey")}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Who is asking", title: "Bhawna — Pehchan the Traveller" })}
+  <p>I have travelled across India and beyond — the Himalaya, the temple towns, Goa, Dubai, Thailand, Vietnam,
+  Malaysia, Nepal — sometimes alone and sometimes with people who needed a lot of persuading first. Pehchan means
+  identity, and the whole point of this is to build something around how women actually travel rather than how a
+  brochure says they do. I read every response myself.</p>
+  <div class="btn-row">
+    <a class="btn btn--ghost" href="${esc(g.site.social?.[0]?.href || "/contact/")}" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn btn--ghost" href="/about/">About Pehchan</a>
+  </div>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${faq([
+    { q: "Is it really anonymous?", a: "Yes. No question asks for your name, and the contact field at the end is optional. Leave it blank and we have no way of knowing who you are." },
+    { q: "How long does it take?", a: "Ten to fifteen minutes. Most of it is tick-boxes and rating scales; only a handful of questions ask you to write anything." },
+    { q: "What happens to my answers?", a: "They shape what gets built. Findings may be published as aggregate numbers and anonymised quotes — never with anything that identifies a respondent, and never sold or shared." },
+    { q: "Do I have to be a frequent traveller?", a: "No. If you rarely travel, or have never travelled alone, or are not allowed to, you are exactly who we most need to hear from." },
+    { q: "Can I talk to you properly instead?", a: "Yes — the last question asks if you are open to a longer conversation. Leave a way to reach you and we will get in touch." }
+  ])}
+  ${cta("Take the survey")}
+</div></section>`;
+
+  return {
+    url: "/women-and-travel/", template: "research",
+    title: fitTitle(["Women & Travel", "Research Survey", "Pehchan"]),
+    description: "A survey for women who travel, rarely travel, or are not allowed to. Ten minutes, anonymous, and it decides what we build.",
+    body, ogArt: "newsletter",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Women & Travel", href: "/women-and-travel/" }]
+  };
+}

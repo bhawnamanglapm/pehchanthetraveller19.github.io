@@ -101,6 +101,7 @@ function footer(g) {
     ]},
     { title: "Company", links: [
       { label: "About", href: "/about/" }, { label: "Partner With Us", href: "/partner/" },
+      { label: "Women & Travel", href: "/women-and-travel/" },
       { label: "Contact", href: "/contact/" }, { label: "Business Dashboard", href: "/dashboard/" }
     ]},
     { title: "Trust", links: [
