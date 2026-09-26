@@ -1031,8 +1031,8 @@ ${crumbs({ label: "Solo Travel Profile" })}
     body, ogArt: "planner",
     scripts: ["/assets/js/profile.js"],
     head: `<script type="application/json" id="comfort-model">${JSON.stringify({
-      axes: g.comfort.axes, tiers: g.comfort.tiers,
-      preferences: g.comfort.preferences, scale: g.comfort.scale
+      axes: g.comfort.axes, tiers: g.comfort.tiers, preferences: g.comfort.preferences,
+      scale: g.comfort.scale, bookingRules: g.comfort.bookingRules
     })}</script>`,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Solo Travel Profile", href: "/profile/" }]
   };

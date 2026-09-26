@@ -57,6 +57,23 @@ export function preferencesFor(comfort, rules) {
   return [...new Set(out)];
 }
 
+/** The axes she is already comfortable with. Leads the result, deliberately. */
+export function strengthsFor(comfort, axes) {
+  return axes.filter(a => comfort[a.key] >= 4);
+}
+
+/** "How do I book a safe place?" answered from her own answers. */
+export function bookingFor(comfort, rules) {
+  const out = [];
+  for (const r of rules || []) {
+    const v = comfort[r.axis];
+    if (typeof v !== "number") continue;
+    if (typeof r.atMost === "number" && v <= r.atMost) out.push(r.text);
+    if (typeof r.atLeast === "number" && v >= r.atLeast) out.push(r.text);
+  }
+  return [...new Set(out)];
+}
+
 /**
  * Compare a profile against a destination's demand vector.
  * Returns the axes that stretch her, worst first, plus the ones that suit her.
@@ -91,23 +108,56 @@ function el(tag, cls, text) {
 }
 
 function renderResult(host, model, profile) {
-  const { axes, tiers, preferences, scale } = model;
+  const { axes, tiers, preferences, scale, bookingRules } = model;
   const mean = meanComfort(profile.comfort, axes);
   const tier = tierFor(mean, tiers);
   const prefs = preferencesFor(profile.comfort, preferences);
+  const strong = strengthsFor(profile.comfort, axes);
+  const booking = bookingFor(profile.comfort, bookingRules);
 
   host.innerHTML = "";
   const card = el("div", "profile-result");
 
+  // Answer the question she actually asked before describing her.
   card.append(el("span", "eyebrow", "Your Solo Travel Profile"));
-  const h = el("h2", "display"); h.textContent = tier.name; card.append(h);
+  const yes = el("p", "profile-result__yes", "Yes — you can do this.");
+  card.append(yes);
+  const h = el("h2", "profile-result__tier"); h.textContent = tier.name; card.append(h);
   card.append(el("p", "profile-result__summary", tier.summary));
 
+  // Strengths first. She came in expecting to be told what she cannot do.
+  const strengths = el("section", "profile-result__block");
+  strengths.append(el("h3", null, "What you are already comfortable with"));
+  if (strong.length) {
+    strengths.append(el("p", null,
+      `You said you are fine with ${strong.length} of the ${axes.length} things a trip asks of you.`));
+    const ul = el("ul", "profile-result__tags");
+    strong.forEach(a => ul.append(el("li", null, a.label)));
+    strengths.append(ul);
+  } else {
+    strengths.append(el("p", null,
+      "You would want most of it arranged for you. That is a completely normal place to begin, "
+      + "and it is exactly what a planned first trip is for."));
+  }
+  card.append(strengths);
+
   if (prefs.length) {
-    card.append(el("p", "profile-result__lead", "From your answers, you would rather have:"));
+    const b = el("section", "profile-result__block");
+    b.append(el("h3", null, "What to look for in a trip"));
     const ul = el("ul", "profile-result__prefs");
     prefs.forEach(p => ul.append(el("li", null, p)));
-    card.append(ul);
+    b.append(ul);
+    card.append(b);
+  }
+
+  if (booking.length) {
+    const b = el("section", "profile-result__block");
+    b.append(el("h3", null, "How to book it safely"));
+    b.append(el("p", "muted", "Specific to your answers — not general advice."));
+    const ol = el("ol", "profile-result__booking");
+    booking.forEach(t => ol.append(el("li", null, t)));
+    b.append(ol);
+    card.append(b);
   }
 
   const detail = el("details", "profile-result__detail");
