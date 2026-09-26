@@ -25,12 +25,12 @@ import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
 import { storiesIndex, storyCategoryPage, storyPage } from "./templates/stories.mjs";
 import { collectionsIndex, collectionPage, guidesIndex } from "./templates/collections.mjs";
 import { plannerPage, toolsIndex, toolPage, partnerPage, aboutPage, newsletterPage, contactPage,
-         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage } from "./templates/pages.mjs";
+         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage } from "./templates/pages.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIRS = ["destinations", "stay", "experiences", "journeys", "stories", "collections", "guides",
   "plan", "tools", "deals", "partner", "about", "newsletter", "contact", "search", "dashboard", "legal",
-  "women-and-travel", "profile"];
+  "women-and-travel", "profile", "trips"];
 
 function write(relPath, contents) {
   const full = join(ROOT, relPath);
@@ -93,6 +93,8 @@ function main() {
     newsletterPage(g),
     womenAndTravelPage(g),
     profilePage(g),
+    tripReportsPage(g),
+    shareTripPage(g),
     contactPage(g),
     searchPage(g),
     dashboardPage(g),

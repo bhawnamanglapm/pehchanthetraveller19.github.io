@@ -1037,3 +1037,150 @@ ${crumbs({ label: "Solo Travel Profile" })}
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Solo Travel Profile", href: "/profile/" }]
   };
 }
+
+/* ===================== TRIP REPORTS ==================================== */
+
+const CONFIDENCE = ["", "Very nervous", "Nervous", "Neutral", "Confident", "Very confident"];
+const rupees = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
+
+function reportCard(r) {
+  const moved = r.confidenceAfter - r.confidenceBefore;
+  return `<article class="trip-report${r.sample ? " trip-report--sample" : ""}">
+  ${r.sample ? `<p class="trip-report__sample">Sample — invented, for layout only. Not a real submission.</p>` : ""}
+  <div class="trip-report__head">
+    <div>
+      <h3 class="trip-report__dest">${esc(r.destination)}</h3>
+      <p class="trip-report__meta">${r.days} day${r.days === 1 ? "" : "s"} · from ${esc(r.startedFrom)}
+        · ${esc(r.travelledAs)}${r.firstSolo ? " · first solo trip" : ""}</p>
+    </div>
+    <span class="badge-verify badge-verify--${r.verified ? "yes" : "community"}">
+      ${r.verified ? "✓ Trip verified" : "Community experience"}</span>
+  </div>
+
+  ${moved > 0 ? `<p class="trip-report__growth">Went out feeling
+    <strong>${esc(CONFIDENCE[r.confidenceBefore].toLowerCase())}</strong> — came back
+    <strong>${esc(CONFIDENCE[r.confidenceAfter].toLowerCase())}</strong>.</p>` : ""}
+
+  <div class="trip-report__quote">
+    <span class="eyebrow">What I wish I knew before going</span>
+    <blockquote>${esc(r.wishIKnew)}</blockquote>
+  </div>
+
+  <dl class="trip-report__spend">
+    <div><dt>Planned</dt><dd>${rupees(r.plannedBudget)}</dd></div>
+    <div><dt>Actually spent</dt><dd class="${r.actualSpend > r.plannedBudget ? "over" : "under"}">${rupees(r.actualSpend)}</dd></div>
+  </dl>
+
+  ${r.wentWrong ? `<div class="trip-report__wrong">
+    <span class="eyebrow">Something went wrong — ${esc(r.wentWrong.category)}</span>
+    <p>${esc(r.wentWrong.what)}</p>
+    <p><strong>What she did:</strong> ${esc(r.wentWrong.whatIDid)}</p>
+    <p><strong>Her advice:</strong> ${esc(r.wentWrong.adviceToOthers)}</p>
+  </div>` : ""}
+
+  ${(r.couldDoAlone || []).length ? `<div class="trip-report__did">
+    <span class="eyebrow">What she did alone</span>
+    <ul>${list(r.couldDoAlone, (x) => `<li>${esc(x)}</li>`)}</ul>
+  </div>` : ""}
+
+  <p class="trip-report__foot">Shared ${esc(r.visibility === "anonymous" ? "anonymously" : "publicly")}
+    · published ${esc(r.publishedOn)}</p>
+</article>`;
+}
+
+export function tripReportsPage(g) {
+  const reports = g.tripReports;
+  const real = reports.filter(r => !r.sample);
+  const sla = g.site.tripReports.reviewSlaHours;
+
+  const body = `
+${pageHero("Real trips", "What actually happened",
+  "Not reviews. Whole trips, written up by the women who took them — what it cost against what they expected, what went wrong, and what they wish they had known before they went.",
+  `<div class="btn-row" style="margin-top:var(--s-3)"><a class="btn btn--light" href="/trips/share/">Share your trip</a></div>`)}
+${crumbs({ label: "Real trips" })}
+
+${real.length === 0 ? `
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure">
+    <div><strong>No real trip reports yet.</strong> The cards below are invented samples, kept only so the
+    page has a shape while the first women write theirs. Every one of them is deleted the day a real report
+    is published — nothing invented stays on this site.</div>
+  </div>
+</div></section>` : ""}
+
+<section class="section section--tight"><div class="wrap">
+  <div class="stack-lg">${list(reports, reportCard)}</div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How this works", title: `Checked by a person, published within ${sla} hours` })}
+  ${factList([
+    ["You write it", "Whatever you are willing to share. Every field is optional except the destination and how long you went for."],
+    ["A person reads it", "Not an algorithm. We check it reads like somebody who actually went, and we look for anything that would identify you by accident."],
+    ["We check the evidence, then destroy it", `If you attach a booking or ticket, it earns a <strong>Trip verified</strong> mark. We confirm it and delete the file — we do not keep your documents.`],
+    ["It goes up within " + sla + " hours", "Or you hear back explaining why not. Nothing is published silently and nothing is edited beyond spelling without asking you."],
+    ["You can take it down", "Any time, no reason needed, and it is gone from the site the same day."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Your safety", title: "How your story is protected" })}
+  ${factList([
+    ["Anonymous by default", "Your name is never shown unless you specifically ask for it. Most women choose anonymous, and that is the default."],
+    ["We never publish exactly where you stayed", "Not with your dates. A property plus a date range plus a lone woman is an identification, so one of the three is always removed."],
+    ["Naming a business follows a separate route", "If something happened to you at a named hotel or with a named driver, that goes through an incident report, not a public post — so it can be checked and answered before anyone reads it."],
+    ["Harassment and assault are handled off the page", "Never published as a story. Tell us and it informs what we warn other women about, without your experience becoming public content."],
+    ["We hold as little as possible", "Verification documents are destroyed after checking. Contact details are separated from your story, and are only used to reach you about it."]
+  ])}
+  <div class="btn-row"><a class="btn btn--primary" href="/trips/share/">Share your trip</a></div>
+</div></section>`;
+
+  return {
+    url: "/trips/", template: "trips",
+    title: fitTitle(["Real Trips", "What actually happened", "Pehchan"]),
+    description: "Whole trips written up by the women who took them — real costs against planned, what went wrong, and what they wish they had known.",
+    body, ogArt: "stories",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Real trips", href: "/trips/" }]
+  };
+}
+
+export function shareTripPage(g) {
+  const sla = g.site.tripReports.reviewSlaHours;
+  const live = Boolean(g.site.tripReports.submissionEndpoint);
+
+  const body = `
+${pageHero("Share your trip", "Tell the next woman what it was really like",
+  "The trip you just took is the thing somebody else is searching for at midnight, wondering whether she can do it. This takes about ten minutes.")}
+${crumbs({ label: "Real trips", href: "/trips/" }, { label: "Share your trip" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Anonymous unless you choose otherwise.</strong> A person reads every
+  submission and it goes up within ${sla} hours, or you hear back why not. We never publish your exact
+  accommodation alongside your dates, and anything involving harassment is handled privately rather than
+  posted. You can take your story down at any time.</p>
+  ${live ? "" : `<p class="disclosure" style="margin-top:var(--s-4)"><span><strong>Submissions are not connected yet.</strong>
+  The form works and keeps a draft as you type, and at the end it gives you the text to send. Once a submission
+  endpoint is set in <code>site.json</code> it posts directly instead.</span></p>`}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <form class="trip-form" id="trip-form" novalidate data-endpoint="${esc(g.site.tripReports.submissionEndpoint || "")}">
+    <div id="trip-form-fields"></div>
+    <div class="btn-row">
+      <button class="btn btn--primary" type="submit">Submit my trip</button>
+      <button class="btn btn--ghost" type="button" data-clear-draft>Clear draft</button>
+    </div>
+    <p class="muted" id="trip-form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>`;
+
+  return {
+    url: "/trips/share/", template: "trip-share",
+    title: fitTitle(["Share Your Trip", "Pehchan"]),
+    description: "Write up the trip you just took — cost, what went wrong, what you wish you had known. Anonymous by default, read by a person, published within 12 hours.",
+    body, ogArt: "stories",
+    scripts: ["/assets/js/trip-report.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Real trips", href: "/trips/" },
+                  { label: "Share your trip", href: "/trips/share/" }]
+  };
+}
