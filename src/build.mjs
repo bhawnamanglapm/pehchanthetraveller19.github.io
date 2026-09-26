@@ -8,7 +8,8 @@
  *
  *   node src/build.mjs [--clean]
  */
-import { mkdirSync, writeFileSync, rmSync, existsSync, readdirSync, statSync } from "node:fs";
+import { mkdirSync, writeFileSync, rmSync, existsSync, readdirSync, statSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -218,12 +219,22 @@ function main() {
 
   write("manifest.webmanifest", manifest(g.site));
   write("offline.html", offlinePage(g.site));
-  write("sw.js", serviceWorker(g.site, [
+  const precache = [
     "/", "/offline.html",
     "/assets/css/main.css", "/assets/css/tokens.css",
     "/assets/js/site.js", "/assets/favicon.svg",
     "/assets/icons/icon-192.png", "/assets/icons/icon-512.png"
-  ], String(started)));
+  ];
+  // Version the cache by what is actually in it, not by the clock. A build
+  // stamp would rewrite sw.js on every run, dirtying the tree and churning
+  // every diff even when nothing cached had changed.
+  const fingerprint = createHash("sha256");
+  for (const rel of precache) {
+    const file = join(ROOT, rel === "/" ? "index.html" : rel.replace(/^\//, ""));
+    fingerprint.update(rel);
+    if (existsSync(file)) fingerprint.update(readFileSync(file));
+  }
+  write("sw.js", serviceWorker(g.site, precache, fingerprint.digest("hex").slice(0, 12)));
 
   /* ---- search index -------------------------------------------------- */
   const index = [
