@@ -9,6 +9,8 @@
  *
  * Nothing is sent anywhere until she presses submit.
  */
+import { initVoice } from "./voice.js";
+
 const DRAFT = "pehchan-trip-draft";
 
 const FIELDS = [
@@ -144,7 +146,7 @@ function fieldHtml(f, draft) {
   }
   if (f.type === "textarea") {
     return `<div class="field"><label for="${id}">${esc(f.label)}${req}</label>
-      <textarea id="${id}" name="${esc(f.name)}" rows="${f.rows || 3}"
+      <textarea id="${id}" name="${esc(f.name)}" rows="${f.rows || 3}" data-voice
         ${f.placeholder ? `placeholder="${esc(f.placeholder)}"` : ""}>${esc(v || "")}</textarea>${help}</div>`;
   }
   const attrs = [
@@ -195,6 +197,7 @@ if (form && host) {
   host.innerHTML = FIELDS.map(f => f.section
     ? `<div class="form-section"><h2>${esc(f.section)}</h2>${f.note ? `<p class="muted">${esc(f.note)}</p>` : ""}</div>`
     : fieldHtml(f, draft)).join("");
+  initVoice(host);
 
   const status = document.getElementById("trip-form-status");
   form.addEventListener("change", (e) => {
@@ -223,6 +226,7 @@ if (form && host) {
     host.innerHTML = FIELDS.map(f => f.section
       ? `<div class="form-section"><h2>${esc(f.section)}</h2>${f.note ? `<p class="muted">${esc(f.note)}</p>` : ""}</div>`
       : fieldHtml(f, {})).join("");
+    initVoice(host);
     status.textContent = "Draft cleared.";
   });
 
