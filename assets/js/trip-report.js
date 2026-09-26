@@ -15,6 +15,9 @@ const FIELDS = [
   { section: "Your trip", note: "Only the first two are required." },
   { name: "destination", label: "Where did you go?", type: "text", required: true, placeholder: "Town or city, and state" },
   { name: "days", label: "How many days?", type: "number", required: true, min: 1, max: 120 },
+  { name: "area", label: "Which area or neighbourhood did you stay in?", type: "text",
+    placeholder: "The part of town — it matters more than the town" },
+  { name: "mapLink", label: "A map link, if you have one", type: "url", placeholder: "https://maps.app.goo.gl/…" },
   { name: "startedFrom", label: "Which city did you travel from?", type: "text" },
   { name: "month", label: "When?", type: "month" },
   { name: "travelledAs", label: "Who did you travel with?", type: "radio",
@@ -41,6 +44,20 @@ const FIELDS = [
   { name: "bestSurprise", label: "Best surprise", type: "textarea", rows: 2 },
   { name: "disappointment", label: "Biggest disappointment", type: "textarea", rows: 2 },
   { name: "hiddenGem", label: "Something you found that was not in any itinerary", type: "textarea", rows: 2 },
+  { name: "goodThings", label: "What went well?", type: "textarea", rows: 3,
+    placeholder: "The parts you would do again exactly the same way." },
+  { name: "badThings", label: "What did not?", type: "textarea", rows: 3,
+    placeholder: "Not disasters — just the things that were worse than you expected." },
+  { name: "advice", label: "Your advice to the next woman going there", type: "textarea", rows: 3,
+    placeholder: "The one or two things you would tell her on the phone." },
+
+  { section: "The whole story", note: "Optional, and the part people read most. Write as much or as little as you like." },
+  { name: "story", label: "Tell it properly", type: "textarea", rows: 12,
+    placeholder: "Start wherever you want — the morning you left, the moment you nearly did not go, what the first night was actually like." },
+  { name: "videoUrl", label: "A video, if you made one", type: "url",
+    placeholder: "YouTube, Instagram or Drive link — we embed the link, we do not host the file" },
+  { name: "photos", label: "Photos", type: "file", accept: "image/*", multiple: true,
+    help: "Yours only, and nobody else's face without their permission. Location data is stripped before anything is published." },
 
   { section: "Did anything go wrong?",
     note: "A page where nothing ever goes wrong is no use to anyone. If it involved harassment or assault, please do not write it here — use the private route at the bottom instead, and it will never be published." },
@@ -98,6 +115,18 @@ function fieldHtml(f, draft) {
   const v = draft[f.name];
   const id = "f-" + f.name;
   const req = f.required ? ' <span class="req" aria-hidden="true">required</span>' : "";
+  const help = f.help ? `<p class="field__help" id="${id}-help">${esc(f.help)}</p>` : "";
+
+  if (f.type === "file") {
+    // Photos cannot go in the draft (a File is not JSON) and there is nowhere
+    // to upload them until an endpoint exists, so they are held in the page
+    // and named at the end rather than silently dropped.
+    return `<div class="field"><label for="${id}">${esc(f.label)}${req}</label>
+      <input type="file" id="${id}" name="${esc(f.name)}"
+        ${f.accept ? `accept="${esc(f.accept)}"` : ""} ${f.multiple ? "multiple" : ""}
+        ${f.help ? `aria-describedby="${id}-help"` : ""}>
+      ${help}<p class="field__files" data-files-for="${esc(f.name)}"></p></div>`;
+  }
 
   if (f.type === "radio" || f.type === "checkbox" || f.type === "consentCheck") {
     const type = f.type === "checkbox" ? "checkbox" : f.type === "consentCheck" ? "checkbox" : "radio";
@@ -116,7 +145,7 @@ function fieldHtml(f, draft) {
   if (f.type === "textarea") {
     return `<div class="field"><label for="${id}">${esc(f.label)}${req}</label>
       <textarea id="${id}" name="${esc(f.name)}" rows="${f.rows || 3}"
-        ${f.placeholder ? `placeholder="${esc(f.placeholder)}"` : ""}>${esc(v || "")}</textarea></div>`;
+        ${f.placeholder ? `placeholder="${esc(f.placeholder)}"` : ""}>${esc(v || "")}</textarea>${help}</div>`;
   }
   const attrs = [
     `type="${esc(f.type)}"`, `id="${id}"`, `name="${esc(f.name)}"`,
@@ -126,7 +155,7 @@ function fieldHtml(f, draft) {
     f.required ? "required" : ""
   ].filter(Boolean).join(" ");
   return `<div class="field"><label for="${id}">${esc(f.label)}${f.prefix ? ` (${esc(f.prefix)})` : ""}${req}</label>
-    <input ${attrs}></div>`;
+    <input ${attrs}>${help}</div>`;
 }
 
 function collect(form) {
@@ -139,6 +168,10 @@ function collect(form) {
     } else if (f.type === "radio") {
       const on = form.querySelector(`[name="${CSS.escape(f.name)}"]:checked`);
       if (on) out[f.name] = on.value;
+    } else if (f.type === "file") {
+      const el = form.elements[f.name];
+      const names = el && el.files ? [...el.files].map(x => x.name) : [];
+      if (names.length) out[f.name] = names;
     } else {
       const el = form.elements[f.name];
       if (el && el.value !== "") out[f.name] = el.value;
@@ -164,11 +197,22 @@ if (form && host) {
     : fieldHtml(f, draft)).join("");
 
   const status = document.getElementById("trip-form-status");
+  form.addEventListener("change", (e) => {
+    if (e.target.type !== "file") return;
+    const out = form.querySelector(`[data-files-for="${CSS.escape(e.target.name)}"]`);
+    const n = e.target.files ? e.target.files.length : 0;
+    if (out) out.textContent = n
+      ? `${n} photo${n === 1 ? "" : "s"} chosen: ${[...e.target.files].map(f => f.name).join(", ")}`
+      : "";
+  });
+
   let saveTimer;
   form.addEventListener("input", () => {
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
-      writeDraft(collect(form));
+      const d = collect(form);
+      delete d.photos;                       // a File list is not JSON
+      writeDraft(d);
       status.textContent = "Draft saved on this device.";
     }, 600);
   });
@@ -201,8 +245,11 @@ if (form && host) {
       status.innerHTML = "";
       const box = document.createElement("div");
       box.className = "disclosure";
+      const photoNote = (data.photos || []).length
+        ? ` Attach your ${data.photos.length} photo${data.photos.length === 1 ? "" : "s"} to the same email.`
+        : "";
       box.innerHTML = `<span><strong>Submissions are not connected yet.</strong> Your story is below and
-        saved on this device. Copy it and send it to us, and it goes up within 12 hours.</span>`;
+        saved on this device. Copy it and send it to us, and it goes up within 12 hours.${esc(photoNote)}</span>`;
       const ta = document.createElement("textarea");
       ta.rows = 12; ta.readOnly = true; ta.value = asText(data); ta.className = "trip-form__out";
       const copy = document.createElement("button");

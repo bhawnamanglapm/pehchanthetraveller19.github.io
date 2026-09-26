@@ -721,3 +721,12 @@ table.data tr:last-child td { border-bottom: 0; }
 .trip-form fieldset.field { border: 0; padding: 0; margin: 0 0 var(--s-4); }
 .trip-form fieldset.field legend { font-weight: 600; font-size: var(--t-sm); padding: 0; }
 .trip-form__out { width: 100%; margin: var(--s-4) 0; font-size: var(--t-sm); }
+.field__help { margin: var(--s-2) 0 0; font-size: var(--t-xs); color: var(--muted); }
+.field__files { margin: var(--s-2) 0 0; font-size: var(--t-xs); color: var(--accent); }
+.trip-report__advice {
+  margin-top: var(--s-4); padding: var(--s-4);
+  background: var(--accent-soft); color: var(--accent-ink);
+  border-radius: var(--r-sm, 4px); font-size: var(--t-sm);
+}
+.trip-report__advice p { margin: var(--s-2) 0 0; }
+.trip-report__video { margin: var(--s-3) 0 0; font-size: var(--t-sm); }

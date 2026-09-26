@@ -1078,6 +1078,13 @@ function reportCard(r) {
     <p><strong>Her advice:</strong> ${esc(r.wentWrong.adviceToOthers)}</p>
   </div>` : ""}
 
+  ${r.advice ? `<div class="trip-report__advice">
+    <span class="eyebrow">Her advice to the next woman</span>
+    <p>${esc(r.advice)}</p>
+  </div>` : ""}
+
+  ${r.videoUrl ? `<p class="trip-report__video"><a href="${esc(r.videoUrl)}" rel="noopener">Watch her video</a></p>` : ""}
+
   ${(r.couldDoAlone || []).length ? `<div class="trip-report__did">
     <span class="eyebrow">What she did alone</span>
     <ul>${list(r.couldDoAlone, (x) => `<li>${esc(x)}</li>`)}</ul>

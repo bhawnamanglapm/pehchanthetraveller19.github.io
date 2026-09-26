@@ -24,7 +24,10 @@
       "Local transport": 700,
       "Other": 300
     },
-    "changed": ["Destination was more expensive", "Added activities"],
+    "changed": [
+      "Destination was more expensive",
+      "Added activities"
+    ],
     "wishIKnew": "The bus drops you a long way from where the hotels actually are, and the last stretch is a shared auto that fills up slowly. I would have booked the train and arranged a pickup.",
     "bestSurprise": "How ordinary it felt by the second morning.",
     "disappointment": "The riverside café everyone photographs is five minutes of view and an hour of queue.",
@@ -35,11 +38,32 @@
       "resolved": true,
       "adviceToOthers": "Book arrival before 5pm. If you are running late, wait somewhere staffed rather than solving it on the street."
     },
-    "couldDoAlone": ["Took a train alone", "Checked into hotel alone", "Ate alone", "Went sightseeing alone", "Navigated an unfamiliar city"],
+    "couldDoAlone": [
+      "Took a train alone",
+      "Checked into hotel alone",
+      "Ate alone",
+      "Went sightseeing alone",
+      "Navigated an unfamiliar city"
+    ],
     "wouldReturn": "Absolutely",
-    "suitableFor": ["First-time solo travellers", "Budget travellers", "Women looking for a short break"],
-    "packingUsed": ["Power bank", "Comfortable shoes", "Scarf", "Offline maps", "Cash"],
-    "packingUnused": ["Heavy jacket", "Extra shoes"]
+    "suitableFor": [
+      "First-time solo travellers",
+      "Budget travellers",
+      "Women looking for a short break"
+    ],
+    "packingUsed": [
+      "Power bank",
+      "Comfortable shoes",
+      "Scarf",
+      "Offline maps",
+      "Cash"
+    ],
+    "packingUnused": [
+      "Heavy jacket",
+      "Extra shoes"
+    ],
+    "advice": "Book the train, not the bus, and tell the hotel your arrival time so somebody is expecting you. That one message changed the whole trip for me.",
+    "videoUrl": null
   },
   {
     "id": "sample-2",
@@ -66,16 +90,39 @@
       "Local transport": 1400,
       "Other": 0
     },
-    "changed": ["Found something better locally", "Changed accommodation"],
+    "changed": [
+      "Found something better locally",
+      "Changed accommodation"
+    ],
     "wishIKnew": "North and south are two different holidays. I booked north because it is what comes up first, moved south on day two, and wished I had started there.",
     "bestSurprise": "Renting a scooter turned the whole trip around. I had been avoiding it for years.",
     "disappointment": "Nothing much. The first hotel was on a road with no footpath, which I would not book again.",
     "wentWrong": null,
-    "couldDoAlone": ["Took a flight alone", "Used local transport", "Checked into hotel alone", "Ate alone", "Met strangers", "Handled a problem alone"],
+    "couldDoAlone": [
+      "Took a flight alone",
+      "Used local transport",
+      "Checked into hotel alone",
+      "Ate alone",
+      "Met strangers",
+      "Handled a problem alone"
+    ],
     "wouldReturn": "Absolutely",
-    "suitableFor": ["Experienced solo travellers", "Social travellers", "Slow travellers"],
-    "packingUsed": ["Comfortable shoes", "Offline maps", "Medicine", "Cash"],
-    "packingUnused": ["Formal clothes"]
+    "suitableFor": [
+      "Experienced solo travellers",
+      "Social travellers",
+      "Slow travellers"
+    ],
+    "packingUsed": [
+      "Comfortable shoes",
+      "Offline maps",
+      "Medicine",
+      "Cash"
+    ],
+    "packingUnused": [
+      "Formal clothes"
+    ],
+    "advice": "Go south. And rent the scooter on day one rather than talking yourself out of it all week.",
+    "videoUrl": null
   },
   {
     "id": "sample-3",
@@ -102,7 +149,9 @@
       "Local transport": 800,
       "Other": 0
     },
-    "changed": ["Transport delay"],
+    "changed": [
+      "Transport delay"
+    ],
     "wishIKnew": "That going very early is not only about the crowd. It is quiet, and being there alone at that hour felt completely different from the afternoon.",
     "bestSurprise": "Nobody treated a woman on her own as unusual. I had braced for that and it did not come.",
     "disappointment": "I booked too close and spent more on the room than I needed to.",
@@ -113,10 +162,29 @@
       "resolved": true,
       "adviceToOthers": "Screenshot every confirmation. Do not rely on the email loading when you need it."
     },
-    "couldDoAlone": ["Took a train alone", "Checked into hotel alone", "Ate alone", "Went sightseeing alone", "Handled a problem alone"],
+    "couldDoAlone": [
+      "Took a train alone",
+      "Checked into hotel alone",
+      "Ate alone",
+      "Went sightseeing alone",
+      "Handled a problem alone"
+    ],
     "wouldReturn": "Probably",
-    "suitableFor": ["First-time solo travellers", "Women travelling on a budget", "Women looking for a short break"],
-    "packingUsed": ["Scarf", "Comfortable shoes", "Cash", "Medicine"],
-    "packingUnused": ["Power bank"]
+    "suitableFor": [
+      "First-time solo travellers",
+      "Women travelling on a budget",
+      "Women looking for a short break"
+    ],
+    "packingUsed": [
+      "Scarf",
+      "Comfortable shoes",
+      "Cash",
+      "Medicine"
+    ],
+    "packingUnused": [
+      "Power bank"
+    ],
+    "advice": "Go at 5am. Screenshot everything. And do not book the expensive room out of nervousness — the ordinary one was fine.",
+    "videoUrl": null
   }
 ]
