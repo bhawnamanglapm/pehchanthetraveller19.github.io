@@ -1153,7 +1153,8 @@ ${real.length === 0 ? `
 
 export function shareTripPage(g) {
   const sla = g.site.tripReports.reviewSlaHours;
-  const live = Boolean(g.site.tripReports.submissionEndpoint);
+  const tr = g.site.tripReports;
+  const live = Boolean(tr.submissionEndpoint || (tr.googleForm && tr.googleForm.actionUrl));
 
   const body = `
 ${pageHero("Share your trip", "Tell the next woman what it was really like",
@@ -1171,7 +1172,10 @@ ${crumbs({ label: "Real trips", href: "/trips/" }, { label: "Share your trip" })
 </div></section>
 
 <section class="section section--tight"><div class="wrap wrap--narrow">
-  <form class="trip-form" id="trip-form" novalidate data-endpoint="${esc(g.site.tripReports.submissionEndpoint || "")}">
+  <form class="trip-form" id="trip-form" novalidate data-endpoint="${esc(tr.submissionEndpoint || "")}"
+    data-gform="${esc((tr.googleForm && tr.googleForm.actionUrl) || "")}"
+    data-gmap="${esc(JSON.stringify((tr.googleForm && tr.googleForm.fields) || {}))}"
+    data-gfallback="${esc(tr.fallbackField || "")}">
     <div id="trip-form-fields"></div>
     <div class="btn-row">
       <button class="btn btn--primary" type="submit">Submit my trip</button>

@@ -243,6 +243,41 @@ if (form && host) {
       return;
     }
 
+    // Preferred free backend: post straight into a Google Form, whose linked
+    // Sheet is both the database and the review queue, and which never sleeps.
+    const gform = form.dataset.gform;
+    if (gform) {
+      const map = JSON.parse(form.dataset.gmap || "{}");
+      const fallbackId = form.dataset.gfallback;
+      const body = new FormData();
+      const spill = [];
+      for (const [k, v] of Object.entries(data)) {
+        if (k === "photos") continue;                       // uploads need sign-in; sent by email
+        const val = [].concat(v).join("; ");
+        if (map[k]) body.append(map[k], val);
+        else spill.push(`${k}: ${val}`);
+      }
+      if (fallbackId && spill.length) body.append(fallbackId, spill.join("\n\n"));
+
+      try {
+        // Google refuses cross-origin reads, so the response is opaque: we can
+        // confirm it was sent, never that it landed. The copy is honest about
+        // that and the draft is kept rather than cleared on a guess.
+        await fetch(gform, { method: "POST", mode: "no-cors", body });
+        const photoLine = (data.photos || []).length
+          ? ` Email your ${data.photos.length} photo${data.photos.length === 1 ? "" : "s"} to us separately — the form cannot carry them.`
+          : "";
+        form.innerHTML = `<div class="disclosure"><span><strong>Sent — thank you.</strong>
+          A person reads it next and it goes up within 12 hours.${esc(photoLine)}
+          We cannot get a delivery receipt back from Google, so your draft is still saved on this
+          device: if you have not heard from us in 12 hours, please email it instead.</span></div>`;
+        return;
+      } catch {
+        status.textContent = "That did not send. Your draft is saved — please try again in a moment.";
+        return;
+      }
+    }
+
     const endpoint = form.dataset.endpoint;
     if (!endpoint) {
       // No backend yet. Never lose what she wrote: show it and let her copy it.

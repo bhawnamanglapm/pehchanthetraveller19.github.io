@@ -103,6 +103,14 @@
     "submissionEndpointNote": "Set to a form-handling URL (Formspree, Basin, or your own API) that accepts a POST of JSON. Until it is set, the share form saves a draft in the browser and offers the text for the traveller to send by email, rather than silently losing what she wrote.",
     "reviewSlaHours": 12,
     "reviewSlaNote": "Published within this many hours of submission. This is a promise a person keeps, not something the software enforces — see docs/12.",
-    "moderationEmail": "pehchanthetraveller@gmail.com"
+    "moderationEmail": "pehchanthetraveller@gmail.com",
+    "googleForm": {
+      "actionUrl": null,
+      "actionUrlNote": "The Google Form's POST target: https://docs.google.com/forms/d/e/<FORM_ID>/formResponse. Free, never pauses, and the linked Sheet is both the database and the review queue. Setup in docs/14.",
+      "fields": {},
+      "fieldsNote": "Maps our field names to the Google Form's entry IDs, e.g. {\"destination\": \"entry.123456789\"}. Get them from the form's pre-filled link. Unmapped fields are appended to the story field so nothing she writes is lost."
+    },
+    "fallbackField": null,
+    "fallbackFieldNote": "Entry ID of one long-answer Google Form question that collects any fields with no mapping of their own. Strongly recommended — without it, unmapped answers are dropped."
   }
 }
