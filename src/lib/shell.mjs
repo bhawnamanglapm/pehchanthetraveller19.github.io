@@ -3,45 +3,46 @@ import { art } from "./art.mjs";
 
 /** Nav model — one source of truth for masthead, drawer and footer. */
 export function navModel(g) {
-  const { site, regions, taxonomies, itineraries } = g;
+  const { taxonomies } = g;
   return [
-    // Two separate trees in the nav, so each grows without crowding the other.
-    { label: "India", href: "/india/", columns: [
-      { title: "By region", links: g.indiaRegions.map(r => ({ label: r.name, href: r.url })) },
-      { title: "By state", links: g.indiaRegions.flatMap(r => r.countries).filter(c => c.destinations.length).slice(0, 8).map(c => ({ label: c.name, href: c.url })) },
-      ...(g.indiaDestinations.length ? [{ title: "Guides", links: g.indiaDestinations.slice(0, 6).map(d => ({ label: d.name, href: d.url })) }] : [])
-    ]},
-    { label: "International", href: "/international/", columns: [
-      { title: "By region", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })) },
-      { title: "Guides", links: g.intlDestinations.slice(0, 8).map(d => ({ label: d.name, href: d.url })) },
-      { title: "Collections", links: taxonomies.collections.filter(c => c.type === "landscape" && c.total).slice(0, 5).map(c => ({ label: c.title, href: c.url })) }
-    ]},
-    { label: "Stay", href: "/stay/", columns: [
-      { title: "By type", links: taxonomies.stayCategories.filter(c => c.hotels_.length).slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
-      { title: "By traveller", links: taxonomies.stayCategories.filter(c => c.hotels_.length).slice(6).map(c => ({ label: c.name, href: c.url })) },
-      { title: "Featured stays", links: g.hotels.slice(0, 5).map(h => ({ label: h.name, href: h.url })) }
-    ]},
-    { label: "Experiences", href: "/experiences/", columns: [
-      { title: "By interest", links: taxonomies.experienceCategories.filter(c => c.experiences_.length).slice(0, 7).map(c => ({ label: c.name, href: c.url })) },
-      { title: "More", links: taxonomies.experienceCategories.filter(c => c.experiences_.length).slice(7).map(c => ({ label: c.name, href: c.url })) }
-    ]},
-    { label: "Journeys", href: "/journeys/", columns: [
-      { title: "Curated itineraries", links: itineraries.slice(0, 6).map(i => ({ label: i.title, href: i.url })) },
-      { title: "By trip length", links: taxonomies.collections.filter(c => c.type === "length" && c.total).map(c => ({ label: c.title, href: c.url })) }
-    ]},
-    { label: "Stories", href: "/stories/", columns: [
-      { title: "Categories", links: taxonomies.storyCategories.filter(c => c.stories_.length).slice(0, 6).map(c => ({ label: c.name, href: c.url })) },
-      { title: "Latest", links: g.stories.slice(0, 5).map(s => ({ label: s.title, href: s.url })) }
-    ]},
-    { label: "Plan", href: "/plan/", columns: [
-      { title: "Plan a trip", links: [
-        { label: "AI Trip Planner", href: "/plan/" },
-        { label: "Travel Tools", href: "/tools/" },
-        { label: "Travel Guides", href: "/guides/" },
-        { label: "Collections", href: "/collections/" },
-        { label: "Travel Deals", href: "/deals/" }
+    // Five, not thirteen. Every item leads somewhere with something on it.
+    { label: "Profile", href: "/profile/", columns: [
+      { title: "Work out your trip", links: [
+        { label: "Solo Travel Profile", href: "/profile/" },
+        { label: "Share with Family", href: "/family/" },
+        { label: "Safety", href: "/safety/" }
       ]},
-      { title: "Free tools", links: taxonomies.tools.filter(t => t.phase === "mvp").slice(0, 6).map(t => ({ label: t.name, href: t.redirect || `/tools/${t.slug}/` })) }
+      { title: "Free tools", links: taxonomies.tools.filter(t => !t.redirect)
+        .map(t => ({ label: t.name, href: `/tools/${t.slug}/` })) }
+    ]},
+    { label: "Destinations", href: "/india/", columns: [
+      { title: "India", links: g.indiaRegions.map(r => ({ label: r.name, href: r.url })) },
+      { title: "International", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })) },
+      { title: "All", links: [
+        { label: "All of India", href: "/india/" },
+        { label: "All international", href: "/international/" }
+      ]}
+    ]},
+    { label: "Real Trips", href: "/trips/", columns: [
+      { title: "What actually happened", links: [
+        { label: "Read trip reports", href: "/trips/" },
+        { label: "Share your trip", href: "/trips/share/" }
+      ]},
+      { title: "Research", links: [
+        { label: "Women & Travel", href: "/women-and-travel/" }
+      ]}
+    ]},
+    { label: "Local", href: "/local/", columns: [
+      { title: "Women-run services", links: [
+        { label: "Browse Pehchan Local", href: "/local/" },
+        { label: "List your business", href: "/local/join/" }
+      ]}
+    ]},
+    { label: "Safety", href: "/safety/", columns: [
+      { title: "Before, during, after", links: [
+        { label: "Safety by journey", href: "/safety/" },
+        { label: "Report something", href: "/report/" }
+      ]}
     ]}
   ];
 }
@@ -53,12 +54,6 @@ function masthead(g) {
     <a class="wordmark" href="/">${esc(g.site.wordmark)}<small>${esc(g.site.descriptor)}</small></a>
     <nav class="nav" aria-label="Primary">
       ${list(nav, (item, i) => `<button class="nav__link" type="button" aria-expanded="false" aria-controls="mega-${i}" data-mega="${i}">${esc(item.label)}</button>`)}
-      <a class="nav__link" href="/profile/">Solo Travel Profile</a>
-      <a class="nav__link" href="/trips/">Real Trips</a>
-      <a class="nav__link" href="/family/">Share with Family</a>
-      <a class="nav__link" href="/local/">Local</a>
-      <a class="nav__link" href="/safety/">Safety</a>
-      <a class="nav__link" href="/partner/">Partner</a>
     </nav>
     <div class="masthead__actions">
       <button class="icon-btn" type="button" data-search-open aria-label="Search the site">
@@ -82,12 +77,6 @@ function masthead(g) {
       <li><a href="${esc(item.href)}"><strong>All ${esc(item.label.toLowerCase())}</strong></a></li>
       ${list(item.columns.flatMap(c => c.links), (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}
     </ul></details>`)}
-    <a class="drawer__flat" href="/profile/">Solo Travel Profile</a>
-    <a class="drawer__flat" href="/trips/">Real Trips</a>
-    <a class="drawer__flat" href="/trips/share/">Share Your Trip</a>
-    <a class="drawer__flat" href="/family/">Share with Family</a>
-    <a class="drawer__flat" href="/local/">Pehchan Local</a>
-    <a class="drawer__flat" href="/safety/">Safety</a>
     <a class="drawer__flat" href="/report/">Report something</a>
     <a class="drawer__flat" href="/women-and-travel/">Women &amp; Travel</a>
     <a class="drawer__flat" href="/partner/">Partner With Us</a>
@@ -102,27 +91,25 @@ function footer(g) {
   const cols = [
     { title: "India", links: g.indiaRegions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All of India", href: "/india/" }]) },
     { title: "International", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All international", href: "/international/" }]) },
-    { title: "Discover", links: [
-      { label: "Stay", href: "/stay/" }, { label: "Experiences", href: "/experiences/" },
-      { label: "Curated Journeys", href: "/journeys/" }, { label: "Travel Guides", href: "/guides/" },
-      { label: "Collections", href: "/collections/" }, { label: "Travel Stories", href: "/stories/" }
-    ]},
-    { title: "Plan", links: [
+    { title: "Plan your trip", links: [
       { label: "Solo Travel Profile", href: "/profile/" },
-      { label: "Real Trips", href: "/trips/" },
       { label: "Share with Family", href: "/family/" },
-      { label: "Pehchan Local", href: "/local/" },
       { label: "Safety", href: "/safety/" },
-      { label: "Report something", href: "/report/" },
+      { label: "Travel Tools", href: "/tools/" },
+      { label: "Search", href: "/search/" }
+    ]},
+    { title: "From other women", links: [
+      { label: "Real Trips", href: "/trips/" },
       { label: "Share Your Trip", href: "/trips/share/" },
-      { label: "AI Trip Planner", href: "/plan/" }, { label: "Travel Tools", href: "/tools/" },
-      { label: "Travel Deals", href: "/deals/" }, { label: "Search", href: "/search/" },
-      { label: site.newsletterName, href: "/newsletter/" }
+      { label: "Pehchan Local", href: "/local/" },
+      { label: "List your business", href: "/local/join/" },
+      { label: "Report something", href: "/report/" }
     ]},
     { title: "Company", links: [
-      { label: "About", href: "/about/" }, { label: "Partner With Us", href: "/partner/" },
+      { label: "About", href: "/about/" },
       { label: "Women & Travel", href: "/women-and-travel/" },
-      { label: "Contact", href: "/contact/" }, { label: "Business Dashboard", href: "/dashboard/" }
+      { label: "Partner With Us", href: "/partner/" },
+      { label: "Contact", href: "/contact/" }
     ]},
     { title: "Trust", links: [
       { label: "Editorial Standards", href: "/legal/editorial-standards/" },
@@ -138,7 +125,7 @@ function footer(g) {
       <div class="footer__brand">
         <span class="wordmark">${esc(site.wordmark)}<small>${esc(site.descriptor)}</small></span>
         <p>${esc(site.promise)}</p>
-        <p style="margin-top:var(--s-4)"><a href="/newsletter/" class="link-more" style="color:#fff">Join ${esc(site.newsletterName)}</a></p>
+        <p style="margin-top:var(--s-4)"><a href="/profile/" class="link-more" style="color:#fff">Work out what kind of traveller you are</a></p>
       </div>
       ${list(cols, (c) => `<div><h3>${esc(c.title)}</h3><ul>${list(c.links, (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}</ul></div>`)}
     </div>

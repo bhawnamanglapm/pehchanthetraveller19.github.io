@@ -276,7 +276,7 @@ const PHASE2_PANEL = (t) => `
   shipping as a guess.</p>
   <div class="btn-row" style="margin-top:var(--s-5)">
     <a class="btn btn--ghost btn--sm" href="/tools/">Tools that are live</a>
-    <a class="btn btn--ghost btn--sm" href="/plan/">Use the trip planner</a>
+    <a class="btn btn--ghost btn--sm" href="/profile/">Build your profile</a>
   </div>
 </div>`;
 
@@ -333,7 +333,7 @@ ${related.length ? `<section class="section section--tight"><div class="wrap">
 </div></section>` : ""}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
-    { href: "/plan/", title: "Plan the trip", desc: "Turn the numbers into a day-by-day itinerary." },
+    { href: "/family/", title: "Show your family", desc: "Turn the numbers into a plan they can read." },
     { href: "/india/", title: "Pick a destination", desc: "India by region, or travel international." },
     { href: "/tools/", title: "Other tools", desc: "Budget, packing, visas, comparison and more." }
   ]})}</div></section>`;
@@ -486,7 +486,7 @@ ${crumbs({ label: "About" })}
       sample content and what is verified.</p>
       <h2>Where this goes</h2>
       <p>Booking partnerships and affiliate integrations, then user accounts and saved trips, then premium trip planning
-      and direct hotel partnerships. The <a href="/dashboard/">business dashboard</a> shows the metrics we intend to run
+      and direct hotel partnerships. We intend to run
       the company on, and the roadmap is public in the repository that builds this site.</p>
     </div>
     <div class="stack">
@@ -505,7 +505,7 @@ ${crumbs({ label: "About" })}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Start somewhere", steps: [
     { href: "/india/", title: "Explore India", desc: "Six regions, from the Himalaya to the coast." },
-    { href: "/plan/", title: "Plan a trip", desc: "The trip planner, in about a minute." },
+    { href: "/profile/", title: "Work out what suits you", desc: "Twelve questions, and the trip that fits." },
     { href: "/partner/", title: "Work with us", desc: "Hotels, tourism boards and travel brands." }
   ]})}</div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "about")}</div></section>`;
@@ -882,9 +882,9 @@ ${pageHero("404", "That page does not exist",
   <div class="grid grid--4">
     ${list([
       ["India", "/india/", "Six regions, from the Himalaya to the coast."],
-      ["Where to stay", "/stay/", "Boutique houses, lodges and camps."],
-      ["Experiences", "/experiences/", "The reason you went."],
-      ["AI Trip Planner", "/plan/", "A day-by-day plan in about a minute."]
+      ["Solo Travel Profile", "/profile/", "What kind of traveller are you?"],
+      ["Real trips", "/trips/", "What actually happened, from women who went."],
+      ["Safety", "/safety/", "Before you go, while you are away, and after."]
     ], ([t, h, d]) => `<article class="card"><div class="card__body">
       <h3 class="card__title" style="font-size:var(--t-md)"><a class="card__link" href="${esc(h)}">${esc(t)}</a></h3>
       <p class="card__desc">${esc(d)}</p></div></article>`)}

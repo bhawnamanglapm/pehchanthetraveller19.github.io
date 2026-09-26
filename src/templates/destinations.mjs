@@ -60,8 +60,8 @@ ${drafts.length ? `<section class="section section--tight"><div class="wrap">
     { href: scope === "india" ? "/international/" : "/india/",
       title: scope === "india" ? "Travel international" : "Travel in India",
       desc: scope === "india" ? "Asia, the Gulf and beyond." : "Six regions, from the Himalaya to the coast." },
-    { href: "/plan/", title: "Plan a trip", desc: "A day-by-day itinerary in about a minute." },
-    { href: "/stories/", title: "Read the stories", desc: "The writing behind the guides." }
+    { href: "/profile/", title: "Work out what suits you", desc: "Twelve questions, and the shape of a trip that fits." },
+    { href: "/trips/", title: "Read real trips", desc: "What actually happened, from the women who went." }
   ]})}</div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, template)}</div></section>`;
   return {
@@ -150,9 +150,9 @@ ${drafts.length ? `<section class="section section--tight"><div class="wrap">
   title: "Keep going",
   intro: `Everything in ${r.name} connects — guides to stays, stays to experiences, experiences to a plan.`,
   steps: [
-    { href: "/stay/", title: "Find a stay", desc: "Boutique houses, lodges and camps across the region." },
-    { href: "/experiences/", title: "Explore experiences", desc: "Guided by the people who live there." },
-    { href: "/plan/", title: "Build an itinerary", desc: "Turn a shortlist into a day-by-day trip." }
+    { href: "/local/", title: "Women-run services", desc: "Guides, drivers and hosts, each one checked." },
+    { href: "/safety/", title: "Get ready to go", desc: "The checklist, the reminders, the numbers." },
+    { href: "/family/", title: "Bring your family with you", desc: "A plan they can read, keep and act on." }
   ]})}</div></section>`;
   return {
     url: r.url, template: "region", title: fitTitle([`${r.name} Travel Guide`, "Destinations, Stays & Journeys", "Pehchan"]),
@@ -199,7 +199,7 @@ ${c.draftDestinations.length ? `<section class="section section--tinted"><div cl
   </div>
 </div></section>
 ${c.publishedDestinations.some(d => d.hotels.length) ? `<section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "Stay", title: `Places to stay in ${c.name}`, link: { href: "/stay/", label: "All stays" } })}
+  ${sectionHead({ eyebrow: "Stay", title: `Places to stay in ${c.name}` })}
   <div class="grid grid--4">
     ${list(c.publishedDestinations.flatMap(d => d.hotels).slice(0, 8), (h) => card({ href: h.url, title: h.name, kicker: h.destination_.name,
       desc: h.kicker, entity: h, ratio: "4x3", badges: h.sample ? ["sample"] : [], footLeft: priceBand(h.priceBand) }))}
@@ -229,7 +229,7 @@ export function destinationPage(d, g) {
     <p class="hero__sub">${esc(d.summary)}</p>
     <div class="btn-row" style="margin-top:var(--s-3)">
       <a class="btn btn--light" href="#stay">Where to stay</a>
-      <a class="btn btn--ghost" style="border-color:rgba(255,255,255,.5);color:#fff" href="/plan/?destination=${esc(d.slug)}" data-track="cta_plan_destination" data-track-label="${esc(d.name)}">Build this trip</a>
+      <a class="btn btn--ghost" style="border-color:rgba(255,255,255,.5);color:#fff" href="/profile/" data-track="cta_profile_destination" data-track-label="${esc(d.name)}">Can I do this?</a>
     </div>
   </div>
 </section>
@@ -262,7 +262,7 @@ ${sec("why-visit", "", `<div class="grid grid--asym">
   <h2>Where to stay</h2><p>${esc(d.whereToStay)}</p></div>
   <aside class="stack" style="position:sticky;top:calc(var(--header-h) + 24px)">
     <div class="booking"><div class="booking__head"><h3>Plan ${esc(d.name)}</h3></div>
-      <a class="btn btn--primary btn--block" href="/plan/?destination=${esc(d.slug)}" data-track="cta_plan_destination">Build this trip</a>
+      <a class="btn btn--primary btn--block" href="/profile/" data-track="cta_profile_destination">Can I do this?</a>
       <a class="btn btn--ghost btn--block" href="#stay">See ${d.hotels.length} stays</a>
       <a class="btn btn--ghost btn--block" href="#experiences">See ${d.experiences.length} experiences</a>
       <p class="affiliate-note">Booking links on this page may earn us a commission at no cost to you.
@@ -283,13 +283,13 @@ ${sec("things-to-do", "", `<div class="prose" style="max-width:none">
   </div></div>`)}
 
 ${d.experiences.length ? `<section class="section section--tinted" id="experiences"><div class="wrap">
-  ${sectionHead({ eyebrow: "Experiences", title: `Experiences in ${d.name}`, link: { href: "/experiences/", label: "All experiences" } })}
+  ${sectionHead({ eyebrow: "Experiences", title: `Experiences in ${d.name}` })}
   <div class="grid grid--3">${list(d.experiences, (e) => card({ href: e.url, title: e.name, kicker: e.categories[0].replace(/-/g, " "),
     desc: e.description, entity: e, ratio: "3x2", badges: e.sample ? ["sample"] : [], footLeft: esc(e.duration), footRight: esc(e.difficulty.split("—")[0]) }))}</div>
 </div></section>` : ""}
 
 ${d.hotels.length ? `<section class="section" id="stay"><div class="wrap">
-  ${sectionHead({ eyebrow: "Stay", title: `Where to stay in ${d.name}`, intro: d.whereToStay, link: { href: "/stay/", label: "All stays" } })}
+  ${sectionHead({ eyebrow: "Stay", title: `Where to stay in ${d.name}`, intro: d.whereToStay })}
   <div class="grid grid--3">${list(d.hotels, (h) => card({ href: h.url, title: h.name, kicker: h.kicker, desc: h.overview,
     entity: h, ratio: "3x2", badges: h.sample ? ["sample"] : [], footLeft: priceBand(h.priceBand), footRight: esc(g.taxonomies.stayCategories.find(c => c.slug === h.categories[0])?.name || "") }))}</div>
 </div></section>` : ""}
@@ -430,8 +430,8 @@ ${g.published.filter(o => o.scope === d.scope).length ? `<section class="section
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
     { href: d.region_.url, title: `More of ${d.region_.name}`, desc: "What else is covered in this region." },
-    { href: "/plan/", title: "Plan a trip", desc: "The trip planner works across everything published." },
-    { href: "/newsletter/", title: "Get told when it lands", desc: "One considered email a week." }
+    { href: "/profile/", title: "Work out what suits you", desc: "Twelve questions about how you actually feel." },
+    { href: "/trips/", title: "Read real trips", desc: "What actually happened, from women who went." }
   ]})}</div></section>`;
   return {
     url: d.url, template: "destination-draft", noindex: true,
