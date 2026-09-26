@@ -1386,3 +1386,58 @@ ${crumbs({ label: "Pehchan Local", href: "/local/" }, { label: "List your busine
                   { label: "List your business", href: "/local/join/" }]
   };
 }
+
+/* ===================== SAFETY BY JOURNEY =============================== */
+
+export function safetyPage(g) {
+  const body = `
+${pageHero("Safety", "Not a panic button",
+  "Good safety products already exist and we are not going to build a worse one. What is missing is the ordinary part: being prepared before you go, and making it one tap to tell your own people you are fine.")}
+${crumbs({ label: "Safety" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure disclosure--strong">
+    <div><strong>Pehchan is not an emergency service.</strong> Nobody here is watching a screen, and we
+    cannot send anyone to you. If you are in danger, call <a href="tel:112">112</a>. Everything on this
+    page runs on your phone and reaches the people <em>you</em> chose — that is the only promise we can
+    actually keep, so it is the only one we make.</div>
+  </div>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How this works", title: "Your phone, your people, no middle" })}
+  ${factList([
+    ["Nothing is sent to us", "The checklist, the numbers and the dates are saved in this browser. There is no account and no server holding any of it."],
+    ["Reminders come from your own calendar", "We make a file your phone fires by itself. A notification from us would imply somebody at this end is paying attention, and nobody is."],
+    ["The buttons open WhatsApp", "Pre-written to the person you named, so that telling her takes one tap instead of five. You still press send."],
+    ["Emergency means 112", "Not us. The red button says so, and puts the number in front of you."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="safety-app">
+    <noscript><p>This page needs JavaScript. If you are reading it without: tell two people your plan,
+    arrive in daylight, screenshot your bookings, and save 112.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "When you are back", title: "The part that helps the next woman" })}
+  <p>Two things worth doing when you get home. Tell people how it actually went — the cost against what
+  you expected, what you wish you had known — and if something went wrong, say so privately so it can
+  inform what other women are warned about.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="/trips/share/">Share your trip</a>
+    <a class="btn btn--ghost" href="/contact/">Report something privately</a>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/safety/", template: "safety",
+    title: fitTitle(["Safety", "Before, during and after", "Pehchan"]),
+    description: "A before-you-go checklist, check-in reminders your own phone fires, and one-tap messages to your own people. Not a panic button, and not a monitoring service.",
+    body, ogArt: "default",
+    scripts: ["/assets/js/safety.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Safety", href: "/safety/" }]
+  };
+}

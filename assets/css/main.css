@@ -839,3 +839,38 @@ table.data tr:last-child td { border-bottom: 0; }
 .sig em { display: block; font-style: normal; color: var(--muted); font-size: var(--t-xs); margin-top: 2px; }
 .sig--stale .sig__mark { background: var(--bronze-soft); color: var(--bronze); border: 1px solid var(--bronze); }
 .sig--stale strong { color: var(--muted); }
+
+/* ===== Safety ============================================================ */
+
+.disclosure--strong {
+  border-left-width: 4px; border-left-color: var(--bronze);
+  background: var(--bronze-soft); font-size: var(--t-md);
+}
+.safety-block {
+  padding: var(--s-5); margin-bottom: var(--s-5);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md, 6px);
+}
+.safety-block h3 { font-family: var(--f-display); font-size: var(--t-lg); margin: 0 0 var(--s-2); }
+.safety-block > p.muted { margin: 0 0 var(--s-4); font-size: var(--t-sm); }
+.safety-block--urgent { border-color: var(--bronze); border-width: 2px; }
+.safety-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.safety-list .choice { align-items: flex-start; line-height: 1.5; }
+.safety-progress {
+  margin: var(--s-4) 0 0; padding-top: var(--s-3); border-top: 1px solid var(--line);
+  font-size: var(--t-sm); color: var(--accent); font-weight: 600;
+}
+.okay-row { display: grid; gap: var(--s-3); }
+.okay {
+  display: flex; align-items: center; gap: var(--s-3); flex-wrap: wrap;
+  padding: var(--s-4); border-radius: var(--r-sm, 4px); text-decoration: none;
+  border: 1px solid var(--line-strong); color: var(--ink); font-weight: 600;
+}
+.okay span { font-size: 1.3rem; line-height: 1; }
+.okay em {
+  flex-basis: 100%; font-style: normal; font-weight: 400;
+  font-size: var(--t-xs); color: var(--muted);
+}
+.okay--safe:hover { border-color: var(--accent); background: var(--accent-soft); }
+.okay--help:hover { border-color: var(--bronze); background: var(--bronze-soft); }
+.okay--sos { border-color: var(--bronze); border-width: 2px; }
+.okay--sos:hover { background: var(--bronze-soft); }

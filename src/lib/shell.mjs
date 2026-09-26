@@ -57,6 +57,7 @@ function masthead(g) {
       <a class="nav__link" href="/trips/">Real Trips</a>
       <a class="nav__link" href="/family/">Share with Family</a>
       <a class="nav__link" href="/local/">Local</a>
+      <a class="nav__link" href="/safety/">Safety</a>
       <a class="nav__link" href="/partner/">Partner</a>
     </nav>
     <div class="masthead__actions">
@@ -86,6 +87,7 @@ function masthead(g) {
     <a class="drawer__flat" href="/trips/share/">Share Your Trip</a>
     <a class="drawer__flat" href="/family/">Share with Family</a>
     <a class="drawer__flat" href="/local/">Pehchan Local</a>
+    <a class="drawer__flat" href="/safety/">Safety</a>
     <a class="drawer__flat" href="/women-and-travel/">Women &amp; Travel</a>
     <a class="drawer__flat" href="/partner/">Partner With Us</a>
     <a class="drawer__flat" href="/about/">About</a>
@@ -109,6 +111,7 @@ function footer(g) {
       { label: "Real Trips", href: "/trips/" },
       { label: "Share with Family", href: "/family/" },
       { label: "Pehchan Local", href: "/local/" },
+      { label: "Safety", href: "/safety/" },
       { label: "Share Your Trip", href: "/trips/share/" },
       { label: "AI Trip Planner", href: "/plan/" }, { label: "Travel Tools", href: "/tools/" },
       { label: "Travel Deals", href: "/deals/" }, { label: "Search", href: "/search/" },
