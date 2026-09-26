@@ -898,3 +898,615 @@ ${pageHero("404", "That page does not exist",
     description: "The page you were looking for does not exist.", body, noindex: true, ogArt: "404",
     breadcrumbs: [{ label: "Home", href: "/" }] };
 }
+
+/* ===================== WOMEN & TRAVEL RESEARCH ========================== */
+
+export function womenAndTravelPage(g) {
+  const FORM = "https://docs.google.com/forms/d/e/1FAIpQLSeyPQU29lfXT9xK4wh24XoBr5gygs0vQQEIW7-7hv48Cs--DA/viewform";
+  const cta = (label) => `<div class="btn-row">
+    <a class="btn btn--primary" href="${FORM}" target="_blank" rel="noopener"
+       data-track="research_form_click">${esc(label)}</a></div>`;
+
+  const body = `
+${pageHero("Research", "How do you really travel?",
+  "We are building a travel service for women, and we would rather ask than assume. This is the survey that decides what it becomes.",
+  cta("Take the survey"))}
+${crumbs({ label: "Women & Travel" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Your answers are anonymous.</strong> The survey asks nothing that identifies you.
+  The last question invites an email, Instagram handle or phone number so we can follow up with a longer
+  conversation — that field is optional, and leaving it blank changes nothing about the rest. Responses are read
+  only by us, are never sold or shared, and are used to decide what gets built. Some questions ask about
+  harassment and safety; skip anything you would rather not answer.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap">
+  ${sectionHead({ eyebrow: "Why this exists", title: "Most travel companies guess what women want",
+    intro: "They add a pink filter and call it a women's trip. Nobody asks about the conversation you have to have at home before you can go anywhere at all." })}
+  <div class="grid grid--3">
+    ${list([
+      ["The permission problem", "For a lot of women the first obstacle is not the booking. It is a parent, a partner or a family who needs convincing — and no travel company builds for that."],
+      ["Safety as a feature, not a slogan", "Verified drivers, female trip leads, live location, real emergency contacts. We want to know which of these actually matter to you and which are theatre."],
+      ["What you would pay for", "Whether a service built properly around this is worth paying more for, or whether price wins. There is no right answer and we are not assuming one."]
+    ], ([t, d]) => `<article class="card"><div class="card__body">
+      <h3 class="card__title" style="font-size:var(--t-md)">${esc(t)}</h3><p class="card__desc">${esc(d)}</p></div></article>`)}
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What it covers", title: "Ten to fifteen minutes, mostly tick-boxes" })}
+  ${factList([
+    ["How you travel now", "Frequency, who with, where you have been, whether you have gone alone"],
+    ["What you are comfortable with", "Overnight trains, hostels, remote places, renting a scooter, group tours with strangers"],
+    ["The conversation at home", "Who has a say in whether you go, what they worry about, what would reassure them"],
+    ["Safety", "Which measures would genuinely change your mind, and which would not"],
+    ["Money and planning", "What you spend, what you would pay more for, and which part of planning you hate most"],
+    ["Your ideal trip", "One you would book tomorrow, if it existed"]
+  ])}
+  ${cta("Start the survey")}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Who is asking", title: "Bhawna — Pehchan the Traveller" })}
+  <p>I have travelled across India and beyond — the Himalaya, the temple towns, Goa, Dubai, Thailand, Vietnam,
+  Malaysia, Nepal — sometimes alone and sometimes with people who needed a lot of persuading first. Pehchan means
+  identity, and the whole point of this is to build something around how women actually travel rather than how a
+  brochure says they do. I read every response myself.</p>
+  <div class="btn-row">
+    <a class="btn btn--ghost" href="${esc(g.site.social?.[0]?.href || "/contact/")}" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn btn--ghost" href="/about/">About Pehchan</a>
+  </div>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${faq([
+    { q: "Is it really anonymous?", a: "Yes. No question asks for your name, and the contact field at the end is optional. Leave it blank and we have no way of knowing who you are." },
+    { q: "How long does it take?", a: "Ten to fifteen minutes. Most of it is tick-boxes and rating scales; only a handful of questions ask you to write anything." },
+    { q: "What happens to my answers?", a: "They shape what gets built. Findings may be published as aggregate numbers and anonymised quotes — never with anything that identifies a respondent, and never sold or shared." },
+    { q: "Do I have to be a frequent traveller?", a: "No. If you rarely travel, or have never travelled alone, or are not allowed to, you are exactly who we most need to hear from." },
+    { q: "Can I talk to you properly instead?", a: "Yes — the last question asks if you are open to a longer conversation. Leave a way to reach you and we will get in touch." }
+  ])}
+  ${cta("Take the survey")}
+</div></section>`;
+
+  return {
+    url: "/women-and-travel/", template: "research",
+    title: fitTitle(["Women & Travel", "Research Survey", "Pehchan"]),
+    description: "A survey for women who travel, rarely travel, or are not allowed to. Ten minutes, anonymous, and it decides what we build.",
+    body, ogArt: "newsletter",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Women & Travel", href: "/women-and-travel/" }]
+  };
+}
+
+/* ===================== SOLO TRAVEL PROFILE ============================== */
+
+export function profilePage(g) {
+  const unprofiled = g.destinations.filter(d => !d.comfort).length;
+
+  const body = `
+${pageHero("Solo Travel Profile", "What kind of traveller are you?",
+  "Twelve questions about how you actually feel — not about where you want to go. What comes out is a profile of how you travel, and what to look for in a trip that will suit you.")}
+${crumbs({ label: "Solo Travel Profile" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>This stays on your device.</strong> The questions ask what you are and are not
+  comfortable with, which is personal. Your answers are saved in this browser and are never sent anywhere —
+  there is no account, and we cannot see them. You can delete the profile at any time from this page.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="profile-app">
+    <noscript><p>The profile needs JavaScript. Everything else on this site works without it.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What happens next", title: "How your profile gets used" })}
+  ${factList([
+    ["It describes you, not a score", "Twelve axes, each one a thing you might or might not want to deal with. No overall rating, because a number cannot tell you anything useful."],
+    ["Destinations are rated the same way", "Each place is scored on the same twelve — how much of each it demands. A match is a comparison, so it can tell you exactly which part of a trip would stretch you."],
+    ["It never says a place is safe", "No destination is safe or unsafe in the abstract. What we can tell you is which practical parts of a trip sit outside what you said you were comfortable with."],
+    ["It grows with you", "Answer again after a trip. The point is to watch the numbers move."]
+  ])}
+  ${unprofiled ? `<p class="engine-note" style="margin-top:1.5rem"><strong>Destination matching is not live yet.</strong>
+  ${unprofiled} destination${unprofiled === 1 ? " is" : "s are"} waiting to be rated, and each one is rated from
+  first-hand travel rather than from a description — the same rule as every guide on this site. Your profile
+  works today; the matches appear as destinations are profiled.</p>` : ""}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${faq([
+    { q: "Is there a right answer?", a: "No. The profile is only useful if it is honest — if you say you are fine with overnight buses when you are not, it will suggest trips you will not enjoy." },
+    { q: "Who can see my answers?", a: "Nobody. They are stored in this browser, on this device. They are not sent to a server, and there is no account to attach them to." },
+    { q: "Does a low score mean I cannot travel alone?", a: "No. It means a well-chosen first trip looks different from someone else's. Most people's numbers move quickly once they have gone once." },
+    { q: "Can I change my answers?", a: "Yes, any time — and you should, after a trip. That is the point of it." }
+  ])}
+</div></section>`;
+
+  return {
+    url: "/profile/", template: "profile",
+    title: fitTitle(["Solo Travel Profile", "What kind of traveller are you?", "Pehchan"]),
+    description: "Twelve questions about how you actually feel about travelling alone. Your answers stay on your device and shape what we suggest.",
+    body, ogArt: "planner",
+    scripts: ["/assets/js/profile.js"],
+    head: `<script type="application/json" id="comfort-model">${JSON.stringify({
+      axes: g.comfort.axes, tiers: g.comfort.tiers, preferences: g.comfort.preferences,
+      scale: g.comfort.scale, bookingRules: g.comfort.bookingRules,
+      about: g.comfort.about, tripShape: g.comfort.tripShape, aboutNotes: g.comfort.aboutNotes
+    })}</script>`,
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Solo Travel Profile", href: "/profile/" }]
+  };
+}
+
+/* ===================== TRIP REPORTS ==================================== */
+
+const CONFIDENCE = ["", "Very nervous", "Nervous", "Neutral", "Confident", "Very confident"];
+const rupees = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
+
+function reportCard(r) {
+  const moved = r.confidenceAfter - r.confidenceBefore;
+  return `<article class="trip-report${r.sample ? " trip-report--sample" : ""}">
+  ${r.sample ? `<p class="trip-report__sample">Sample — invented, for layout only. Not a real submission.</p>` : ""}
+  <div class="trip-report__head">
+    <div>
+      <h3 class="trip-report__dest">${esc(r.destination)}</h3>
+      <p class="trip-report__meta">${r.days} day${r.days === 1 ? "" : "s"} · from ${esc(r.startedFrom)}
+        · ${esc(r.travelledAs)}${r.firstSolo ? " · first solo trip" : ""}</p>
+    </div>
+    <span class="badge-verify badge-verify--${r.verified ? "yes" : "community"}">
+      ${r.verified ? "✓ Trip verified" : "Community experience"}</span>
+  </div>
+
+  ${moved > 0 ? `<p class="trip-report__growth">Went out feeling
+    <strong>${esc(CONFIDENCE[r.confidenceBefore].toLowerCase())}</strong> — came back
+    <strong>${esc(CONFIDENCE[r.confidenceAfter].toLowerCase())}</strong>.</p>` : ""}
+
+  <div class="trip-report__quote">
+    <span class="eyebrow">What I wish I knew before going</span>
+    <blockquote>${esc(r.wishIKnew)}</blockquote>
+  </div>
+
+  <dl class="trip-report__spend">
+    <div><dt>Planned</dt><dd>${rupees(r.plannedBudget)}</dd></div>
+    <div><dt>Actually spent</dt><dd class="${r.actualSpend > r.plannedBudget ? "over" : "under"}">${rupees(r.actualSpend)}</dd></div>
+  </dl>
+
+  ${r.wentWrong ? `<div class="trip-report__wrong">
+    <span class="eyebrow">Something went wrong — ${esc(r.wentWrong.category)}</span>
+    <p>${esc(r.wentWrong.what)}</p>
+    <p><strong>What she did:</strong> ${esc(r.wentWrong.whatIDid)}</p>
+    <p><strong>Her advice:</strong> ${esc(r.wentWrong.adviceToOthers)}</p>
+  </div>` : ""}
+
+  ${r.advice ? `<div class="trip-report__advice">
+    <span class="eyebrow">Her advice to the next woman</span>
+    <p>${esc(r.advice)}</p>
+  </div>` : ""}
+
+  ${r.videoUrl ? `<p class="trip-report__video"><a href="${esc(r.videoUrl)}" rel="noopener">Watch her video</a></p>` : ""}
+
+  ${(r.couldDoAlone || []).length ? `<div class="trip-report__did">
+    <span class="eyebrow">What she did alone</span>
+    <ul>${list(r.couldDoAlone, (x) => `<li>${esc(x)}</li>`)}</ul>
+  </div>` : ""}
+
+  <p class="trip-report__foot">Shared ${esc(r.visibility === "anonymous" ? "anonymously" : "publicly")}
+    · published ${esc(r.publishedOn)}</p>
+</article>`;
+}
+
+export function tripReportsPage(g) {
+  const reports = g.tripReports;
+  const real = reports.filter(r => !r.sample);
+  const sla = g.site.tripReports.reviewSlaHours;
+
+  const body = `
+${pageHero("Real trips", "What actually happened",
+  "Not reviews. Whole trips, written up by the women who took them — what it cost against what they expected, what went wrong, and what they wish they had known before they went.",
+  `<div class="btn-row" style="margin-top:var(--s-3)"><a class="btn btn--light" href="/trips/share/">Share your trip</a></div>`)}
+${crumbs({ label: "Real trips" })}
+
+${real.length === 0 ? `
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure">
+    <div><strong>No real trip reports yet.</strong> The cards below are invented samples, kept only so the
+    page has a shape while the first women write theirs. Every one of them is deleted the day a real report
+    is published — nothing invented stays on this site.</div>
+  </div>
+</div></section>` : ""}
+
+<section class="section section--tight"><div class="wrap">
+  <div class="stack-lg">${list(reports, reportCard)}</div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How this works", title: `Checked by a person, published within ${sla} hours` })}
+  ${factList([
+    ["You write it", "Whatever you are willing to share. Every field is optional except the destination and how long you went for."],
+    ["A person reads it", "Not an algorithm. We check it reads like somebody who actually went, and we look for anything that would identify you by accident."],
+    ["We check the evidence, then destroy it", `If you attach a booking or ticket, it earns a <strong>Trip verified</strong> mark. We confirm it and delete the file — we do not keep your documents.`],
+    ["It goes up within " + sla + " hours", "Or you hear back explaining why not. Nothing is published silently and nothing is edited beyond spelling without asking you."],
+    ["You can take it down", "Any time, no reason needed, and it is gone from the site the same day."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Your safety", title: "How your story is protected" })}
+  ${factList([
+    ["Anonymous by default", "Your name is never shown unless you specifically ask for it. Most women choose anonymous, and that is the default."],
+    ["We never publish exactly where you stayed", "Not with your dates. A property plus a date range plus a lone woman is an identification, so one of the three is always removed."],
+    ["Naming a business follows a separate route", "If something happened to you at a named hotel or with a named driver, that goes through a <a href=\"/report/\">private incident report</a> rather than a public post — so it can be checked and answered before anyone reads it."],
+    ["Harassment and assault are handled off the page", "Never published as a story. <a href=\"/report/\">Tell us privately</a> and it informs what we warn other women about, without your experience becoming public content."],
+    ["We hold as little as possible", "Verification documents are destroyed after checking. Contact details are separated from your story, and are only used to reach you about it."]
+  ])}
+  <div class="btn-row"><a class="btn btn--primary" href="/trips/share/">Share your trip</a></div>
+</div></section>`;
+
+  return {
+    url: "/trips/", template: "trips",
+    title: fitTitle(["Real Trips", "What actually happened", "Pehchan"]),
+    description: "Whole trips written up by the women who took them — real costs against planned, what went wrong, and what they wish they had known.",
+    body, ogArt: "stories",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Real trips", href: "/trips/" }]
+  };
+}
+
+export function shareTripPage(g) {
+  const sla = g.site.tripReports.reviewSlaHours;
+  const tr = g.site.tripReports;
+  const live = Boolean(tr.submissionEndpoint || (tr.googleForm && tr.googleForm.actionUrl));
+
+  const body = `
+${pageHero("Share your trip", "Tell the next woman what it was really like",
+  "The trip you just took is the thing somebody else is searching for at midnight, wondering whether she can do it. This takes about ten minutes.")}
+${crumbs({ label: "Real trips", href: "/trips/" }, { label: "Share your trip" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Anonymous unless you choose otherwise.</strong> A person reads every
+  submission and it goes up within ${sla} hours, or you hear back why not. We never publish your exact
+  accommodation alongside your dates, and anything involving harassment is handled privately rather than
+  posted. You can take your story down at any time.</p>
+  ${live ? "" : `<p class="disclosure" style="margin-top:var(--s-4)"><span><strong>Submissions are not connected yet.</strong>
+  The form works and keeps a draft as you type, and at the end it gives you the text to send. Once a submission
+  endpoint is set in <code>site.json</code> it posts directly instead.</span></p>`}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <form class="trip-form" id="trip-form" novalidate data-endpoint="${esc(tr.submissionEndpoint || "")}"
+    data-gform="${esc((tr.googleForm && tr.googleForm.actionUrl) || "")}"
+    data-gmap="${esc(JSON.stringify((tr.googleForm && tr.googleForm.fields) || {}))}"
+    data-gfallback="${esc(tr.fallbackField || "")}">
+    <div id="trip-form-fields"></div>
+    <div class="btn-row">
+      <button class="btn btn--primary" type="submit">Submit my trip</button>
+      <button class="btn btn--ghost" type="button" data-clear-draft>Clear draft</button>
+    </div>
+    <p class="muted" id="trip-form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>`;
+
+  return {
+    url: "/trips/share/", template: "trip-share",
+    title: fitTitle(["Share Your Trip", "Pehchan"]),
+    description: "Write up the trip you just took — cost, what went wrong, what you wish you had known. Anonymous by default, read by a person, published within 12 hours.",
+    body, ogArt: "stories",
+    scripts: ["/assets/js/trip-report.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Real trips", href: "/trips/" },
+                  { label: "Share your trip", href: "/trips/share/" }]
+  };
+}
+
+/* ===================== SHARE WITH FAMILY =============================== */
+
+export function familyPackPage(g) {
+  const body = `
+${pageHero("Share with Family", "Give them evidence, not reassurance",
+  "The hardest part of a first solo trip is often the conversation at home. This turns your plan into something your family can read, keep, and act on — with the hotel's phone number in it.")}
+${crumbs({ label: "Share with Family" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Nothing is sent to us.</strong> The pack is built on your phone and
+  travels inside the link itself — there is no account, no server and no copy kept here. That also means
+  the link is the information: anyone who opens it can read your plan, so send it only to the people you
+  want to have it.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Why this works", title: "“Don’t worry” has never convinced anybody" })}
+  <p>A family that is anxious about a trip is not asking to be reassured. They are asking five specific
+  questions, and they relax when those are answered concretely — where she is staying, how she is getting
+  there, what happens if the train is missed, who else knows, and who to call. A hotel phone number they
+  can dial themselves does more than any promise.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="family-app">
+    <noscript><p>This page needs JavaScript to build the pack. Everything else on the site works without it.</p></noscript>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/family/", template: "family",
+    title: fitTitle(["Share with Family", "Pehchan"]),
+    description: "Turn your trip into a plan your family can read and act on: where you are staying, how you travel, who knows, and who to call. Built on your phone.",
+    body, ogArt: "planner",
+    scripts: ["/assets/js/family-pack.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Share with Family", href: "/family/" }]
+  };
+}
+
+/* ===================== PEHCHAN LOCAL =================================== */
+
+/**
+ * A signal is only worth showing with its date and its expiry. Anything past
+ * its window renders as needing a re-check rather than quietly still claiming
+ * to be true.
+ */
+function signalState(sig, type, today = new Date()) {
+  const checked = new Date(sig.checkedOn + "T00:00:00");
+  const expires = new Date(checked);
+  expires.setMonth(expires.getMonth() + type.months);
+  const stale = today > expires;
+  const months = Math.max(0, Math.round((today - checked) / 2629800000));
+  return {
+    stale,
+    when: months < 1 ? "this month" : months === 1 ? "1 month ago" : `${months} months ago`,
+    expiresOn: expires.toISOString().slice(0, 10)
+  };
+}
+
+function providerCard(p, g, today) {
+  const types = new Map(g.local.signalTypes.map(t => [t.key, t]));
+  const cat = g.local.categories.find(c => c.slug === p.category);
+  const dest = g.byDest.get(p.destination);
+
+  const sigs = (p.signals || []).map(s => {
+    const t = types.get(s.key);
+    if (!t) return "";
+    const st = signalState(s, t, today);
+    return `<li class="sig${st.stale ? " sig--stale" : ""}">
+      <span class="sig__mark" aria-hidden="true">${st.stale ? "!" : "✓"}</span>
+      <span><strong>${esc(t.label)}</strong> — ${esc(t.means)}
+      <em>${st.stale ? `Last checked ${esc(st.when)}; due a re-check.` : `Checked ${esc(st.when)}.`}</em></span></li>`;
+  }).join("");
+
+  return `<article class="provider${p.sample ? " provider--sample" : ""}">
+  ${p.sample ? `<p class="provider__sample">Sample — invented, for layout only. Not a real listing.</p>` : ""}
+  <div class="provider__head">
+    <div>
+      <span class="eyebrow">${esc(cat ? cat.single : p.category)}${p.area ? ` · ${esc(p.area)}` : ""}</span>
+      <h3 class="provider__name">${esc(p.name)}</h3>
+    </div>
+    ${p.rateBand ? `<span class="provider__rate" title="Indicative price band">${esc(p.rateBand)}</span>` : ""}
+  </div>
+  <p class="provider__blurb">${esc(p.blurb)}</p>
+  ${(p.languages || []).length ? `<p class="provider__langs">Speaks ${esc(p.languages.join(", "))}</p>` : ""}
+  ${sigs ? `<ul class="sigs">${sigs}</ul>` : ""}
+  <p class="provider__foot">${dest ? `In <a href="${esc(dest.url)}">${esc(dest.name)}</a>. ` : ""}
+    Contact details are shared when you enquire, not published here.</p>
+</article>`;
+}
+
+export function localPage(g) {
+  const today = new Date();
+  const providers = g.local.providers;
+  const real = providers.filter(p => !p.sample);
+
+  // Group by destination so a woman planning one trip sees one list.
+  const byDest = new Map();
+  for (const p of providers) {
+    if (!byDest.has(p.destination)) byDest.set(p.destination, []);
+    byDest.get(p.destination).push(p);
+  }
+
+  const body = `
+${pageHero("Pehchan Local", "Women who work where you are going",
+  "Photographers, guides, drivers, instructors and hosts — all women-run, each one checked, and every check dated so you can see how fresh it is.",
+  `<div class="btn-row" style="margin-top:var(--s-3)"><a class="btn btn--light" href="/local/join/">List your business</a></div>`)}
+${crumbs({ label: "Pehchan Local" })}
+
+${real.length === 0 ? `
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure">
+    <div><strong>No real listings yet.</strong> The cards below are invented samples, kept only so the page
+    has a shape while the first women are found and checked. They are deleted the day a real listing goes up.</div>
+  </div>
+</div></section>` : ""}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How to read this", title: "No trust scores, only things we checked" })}
+  <p>A badge saying <em>98% trusted</em> tells you nothing you can act on, and it hides how it was
+  calculated. So there is no score here. Each listing shows what was actually checked, when, and what
+  the check means — and when a check gets old it says so rather than continuing to claim it is current.</p>
+  ${factList(g.local.signalTypes.map(t => [t.label, `${t.means} Re-checked every ${t.months} months.`]))}
+</div></section>
+
+${list([...byDest.entries()], ([slug, ps]) => {
+  const d = g.byDest.get(slug);
+  return `<section class="section section--tight"><div class="wrap">
+    ${sectionHead({ eyebrow: "Where", title: d ? d.name : slug })}
+    <div class="stack-lg">${list(ps, (p) => providerCard(p, g, today))}</div>
+  </div></section>`;
+})}
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "For providers", title: "If you run a business where travellers come" })}
+  <p>Pehchan Local lists women-run businesses only. There is no charge to be listed, and no payment can
+  buy a signal — the checks are the whole point of the page, and they are the only thing on it we will
+  vouch for.</p>
+  <div class="btn-row"><a class="btn btn--primary" href="/local/join/">List your business</a></div>
+</div></section>`;
+
+  return {
+    url: "/local/", template: "local",
+    title: fitTitle(["Pehchan Local", "Women-run services", "Pehchan"]),
+    description: "Women-run photographers, guides, drivers, instructors and hosts where you are travelling. Each one checked, every check dated.",
+    body, ogArt: "experiences",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" }]
+  };
+}
+
+export function localJoinPage(g) {
+  const cats = g.local.categories.map(c => c.name.toLowerCase()).join(", ");
+  const body = `
+${pageHero("List your business", "Women-run businesses, listed free",
+  "If you run something travellers use — and you are a woman running it — Pehchan Local will list you at no charge.")}
+${crumbs({ label: "Pehchan Local", href: "/local/" }, { label: "List your business" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What we list", title: "Any service a traveller needs" })}
+  <p>${esc(cats.charAt(0).toUpperCase() + cats.slice(1))} — and anything else we have not thought of.</p>
+
+  ${sectionHead({ eyebrow: "What it costs", title: "Nothing, and no signal is for sale" })}
+  <p>Listing is free. Payment cannot buy a check mark and never will: the checks are the only reason a
+  traveller trusts this page, so selling them would destroy the thing you are being listed on.</p>
+
+  ${sectionHead({ eyebrow: "What we check", title: "And what each check means" })}
+  ${factList(g.local.signalTypes.map(t => [t.label, t.means]))}
+  <p class="muted">Every check carries its date on your listing, and expires. We will come back to you
+  before it does — a check that has quietly gone stale is worse than no check at all.</p>
+
+  ${sectionHead({ eyebrow: "How to be listed", title: "Tell us about your work" })}
+  <p>Email <a href="mailto:${esc(g.site.contactEmail)}">${esc(g.site.contactEmail)}</a> with what you do,
+  where you work, the languages you speak, and a number we can call. We call every applicant — that call
+  is the first check.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="mailto:${esc(g.site.contactEmail)}?subject=${encodeURIComponent("Pehchan Local — listing enquiry")}">Email us</a>
+    <a class="btn btn--ghost" href="/local/">See the listings</a>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/local/join/", template: "local-join",
+    title: fitTitle(["List Your Business", "Pehchan Local"]),
+    description: "Women-run businesses are listed on Pehchan Local free of charge. Here is what we check, what each check means, and how to apply.",
+    body, ogArt: "partner",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" },
+                  { label: "List your business", href: "/local/join/" }]
+  };
+}
+
+/* ===================== SAFETY BY JOURNEY =============================== */
+
+export function safetyPage(g) {
+  const body = `
+${pageHero("Safety", "Not a panic button",
+  "Good safety products already exist and we are not going to build a worse one. What is missing is the ordinary part: being prepared before you go, and making it one tap to tell your own people you are fine.")}
+${crumbs({ label: "Safety" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure disclosure--strong">
+    <div><strong>Pehchan is not an emergency service.</strong> Nobody here is watching a screen, and we
+    cannot send anyone to you. If you are in danger, call <a href="tel:112">112</a>. Everything on this
+    page runs on your phone and reaches the people <em>you</em> chose — that is the only promise we can
+    actually keep, so it is the only one we make.</div>
+  </div>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How this works", title: "Your phone, your people, no middle" })}
+  ${factList([
+    ["Nothing is sent to us", "The checklist, the numbers and the dates are saved in this browser. There is no account and no server holding any of it."],
+    ["Reminders come from your own calendar", "We make a file your phone fires by itself. A notification from us would imply somebody at this end is paying attention, and nobody is."],
+    ["The buttons open WhatsApp", "Pre-written to the person you named, so that telling her takes one tap instead of five. You still press send."],
+    ["Emergency means 112", "Not us. The red button says so, and puts the number in front of you."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="safety-app">
+    <noscript><p>This page needs JavaScript. If you are reading it without: tell two people your plan,
+    arrive in daylight, screenshot your bookings, and save 112.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "When you are back", title: "The part that helps the next woman" })}
+  <p>Two things worth doing when you get home. Tell people how it actually went — the cost against what
+  you expected, what you wish you had known — and if something went wrong, say so privately so it can
+  inform what other women are warned about.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="/trips/share/">Share your trip</a>
+    <a class="btn btn--ghost" href="/report/">Report something privately</a>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/safety/", template: "safety",
+    title: fitTitle(["Safety", "Before, during and after", "Pehchan"]),
+    description: "A before-you-go checklist, check-in reminders your own phone fires, and one-tap messages to your own people. Not a panic button, and not a monitoring service.",
+    body, ogArt: "default",
+    scripts: ["/assets/js/safety.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Safety", href: "/safety/" }]
+  };
+}
+
+/* ===================== INCIDENT REPORTING ============================== */
+
+const HELPLINES = [
+  ["112", "Emergency — police, ambulance and fire, nationwide", "tel:112"],
+  ["1091", "Women in distress", "tel:1091"],
+  ["181", "Women's helpline", "tel:181"],
+  ["14490", "National Commission for Women — sexual violence and harassment, 24×7", "tel:14490"],
+  ["1930", "Cyber and online payment fraud", "tel:1930"]
+];
+
+export function reportPage(g) {
+  const body = `
+${pageHero("Report something", "So it does not happen to her too",
+  "If something went wrong — a driver, a stay, a scam, someone who would not leave you alone — telling us means the next woman is warned. This is private. It is not a review and it is not published.")}
+${crumbs({ label: "Report something" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure disclosure--strong">
+    <div><strong>If you are in danger right now, do not use this form.</strong> Call
+    <a href="tel:112">112</a>. Pehchan cannot help in an emergency — nobody here is watching this page.</div>
+  </div>
+  <div class="helplines">
+    ${list(HELPLINES, ([num, what, href]) => `<a class="helpline" href="${esc(href)}">
+      <strong>${esc(num)}</strong><span>${esc(what)}</span></a>`)}
+  </div>
+  <p class="muted">The National Commission for Women also takes written complaints online at
+  <a href="https://ncwapps.nic.in" rel="noopener">ncwapps.nic.in</a>. Reporting to us is not a
+  substitute for reporting to them, or to the police.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Before you write", title: "What happens to this" })}
+  ${factList([
+    ["It is not published", "This is not a review. Nothing you write appears on the site as a story, under your name, or attached to your trip."],
+    ["Nothing is saved as you type", "Unlike the other forms here, this one keeps no draft. If you are on a shared or borrowed phone, closing the tab leaves nothing behind."],
+    ["You can be completely anonymous", "No contact details are required. Send it from any address, including one that is not yours — we would rather you stayed anonymous than did not tell us."],
+    ["Naming a business is optional, and it goes nowhere near the site", "A name is checked first, and the business is given a right of reply, long before anything is ever said publicly. Most reports are useful without one."],
+    ["Harassment and assault are never published", "They inform what we warn other women about. Your experience does not become content."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="incident-app">
+    <noscript><p>This form needs JavaScript. You can email us instead at
+    <a href="mailto:${esc(g.site.contactEmail)}">${esc(g.site.contactEmail)}</a>.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Being straight with you", title: "What we have not built yet" })}
+  <p>The point of collecting these is eventually to be able to say something like <em>"twelve women
+  reported this in the last month"</em> — which is worth far more to a traveller than any review score.</p>
+  <p>That is not switched on, and it will not be until a lawyer has looked at it. Publishing aggregated
+  allegations about named businesses carries real legal exposure in India, and getting it wrong would
+  hurt Pehchan and would not help you. So reports are being collected and used privately first, and the
+  public layer waits until it can be done properly — with moderation, a right of reply, and a visible
+  number of reports rather than a percentage that hides how few there were.</p>
+</div></section>`;
+
+  return {
+    url: "/report/", template: "report", noindex: false,
+    title: fitTitle(["Report Something", "Pehchan"]),
+    description: "Tell us privately if something went wrong on a trip — a driver, a stay, a scam. Not published, no draft saved, and you can be completely anonymous.",
+    body, ogArt: "default",
+    scripts: ["/assets/js/incident.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Report something", href: "/report/" }]
+  };
+}

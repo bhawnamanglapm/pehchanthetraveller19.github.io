@@ -1,0 +1,78 @@
+{
+  "note": "Women-run services, per destination. Signals are shown individually and each one expires: a verification without an expiry becomes a lie the moment it stops being true. Never combine them into a score — 98% trusted tells a traveller nothing she can check.",
+  "categories": [
+    { "slug": "photographer", "name": "Photographers", "single": "Photographer" },
+    { "slug": "trek-guide", "name": "Trek and walking guides", "single": "Trek guide" },
+    { "slug": "driver", "name": "Drivers", "single": "Driver" },
+    { "slug": "yoga", "name": "Yoga and wellness", "single": "Yoga instructor" },
+    { "slug": "food", "name": "Food experiences", "single": "Food host" },
+    { "slug": "salon", "name": "Salons", "single": "Salon" },
+    { "slug": "doctor", "name": "Doctors and clinics", "single": "Doctor" },
+    { "slug": "stay", "name": "Homestays", "single": "Homestay host" }
+  ],
+  "signalTypes": [
+    { "key": "phone", "label": "Phone verified", "months": 12,
+      "means": "We called the number and spoke to her." },
+    { "key": "in-person", "label": "Met in person", "months": 24,
+      "means": "Someone from Pehchan has met her at the destination." },
+    { "key": "woman-run", "label": "Woman-run confirmed", "months": 24,
+      "means": "We confirmed the business is owned or run by a woman." },
+    { "key": "licence", "label": "Licence seen", "months": 12,
+      "means": "We saw a current registration or licence for the work she does." },
+    { "key": "travellers", "label": "Travellers served", "months": 6,
+      "means": "Women who booked through Pehchan and reported back." },
+    { "key": "insurance", "label": "Insured", "months": 12,
+      "means": "We saw current liability cover." }
+  ],
+  "providers": [
+    {
+      "id": "sample-local-1",
+      "sample": true,
+      "name": "A photographer in Goa",
+      "category": "photographer",
+      "destination": "goa",
+      "area": "Assagao",
+      "blurb": "Portrait and travel shoots, used to working with women travelling on their own. Will meet somewhere public first.",
+      "languages": ["English", "Hindi", "Konkani"],
+      "rateBand": "₹₹",
+      "signals": [
+        { "key": "phone", "checkedOn": "2026-09-10" },
+        { "key": "woman-run", "checkedOn": "2026-09-10" },
+        { "key": "in-person", "checkedOn": "2026-08-02" }
+      ]
+    },
+    {
+      "id": "sample-local-2",
+      "sample": true,
+      "name": "A trek guide in Bir Billing",
+      "category": "trek-guide",
+      "destination": "bir-billing",
+      "area": "Bir",
+      "blurb": "Day walks and two-day routes in the Dhauladhar. Takes women-only groups and will do a solo walk.",
+      "languages": ["Hindi", "English"],
+      "rateBand": "₹₹",
+      "signals": [
+        { "key": "phone", "checkedOn": "2026-09-14" },
+        { "key": "woman-run", "checkedOn": "2026-09-14" },
+        { "key": "licence", "checkedOn": "2025-06-01" }
+      ]
+    },
+    {
+      "id": "sample-local-3",
+      "sample": true,
+      "name": "A driver in Amritsar",
+      "category": "driver",
+      "destination": "amritsar",
+      "area": "City and airport",
+      "blurb": "Airport pickups and day hire. Does late arrivals, which is the run most women want somebody known for.",
+      "languages": ["Punjabi", "Hindi", "English"],
+      "rateBand": "₹",
+      "signals": [
+        { "key": "phone", "checkedOn": "2026-09-19" },
+        { "key": "woman-run", "checkedOn": "2026-09-19" },
+        { "key": "licence", "checkedOn": "2026-09-19" },
+        { "key": "insurance", "checkedOn": "2026-09-19" }
+      ]
+    }
+  ]
+}

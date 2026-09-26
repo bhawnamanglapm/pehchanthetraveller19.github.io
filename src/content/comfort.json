@@ -1,0 +1,451 @@
+{
+  "note": "The twelve axes are shared vocabulary. A traveller rates her comfort 1-5 on each; a destination is rated 1-5 for how much comfort it demands on each. A match is a per-axis comparison, so every result explains itself. Destination vectors are authored only from first-hand travel — see docs/04-content-verification.md.",
+  "scale": [
+    {
+      "value": 1,
+      "traveller": "Not at all",
+      "destination": "Not required"
+    },
+    {
+      "value": 2,
+      "traveller": "A little",
+      "destination": "Rarely needed"
+    },
+    {
+      "value": 3,
+      "traveller": "Somewhat",
+      "destination": "Sometimes needed"
+    },
+    {
+      "value": 4,
+      "traveller": "Mostly",
+      "destination": "Usually needed"
+    },
+    {
+      "value": 5,
+      "traveller": "Completely",
+      "destination": "Essential here"
+    }
+  ],
+  "axes": [
+    {
+      "key": "flying",
+      "label": "Flying alone",
+      "question": "Taking a flight on your own",
+      "demand": "getting here involves flying alone"
+    },
+    {
+      "key": "trains",
+      "label": "Trains",
+      "question": "Travelling by train on your own",
+      "demand": "trains are the practical way in"
+    },
+    {
+      "key": "buses",
+      "label": "Buses",
+      "question": "Travelling by bus on your own",
+      "demand": "buses are unavoidable for part of the journey"
+    },
+    {
+      "key": "driving",
+      "label": "Driving",
+      "question": "Driving or riding yourself",
+      "demand": "self-driving or riding is how people get around"
+    },
+    {
+      "key": "taxis",
+      "label": "Taxis",
+      "question": "Taking taxis and autos alone",
+      "demand": "you will rely on taxis and autos alone"
+    },
+    {
+      "key": "nightWalk",
+      "label": "Being out after dark",
+      "question": "Walking or moving around after dark",
+      "demand": "arrivals or moving about after dark are hard to avoid"
+    },
+    {
+      "key": "hostels",
+      "label": "Hostels",
+      "question": "Staying in a hostel",
+      "demand": "hostels are much of what is available"
+    },
+    {
+      "key": "homestays",
+      "label": "Homestays",
+      "question": "Staying in someone's home",
+      "demand": "homestays are much of what is available"
+    },
+    {
+      "key": "eatingAlone",
+      "label": "Eating alone",
+      "question": "Eating in a restaurant on your own",
+      "demand": "you will be eating on your own"
+    },
+    {
+      "key": "strangers",
+      "label": "Meeting strangers",
+      "question": "Meeting and talking to people you do not know",
+      "demand": "you will be dealing with people you do not know"
+    },
+    {
+      "key": "changingHotels",
+      "label": "Changing places",
+      "question": "Moving between several places on one trip",
+      "demand": "the trip means moving between several places"
+    },
+    {
+      "key": "noInternet",
+      "label": "No connectivity",
+      "question": "Being somewhere with little or no network",
+      "demand": "there are stretches with little or no network"
+    }
+  ],
+  "tiers": [
+    {
+      "max": 1.9,
+      "name": "Your first trip should be short, close and arranged.",
+      "summary": "Somebody else handles the moving parts, you are back within a few days, and nothing about it is improvised. That is not a lesser trip — it is the trip almost every confident traveller started with."
+    },
+    {
+      "max": 2.9,
+      "name": "Your first trip should be planned in advance — and it can be further away.",
+      "summary": "With the transport and the stay settled before you leave, distance stops being the hard part. You are readier than you probably think."
+    },
+    {
+      "max": 3.9,
+      "name": "You can plan your own trip.",
+      "summary": "You would handle most of a journey without help. There are a few things you would rather not deal with, and a well-chosen trip simply avoids them."
+    },
+    {
+      "max": 5,
+      "name": "You can go almost anywhere and work it out as you go.",
+      "summary": "Very little about travelling alone is outside what you are comfortable with. The question is where you want to go, not whether you can."
+    }
+  ],
+  "preferences": [
+    {
+      "axis": "nightWalk",
+      "atMost": 2,
+      "text": "daytime arrivals and departures"
+    },
+    {
+      "axis": "hostels",
+      "atMost": 2,
+      "text": "private or women-only accommodation"
+    },
+    {
+      "axis": "taxis",
+      "atMost": 2,
+      "text": "pre-arranged transfers rather than hailing on arrival"
+    },
+    {
+      "axis": "buses",
+      "atMost": 2,
+      "text": "trains or flights over long bus journeys"
+    },
+    {
+      "axis": "driving",
+      "atMost": 2,
+      "text": "a driver rather than driving yourself"
+    },
+    {
+      "axis": "strangers",
+      "atMost": 2,
+      "text": "small groups, or travelling on your own"
+    },
+    {
+      "axis": "eatingAlone",
+      "atMost": 2,
+      "text": "places where eating alone is unremarkable"
+    },
+    {
+      "axis": "noInternet",
+      "atMost": 2,
+      "text": "destinations with reliable connectivity"
+    },
+    {
+      "axis": "changingHotels",
+      "atMost": 2,
+      "text": "one base rather than moving each night"
+    },
+    {
+      "axis": "strangers",
+      "atLeast": 4,
+      "text": "the chance to meet other travellers"
+    },
+    {
+      "axis": "homestays",
+      "atLeast": 4,
+      "text": "homestays over hotels"
+    }
+  ],
+  "bookingRules": [
+    {
+      "axis": "nightWalk",
+      "atMost": 2,
+      "text": "Arrive in daylight. Book the flight or train that lands before dark, and never leave the arrival transfer to chance."
+    },
+    {
+      "axis": "taxis",
+      "atMost": 2,
+      "text": "Have the hotel send a car. Pre-arranged pickup costs a little more and removes the worst ten minutes of any trip."
+    },
+    {
+      "axis": "hostels",
+      "atMost": 2,
+      "text": "Book a private room in a property with 24-hour reception. A staffed desk at 2am matters more than the decor."
+    },
+    {
+      "axis": "homestays",
+      "atMost": 2,
+      "text": "Choose a hotel over a homestay this time. Clearer boundaries, and someone at the desk who is not also your host."
+    },
+    {
+      "axis": "buses",
+      "atMost": 2,
+      "text": "Take the train or fly. Skip the long overnight bus legs — they are where most first trips go wrong."
+    },
+    {
+      "axis": "driving",
+      "atMost": 2,
+      "text": "Hire a car with a driver rather than driving yourself, and agree the route and price before you set off."
+    },
+    {
+      "axis": "changingHotels",
+      "atMost": 2,
+      "text": "Stay in one place and take day trips out. Unpacking once is worth more than seeing one extra town."
+    },
+    {
+      "axis": "eatingAlone",
+      "atMost": 2,
+      "text": "Stay somewhere that serves dinner, so eating is never a decision you have to make alone at 9pm."
+    },
+    {
+      "axis": "noInternet",
+      "atMost": 2,
+      "text": "Check the network before you book. Download offline maps, and carry your bookings on paper as well as your phone."
+    },
+    {
+      "axis": "strangers",
+      "atMost": 2,
+      "text": "Avoid shared rooms and group tours for this one. You can add people to a trip later; you cannot remove them."
+    },
+    {
+      "axis": "flying",
+      "atMost": 2,
+      "text": "Book a direct flight, or take the train instead — a connection is one more thing to manage alone."
+    },
+    {
+      "axis": "trains",
+      "atMost": 2,
+      "text": "If you do take a train, book an upper class with reserved seating, and travel in daylight hours."
+    }
+  ],
+  "about": {
+    "note": "The other half of the First Solo Trip Engine. Every question is optional — these shape the trip we suggest, they are not a form to complete.",
+    "fields": [
+      {
+        "key": "city",
+        "label": "Which city or town do you live in?",
+        "type": "text",
+        "help": "So we can tell you which women near you have already made a trip you are considering."
+      },
+      {
+        "key": "ageGroup",
+        "label": "Age group",
+        "type": "select",
+        "options": [
+          "Prefer not to say",
+          "Under 25",
+          "25–30",
+          "31–35",
+          "36–40",
+          "41–50",
+          "Over 50"
+        ]
+      },
+      {
+        "key": "experience",
+        "label": "How much have you travelled?",
+        "type": "select",
+        "options": [
+          "Prefer not to say",
+          "I have never travelled without family",
+          "Only with friends or family",
+          "One or two trips on my own",
+          "Several trips on my own",
+          "I travel alone often"
+        ]
+      },
+      {
+        "key": "languages",
+        "label": "Which languages are you comfortable in?",
+        "type": "checkbox",
+        "options": [
+          "Hindi",
+          "English",
+          "Punjabi",
+          "Marathi",
+          "Gujarati",
+          "Bengali",
+          "Tamil",
+          "Telugu",
+          "Kannada",
+          "Malayalam",
+          "Other"
+        ]
+      },
+      {
+        "key": "diet",
+        "label": "Anything we should know about food?",
+        "type": "checkbox",
+        "options": [
+          "I eat everything",
+          "Vegetarian",
+          "Jain",
+          "Vegan",
+          "No beef",
+          "No pork",
+          "Halal",
+          "Allergies"
+        ]
+      },
+      {
+        "key": "budget",
+        "label": "For a 4–5 day trip in India, what are you comfortable spending?",
+        "type": "select",
+        "options": [
+          "Prefer not to say",
+          "Under ₹10,000",
+          "₹10,000–₹25,000",
+          "₹25,000–₹50,000",
+          "Over ₹50,000"
+        ]
+      },
+      {
+        "key": "schedule",
+        "label": "How much time can you actually take off?",
+        "type": "select",
+        "options": [
+          "Prefer not to say",
+          "Weekends only",
+          "Two or three days at a time",
+          "About a week",
+          "Two weeks or more",
+          "My time is flexible"
+        ]
+      },
+      {
+        "key": "activity",
+        "label": "How much walking and climbing suits you?",
+        "type": "select",
+        "options": [
+          "Prefer not to say",
+          "Light — flat ground and short distances",
+          "Moderate — a few hours on my feet",
+          "Active — day hikes are fine",
+          "Very active — multi-day treks"
+        ]
+      }
+    ]
+  },
+  "tripShape": [
+    {
+      "field": "schedule",
+      "is": "Weekends only",
+      "text": "A two- or three-day trip, somewhere you can reach in a few hours."
+    },
+    {
+      "field": "schedule",
+      "is": "Two or three days at a time",
+      "text": "A short trip — one base, no long transit days."
+    },
+    {
+      "field": "schedule",
+      "is": "About a week",
+      "text": "Five to seven days, which is enough for somewhere further away."
+    },
+    {
+      "field": "schedule",
+      "is": "Two weeks or more",
+      "text": "Long enough for two places, or somewhere that takes a day to reach."
+    },
+    {
+      "field": "schedule",
+      "is": "My time is flexible",
+      "text": "Travel in the shoulder season — quieter, cheaper, and easier on your own."
+    },
+    {
+      "field": "budget",
+      "is": "Under ₹10,000",
+      "text": "Trains rather than flights, and a guesthouse or a good budget hotel."
+    },
+    {
+      "field": "budget",
+      "is": "₹10,000–₹25,000",
+      "text": "A comfortable mid-range stay with the transfers arranged."
+    },
+    {
+      "field": "budget",
+      "is": "₹25,000–₹50,000",
+      "text": "Enough to pay for convenience where it removes a worry."
+    },
+    {
+      "field": "budget",
+      "is": "Over ₹50,000",
+      "text": "Buy the easy version of every difficult part — it is worth it on a first trip."
+    },
+    {
+      "field": "activity",
+      "is": "Light — flat ground and short distances",
+      "text": "Somewhere you can see without climbing. Say no to anything described as a trek."
+    },
+    {
+      "field": "activity",
+      "is": "Moderate — a few hours on my feet",
+      "text": "A walkable town, or a hill station with short walks rather than climbs."
+    },
+    {
+      "field": "activity",
+      "is": "Active — day hikes are fine",
+      "text": "Day hikes with a night in a proper bed."
+    },
+    {
+      "field": "activity",
+      "is": "Very active — multi-day treks",
+      "text": "A guided trek, if you would rather not organise it yourself the first time."
+    },
+    {
+      "field": "experience",
+      "is": "I have never travelled without family",
+      "text": "Somewhere a few hours away, for two or three nights. That is a real trip, and it is the right first one."
+    },
+    {
+      "field": "experience",
+      "is": "Only with friends or family",
+      "text": "Pick a place you already know. Doing a familiar place alone is easier than doing a new place alone."
+    }
+  ],
+  "aboutNotes": [
+    {
+      "field": "diet",
+      "includesAny": [
+        "Vegetarian",
+        "Jain",
+        "Vegan",
+        "Halal",
+        "Allergies"
+      ],
+      "text": "Check what the stay serves before you book. Eating is the thing that quietly ruins a good trip."
+    },
+    {
+      "field": "languages",
+      "excludes": [
+        "Hindi",
+        "English"
+      ],
+      "text": "Look for a stay where somebody speaks your language, or arrange a local contact before you arrive."
+    }
+  ]
+}

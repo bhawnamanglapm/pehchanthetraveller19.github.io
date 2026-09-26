@@ -16,16 +16,17 @@ export function home(g) {
   ${figure({ art: "himalaya", slug: "home-hero" }, { ratio: "16x9", label: "Mountain horizon", note: false })}
   <div class="hero__inner">
     <span class="eyebrow" style="color:rgba(255,255,255,.75)">${esc(site.promise)}</span>
-    <h1>Your next extraordinary journey starts here.</h1>
-    <p class="hero__sub">Discover remarkable places, beautiful stays and unforgettable experiences — thoughtfully curated for the way you want to travel.</p>
+    <h1>Can I do this on my own?</h1>
+    <p class="hero__sub">The question that actually stops women travelling — and the one no travel site answers.
+    Twelve questions about how you really feel, and you get a profile of the traveller you are and the trips that will suit you.</p>
     <div class="btn-row" style="margin-top:var(--s-3)">
-      <a class="btn btn--light" href="/india/" data-track="cta_primary" data-track-label="Explore India">Explore India</a>
-      <a class="btn btn--ghost" href="/international/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="International">Travel International</a>
+      <a class="btn btn--light" href="/profile/" data-track="cta_primary" data-track-label="Solo Travel Profile">Find out</a>
+      <a class="btn btn--ghost" href="/india/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Destinations">Where we have been</a>
     </div>
     <div class="hero__meta">
-      <span>${g.indiaRegions.length} regions across India</span>
-      <span>${drafts.length + published.length} places travelled</span>
-      ${hasContent ? `<span>${published.length} guides published</span>` : ""}
+      <span>Twelve questions</span>
+      <span>Stays on your device</span>
+      <span>No account needed</span>
     </div>
   </div>
 </section>
@@ -35,17 +36,18 @@ export function home(g) {
     <div class="split">
       <div class="stack-lg">
         <div>
-          <span class="eyebrow">Written from the road</span>
-          <h2 class="display" style="font-size:var(--t-2xl)">Only places we have actually been</h2>
-          <p class="lede" style="margin-top:var(--s-4)">Every guide here comes from first-hand travel — the timing that actually
-          works, the permits nobody mentions, the stay worth the money and the one that is not. Nothing is assembled from
-          somebody else's blog.</p>
+          <span class="eyebrow">Why this is different</span>
+          <h2 class="display" style="font-size:var(--t-2xl)">We will not tell you a place is safe</h2>
+          <p class="lede" style="margin-top:var(--s-4)">No destination is safe or unsafe in the abstract, and any site that
+          says otherwise is guessing on your behalf. What we can tell you is which parts of a particular trip sit outside
+          what <em>you</em> said you were comfortable with — the night arrival, the four-hour bus, the stretch with no signal.</p>
         </div>
-        <p class="muted">That means this site grows slowly and honestly. Places we have travelled are listed below as their
-        guides are written; a page appears when there is something worth reading on it, and not before.</p>
+        <p class="muted">Every guide comes from first-hand travel, and every destination is rated on the same twelve
+        things you rate yourself on. This site grows slowly and honestly: a page appears when there is something worth
+        reading on it, and not before.</p>
         <div class="btn-row">
-          <a class="btn btn--primary" href="/india/">Explore India by region</a>
-          <a class="btn btn--ghost" href="/international/">International</a>
+          <a class="btn btn--primary" href="/profile/">Build my profile</a>
+          <a class="btn btn--ghost" href="/women-and-travel/">The research behind it</a>
         </div>
       </div>
       <div>${figure({ art: "india-palace", slug: "home-about" }, { ratio: "4x3", label: "Travel" })}</div>

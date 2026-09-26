@@ -8,11 +8,14 @@
  *
  *   node src/build.mjs [--clean]
  */
-import { mkdirSync, writeFileSync, rmSync, existsSync, readdirSync, statSync } from "node:fs";
+import { mkdirSync, writeFileSync, rmSync, existsSync, readdirSync, statSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { buildGraph } from "./lib/graph.mjs";
+import { drawIcon } from "./lib/icon.mjs";
+import { manifest, serviceWorker, offlinePage } from "./lib/pwa.mjs";
 import { page as renderPage, ogCard } from "./lib/shell.mjs";
 import { esc, truncate, clean } from "./lib/html.mjs";
 import { home } from "./templates/home.mjs";
@@ -23,11 +26,12 @@ import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
 import { storiesIndex, storyCategoryPage, storyPage } from "./templates/stories.mjs";
 import { collectionsIndex, collectionPage, guidesIndex } from "./templates/collections.mjs";
 import { plannerPage, toolsIndex, toolPage, partnerPage, aboutPage, newsletterPage, contactPage,
-         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage } from "./templates/pages.mjs";
+         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, familyPackPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIRS = ["destinations", "stay", "experiences", "journeys", "stories", "collections", "guides",
-  "plan", "tools", "deals", "partner", "about", "newsletter", "contact", "search", "dashboard", "legal"];
+  "plan", "tools", "deals", "partner", "about", "newsletter", "contact", "search", "dashboard", "legal",
+  "women-and-travel", "profile", "trips", "family", "local", "safety", "report"];
 
 function write(relPath, contents) {
   const full = join(ROOT, relPath);
@@ -88,6 +92,15 @@ function main() {
     partnerPage(g),
     aboutPage(g),
     newsletterPage(g),
+    womenAndTravelPage(g),
+    profilePage(g),
+    tripReportsPage(g),
+    shareTripPage(g),
+    familyPackPage(g),
+    localPage(g),
+    localJoinPage(g),
+    safetyPage(g),
+    reportPage(g),
     contactPage(g),
     searchPage(g),
     dashboardPage(g),
@@ -126,7 +139,7 @@ function main() {
   for (const [p, htmlOut] of rendered) {
     for (const m of htmlOut.matchAll(/href="(\/[^"]*)"/g)) {
       const target = m[1].split("#")[0].split("?")[0];
-      if (!target || target.startsWith("/assets/") || /\.(xml|txt|svg|json|ico)$/.test(target)) continue;
+      if (!target || target.startsWith("/assets/") || /\.(xml|txt|svg|json|ico|png|webmanifest)$/.test(target)) continue;
       if (!routes.has(target)) {
         if (!brokenLinks.has(target)) brokenLinks.set(target, p.url);
       }
@@ -194,6 +207,34 @@ function main() {
   for (const [name, [title, kicker, artKey, seed]] of ogSpecs) {
     write(`assets/og/${name}.svg`, ogCard(title, kicker, artKey, seed));
   }
+
+  /* ---- PWA: icons, manifest, service worker, offline page ------------ */
+  // Installability is the prerequisite for both store routes: Google Play via
+  // Trusted Web Activity, and iOS via a Capacitor shell around this same build.
+  for (const size of [192, 512]) {
+    write(`assets/icons/icon-${size}.png`, drawIcon(size));
+    write(`assets/icons/maskable-${size}.png`, drawIcon(size, { maskable: true }));
+  }
+  write("assets/icons/apple-touch-icon.png", drawIcon(180, { square: true }));
+
+  write("manifest.webmanifest", manifest(g.site));
+  write("offline.html", offlinePage(g.site));
+  const precache = [
+    "/", "/offline.html",
+    "/assets/css/main.css", "/assets/css/tokens.css",
+    "/assets/js/site.js", "/assets/favicon.svg",
+    "/assets/icons/icon-192.png", "/assets/icons/icon-512.png"
+  ];
+  // Version the cache by what is actually in it, not by the clock. A build
+  // stamp would rewrite sw.js on every run, dirtying the tree and churning
+  // every diff even when nothing cached had changed.
+  const fingerprint = createHash("sha256");
+  for (const rel of precache) {
+    const file = join(ROOT, rel === "/" ? "index.html" : rel.replace(/^\//, ""));
+    fingerprint.update(rel);
+    if (existsSync(file)) fingerprint.update(readFileSync(file));
+  }
+  write("sw.js", serviceWorker(g.site, precache, fingerprint.digest("hex").slice(0, 12)));
 
   /* ---- search index -------------------------------------------------- */
   const index = [
