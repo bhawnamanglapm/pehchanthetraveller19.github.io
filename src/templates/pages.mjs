@@ -1235,3 +1235,154 @@ ${crumbs({ label: "Share with Family" })}
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Share with Family", href: "/family/" }]
   };
 }
+
+/* ===================== PEHCHAN LOCAL =================================== */
+
+/**
+ * A signal is only worth showing with its date and its expiry. Anything past
+ * its window renders as needing a re-check rather than quietly still claiming
+ * to be true.
+ */
+function signalState(sig, type, today = new Date()) {
+  const checked = new Date(sig.checkedOn + "T00:00:00");
+  const expires = new Date(checked);
+  expires.setMonth(expires.getMonth() + type.months);
+  const stale = today > expires;
+  const months = Math.max(0, Math.round((today - checked) / 2629800000));
+  return {
+    stale,
+    when: months < 1 ? "this month" : months === 1 ? "1 month ago" : `${months} months ago`,
+    expiresOn: expires.toISOString().slice(0, 10)
+  };
+}
+
+function providerCard(p, g, today) {
+  const types = new Map(g.local.signalTypes.map(t => [t.key, t]));
+  const cat = g.local.categories.find(c => c.slug === p.category);
+  const dest = g.byDest.get(p.destination);
+
+  const sigs = (p.signals || []).map(s => {
+    const t = types.get(s.key);
+    if (!t) return "";
+    const st = signalState(s, t, today);
+    return `<li class="sig${st.stale ? " sig--stale" : ""}">
+      <span class="sig__mark" aria-hidden="true">${st.stale ? "!" : "✓"}</span>
+      <span><strong>${esc(t.label)}</strong> — ${esc(t.means)}
+      <em>${st.stale ? `Last checked ${esc(st.when)}; due a re-check.` : `Checked ${esc(st.when)}.`}</em></span></li>`;
+  }).join("");
+
+  return `<article class="provider${p.sample ? " provider--sample" : ""}">
+  ${p.sample ? `<p class="provider__sample">Sample — invented, for layout only. Not a real listing.</p>` : ""}
+  <div class="provider__head">
+    <div>
+      <span class="eyebrow">${esc(cat ? cat.single : p.category)}${p.area ? ` · ${esc(p.area)}` : ""}</span>
+      <h3 class="provider__name">${esc(p.name)}</h3>
+    </div>
+    ${p.rateBand ? `<span class="provider__rate" title="Indicative price band">${esc(p.rateBand)}</span>` : ""}
+  </div>
+  <p class="provider__blurb">${esc(p.blurb)}</p>
+  ${(p.languages || []).length ? `<p class="provider__langs">Speaks ${esc(p.languages.join(", "))}</p>` : ""}
+  ${sigs ? `<ul class="sigs">${sigs}</ul>` : ""}
+  <p class="provider__foot">${dest ? `In <a href="${esc(dest.url)}">${esc(dest.name)}</a>. ` : ""}
+    Contact details are shared when you enquire, not published here.</p>
+</article>`;
+}
+
+export function localPage(g) {
+  const today = new Date();
+  const providers = g.local.providers;
+  const real = providers.filter(p => !p.sample);
+
+  // Group by destination so a woman planning one trip sees one list.
+  const byDest = new Map();
+  for (const p of providers) {
+    if (!byDest.has(p.destination)) byDest.set(p.destination, []);
+    byDest.get(p.destination).push(p);
+  }
+
+  const body = `
+${pageHero("Pehchan Local", "Women who work where you are going",
+  "Photographers, guides, drivers, instructors and hosts — all women-run, each one checked, and every check dated so you can see how fresh it is.",
+  `<div class="btn-row" style="margin-top:var(--s-3)"><a class="btn btn--light" href="/local/join/">List your business</a></div>`)}
+${crumbs({ label: "Pehchan Local" })}
+
+${real.length === 0 ? `
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure">
+    <div><strong>No real listings yet.</strong> The cards below are invented samples, kept only so the page
+    has a shape while the first women are found and checked. They are deleted the day a real listing goes up.</div>
+  </div>
+</div></section>` : ""}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "How to read this", title: "No trust scores, only things we checked" })}
+  <p>A badge saying <em>98% trusted</em> tells you nothing you can act on, and it hides how it was
+  calculated. So there is no score here. Each listing shows what was actually checked, when, and what
+  the check means — and when a check gets old it says so rather than continuing to claim it is current.</p>
+  ${factList(g.local.signalTypes.map(t => [t.label, `${t.means} Re-checked every ${t.months} months.`]))}
+</div></section>
+
+${list([...byDest.entries()], ([slug, ps]) => {
+  const d = g.byDest.get(slug);
+  return `<section class="section section--tight"><div class="wrap">
+    ${sectionHead({ eyebrow: "Where", title: d ? d.name : slug })}
+    <div class="stack-lg">${list(ps, (p) => providerCard(p, g, today))}</div>
+  </div></section>`;
+})}
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "For providers", title: "If you run a business where travellers come" })}
+  <p>Pehchan Local lists women-run businesses only. There is no charge to be listed, and no payment can
+  buy a signal — the checks are the whole point of the page, and they are the only thing on it we will
+  vouch for.</p>
+  <div class="btn-row"><a class="btn btn--primary" href="/local/join/">List your business</a></div>
+</div></section>`;
+
+  return {
+    url: "/local/", template: "local",
+    title: fitTitle(["Pehchan Local", "Women-run services", "Pehchan"]),
+    description: "Women-run photographers, guides, drivers, instructors and hosts where you are travelling. Each one checked, every check dated.",
+    body, ogArt: "experiences",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" }]
+  };
+}
+
+export function localJoinPage(g) {
+  const cats = g.local.categories.map(c => c.name.toLowerCase()).join(", ");
+  const body = `
+${pageHero("List your business", "Women-run businesses, listed free",
+  "If you run something travellers use — and you are a woman running it — Pehchan Local will list you at no charge.")}
+${crumbs({ label: "Pehchan Local", href: "/local/" }, { label: "List your business" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What we list", title: "Any service a traveller needs" })}
+  <p>${esc(cats.charAt(0).toUpperCase() + cats.slice(1))} — and anything else we have not thought of.</p>
+
+  ${sectionHead({ eyebrow: "What it costs", title: "Nothing, and no signal is for sale" })}
+  <p>Listing is free. Payment cannot buy a check mark and never will: the checks are the only reason a
+  traveller trusts this page, so selling them would destroy the thing you are being listed on.</p>
+
+  ${sectionHead({ eyebrow: "What we check", title: "And what each check means" })}
+  ${factList(g.local.signalTypes.map(t => [t.label, t.means]))}
+  <p class="muted">Every check carries its date on your listing, and expires. We will come back to you
+  before it does — a check that has quietly gone stale is worse than no check at all.</p>
+
+  ${sectionHead({ eyebrow: "How to be listed", title: "Tell us about your work" })}
+  <p>Email <a href="mailto:${esc(g.site.contactEmail)}">${esc(g.site.contactEmail)}</a> with what you do,
+  where you work, the languages you speak, and a number we can call. We call every applicant — that call
+  is the first check.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="mailto:${esc(g.site.contactEmail)}?subject=${encodeURIComponent("Pehchan Local — listing enquiry")}">Email us</a>
+    <a class="btn btn--ghost" href="/local/">See the listings</a>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/local/join/", template: "local-join",
+    title: fitTitle(["List Your Business", "Pehchan Local"]),
+    description: "Women-run businesses are listed on Pehchan Local free of charge. Here is what we check, what each check means, and how to apply.",
+    body, ogArt: "partner",
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" },
+                  { label: "List your business", href: "/local/join/" }]
+  };
+}

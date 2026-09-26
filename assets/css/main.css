@@ -800,3 +800,42 @@ table.data tr:last-child td { border-bottom: 0; }
   a[href^="tel:"]::after { content: ""; }
   body { background: #fff; color: #000; }
 }
+
+/* ===== Pehchan Local ===================================================== */
+
+.provider {
+  border: 1px solid var(--line); border-radius: var(--r-md, 6px);
+  background: var(--surface); padding: var(--s-5);
+}
+.provider--sample { border-style: dashed; border-color: var(--bronze); }
+.provider__sample {
+  margin: 0 0 var(--s-4); font-size: var(--t-xs); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--bronze); font-weight: 600;
+}
+.provider__head {
+  display: flex; gap: var(--s-3); align-items: flex-start; justify-content: space-between;
+}
+.provider__name { font-family: var(--f-display); font-size: var(--t-lg); margin: var(--s-1) 0 0; }
+.provider__rate {
+  font-size: var(--t-sm); color: var(--muted); font-weight: 600;
+  letter-spacing: .05em; white-space: nowrap;
+}
+.provider__blurb { margin: var(--s-3) 0 0; }
+.provider__langs { margin: var(--s-2) 0 0; font-size: var(--t-sm); color: var(--muted); }
+.provider__foot {
+  margin: var(--s-4) 0 0; padding-top: var(--s-3); border-top: 1px solid var(--line);
+  font-size: var(--t-xs); color: var(--muted);
+}
+.sigs { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: var(--s-3); }
+.sig {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--s-3);
+  align-items: start; font-size: var(--t-sm); line-height: 1.5;
+}
+.sig__mark {
+  width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center;
+  font-size: var(--t-xs); font-weight: 700; flex: none;
+  background: var(--accent); color: var(--on-accent);
+}
+.sig em { display: block; font-style: normal; color: var(--muted); font-size: var(--t-xs); margin-top: 2px; }
+.sig--stale .sig__mark { background: var(--bronze-soft); color: var(--bronze); border: 1px solid var(--bronze); }
+.sig--stale strong { color: var(--muted); }
