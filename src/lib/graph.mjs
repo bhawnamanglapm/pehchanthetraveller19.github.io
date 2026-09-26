@@ -29,6 +29,7 @@ export function buildGraph() {
   const itineraries = read("itineraries.json");
   const stories = read("stories.json");
   const taxonomies = read("taxonomies.json");
+  const comfort = read("comfort.json");
 
   const errors = [];
   const byRegion = new Map(regions.map(r => [r.slug, r]));
@@ -150,7 +151,7 @@ export function buildGraph() {
   stories.sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
 
   const g = {
-    site, regions, countries, destinations, hotels, experiences, itineraries, stories, taxonomies,
+    site, regions, countries, destinations, hotels, experiences, itineraries, stories, taxonomies, comfort,
     intlRegions: regions.filter(r => r.scope === "international"),
     indiaRegions: regions.filter(r => r.scope === "india"),
     intlDestinations: destinations.filter(d => d.scope === "international" && d.status === "published"),

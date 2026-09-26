@@ -978,3 +978,62 @@ ${crumbs({ label: "Women & Travel" })}
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Women & Travel", href: "/women-and-travel/" }]
   };
 }
+
+/* ===================== SOLO TRAVEL PROFILE ============================== */
+
+export function profilePage(g) {
+  const unprofiled = g.destinations.filter(d => !d.comfort).length;
+
+  const body = `
+${pageHero("Solo Travel Profile", "What kind of traveller are you?",
+  "Twelve questions about how you actually feel — not about where you want to go. What comes out is a profile of how you travel, and what to look for in a trip that will suit you.")}
+${crumbs({ label: "Solo Travel Profile" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>This stays on your device.</strong> The questions ask what you are and are not
+  comfortable with, which is personal. Your answers are saved in this browser and are never sent anywhere —
+  there is no account, and we cannot see them. You can delete the profile at any time from this page.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="profile-app">
+    <noscript><p>The profile needs JavaScript. Everything else on this site works without it.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "What happens next", title: "How your profile gets used" })}
+  ${factList([
+    ["It describes you, not a score", "Twelve axes, each one a thing you might or might not want to deal with. No overall rating, because a number cannot tell you anything useful."],
+    ["Destinations are rated the same way", "Each place is scored on the same twelve — how much of each it demands. A match is a comparison, so it can tell you exactly which part of a trip would stretch you."],
+    ["It never says a place is safe", "No destination is safe or unsafe in the abstract. What we can tell you is which practical parts of a trip sit outside what you said you were comfortable with."],
+    ["It grows with you", "Answer again after a trip. The point is to watch the numbers move."]
+  ])}
+  ${unprofiled ? `<p class="engine-note" style="margin-top:1.5rem"><strong>Destination matching is not live yet.</strong>
+  ${unprofiled} destination${unprofiled === 1 ? " is" : "s are"} waiting to be rated, and each one is rated from
+  first-hand travel rather than from a description — the same rule as every guide on this site. Your profile
+  works today; the matches appear as destinations are profiled.</p>` : ""}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${faq([
+    { q: "Is there a right answer?", a: "No. The profile is only useful if it is honest — if you say you are fine with overnight buses when you are not, it will suggest trips you will not enjoy." },
+    { q: "Who can see my answers?", a: "Nobody. They are stored in this browser, on this device. They are not sent to a server, and there is no account to attach them to." },
+    { q: "Does a low score mean I cannot travel alone?", a: "No. It means a well-chosen first trip looks different from someone else's. Most people's numbers move quickly once they have gone once." },
+    { q: "Can I change my answers?", a: "Yes, any time — and you should, after a trip. That is the point of it." }
+  ])}
+</div></section>`;
+
+  return {
+    url: "/profile/", template: "profile",
+    title: fitTitle(["Solo Travel Profile", "What kind of traveller are you?", "Pehchan"]),
+    description: "Twelve questions about how you actually feel about travelling alone. Your answers stay on your device and shape what we suggest.",
+    body, ogArt: "planner",
+    scripts: ["/assets/js/profile.js"],
+    head: `<script type="application/json" id="comfort-model">${JSON.stringify({
+      axes: g.comfort.axes, tiers: g.comfort.tiers,
+      preferences: g.comfort.preferences, scale: g.comfort.scale
+    })}</script>`,
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Solo Travel Profile", href: "/profile/" }]
+  };
+}

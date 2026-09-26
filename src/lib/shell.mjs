@@ -53,6 +53,7 @@ function masthead(g) {
     <a class="wordmark" href="/">${esc(g.site.wordmark)}<small>${esc(g.site.descriptor)}</small></a>
     <nav class="nav" aria-label="Primary">
       ${list(nav, (item, i) => `<button class="nav__link" type="button" aria-expanded="false" aria-controls="mega-${i}" data-mega="${i}">${esc(item.label)}</button>`)}
+      <a class="nav__link" href="/profile/">Solo Travel Profile</a>
       <a class="nav__link" href="/partner/">Partner</a>
     </nav>
     <div class="masthead__actions">
@@ -62,7 +63,7 @@ function masthead(g) {
       <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch colour theme">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a class="btn btn--primary btn--sm" href="/plan/" data-track="cta_plan" style="display:none" data-desktop-cta>Plan My Trip</a>
+      <a class="btn btn--primary btn--sm" href="/profile/" data-track="cta_profile" style="display:none" data-desktop-cta>Can I do this?</a>
       <button class="icon-btn nav-toggle" type="button" data-drawer-toggle aria-expanded="false" aria-label="Open menu">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -77,9 +78,11 @@ function masthead(g) {
       <li><a href="${esc(item.href)}"><strong>All ${esc(item.label.toLowerCase())}</strong></a></li>
       ${list(item.columns.flatMap(c => c.links), (l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)}
     </ul></details>`)}
+    <a class="drawer__flat" href="/profile/">Solo Travel Profile</a>
+    <a class="drawer__flat" href="/women-and-travel/">Women &amp; Travel</a>
     <a class="drawer__flat" href="/partner/">Partner With Us</a>
     <a class="drawer__flat" href="/about/">About</a>
-    <div style="margin-top:var(--s-6)"><a class="btn btn--primary btn--block" href="/plan/">Plan My Trip</a></div>
+    <div style="margin-top:var(--s-6)"><a class="btn btn--primary btn--block" href="/profile/">Can I do this?</a></div>
   </div>
 </header>`;
 }
@@ -95,6 +98,7 @@ function footer(g) {
       { label: "Collections", href: "/collections/" }, { label: "Travel Stories", href: "/stories/" }
     ]},
     { title: "Plan", links: [
+      { label: "Solo Travel Profile", href: "/profile/" },
       { label: "AI Trip Planner", href: "/plan/" }, { label: "Travel Tools", href: "/tools/" },
       { label: "Travel Deals", href: "/deals/" }, { label: "Search", href: "/search/" },
       { label: site.newsletterName, href: "/newsletter/" }
@@ -235,6 +239,7 @@ ${p.noindex ? '<meta name="robots" content="noindex,follow">' : '<meta name="rob
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="stylesheet" href="/assets/css/main.css">
 <script>try{var t=localStorage.getItem("pehchan-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+${p.head || ""}
 ${jsonLd(p, g)}
 </head>
 <body${p.bodyClass ? ` class="${esc(p.bodyClass)}"` : ""} data-template="${esc(p.template || "page")}" data-base="${esc(base)}"${p.dataAttrs || ""}>

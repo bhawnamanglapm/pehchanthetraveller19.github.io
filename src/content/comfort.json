@@ -1,0 +1,43 @@
+{
+  "note": "The twelve axes are shared vocabulary. A traveller rates her comfort 1-5 on each; a destination is rated 1-5 for how much comfort it demands on each. A match is a per-axis comparison, so every result explains itself. Destination vectors are authored only from first-hand travel — see docs/04-content-verification.md.",
+  "scale": [
+    { "value": 1, "traveller": "Not at all", "destination": "Not required" },
+    { "value": 2, "traveller": "A little", "destination": "Rarely needed" },
+    { "value": 3, "traveller": "Somewhat", "destination": "Sometimes needed" },
+    { "value": 4, "traveller": "Mostly", "destination": "Usually needed" },
+    { "value": 5, "traveller": "Completely", "destination": "Essential here" }
+  ],
+  "axes": [
+    { "key": "flying", "label": "Flying alone", "question": "Taking a flight on your own", "demand": "getting here involves flying alone" },
+    { "key": "trains", "label": "Trains", "question": "Travelling by train on your own", "demand": "trains are the practical way in" },
+    { "key": "buses", "label": "Buses", "question": "Travelling by bus on your own", "demand": "buses are unavoidable for part of the journey" },
+    { "key": "driving", "label": "Driving", "question": "Driving or riding yourself", "demand": "self-driving or riding is how people get around" },
+    { "key": "taxis", "label": "Taxis", "question": "Taking taxis and autos alone", "demand": "you will rely on taxis and autos alone" },
+    { "key": "nightWalk", "label": "Being out after dark", "question": "Walking or moving around after dark", "demand": "arrivals or moving about after dark are hard to avoid" },
+    { "key": "hostels", "label": "Hostels", "question": "Staying in a hostel", "demand": "hostels are much of what is available" },
+    { "key": "homestays", "label": "Homestays", "question": "Staying in someone's home", "demand": "homestays are much of what is available" },
+    { "key": "eatingAlone", "label": "Eating alone", "question": "Eating in a restaurant on your own", "demand": "you will be eating on your own" },
+    { "key": "strangers", "label": "Meeting strangers", "question": "Meeting and talking to people you do not know", "demand": "you will be dealing with people you do not know" },
+    { "key": "changingHotels", "label": "Changing places", "question": "Moving between several places on one trip", "demand": "the trip means moving between several places" },
+    { "key": "noInternet", "label": "No connectivity", "question": "Being somewhere with little or no network", "demand": "there are stretches with little or no network" }
+  ],
+  "tiers": [
+    { "max": 1.9, "name": "Setting Out", "summary": "You are thinking about travelling on your own, and you would rather it were arranged than improvised." },
+    { "max": 2.9, "name": "Solo Explorer — Level 1", "summary": "You are ready to travel independently, with the practical parts settled in advance." },
+    { "max": 3.9, "name": "Solo Explorer — Level 2", "summary": "You travel independently and handle most of it yourself, with a few things you would rather not deal with." },
+    { "max": 5, "name": "Independent Traveller", "summary": "You are comfortable working things out as you go, almost anywhere." }
+  ],
+  "preferences": [
+    { "axis": "nightWalk", "atMost": 2, "text": "daytime arrivals and departures" },
+    { "axis": "hostels", "atMost": 2, "text": "private or women-only accommodation" },
+    { "axis": "taxis", "atMost": 2, "text": "pre-arranged transfers rather than hailing on arrival" },
+    { "axis": "buses", "atMost": 2, "text": "trains or flights over long bus journeys" },
+    { "axis": "driving", "atMost": 2, "text": "a driver rather than driving yourself" },
+    { "axis": "strangers", "atMost": 2, "text": "small groups, or travelling on your own" },
+    { "axis": "eatingAlone", "atMost": 2, "text": "places where eating alone is unremarkable" },
+    { "axis": "noInternet", "atMost": 2, "text": "destinations with reliable connectivity" },
+    { "axis": "changingHotels", "atMost": 2, "text": "one base rather than moving each night" },
+    { "axis": "strangers", "atLeast": 4, "text": "the chance to meet other travellers" },
+    { "axis": "homestays", "atLeast": 4, "text": "homestays over hotels" }
+  ]
+}
