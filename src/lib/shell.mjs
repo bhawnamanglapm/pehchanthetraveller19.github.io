@@ -225,6 +225,13 @@ ${p.noindex ? '<meta name="robots" content="noindex,follow">' : '<meta name="rob
 <meta name="theme-color" content="#191411" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FCFAF7" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="application-name" content="${esc(site.brand)}">
+<meta name="apple-mobile-web-app-title" content="${esc(site.brand)}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="stylesheet" href="/assets/css/main.css">
 <script>try{var t=localStorage.getItem("pehchan-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>

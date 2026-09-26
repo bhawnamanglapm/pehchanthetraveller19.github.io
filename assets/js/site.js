@@ -257,3 +257,17 @@ if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: re
 }
 
 autoTrack();
+
+/* ===== Service worker ====================================================
+ * Registers the generated worker so the site is installable and works
+ * offline — the prerequisite for packaging to Google Play (Trusted Web
+ * Activity) and for the iOS Capacitor shell. Progressive enhancement: the
+ * site is unaffected if registration is unsupported or fails.
+ */
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  const base = document.body.dataset.base || "";
+  addEventListener("load", () => {
+    navigator.serviceWorker.register(base + "/sw.js", { scope: base + "/" })
+      .catch(() => { /* offline support is optional; never break the page */ });
+  });
+}

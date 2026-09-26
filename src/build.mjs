@@ -13,6 +13,8 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { buildGraph } from "./lib/graph.mjs";
+import { drawIcon } from "./lib/icon.mjs";
+import { manifest, serviceWorker, offlinePage } from "./lib/pwa.mjs";
 import { page as renderPage, ogCard } from "./lib/shell.mjs";
 import { esc, truncate, clean } from "./lib/html.mjs";
 import { home } from "./templates/home.mjs";
@@ -128,7 +130,7 @@ function main() {
   for (const [p, htmlOut] of rendered) {
     for (const m of htmlOut.matchAll(/href="(\/[^"]*)"/g)) {
       const target = m[1].split("#")[0].split("?")[0];
-      if (!target || target.startsWith("/assets/") || /\.(xml|txt|svg|json|ico)$/.test(target)) continue;
+      if (!target || target.startsWith("/assets/") || /\.(xml|txt|svg|json|ico|png|webmanifest)$/.test(target)) continue;
       if (!routes.has(target)) {
         if (!brokenLinks.has(target)) brokenLinks.set(target, p.url);
       }
@@ -196,6 +198,24 @@ function main() {
   for (const [name, [title, kicker, artKey, seed]] of ogSpecs) {
     write(`assets/og/${name}.svg`, ogCard(title, kicker, artKey, seed));
   }
+
+  /* ---- PWA: icons, manifest, service worker, offline page ------------ */
+  // Installability is the prerequisite for both store routes: Google Play via
+  // Trusted Web Activity, and iOS via a Capacitor shell around this same build.
+  for (const size of [192, 512]) {
+    write(`assets/icons/icon-${size}.png`, drawIcon(size));
+    write(`assets/icons/maskable-${size}.png`, drawIcon(size, { maskable: true }));
+  }
+  write("assets/icons/apple-touch-icon.png", drawIcon(180, { square: true }));
+
+  write("manifest.webmanifest", manifest(g.site));
+  write("offline.html", offlinePage(g.site));
+  write("sw.js", serviceWorker(g.site, [
+    "/", "/offline.html",
+    "/assets/css/main.css", "/assets/css/tokens.css",
+    "/assets/js/site.js", "/assets/favicon.svg",
+    "/assets/icons/icon-192.png", "/assets/icons/icon-512.png"
+  ], String(started)));
 
   /* ---- search index -------------------------------------------------- */
   const index = [
