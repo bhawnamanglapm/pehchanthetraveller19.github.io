@@ -57,6 +57,26 @@ export function preferencesFor(comfort, rules) {
   return [...new Set(out)];
 }
 
+/** What her circumstances imply about the shape of a first trip. */
+export function tripShapeFor(about = {}, rules = []) {
+  return [...new Set(rules
+    .filter(r => about[r.field] && about[r.field] === r.is)
+    .map(r => r.text))];
+}
+
+/** Practical notes that follow from diet, language and the like. */
+export function aboutNotesFor(about = {}, rules = []) {
+  const out = [];
+  for (const r of rules) {
+    const v = about[r.field];
+    if (!v) continue;
+    const vals = [].concat(v);
+    if (r.includesAny && r.includesAny.some(x => vals.includes(x))) out.push(r.text);
+    if (r.excludes && !r.excludes.some(x => vals.includes(x))) out.push(r.text);
+  }
+  return [...new Set(out)];
+}
+
 /** The axes she is already comfortable with. Leads the result, deliberately. */
 export function strengthsFor(comfort, axes) {
   return axes.filter(a => comfort[a.key] >= 4);
@@ -108,12 +128,14 @@ function el(tag, cls, text) {
 }
 
 function renderResult(host, model, profile) {
-  const { axes, tiers, preferences, scale, bookingRules } = model;
+  const { axes, tiers, preferences, scale, bookingRules, tripShape, aboutNotes } = model;
   const mean = meanComfort(profile.comfort, axes);
   const tier = tierFor(mean, tiers);
   const prefs = preferencesFor(profile.comfort, preferences);
   const strong = strengthsFor(profile.comfort, axes);
   const booking = bookingFor(profile.comfort, bookingRules);
+  const shape = tripShapeFor(profile.about, tripShape);
+  const notes = aboutNotesFor(profile.about, aboutNotes);
 
   host.innerHTML = "";
   const card = el("div", "profile-result");
@@ -140,6 +162,16 @@ function renderResult(host, model, profile) {
       + "and it is exactly what a planned first trip is for."));
   }
   card.append(strengths);
+
+  if (shape.length || notes.length) {
+    const b = el("section", "profile-result__block");
+    b.append(el("h3", null, "The shape of your first trip"));
+    const ul = el("ul", "profile-result__prefs");
+    shape.forEach(t => ul.append(el("li", null, t)));
+    notes.forEach(t => ul.append(el("li", null, t)));
+    b.append(ul);
+    card.append(b);
+  }
 
   if (prefs.length) {
     const b = el("section", "profile-result__block");
@@ -197,8 +229,41 @@ function renderResult(host, model, profile) {
   host.dispatchEvent(new CustomEvent("profile:ready", { bubbles: true, detail: profile }));
 }
 
+function aboutFieldHtml(f) {
+  const id = "about-" + f.key;
+  const help = f.help ? `<p class="field__help">${f.help}</p>` : "";
+  if (f.type === "checkbox") {
+    return `<fieldset class="field"><legend>${f.label}</legend>
+      <div class="choices">${f.options.map((o, i) => `<label class="choice">
+        <input type="checkbox" name="${f.key}" value="${o}" id="${id}-${i}"> ${o}</label>`).join("")}</div>
+      ${help}</fieldset>`;
+  }
+  if (f.type === "select") {
+    return `<div class="field"><label for="${id}">${f.label}</label>
+      <select id="${id}" name="${f.key}">${f.options.map(o => `<option>${o}</option>`).join("")}</select>
+      ${help}</div>`;
+  }
+  return `<div class="field"><label for="${id}">${f.label}</label>
+    <input type="text" id="${id}" name="${f.key}">${help}</div>`;
+}
+
+function collectAbout(root, fields) {
+  const out = {};
+  for (const f of fields) {
+    if (f.type === "checkbox") {
+      const on = [...root.querySelectorAll(`[name="${CSS.escape(f.key)}"]:checked`)].map(i => i.value);
+      if (on.length) out[f.key] = on;
+    } else {
+      const el = root.querySelector(`[name="${CSS.escape(f.key)}"]`);
+      const v = el && el.value.trim();
+      if (v && !/^prefer not/i.test(v)) out[f.key] = v;
+    }
+  }
+  return out;
+}
+
 function renderQuestions(host, model) {
-  const { axes, scale } = model;
+  const { axes, scale, about } = model;
   const answers = {};
 
   host.innerHTML = "";
@@ -209,6 +274,17 @@ function renderQuestions(host, model) {
   intro.textContent = "Twelve questions. There are no right answers, and nothing here is a test — "
     + "the point is to describe how you actually feel, so that what we suggest fits you.";
   form.append(intro);
+
+  // About you — optional, and above the comfort questions because it is the
+  // easier half to answer and warms her up for the harder one.
+  if (about && about.fields) {
+    const sec = el("section", "profile-about");
+    sec.innerHTML = `<h3>A little about you</h3><p class="muted">${about.note}</p>`
+      + about.fields.map(aboutFieldHtml).join("");
+    form.append(sec);
+    const div = el("h3", "profile-about__divider", "Now, how you feel about travelling");
+    form.append(div);
+  }
 
   axes.forEach((a, i) => {
     const fs = el("fieldset", "profile-q");
@@ -247,7 +323,12 @@ function renderQuestions(host, model) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if (Object.keys(answers).length < axes.length) return;
-    const profile = { version: 1, savedOn: new Date().toISOString().slice(0, 10), comfort: answers };
+    const profile = {
+      version: 2,
+      savedOn: new Date().toISOString().slice(0, 10),
+      comfort: answers,
+      about: about && about.fields ? collectAbout(form, about.fields) : {}
+    };
     saveProfile(profile);
     renderResult(host, model, profile);
     host.scrollIntoView({ behavior: "smooth", block: "start" });
