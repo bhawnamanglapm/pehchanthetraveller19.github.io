@@ -194,3 +194,76 @@ The cost is a Cloudflare account and a `wrangler deploy`.
 | 40 | Can you show us it happened?<br>· I can send a booking or ticket if you ask — mark it verified<br>· No — publish it as a community experience | Multiple choice | `verification` |
 | 41 | How do we reach you about this story? | Short answer | `contact` |
 | 42 | Consent<br>· I wrote this myself, it is my own trip, and Pehchan may publish it as I have chosen above. I understand I can have it removed at any time. | Checkboxes (required) | `consent` |
+---
+
+# Point 4: admin mail and the review queue
+
+## Admin mail — configuration, not code
+
+In the responses sheet: **Responses → ⋮ → Get email notifications for new
+responses.** Every submission now reaches the admin inbox. There is nothing to
+build and nothing to maintain.
+
+## The review queue is the sheet
+
+Add two columns by hand, to the right of the form's own:
+
+| Column | Values |
+|---|---|
+| **Status** | empty (not yet reviewed) · `approved` · `rejected` · `held` |
+| **Reviewer notes** | why, in a sentence — for you, never published |
+
+A row with an empty Status is the queue. Sort by Timestamp and work down it.
+That is the whole system, and at this volume it is the right amount of system.
+
+## What the reviewer checks
+
+1. Does it read like somebody who actually went.
+2. Does anything identify her by accident — an employer, a street, a rare
+   detail alongside a date.
+3. Does it name a business in a way that makes an allegation. If so it leaves
+   the story route entirely and goes to incident reporting.
+4. Does it describe harassment or assault. If so it is never published as a
+   story; reply privately.
+5. Spelling only. Nothing else is edited without asking her.
+
+Then write `approved` in Status, and if she offered evidence, ask for it,
+check it, **and delete the file.**
+
+## Publishing: `src/import-reports.mjs`
+
+```
+File → Download → CSV, then:
+node src/import-reports.mjs --csv ~/Downloads/responses.csv --dry-run
+node src/import-reports.mjs --csv ~/Downloads/responses.csv
+node src/build.mjs
+```
+
+`--dry-run` prints what it would do and writes nothing. Always run it first.
+
+It enforces three rules rather than trusting the operator:
+
+- **Only `approved` rows are imported.** Empty, `pending`, `held` and
+  `rejected` are all skipped, and each skip is printed with its reason.
+- **A `private` submission is never published**, whatever Status says. The two
+  are checked independently, so one mistake in a cell cannot publish something
+  she asked to be kept back.
+- **An area and a month are never published together.** A named area plus a
+  date range plus a lone woman is an identification, so when she gave an area
+  the month is dropped (`docs/12`).
+
+It also **excludes the contact column** from the published file entirely, and
+**retires the samples automatically** the first time a real report is
+imported — the promise made on `/trips/` keeps itself.
+
+If the CSV is misaligned — one unquoted comma shifts every column after it, and
+a silent shift publishes one woman's answers under another's question — it
+refuses the whole file and names the bad lines rather than importing anything.
+
+## Keeping the 12-hour promise
+
+Nothing enforces it. Sort the sheet by Timestamp, work the empty-Status rows,
+and if the backlog ever outlives the promise, change `reviewSlaHours` in
+`site.json` — it updates everywhere the promise is printed. It sits next to a
+request for a woman's trust, so it gets staffed or it gets changed, never
+quietly left untrue.
