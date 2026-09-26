@@ -1196,3 +1196,42 @@ ${crumbs({ label: "Real trips", href: "/trips/" }, { label: "Share your trip" })
                   { label: "Share your trip", href: "/trips/share/" }]
   };
 }
+
+/* ===================== SHARE WITH FAMILY =============================== */
+
+export function familyPackPage(g) {
+  const body = `
+${pageHero("Share with Family", "Give them evidence, not reassurance",
+  "The hardest part of a first solo trip is often the conversation at home. This turns your plan into something your family can read, keep, and act on — with the hotel's phone number in it.")}
+${crumbs({ label: "Share with Family" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Nothing is sent to us.</strong> The pack is built on your phone and
+  travels inside the link itself — there is no account, no server and no copy kept here. That also means
+  the link is the information: anyone who opens it can read your plan, so send it only to the people you
+  want to have it.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Why this works", title: "“Don’t worry” has never convinced anybody" })}
+  <p>A family that is anxious about a trip is not asking to be reassured. They are asking five specific
+  questions, and they relax when those are answered concretely — where she is staying, how she is getting
+  there, what happens if the train is missed, who else knows, and who to call. A hotel phone number they
+  can dial themselves does more than any promise.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="family-app">
+    <noscript><p>This page needs JavaScript to build the pack. Everything else on the site works without it.</p></noscript>
+  </div>
+</div></section>`;
+
+  return {
+    url: "/family/", template: "family",
+    title: fitTitle(["Share with Family", "Pehchan"]),
+    description: "Turn your trip into a plan your family can read and act on: where you are staying, how you travel, who knows, and who to call. Built on your phone.",
+    body, ogArt: "planner",
+    scripts: ["/assets/js/family-pack.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Share with Family", href: "/family/" }]
+  };
+}

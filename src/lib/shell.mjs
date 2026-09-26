@@ -55,6 +55,7 @@ function masthead(g) {
       ${list(nav, (item, i) => `<button class="nav__link" type="button" aria-expanded="false" aria-controls="mega-${i}" data-mega="${i}">${esc(item.label)}</button>`)}
       <a class="nav__link" href="/profile/">Solo Travel Profile</a>
       <a class="nav__link" href="/trips/">Real Trips</a>
+      <a class="nav__link" href="/family/">Share with Family</a>
       <a class="nav__link" href="/partner/">Partner</a>
     </nav>
     <div class="masthead__actions">
@@ -82,6 +83,7 @@ function masthead(g) {
     <a class="drawer__flat" href="/profile/">Solo Travel Profile</a>
     <a class="drawer__flat" href="/trips/">Real Trips</a>
     <a class="drawer__flat" href="/trips/share/">Share Your Trip</a>
+    <a class="drawer__flat" href="/family/">Share with Family</a>
     <a class="drawer__flat" href="/women-and-travel/">Women &amp; Travel</a>
     <a class="drawer__flat" href="/partner/">Partner With Us</a>
     <a class="drawer__flat" href="/about/">About</a>
@@ -103,6 +105,7 @@ function footer(g) {
     { title: "Plan", links: [
       { label: "Solo Travel Profile", href: "/profile/" },
       { label: "Real Trips", href: "/trips/" },
+      { label: "Share with Family", href: "/family/" },
       { label: "Share Your Trip", href: "/trips/share/" },
       { label: "AI Trip Planner", href: "/plan/" }, { label: "Travel Tools", href: "/tools/" },
       { label: "Travel Deals", href: "/deals/" }, { label: "Search", href: "/search/" },
