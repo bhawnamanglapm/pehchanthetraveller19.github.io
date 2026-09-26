@@ -1136,8 +1136,8 @@ ${real.length === 0 ? `
   ${factList([
     ["Anonymous by default", "Your name is never shown unless you specifically ask for it. Most women choose anonymous, and that is the default."],
     ["We never publish exactly where you stayed", "Not with your dates. A property plus a date range plus a lone woman is an identification, so one of the three is always removed."],
-    ["Naming a business follows a separate route", "If something happened to you at a named hotel or with a named driver, that goes through an incident report, not a public post — so it can be checked and answered before anyone reads it."],
-    ["Harassment and assault are handled off the page", "Never published as a story. Tell us and it informs what we warn other women about, without your experience becoming public content."],
+    ["Naming a business follows a separate route", "If something happened to you at a named hotel or with a named driver, that goes through a <a href=\"/report/\">private incident report</a> rather than a public post — so it can be checked and answered before anyone reads it."],
+    ["Harassment and assault are handled off the page", "Never published as a story. <a href=\"/report/\">Tell us privately</a> and it informs what we warn other women about, without your experience becoming public content."],
     ["We hold as little as possible", "Verification documents are destroyed after checking. Contact details are separated from your story, and are only used to reach you about it."]
   ])}
   <div class="btn-row"><a class="btn btn--primary" href="/trips/share/">Share your trip</a></div>
@@ -1428,7 +1428,7 @@ ${crumbs({ label: "Safety" })}
   inform what other women are warned about.</p>
   <div class="btn-row">
     <a class="btn btn--primary" href="/trips/share/">Share your trip</a>
-    <a class="btn btn--ghost" href="/contact/">Report something privately</a>
+    <a class="btn btn--ghost" href="/report/">Report something privately</a>
   </div>
 </div></section>`;
 
@@ -1439,5 +1439,74 @@ ${crumbs({ label: "Safety" })}
     body, ogArt: "default",
     scripts: ["/assets/js/safety.js"],
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Safety", href: "/safety/" }]
+  };
+}
+
+/* ===================== INCIDENT REPORTING ============================== */
+
+const HELPLINES = [
+  ["112", "Emergency — police, ambulance and fire, nationwide", "tel:112"],
+  ["1091", "Women in distress", "tel:1091"],
+  ["181", "Women's helpline", "tel:181"],
+  ["14490", "National Commission for Women — sexual violence and harassment, 24×7", "tel:14490"],
+  ["1930", "Cyber and online payment fraud", "tel:1930"]
+];
+
+export function reportPage(g) {
+  const body = `
+${pageHero("Report something", "So it does not happen to her too",
+  "If something went wrong — a driver, a stay, a scam, someone who would not leave you alone — telling us means the next woman is warned. This is private. It is not a review and it is not published.")}
+${crumbs({ label: "Report something" })}
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div class="disclosure disclosure--strong">
+    <div><strong>If you are in danger right now, do not use this form.</strong> Call
+    <a href="tel:112">112</a>. Pehchan cannot help in an emergency — nobody here is watching this page.</div>
+  </div>
+  <div class="helplines">
+    ${list(HELPLINES, ([num, what, href]) => `<a class="helpline" href="${esc(href)}">
+      <strong>${esc(num)}</strong><span>${esc(what)}</span></a>`)}
+  </div>
+  <p class="muted">The National Commission for Women also takes written complaints online at
+  <a href="https://ncwapps.nic.in" rel="noopener">ncwapps.nic.in</a>. Reporting to us is not a
+  substitute for reporting to them, or to the police.</p>
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Before you write", title: "What happens to this" })}
+  ${factList([
+    ["It is not published", "This is not a review. Nothing you write appears on the site as a story, under your name, or attached to your trip."],
+    ["Nothing is saved as you type", "Unlike the other forms here, this one keeps no draft. If you are on a shared or borrowed phone, closing the tab leaves nothing behind."],
+    ["You can be completely anonymous", "No contact details are required. Send it from any address, including one that is not yours — we would rather you stayed anonymous than did not tell us."],
+    ["Naming a business is optional, and it goes nowhere near the site", "A name is checked first, and the business is given a right of reply, long before anything is ever said publicly. Most reports are useful without one."],
+    ["Harassment and assault are never published", "They inform what we warn other women about. Your experience does not become content."]
+  ])}
+</div></section>
+
+<section class="section section--tight"><div class="wrap wrap--narrow">
+  <div id="incident-app">
+    <noscript><p>This form needs JavaScript. You can email us instead at
+    <a href="mailto:${esc(g.site.contactEmail)}">${esc(g.site.contactEmail)}</a>.</p></noscript>
+  </div>
+</div></section>
+
+<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Being straight with you", title: "What we have not built yet" })}
+  <p>The point of collecting these is eventually to be able to say something like <em>"twelve women
+  reported this in the last month"</em> — which is worth far more to a traveller than any review score.</p>
+  <p>That is not switched on, and it will not be until a lawyer has looked at it. Publishing aggregated
+  allegations about named businesses carries real legal exposure in India, and getting it wrong would
+  hurt Pehchan and would not help you. So reports are being collected and used privately first, and the
+  public layer waits until it can be done properly — with moderation, a right of reply, and a visible
+  number of reports rather than a percentage that hides how few there were.</p>
+</div></section>`;
+
+  return {
+    url: "/report/", template: "report", noindex: false,
+    title: fitTitle(["Report Something", "Pehchan"]),
+    description: "Tell us privately if something went wrong on a trip — a driver, a stay, a scam. Not published, no draft saved, and you can be completely anonymous.",
+    body, ogArt: "default",
+    scripts: ["/assets/js/incident.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Report something", href: "/report/" }]
   };
 }
