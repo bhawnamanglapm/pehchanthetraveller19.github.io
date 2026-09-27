@@ -229,8 +229,8 @@ ${p.noindex ? '<meta name="robots" content="noindex,follow">' : '<meta name="rob
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(p.description)}">
 <meta name="twitter:image" content="${esc(ogImage)}">
-<meta name="theme-color" content="#191411" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#FCFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1513" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3F6F5" media="(prefers-color-scheme: light)">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
