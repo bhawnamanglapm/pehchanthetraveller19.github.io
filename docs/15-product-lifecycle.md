@@ -642,6 +642,55 @@ the product:
 Re-read this section after those five conversations. If it has not been
 revisited by 30 November 2026, that is drift, not a decision.
 
+### The audience roadmap, in order
+
+Set by the founder, 29 Sep. Three phases, and they are well ordered: **each one
+adds exactly one hard thing, and the document carries through all three.**
+
+| | Audience | What it newly requires | Supply needed |
+|---|---|---|---|
+| **1** | **Solo travellers** | Nothing beyond what exists | None |
+| **2** | **Groups of women** who already know each other | Coordinating several people | None |
+| **3** | **Solo travellers formed into a group** | Matching and vetting **strangers**, and taking responsibility for the result | **Yes — this is a different company** |
+
+**Phase 2 is better for this product than phase 1, not worse.** A group of four
+friends is four families to convince. The document's value multiplies with group
+size while its cost of production barely moves, and nothing about it needs to
+change. If phase 1 works at all, phase 2 should work harder.
+
+### Phase 3 rests on the single lowest-scoring item in the survey
+
+Worth knowing now, years before it matters.
+
+Of eighteen comfort axes, **"travelling with people I met online" is the only
+one all three respondents scored 1 out of 5.** It is the lowest mean in the
+entire instrument:
+
+| Axis | Scores | Mean |
+|---|---|---|
+| **Travelling with people I met online** | **1, 1, 1** | **1.00** |
+| Overnight buses | 1, 1, 2 | 1.33 |
+| Hostels | 2, 1, 2 | 1.67 |
+| Joining a group tour with strangers | 3, 1, 3 | 2.33 |
+
+Phase 3 — putting solo women who do not know each other into a group — is
+built on exactly that. It is also the model **Jugni already runs**, which
+`docs/17` records as one of the larger operators, and which was founded by two
+men.
+
+This is not an argument against phase 3. It names what phase 3 has to solve
+before anything else: **strangers**. And the survey says how — background-verified
+travellers rated **4.0**, and *"details of other travellers"* and
+*"background-verified travellers"* both appear in what would make a family
+comfortable. The trust layer already specified in `docs/10` is not a nice
+addition to phase 3; it is the whole of it.
+
+It also means phase 3 crosses the line `docs/17` drew. Matching strangers
+requires vetting, liability and operations — supply, in other words, and the
+Stage 2 conclusion was to stay out of supply. **Phase 3 should not be started
+until phases 1 and 2 have paid for it**, and when it is, it should be treated
+as a second business with its own case, not as a feature.
+
 ### What we are not — settled, and not blocked on anything
 
 | Not | Because |
