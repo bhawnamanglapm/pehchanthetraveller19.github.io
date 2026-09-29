@@ -326,7 +326,7 @@ each with a condition that kills it. A belief with no kill condition never dies
 
 | # | We believe | Evidence now | **Dead if** |
 |---|---|---|---|
-| **1** | Family permission is the real blocker, not destination choice | NFHS-5 42%, and only 47% in the richest quintile (NFHS-4). Our n=3: all report family influence, mean family support 2.0/5. **Plus one observed case — see below** | At n=30, fewer than half report family influence — **then the Family Pack comes out** |
+| **1** | Family permission is the real blocker, not destination choice | NFHS-5 42%, only 47% in the richest quintile. Our n=3: all report family influence, support 2.0/5. **One full observed instance: document → shown → persuaded → permission.** The mechanism has run once | At n=30, fewer than half report family influence — **then the Family Pack comes out** |
 | **2** | She will pay for reassurance, not just for a trip | 3 of 3 said "definitely/probably". **No one has paid anything.** One unpaid request exists — a sister, Andaman, Oct 2026 | 20 people see a price and fewer than 2 proceed |
 | **3** | First-hand reports from Indian women beat operator marketing | Named in the research as the one defensible moat | 10 women read a real report and a polished operator page and prefer the operator page |
 | **4** | She wants to travel *solo* | **Contradicted already.** 0 of 3 would book a solo trip (`docs/16`) | Already failing. At n=20, if under 20% want solo, **the word comes out of the positioning** |
@@ -486,10 +486,16 @@ That is the sequence the whole thesis requires, and it is the first time the
 product's central mechanism has an actual instance behind it rather than a
 survey answer. State it carefully, because sequence is not causation:
 
-| Established | Not established |
+**Confirmed the same day: the document was shown to the parents, and it
+persuaded them.** The full chain is therefore observed end to end:
+
+> itinerary made → shown to parents → parents persuaded → permission granted
+
+| Established | Caveat that remains |
 |---|---|
-| A complete itinerary existed **before** the permission conversation | Whether it was actually shown to the parents |
-| The conversation happened and **permission was granted** | Whether it was decisive, or whether they would have agreed anyway |
+| A complete itinerary existed **before** the conversation | n=1, and the founder's own family |
+| It was **shown** to the parents | The maker of the document is also the person reporting that it worked — self-attribution, though she was present for it |
+| It **persuaded** them; permission was granted | Nothing tells us whether a worse document would also have worked |
 
 **Two independent sources now point the same way.** The survey's most-requested
 reassurance, in 3 of 4 responses, was *"Complete itinerary"* — ahead of every
@@ -513,7 +519,31 @@ parent at a kitchen table.
 
 A parent is shown a document. That is a real and specific difference between
 what works and what the site makes, and it is the clearest product instruction
-to come out of Stage 1. Recorded here; not yet acted on.
+to come out of Stage 1.
+
+### The larger reframe
+
+With the chain confirmed end to end, the finding is bigger than the Family Pack.
+
+**The document is the product.** Not the profile engine, not the comfort
+matching, not the checklists — those are inputs. The unit of value, the thing
+that changed a real outcome for a real person, is a **complete, professional,
+branded itinerary that a woman can put in front of her parents.**
+
+That reframes the site's job. It is not "a set of tools that help her feel
+ready". It is **"produce the document that gets her permission"** — and
+everything else on the site is worth keeping only to the extent that it feeds
+that document.
+
+Read against `docs/16`, this also resolves the tension there. Respondents did
+not want tools and did not want pure DIY; all three wanted something *done for
+them*. A finished document is exactly that. It is also, conveniently, the same
+artefact as the priceable unit — so the thing that wins permission and the thing
+someone would pay for are one object, not two.
+
+**This is the strongest conclusion available from Stage 1, and it rests on one
+family.** It should be tested against the next two people who ask, before the
+site is rebuilt around it.
 
 **Two things follow immediately.**
 
