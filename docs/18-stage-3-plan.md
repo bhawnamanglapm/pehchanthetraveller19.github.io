@@ -22,6 +22,17 @@ respondents" should stop planning that.
 
 **Fix: recruit separately, and do not rely on the form for it.**
 
+## Problem 1b — the survey is 101 questions long
+
+Added 29 Sep, and it reorders everything below. The form runs to 101 questions,
+roughly **thirty-four minutes**. Four responses in six days was read here as a
+distribution problem; it is at least as much an instrument problem, because
+nobody fills in a thirty-four minute form for a stranger.
+
+**`docs/19` replaces it with three segment forms of about three minutes each.**
+Everything in Problem 2 below still applies, but it comes second: a thousand
+people clicking through to a thirty-four minute survey produces almost nothing.
+
 ## Problem 2 — the survey will not fill itself
 
 Four responses in six days, with nothing pointing at it. At that rate n=50
