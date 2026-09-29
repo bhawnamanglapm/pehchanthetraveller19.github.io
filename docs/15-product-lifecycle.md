@@ -242,19 +242,29 @@ Use the 42% as evidence that the constraint exists and is not shrinking. Do not
 use it to size a market. **Haryana's own figure was not looked up and should
 be** — it is where the founder is.
 
-**The fear is not irrational — though the data is a proxy.** NCRB recorded 192
-cases with **foreign** victims in 2022, up 28% from 150 in 2021, including 28
-rapes. Between 2016 and 2022, only 16 of 148 rape cases involving foreign
-victims reached court and **7 ended in conviction — under 5%** — with 56% still
-pending at investigation. The rate of crimes against women in India overall rose
-12.9% between 2018 and 2022.
+**The fear is not irrational — but be careful what the data actually says.**
+Refreshed 29 Sep to the latest NCRB release, which now runs to **2024**:
+roughly **4.45 lakh recorded crimes against women**, about **51 FIRs every
+hour**, a rate of **66.4 per lakh women**, and 29,536 rape cases.
 
-**These are figures about foreign tourists, not about Indian women travelling
-domestically.** No equivalent dataset for Indian women travellers was found, and
-the two populations are not interchangeable. What the conviction rate does show
-— under 5%, 56% stuck at investigation — holds regardless of victim
-nationality, and that is the part a worried family is reacting to: not the odds
-of something happening, but what follows if it does.
+**And the largest category is cruelty by a husband or his relatives, at 27.2%.**
+Kidnapping and abduction is 15.4%. Recorded crime against Indian women is
+overwhelmingly domestic, not something that happens to strangers on the road.
+
+That cuts against the instinct to market on fear, and it should. **A woman is
+statistically in more danger in a house than on a train.** This product should
+never imply otherwise, and the family it is helping persuade may quietly know
+it.
+
+What does carry over is the **response**, not the risk. On tourist cases:
+between 2016 and 2022, of 148 rape cases involving foreign victims, 16 reached
+court and **7 ended in conviction — under 5%** — with 56% still stuck at
+investigation. Those figures are about foreign tourists, so they are a proxy for
+Indian women travelling domestically rather than a measurement of it; no
+equivalent dataset for Indian women travellers was found. But a conviction rate
+that low is about the system, not the victim's passport, and that is the part a
+worried family is reacting to: not the odds of something happening, but what
+follows if it does.
 
 **The market is moving, fast, off a small base.**
 
@@ -276,10 +286,16 @@ estimated. Anyone quoting a number for it is guessing.
 Each line here now has a number behind it.
 
 - **The behaviour is growing fast off a small base.** Zostel's solo female
-  bookings: **33,357 (2018) → 18,372 (2020 low) → 92,192 (2025)** — roughly 5×
-  the pandemic floor and near 3× the pre-pandemic level. Scapia reports ~9×
-  year-on-year growth. 30% of Indian women booking accommodation in 2023
-  travelled alone.
+  bookings: **33,357 (2018) → 18,372 (2020 low) → 92,192 (2025)**. Scapia
+  reports ~9× year on year. And in 2026: **"women solo travel" searches hit a
+  15-year high on Google Trends in Q1, peaking in Mumbai, Delhi and Bengaluru**
+  — the three cities Segment A lives in — while Skyscanner puts **64% of Indian
+  women aged 30–50** as having travelled solo or considering it.
+- **But the incumbent has now moved.** MakeMyTrip shipped women's safety signals
+  across ~97,000 properties in 2026 — women's reviews, safety amenities,
+  female-only adjacent bus berths — and is building AI discovery with OpenAI.
+  The window for "safety features for women travellers" as a differentiator has
+  closed. See `docs/17`. The family conversation is the part still nobody's.
 - **The blocker has not moved with it.** Freedom of movement went **41%
   (NFHS-4, 2015–16) → 42% (NFHS-5, 2019–21)** — one point in five years, and
   only 47% even in the richest quintile. Demand is growing against a constraint

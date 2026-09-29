@@ -130,6 +130,83 @@ family to yes converts *their* hesitant enquiries too.
 That is speculative and should be marked as such. But it is the first framing
 in which their twenty-year head start is an asset rather than a wall.
 
+## 2026 update — the incumbent moved in
+
+Added 29 Sep after a pass for current-year data. The research above leaned on
+2022–2025 figures. Three 2026 developments change things, and one of them
+matters a great deal.
+
+### MakeMyTrip has launched women's safety features at national scale
+
+This is the single most important competitive fact in this document, and the
+first pass missed it.
+
+MakeMyTrip has introduced women-centric safety and assurance signals across
+stays and intercity buses:
+
+- **Reviews written by women highlighted**, with AI summaries pulling out staff
+  behaviour, neighbourhood safety and comfort
+- **Women-specific amenity indicators** surfaced on listings — CCTV, door eye,
+  door chains, full-length mirrors
+- **On buses, booking one side of a double berth automatically restricts the
+  adjacent berth to female-only**
+- Built on **~97,000 accommodation properties and 3,500+ intercity bus
+  operators** of structured partner data, plus millions of reviews
+
+Separately, MakeMyTrip is working with OpenAI on AI-led travel discovery.
+
+**Read what that does to this product's feature list.** Verified stays,
+safety signals on properties, a women's-review layer, AI itinerary planning —
+these were all on the roadmap here, and all of them are now shipped by the
+largest travel company in India, against inventory this project will never
+have. `docs/15` recorded that ~80% of travel startups fail with "no
+differentiation" the leading cause, and that AI integration alone is not a
+moat. This is that warning arriving in person.
+
+It does not weaken the conclusion of this document. It sharpens it:
+
+| Layer | Status |
+|---|---|
+| Trips, inventory, supply | Nine operators, twenty years, 10% margins |
+| **Safety signals, verified stays, women's reviews** | **Taken by MakeMyTrip, at 97,000-property scale** |
+| AI planning and discovery | MakeMyTrip + OpenAI |
+| **The family conversation** | **Still nobody** |
+
+Anything on this site that competes with row two should be reconsidered, not
+because it is badly built but because it is now a feature of an app with
+national distribution and a supply relationship with every hotel in the
+country. What survives is the row nobody is in.
+
+### The behaviour data is stronger than the 2025 numbers suggested
+
+- **"Women solo travel" searches hit a 15-year high in Q1 2026 on Google
+  Trends**, with peak interest in **Mumbai, Delhi and Bengaluru** — three metro
+  cities, which is direct support for Segment A in `docs/15`
+- **Skyscanner 2026: 87% of Indians have travelled solo or are considering it,
+  including 64% of women aged 30–50**
+- Indian solo travel is projected to compound at **19.5% a year to 2033**
+- Year on year: **train bookings 16.5×, bus 11×, flights 8.2×** — higher
+  frequency and more regional movement
+- **Over 80% of women's domestic leisure bookings are beach destinations**
+  rather than hill stations, and **60%+ of their top international choices are
+  visa-free**
+- Gen Z women book mid-range stays (about half their bookings, up ~8×);
+  millennial women skew premium, a third choosing luxury — the highest of any
+  age group
+- MakeMyTrip's own data: women book stays **50% further in advance** (15+ days)
+  and index **16% higher on premium and branded properties** than men
+- Women's labour force participation is up roughly **80% over six years**
+
+The advance-booking figure is worth keeping. A woman who books two weeks
+earlier than a man is a woman doing more planning — and possibly a woman who
+needs the plan settled before she can get agreement to go.
+
+### What this does not change
+
+The category economics in the sections above. Growth projections describe the
+whole solo travel market, not what a nine-operator bootstrapped category can
+capture. WOW Club still took twenty years to reach 4,000 travellers a year.
+
 ## What could not be found
 
 Recorded so nobody later mistakes a gap for a zero.
@@ -165,6 +242,10 @@ Recorded so nobody later mistakes a gap for a zero.
 - Twin-share norms and single supplements — [Jugni](https://jugni.co.in/), [JourneyWoman on single supplements](https://journeywoman.com/solo-travel-advice/the-cost-of-going-solo-why-single-supplements-are-a-barrier-to-travel-for-women/)
 - Mainstream operators' women's tours — [Veena World](https://www.veenaworld.com/speciality-tours/womens-special-tour-packages/spl), [Kesari My Fair Lady](https://www.kesari.in/Speciality-Tours/My-Fair-Lady-Tours)
 - Tour operator margin pressure generally — [PromptCloud](https://www.promptcloud.com/blog/challenges-of-being-a-travel-startup/)
+- **2026** MakeMyTrip women's safety and assurance features — [Curly Tales](https://curlytales.com/india/travel/makemytrip-introduces-ai-based-safety-assurance-features-to-support-women-travellers/), [Goem Karponn](https://goemkarponn.com/makemytrip-introduces-women-centric-safety-and-assurance-signals-in-stay-and-bus-bookings/), and on the OpenAI work [Hotelier India](https://www.hotelierindia.com/operations/makemytrip-openai-ai-travel)
+- **2026** search interest, Skyscanner survey and booking mix — [Storyboard18](https://www.storyboard18.com/amp/how-it-works/spiritual-tourism-gains-momentum-as-younger-indians-and-solo-women-drive-domestic-travel-growth-report-105791.htm), [HappyFares](https://www.happyfares.in/blog/women-solo-travel-safety-budget-guide-india/), [Outlook Traveller](https://www.outlooktraveller.com/News/solo-travel-surges-to-record-highs-as-independence-reshapes-global-tourism)
+- **2026** solo travel market projection — [Grand View Research](https://www.grandviewresearch.com/industry-analysis/solo-travel-market-report)
+- **NCRB to 2024**, crimes against women — [ThePrint](https://theprint.in/india/ncrb-report-out-crimes-against-women-saw-minor-dip-in-2024-maximum-cases-were-cruelty-by-husband/2924248/), [Deccan Herald](https://www.deccanherald.com/amp/story/india%2Fdelhi%2Fdelhi-tops-metro-cities-in-crimes-against-women-with-13366-cases-in-2023-ncrb-3748479)
 
 Revenue and margin figures are as published by third parties and were not
 verified against filings.
