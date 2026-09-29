@@ -38,7 +38,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | 5 Definition | 🟢 **Done** | `docs/10`, `docs/11`, the nine points |
 | 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
 | 7 Build | 🟢 **Done** | 85 pages, the profile engine, six product surfaces, PWA, voice |
-| 8 Quality | 🔴 **Barely started** | Build integrity checks exist and caught real bugs. But: no automated tests, **nobody outside this session has ever used it**, no device or accessibility pass |
+| 8 Quality | 🟠 **Started** | Build integrity checks caught real bugs, and `src/test-document.mjs` now runs 34 assertions against the real itinerary. Still: **nobody outside this session has ever used it**, no device or accessibility pass |
 | 9 Launch | 🔴 **Not started** | Site is live and nothing points at it. Instagram bio unchanged, no content, no form connected |
 | 10 Measure | 🔴 **Blind** | `analytics.provider` is `null`. Zero visitors measured, ever |
 | Ops | 🔴 **Not started** | No entity, no GST, no legal review |
@@ -619,7 +619,7 @@ threshold and rate election with a CA before acting on them.
 |---|---|---|
 | **1 Discovery** | ✅ This document. Remaining: write down the real travel history (see *Why us*) | The founder, one hour |
 | **2 Market** | ✅ `docs/17` | — |
-| **3 Validation** | Talk to five women first, then drive the survey to 50. Instagram bio, Google Form | The founder, five hours |
+| **3 Validation** | ✅ Plan written: `docs/18`. Interview guide, price test, schedule. Execution is five hours of founder time | The founder |
 | **3 Validation** | **Price the Andaman-style itinerary for the next person who asks.** The deliverable already exists | Nothing |
 | **7 Build** | Capture the 20–25 Oct Andaman trip as the first real trip report | The traveller, after 25 Oct |
 | **4 Positioning** | Rewrite `site.json` brand copy once a segment is chosen. **Re-examine the word "solo"** — `docs/16`, finding 1 | Stage 3 |
