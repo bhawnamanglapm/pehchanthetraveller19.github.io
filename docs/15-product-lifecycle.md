@@ -34,7 +34,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | 1 Discovery | 🟢 **Written and researched** | All eleven parts present, 29 Sep. Alternatives, severity, moat, assumptions, constraints and exit criteria are sourced, not assumed |
 | 2 Market | 🟢 **Done, 29 Sep** | `docs/17`. Nine operators, twenty years, zero outside funding, ~10% margins. The conclusion is not to become the ninth |
 | 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
-| 4 Positioning | 🟠 **Decided four times, never applied** | `site.json` still reads *"Journeys & Stays / Handcrafted journeys. Beautiful stays."* — the media-era copy. "Find your identity" appears nowhere on the site |
+| 4 Positioning | 🟢 **Applied 29 Sep** | Founder's call: target **solo** and **women**. `site.json` rewritten, "Find your identity" now on every page. See the decision record below — it runs ahead of the evidence, deliberately |
 | 5 Definition | 🟢 **Done** | `docs/10`, `docs/11`, the nine points |
 | 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
 | 7 Build | 🟢 **Done** | 85 pages, the profile engine, six product surfaces, PWA, voice |
@@ -590,6 +590,67 @@ soft spots, recorded rather than papered over.
 | Whether the itinerary was **shown** to the parents, and whether it was decisive | The sequence is established; the causal link is not | **Only Bhawna** |
 | What the parents actually asked for before saying yes | It is the Family Pack specification, written by a real family | **Only Bhawna** |
 | Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
+
+## Stage 4 — the positioning decision, and the evidence it runs ahead of
+
+Decided by the founder, 29 Sep 2026: **target solo travel, and women.**
+
+The site now reads:
+
+| Field | Value |
+|---|---|
+| descriptor | *Find your identity* |
+| promise | *Solo travel for Indian women — and the plan that gets your family to yes.* |
+| positioning | *A solo travel platform for Indian women: the confidence to go, and a complete plan your family can read before you do.* |
+
+This replaces *"Journeys & Stays / Handcrafted journeys. Beautiful stays"*, which
+had survived from the media era and was, among other things, what the app
+stores would have listed the product as.
+
+### The distinction that makes this coherent
+
+Assumptions 4 and 5 record that nobody in the survey would book a solo trip, and
+that women-only groups, female trip leaders and female drivers are its
+lowest-rated ideas. Taken flatly, this decision contradicts both. It does not,
+because **positioning is not product**:
+
+| | Positioning — who we speak to | Product — what we sell |
+|---|---|---|
+| **Solo** | Women who intend to travel alone, and who search that way. "Women solo travel" hit a **15-year high on Google Trends in Q1 2026**, peaking in Mumbai, Delhi and Bengaluru | **Not** a solo trip. The document, which serves a woman going with friends just as well |
+| **Women** | The audience, which is the founder's audience already | **Not** women-only supply — no female-driver network, no women-only departures. Those remain in *Explicitly not doing* |
+
+So what is being targeted is a woman who thinks of herself as travelling alone
+and looks for it in those words. What is being sold to her is still the document.
+Assumptions 4 and 5 constrain the **product**, and they still do.
+
+### What would falsify this, honestly
+
+It is a founder call made ahead of the evidence, and that is recorded rather
+than dressed up. The survey says n=3 and says no; search data and the
+Instagram audience say yes. Three people cannot kill a positioning, but they
+cannot confirm one either.
+
+The five conversations in `docs/18` are now load-bearing for this, not just for
+the product:
+
+- **If four or more of five choose company over solitude** when asked
+  question 4, the word *solo* is speaking to an audience that does not exist,
+  and the descriptor changes.
+- **If three or more react negatively to women-only** in question 5, that stays
+  an audience definition and never becomes a pitch.
+
+Re-read this section after those five conversations. If it has not been
+revisited by 30 November 2026, that is drift, not a decision.
+
+### What we are not — settled, and not blocked on anything
+
+| Not | Because |
+|---|---|
+| A tour operator | Nine of them, twenty years, ~10% margins, a ₹18 Cr ceiling (`docs/17`) |
+| A safety-features app | MakeMyTrip shipped it across ~97,000 properties in 2026 |
+| An AI itinerary planner | MakeMyTrip with OpenAI, and "AI is not a moat" is the leading named failure cause |
+| A booking platform | No inventory, no capital, no supplier relationships |
+| A fear-based pitch | NCRB 2024: the largest category of crime against women is cruelty by a husband or his relatives, at 27.2%. She is statistically in more danger at home than on a train, and this product must never imply otherwise |
 
 ## Sources
 
