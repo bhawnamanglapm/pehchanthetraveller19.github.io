@@ -14,7 +14,7 @@ This closes it. The conclusion is not the one the product was heading towards.
 |---|---|---|---|
 | **WOW Club** (Sumitra Senapaty) | **2005** | **~₹18 crore revenue**. 10,000+ women over 17 years, now **3,000–4,000 a year** across **125 trips**, with **12 employees** | Bootstrapped |
 | **Girls On The Go** (Piya Bose) | 2008 | — | Bootstrapped |
-| **F5 Escapes** (Malini Gowrishankar) | ~2014 | Groups of 8–10 | Bootstrapped |
+| **F5 Escapes** (Malini Gowrishankar) | 2013 | Groups of 8–10 | Bootstrapped |
 | **Jugni** | 2014/15 | 5,000+ women, 55+ countries | Bootstrapped |
 | **The Flapper Life** (Zinal Doshi, ex-banker) | 2016 | Mumbai, all-female team | Bootstrapped |
 | **Women on Clouds** (Shireen Mehra, ex-cabin crew) | — | Trips plus a paid members' club | Bootstrapped |
@@ -206,6 +206,45 @@ needs the plan settled before she can get agreement to go.
 The category economics in the sections above. Growth projections describe the
 whole solo travel market, not what a nine-operator bootstrapped category can
 capture. WOW Club still took twenty years to reach 4,000 travellers a year.
+
+## Testing the central claim: does anybody sell the family conversation?
+
+Everything in this document turns on one assertion — that none of these
+companies sells help with getting permission. It deserved more than a passing
+check, so it got one on 29 Sep.
+
+**The intended method failed.** Direct reads of `f5escapes.com`,
+`wowclub.com` and `jugni.co.in` are blocked by this environment's network
+egress proxy, so the operators' own pages could not be audited line by line.
+What follows is a search probe, which is weaker, and the weakness is the point:
+**the single load-bearing claim in this document has still not been verified
+against the source.** Anyone with an unrestricted browser should spend twenty
+minutes doing it.
+
+**What the probe found: the demand is everywhere in content and nowhere in
+products.**
+
+There is a whole publishing genre on exactly this problem —
+*"How to convince your Indian parents to let you travel"* (Holidify),
+*"Dealing with travel-wary Indian parents"* (The Shooting Star),
+*"How I convinced my parents to let me travel solo at 19"* (Tripoto),
+*"I'm a middle-class working woman and this is how I convinced my parents"*
+(Tripoto), *"How to convince your mom that going on a solo trip as a female is
+completely safe in India"* (Tripoto). Written repeatedly, read enough to keep
+being written.
+
+And the advice in them is consistently the same: **share your complete
+itinerary, include timings, give them contact numbers, call every night before
+you sleep.** That is a description of the document this product now builds,
+arrived at independently by people who had to solve it by hand.
+
+**No operator product was found doing any of it.** The nine sell trips. The
+bloggers write the workaround. Nobody has closed the gap between them.
+
+This is better evidence than the original claim had. A problem that generates
+this much content and no product is either genuinely unserved or genuinely
+unmonetisable — and `docs/15`'s observed case, where a document was shown to
+parents and won permission, is the one data point that distinguishes those.
 
 ## What could not be found
 
