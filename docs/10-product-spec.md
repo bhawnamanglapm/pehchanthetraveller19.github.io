@@ -5,6 +5,14 @@ statement of what Pehchan is for, and it supersedes `docs/08` where they
 conflict: the business is a women's travel platform, not a cross-border
 heritage and boutique agency.
 
+> **Re-cut 29 Sep 2026.** The ten components below are unchanged as
+> descriptions and still worth reading. What changed is their **weight and
+> order**, because three things happened after this was written: one component
+> acquired real evidence, two acquired a competitor with national distribution,
+> and the thing labelled "the moat" turned out not to be it. The re-cut is the
+> next section; individual components carry a dated status line where it
+> applies, and the Sequencing section at the end has been rewritten.
+
 ---
 
 ## The spine
@@ -16,6 +24,68 @@ DREAM → CONFIDENCE → PLAN → MATCH → TRAVEL → SUPPORT → RETURN
 Every feature below belongs to one stage, and the last stage feeds the first
 for the next woman. `RETURN` is not an epilogue — it is where the dataset comes
 from.
+
+**The spine holds. Its centre of gravity moved.** Two of the seven stages now
+carry the product: **PLAN**, because a document that wins permission is the one
+thing here with evidence behind it, and **RETURN**, because accumulated
+first-hand reports are the one asset `docs/17` found that a competitor cannot
+buy. The other five earn their place by feeding those two.
+
+---
+
+## The re-cut — what carries weight now
+
+| | Component | Weight | Why it changed |
+|---|---|---|---|
+| **3** | **Share with Family** | **First. This is the product** | Written for a real traveller, shown to her parents, and it won permission (`docs/15`). The only component with observed evidence |
+| — | **Trip reports** (`docs/11`) | **Second. This is the moat** | `docs/17`: accumulated first-hand content is the one defensible asset in a category where ~80% fail on differentiation. **Currently zero entries** |
+| 1 | First Solo Trip Engine | Supporting | Establishes what she can handle, which is an input to the document |
+| 2 | "Can I do this?" score | Supporting | Same. The reassurance half of the job |
+| 6 | Safety by journey | Supporting | The check-in schedule is a section of the document |
+| 9 | Travel memory | Supporting | Feeds RETURN |
+| 10 | Voice | Supporting | An input method, not a feature |
+| **5** | **Pehchan Local** | **Retire, or shrink hard** | MakeMyTrip now surfaces women's safety signals across **~97,000 properties** with structured partner data. A hand-built directory cannot compete on coverage or freshness |
+| **8** | **Last verified** | **Retire** | Same territory, same competitor. Verification freshness at scale is an inventory problem |
+| **4** | **Trust Layer** | **Reassign to phase 3** | Not a feature of this product. Vetting strangers is the whole of the third phase of the audience roadmap, and is years out |
+| **7** | **Incident reporting** | **Keep. Relabel** | Still worth building, still gated on legal review, but it is **not** "the moat" — see below |
+
+### On Pehchan Local and Last verified
+
+Neither is a bad idea and neither was badly specified. They lost to arithmetic.
+Verification is a coverage game: a property directory is worth what its breadth
+and recency are worth, and an incumbent with a supply relationship with every
+hotel in India will always have more of both. `docs/17` records this as the
+2026 development that most changed the plan.
+
+If anything survives here it is the **narrow** version: a handful of places the
+founder has personally stayed, written in her own voice, which is exactly the
+thing MakeMyTrip's structured partner data cannot produce. That is trip report
+content, not a directory.
+
+### What the build still ships, and what that means
+
+A definition change is not a build change, and the two now disagree. The site
+still ships `/local/` and `/local/join/`, and the `last_verified` signal
+machinery is still in the templates.
+
+**That is deliberate for now, not an oversight.** Removing live pages is a
+destructive change and belongs in Stage 7 with a decision behind it, not as a
+side effect of re-reading the spec. But the disagreement should not sit
+unresolved: either those surfaces come out, or `/local/` shrinks to the
+founder's own stays written in her own voice, which is the one version an
+incumbent's structured partner data cannot reproduce.
+
+Whoever picks this up should note that Pehchan Local currently lists **zero
+real providers** — the content file holds categories and signal types and no
+entries — so retiring it removes machinery, not content.
+
+### On "the moat"
+
+Section 7 below is titled *"Incident reporting → the moat"*. That title is
+withdrawn. `docs/17` found the defensible assets to be the founder's own travel
+history and the accumulated body of first-hand reports; incident reporting is a
+public good this product should probably offer, and a serious legal exposure it
+should not rush. Those are different things from a moat.
 
 ---
 
@@ -107,6 +177,12 @@ travel builds for the person who has to say yes.
 
 ## 4. The Trust Layer
 
+> **Status 29 Sep: reassigned.** Not a feature of the current product. Vetting
+> strangers is the entirety of phase 3 of the audience roadmap, and all three
+> survey respondents scored *"travelling with people I met online"* at 1 out of
+> 5 — the lowest item in the instrument. Build it when phase 3 is funded by
+> phases 1 and 2, and treat it as a second business with its own case.
+
 Verifiable signals, never a composite score:
 
 🟢 phone verified · identity verified · women-only verified · previous trips ·
@@ -117,6 +193,10 @@ cannot interrogate. A list of what was checked, and when, is both honest and
 more useful.
 
 ## 5. Pehchan Local
+
+> **Status 29 Sep: retire, or shrink to the founder's own stays.** MakeMyTrip
+> shipped women's safety signals across ~97,000 properties in 2026. A directory
+> competes on coverage and recency, and this one cannot win either.
 
 Verified women providers per destination — photographer, trek guide, driver,
 food experience, yoga instructor, doctor, salon, café owner.
@@ -144,7 +224,11 @@ At times she sets: 🟢 I'm safe · 🟡 I need help · 🔴 Emergency. No respo
 escalates to a trusted contact, with **configurable** escalation rather than an
 assumed emergency.
 
-## 7. Incident reporting → the moat
+## 7. Incident reporting
+
+> **Status 29 Sep: keep, relabel.** The original heading called this the moat.
+> It is not — see the re-cut above. Still gated on legal review before any
+> public aggregation of allegations.
 
 Private or anonymous reports: driver · accommodation · scam · harassment ·
 unsafe location · tourist trap · payment · transport.
@@ -153,6 +237,9 @@ Aggregated into **Traveller Intelligence**: *"12 women reported this taxi scam
 in the last 30 days."*
 
 ## 8. Last verified
+
+> **Status 29 Sep: retire.** Verification freshness at scale is an inventory
+> problem, and the inventory belongs to somebody else.
 
 Every safety-relevant fact carries `last verified: 14 Sep 2026` and
 `verified by 3 women travellers`.
@@ -242,20 +329,38 @@ directions. Decide the policy deliberately, write it down, and publish it.
 
 ## Sequencing
 
-**v1 — no backend required.** Solo Travel Profile · comfort vector · destination
-readiness vectors · the match with per-axis explanations · voice input · the
-Family Pack as a generated, printable page. All client-side, all shippable on
-the current build.
+Rewritten 29 Sep against the three-phase audience roadmap in `docs/15`, which
+the original sequencing predated.
 
-**v2 — accounts and a server.** Saved trips · trusted contacts · check-ins with
-configurable escalation · Pehchan Local listings with verification signals ·
-trip memory capture · voice companion.
+**Phase 1 — solo travellers. No backend, and it already ships.**
+The trip document · the comfort profile and the "can I do this?" answer feeding
+it · voice input · the check-in schedule as a section of the document. All
+client-side, nothing leaves the device, no account. **This exists today.** The
+work left in phase 1 is not building — it is the first paid document and the
+first trip report.
 
-**v3 — community and moderated intelligence.** Incident reporting · aggregated
-traveller intelligence · community reputation · the contribution loop that
-keeps `last_verified` current.
+**Phase 1b — the corpus.** Trip reports, captured and published. This is the
+moat and it currently holds nothing. It needs the Google Form connected and one
+real trip written up; both are dated items in `docs/18`.
 
-v1 is the honest MVP: it delivers the insight that makes the product
-distinctive — *"what kind of traveller am I, and will this trip suit me?"* —
-with no login, no personal data leaving the device, and no promises the
-business cannot keep.
+**Phase 2 — groups of women. Still no backend.**
+The same document, for a group. A group of four friends is four families to
+convince, so the artefact is worth more per trip while costing the same to
+produce. Additions are small: several travellers on one document, a shared
+budget split, one plan sent to several homes.
+
+**Phase 3 — solo travellers formed into a group. A different business.**
+This is where the Trust Layer, accounts, a server and vetting live. It requires
+matching strangers and taking responsibility for the result, which is supply,
+which `docs/17` concluded to stay out of. Not to be started until phases 1 and
+2 have paid for it.
+
+**Unscheduled, deliberately.** Incident reporting stays specified and unbuilt
+pending legal review. Pehchan Local and `last_verified` are retired as
+described above.
+
+**What "MVP" means now.** The original v1 was defined around the insight
+*"what kind of traveller am I, and will this trip suit me?"* That is still a
+good feature and it is no longer the point. The MVP is **one woman paying for
+one document that gets her family to yes** — and every component above is
+justified by whether it makes that document better or arrive sooner.

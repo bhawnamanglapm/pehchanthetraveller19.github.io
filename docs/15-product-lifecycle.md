@@ -35,7 +35,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | 2 Market | 🟢 **Done, 29 Sep** | `docs/17`. Nine operators, twenty years, zero outside funding, ~10% margins. The conclusion is not to become the ninth |
 | 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
 | 4 Positioning | 🟢 **Applied 29 Sep** | Founder's call: target **solo** and **women**. `site.json` rewritten, "Find your identity" now on every page. See the decision record below — it runs ahead of the evidence, deliberately |
-| 5 Definition | 🟢 **Done** | `docs/10`, `docs/11`, the nine points |
+| 5 Definition | 🟢 **Done, re-cut 29 Sep** | `docs/10`, `docs/11`. Ten components reweighted around the document; Pehchan Local and `last_verified` retired against MakeMyTrip; the Trust Layer reassigned to phase 3; sequencing rewritten against the audience roadmap |
 | 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
 | 7 Build | 🟢 **Done** | 85 pages, the profile engine, six product surfaces, PWA, voice |
 | 8 Quality | 🟠 **Started** | Build integrity checks caught real bugs, and `src/test-document.mjs` now runs 34 assertions against the real itinerary. Still: **nobody outside this session has ever used it**, no device or accessibility pass |
