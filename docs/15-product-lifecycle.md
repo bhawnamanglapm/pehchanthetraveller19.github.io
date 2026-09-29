@@ -307,7 +307,7 @@ here are hard to copy:
 
 | Claimed advantage | Copyable? | Status |
 |---|---|---|
-| A founder who has actually done the travel, writing from her own trips | **No** — it took years to acquire | **Unverified.** Needs the real trip count, destinations and dates written down |
+| A founder who has actually done the travel, writing from her own trips | **No** — it took years to acquire | **Partly substantiated 29 Sep.** She can demonstrably *produce* the artefact — see *The Andaman itinerary* below. Past travel history still not written down |
 | Verified first-hand reports from other Indian women, accumulated | **No** — it compounds and cannot be bought | **Zero collected so far.** The machinery is built; the corpus is empty |
 | Owning the *family* conversation rather than the booking | **Not yet** — no competitor sells it | **Built, untested.** Claim rests on operators' public marketing read via search, not a page-by-page audit — verify before using it in a pitch |
 | Women-only positioning | **Yes** — five operators, one since 2005 | Not a moat |
@@ -327,7 +327,7 @@ each with a condition that kills it. A belief with no kill condition never dies
 | # | We believe | Evidence now | **Dead if** |
 |---|---|---|---|
 | **1** | Family permission is the real blocker, not destination choice | NFHS-4: 41% of women may go out alone; only 47% in the richest quintile. Our n=3: all report family influence, mean family support 2.0/5 | At n=30, fewer than half report family influence — **then the Family Pack comes out** |
-| **2** | She will pay for reassurance, not just for a trip | 3 of 3 said "definitely/probably" pay extra. **No one has paid anything** | 20 people see a price and fewer than 2 proceed |
+| **2** | She will pay for reassurance, not just for a trip | 3 of 3 said "definitely/probably". **No one has paid anything.** One unpaid request exists — a sister, Andaman, Oct 2026 | 20 people see a price and fewer than 2 proceed |
 | **3** | First-hand reports from Indian women beat operator marketing | Named in the research as the one defensible moat | 10 women read a real report and a polished operator page and prefer the operator page |
 | **4** | She wants to travel *solo* | **Contradicted already.** 0 of 3 would book a solo trip (`docs/16`) | Already failing. At n=20, if under 20% want solo, **the word comes out of the positioning** |
 | **5** | Women-only is what she wants | **Contradicted.** Women-only groups rated 3.7/5, female trip leader 3.7, female drivers 2.7 — the lowest-scoring ideas in our survey | Already weak. Do not build women-only supply on this |
@@ -401,6 +401,65 @@ wrong segment is every downstream stage built on it.
   most crowded part of the market
 - Not planning around government recognition, which is three years out by rule
 
+## The Andaman itinerary — the first hard artefact
+
+Supplied 29 Sep 2026. Her sister asked her to plan a trip; she produced a
+four-page document for **Andaman & Nicobar, 20–25 October 2026**, ₹63,000
+estimated. It is the only real evidence in this entire stage, so it is worth
+reading carefully rather than celebrating.
+
+**What it proves.**
+
+- **Demand exists, once, unpaid.** Someone asked. It was family, so it proves
+  capability rather than market — but "nobody has ever asked" is now false.
+- **She can produce a sellable deliverable.** Three islands, three ferry
+  crossings costed by operator and departure time (Makruzz ₹1,100, ITT Majestic
+  ₹1,450, Nautika ₹1,650), both flight itineraries with connection times called
+  out, and a four-level priority system — MUST-DO / ESSENTIAL / RECOMMENDED /
+  OPTIONAL — applied to every row.
+- **It carries judgement, which is the actual moat.** *"Sea Walk — I'd skip if
+  doing scuba."* *"Scuba is the only must-do here — the rest are optional."*
+  *"Snorkelling only if you want more."* No OTA writes that. No AI planner
+  writes that credibly. That voice is the thing to sell.
+- **The budget is honest in a way agencies are not.** It separates ₹40,200 fixed
+  from ₹17,800 "if all are done", and states what the total excludes. An agency
+  quotes one number.
+- **She branded it unprompted.** Every page carries the wordmark, the tagline
+  and contact details. She was not helping a sister; she was prototyping a
+  product, whether or not she framed it that way.
+
+**What it does not prove, and this is the important half.**
+
+- **It is dated in the future.** 20–25 October 2026 has not happened yet. It is
+  a plan, not a record. It is therefore *not* evidence of the founder's own
+  travel history — row 1 of the moat table still stands open.
+- **No money changed hands**, and the requester was a sister. Assumption 2 is
+  untouched.
+- **It contains nothing about safety.** No verified stays, no emergency numbers,
+  no check-in schedule, no "what to do if".
+- **It contains nothing for the family.** It is written for the traveller. There
+  is no page a parent could be shown.
+- **Accommodation is not named.** "Port Blair 2 nights, Havelock 2 nights, Neil
+  1 night" with a ₹10,000 budget line, but no property — and *hotel details* was
+  the single most-requested reassurance in the survey.
+
+**The conclusion is uncomfortable and should be stated plainly.** Left to
+herself, given a real person and a real trip, the founder produced a **logistics
+and budget document** — and none of the safety layer or family layer the website
+is built around. Either those layers matter less than the survey implies, or
+they are not yet instinctive. Both readings are worth taking seriously, and the
+gap between this artefact and the live site is the most interesting finding in
+Stage 1.
+
+**Two things follow immediately.**
+
+1. **This trip is the empty corpus's first entry.** It happens 20–25 October,
+   three weeks out. The trip-report machinery has been built and has zero
+   reports in it. One traveller, already going, already briefed.
+2. **This document is the priceable unit.** It is the "planning consultation"
+   in the price-test table — already made, already branded. There is nothing
+   left to build before testing what it is worth.
+
 ## What this section still owes
 
 Audited 29 Sep, after writing. All eleven parts are present; these are the known
@@ -412,7 +471,8 @@ soft spots, recorded rather than papered over.
 | No dataset on crime against **Indian** women travelling domestically | The NCRB figures used are about foreign tourists. The proxy is flagged, not fixed | Research — may not exist publicly |
 | Operator claims rest on marketing pages read via search summaries, not audited page by page | The "nobody sells the family conversation" claim is the whole opening | Stage 2 |
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
-| The founder's actual travel history is not written down | It is row 1 of the moat table and currently an assertion | **Only Bhawna** |
+| The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
+| The Andaman trip report is not yet commissioned | 25 Oct is the first chance to fill an empty corpus, and it will pass | **Only Bhawna** |
 | Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
 
 ## Sources
@@ -444,6 +504,8 @@ threshold and rate election with a CA before acting on them.
 | **1 Discovery** | ✅ This document. Remaining: write down the real travel history (see *Why us*) | The founder, one hour |
 | **2 Market** | Partly done in *What she does today* above. Remaining: pricing and positioning of the five named operators, page by page; their actual scale; whether any is profitable | Nothing. Do next. |
 | **3 Validation** | Talk to five women first, then drive the survey to 50. Instagram bio, Google Form | The founder, five hours |
+| **3 Validation** | **Price the Andaman-style itinerary for the next person who asks.** The deliverable already exists | Nothing |
+| **7 Build** | Capture the 20–25 Oct Andaman trip as the first real trip report | The traveller, after 25 Oct |
 | **4 Positioning** | Rewrite `site.json` brand copy once a segment is chosen. **Re-examine the word "solo"** — `docs/16`, finding 1 | Stage 3 |
 | **8 Quality** | Put it in front of five real women and watch | Nothing |
 | **9 Launch** | Content, distribution, a reason to visit | Stage 3 |
