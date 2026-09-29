@@ -75,9 +75,12 @@ unresolved: either those surfaces come out, or `/local/` shrinks to the
 founder's own stays written in her own voice, which is the one version an
 incumbent's structured partner data cannot reproduce.
 
-Whoever picks this up should note that Pehchan Local currently lists **zero
-real providers** — the content file holds categories and signal types and no
-entries — so retiring it removes machinery, not content.
+Whoever picks this up should note that Pehchan Local lists **no real
+providers**. The content file holds eight categories and three entries, and all
+three are marked `sample: true` — the unmissably-labelled placeholders, a
+photographer in Goa, a trek guide in Bir Billing, a driver in Amritsar.
+Retiring it therefore removes machinery and samples, not content anyone
+contributed.
 
 ### On "the moat"
 
