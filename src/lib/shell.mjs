@@ -9,7 +9,7 @@ export function navModel(g) {
     { label: "Profile", href: "/profile/", columns: [
       { title: "Work out your trip", links: [
         { label: "Solo Travel Profile", href: "/profile/" },
-        { label: "Share with Family", href: "/family/" },
+        { label: "The document", href: "/family/" },
         { label: "Safety", href: "/safety/" }
       ]},
       { title: "Free tools", links: taxonomies.tools.filter(t => !t.redirect)
@@ -93,7 +93,7 @@ function footer(g) {
     { title: "International", links: g.intlRegions.map(r => ({ label: r.name, href: r.url })).concat([{ label: "All international", href: "/international/" }]) },
     { title: "Plan your trip", links: [
       { label: "Solo Travel Profile", href: "/profile/" },
-      { label: "Share with Family", href: "/family/" },
+      { label: "The document", href: "/family/" },
       { label: "Safety", href: "/safety/" },
       { label: "Travel Tools", href: "/tools/" },
       { label: "Search", href: "/search/" }

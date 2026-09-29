@@ -769,37 +769,182 @@ table.data tr:last-child td { border-bottom: 0; }
   margin: var(--s-6) 0 var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line);
 }
 
-/* ===== Share with Family pack ============================================ */
+/* ===== The trip document ================================================ *
+ * The one artefact we have evidence for: a complete, branded itinerary that
+ * was shown to a family and persuaded them. It is designed to be printed, so
+ * the screen styles are a preview of a page rather than a web layout, and the
+ * print block below is the real target.                                      */
 
-.pack {
-  border: 1px solid var(--line); border-radius: var(--r-md, 6px);
-  background: var(--surface); padding: var(--s-6); margin-top: var(--s-5);
+.doc-builder { display: grid; gap: var(--s-7); }
+@media (min-width: 1080px) {
+  .doc-builder { grid-template-columns: minmax(0, 27rem) minmax(0, 1fr); align-items: start; }
+  .doc-preview { position: sticky; top: calc(var(--header-h) + var(--s-4)); }
 }
-.pack__head { padding-bottom: var(--s-4); border-bottom: 2px solid var(--ink); }
-.pack__head h2 { font-family: var(--f-display); font-size: var(--t-xl); margin: var(--s-2) 0; }
-.pack__dates { margin: 0; color: var(--muted); font-size: var(--t-sm); }
-.pack__qa { display: grid; gap: var(--s-5); margin-top: var(--s-5); }
-.pack__q h3 {
+.doc-preview__label { margin-bottom: var(--s-3); }
+.doc-help { font-size: var(--t-sm); line-height: 1.6; }
+.doc-help code {
+  font-family: var(--font-mono); font-size: .9em;
+  background: var(--paper-2); border-radius: 4px; padding: 1px 5px;
+}
+#doc-form textarea { font-family: var(--font-mono); font-size: var(--t-sm); line-height: 1.55; }
+
+.doc {
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: clamp(20px, 3vw, 40px);
+}
+.doc__brand {
+  margin: 0; font-size: var(--t-xs); font-weight: 700;
+  letter-spacing: var(--ls-caps); text-transform: uppercase; color: var(--accent-ink);
+}
+.doc__brand span { font-weight: 400; opacity: .75; }
+.doc__head { padding-bottom: var(--s-5); border-bottom: 2px solid var(--ink); }
+.doc__title {
+  font-family: var(--font-display); font-weight: var(--fw-display);
+  font-size: var(--t-2xl); line-height: var(--lh-snug); margin: var(--s-3) 0 var(--s-2);
+}
+.doc__dates { margin: 0; color: var(--ink-2); font-size: var(--t-md); }
+.doc__for { margin: var(--s-2) 0 0; color: var(--muted); font-size: var(--t-sm); }
+
+.doc__stats {
+  display: flex; flex-wrap: wrap; gap: var(--s-5);
+  margin: var(--s-5) 0 0; padding: 0;
+}
+.doc__stats div { margin: 0; }
+.doc__stats dt {
+  font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.doc__stats dd {
+  margin: 2px 0 0; font-family: var(--font-display); font-weight: var(--fw-display);
+  font-size: var(--t-lg);
+}
+
+.doc__note { margin: var(--s-3) 0 0; font-size: var(--t-xs); color: var(--muted); line-height: 1.55; }
+.doc__note--legend { margin-top: var(--s-4); }
+.doc__sub { color: var(--muted); font-size: var(--t-xs); }
+
+.doc__day { margin-top: var(--s-6); }
+.doc__dayhead {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3);
+  margin: 0 0 var(--s-3); padding-bottom: var(--s-2); border-bottom: 1px solid var(--line-strong);
+}
+.doc__daynum {
+  font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--on-accent); background: var(--accent);
+  border-radius: var(--r-pill); padding: 3px 10px; font-weight: 700;
+}
+.doc__daylabel { font-family: var(--font-display); font-weight: var(--fw-display); font-size: var(--t-md); }
+.doc__dayplace { color: var(--muted); font-size: var(--t-sm); }
+
+.doc__table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+.doc__table th, .doc__table td {
+  text-align: left; padding: 7px 10px 7px 0; vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.doc__table thead th {
   font-size: var(--t-xs); letter-spacing: .08em; text-transform: uppercase;
-  color: var(--muted); margin: 0 0 var(--s-2); font-weight: 600;
+  color: var(--muted); font-weight: 600; border-bottom-color: var(--line-strong);
 }
-.pack__q p { margin: 0; font-size: var(--t-md); line-height: 1.6; }
-.pack__block { margin-top: var(--s-5); padding-top: var(--s-5); border-top: 1px solid var(--line); }
-.pack__block h3 { font-family: var(--f-display); font-size: var(--t-lg); margin: 0 0 var(--s-2); }
-.pack__block p { margin: 0; line-height: 1.7; }
-.pack__foot {
-  margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--line);
+.doc__table tbody tr:last-child td { border-bottom: 0; }
+.doc__addon td { color: var(--ink-2); }
+.doc__addon td:first-child { border-bottom-color: transparent; }
+.doc__table--kv th { width: 15rem; font-weight: 600; color: var(--ink-2); }
+.doc__table--money td:first-child { width: 42%; }
+.doc__amt { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.doc__excluded td { color: var(--muted); }
+
+.doc__pri {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .07em;
+  border-radius: var(--r-pill); padding: 2px 8px; white-space: nowrap;
+  border: 1px solid currentColor;
+}
+.doc__pri--mustdo    { color: var(--bronze); background: var(--bronze-soft); }
+.doc__pri--essential { color: var(--accent-ink); background: var(--accent-soft); }
+.doc__pri--recommended { color: var(--ink-2); background: var(--paper-2); }
+.doc__pri--optional  { color: var(--muted); background: transparent; }
+
+.doc__block { margin-top: var(--s-7); }
+.doc__block h3 {
+  font-family: var(--font-display); font-weight: var(--fw-display); font-size: var(--t-lg);
+  margin: 0 0 var(--s-3); padding-bottom: var(--s-2); border-bottom: 2px solid var(--ink);
+}
+.doc__leggroup { margin-top: var(--s-4); }
+.doc__leggroup h4 {
+  margin: 0 0 var(--s-2); font-size: var(--t-xs); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--muted); font-weight: 600;
+}
+.doc__leg {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-3);
+  padding: 6px 0; border-bottom: 1px solid var(--line); font-size: var(--t-sm);
+}
+.doc__legsvc { font-weight: 600; min-width: 9rem; }
+.doc__legtime { font-variant-numeric: tabular-nums; font-weight: 600; }
+.doc__legplace { color: var(--ink-2); }
+.doc__legarrow { color: var(--muted); }
+.doc__legdur { margin-left: auto; color: var(--muted); font-size: var(--t-xs); }
+.doc__conn {
+  margin: 0; padding: 5px 0 5px var(--s-4); font-size: var(--t-xs); color: var(--muted);
+  border-left: 2px solid var(--line-strong);
+}
+.doc__conn--tight { color: var(--bronze); border-left-color: var(--bronze); font-weight: 600; }
+
+.doc__total { margin-top: var(--s-4); border-top: 2px solid var(--ink); }
+.doc__total th { font-weight: 600; }
+.doc__grand th, .doc__grand td {
+  font-family: var(--font-display); font-weight: var(--fw-display);
+  font-size: var(--t-md); border-bottom: 0;
+}
+.doc__foot {
+  margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--line);
   font-size: var(--t-xs); color: var(--muted);
 }
+.doc__foot p { margin: 0 0 2px; }
 
-/* Older parents will want this on paper. */
+/* --- The printed page --------------------------------------------------- *
+ * The browser's own print engine is the PDF writer here: real fonts, a real
+ * rupee sign, and a file she can send on WhatsApp. No library, nothing to
+ * load, and it works offline. The job of this block is to get everything but
+ * the document off the page and stop tables breaking across a page fold.     */
 @media print {
-  .masthead, .footer, .btn-row, .disclosure, .engine-note,
-  #pack-form, .searchoverlay, .skip-link, .hero { display: none !important; }
-  .pack { border: 0; padding: 0; }
-  .pack__q p, .pack__block p { font-size: 11pt; }
+  @page { size: A4; margin: 14mm 12mm 18mm; }
+
+  /* Explicit, not structural: an earlier version of this list hid
+     #document-app itself by trying to keep only .doc-builder, and printed a
+     blank page. Name what goes, never what stays. */
+  .masthead, .footer, .btn-row, .disclosure, .engine-note, .next-steps,
+  #doc-form, .doc-preview__label, .search-overlay, .skip-link,
+  .hero, .breadcrumbs, .no-print { display: none !important; }
+
+  html, body { background: #fff !important; color: #000 !important; }
+  .doc-builder { display: block; }
+  .doc-preview { position: static; }
+  .doc {
+    border: 0; border-radius: 0; padding: 0; background: #fff; color: #000;
+    font-size: 9.5pt; line-height: 1.45;
+  }
+  .doc__title { font-size: 20pt; }
+  .doc__table { font-size: 8.5pt; }
+  .doc__note, .doc__sub, .doc__legdur { font-size: 7.5pt; }
+
+  /* Keep a day, a leg group or a budget group whole on one sheet where it
+     fits, and never orphan a heading at the foot of a page. */
+  .doc__day, .doc__block, .doc__leggroup, .doc__table { break-inside: avoid; }
+  .doc__dayhead, .doc__block h3 { break-after: avoid; }
+  thead { display: table-header-group; }
+
+  /* A fixed footer repeats on every printed sheet, which is how the document
+     carries its own name on page 3 as well as page 1. */
+  .doc__foot {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    margin: 0; padding-top: 4px; border-top: 1px solid #999;
+    font-size: 7pt; color: #444;
+  }
+  .doc__foot .doc__note { display: none; }
+
+  .doc__pri { border-color: #666; color: #000 !important; background: none !important; }
+  .doc__daynum { background: none !important; color: #000 !important; border: 1px solid #000; }
+  a { color: #000; text-decoration: none; }
   a[href^="tel:"]::after { content: ""; }
-  body { background: #fff; color: #000; }
 }
 
 /* ===== Pehchan Local ===================================================== */

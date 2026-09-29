@@ -31,7 +31,7 @@ const CHECKLIST = [
   { key: "meds", text: "Any medicine I need is packed, in its box, with the prescription." },
   { key: "local", text: "I have written down the nearest hospital to where I am staying." },
   { key: "charge", text: "Power bank charged. A dead phone is the thing that turns a problem into a crisis." },
-  { key: "family", text: "My family has the Share with Family pack." }
+  { key: "family", text: "My family has the trip document." }
 ];
 
 const read = () => { try { return JSON.parse(localStorage.getItem(STORE) || "{}"); } catch { return {}; } };

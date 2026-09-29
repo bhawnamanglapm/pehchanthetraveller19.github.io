@@ -26,7 +26,7 @@ import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
 import { storiesIndex, storyCategoryPage, storyPage } from "./templates/stories.mjs";
 import { collectionsIndex, collectionPage, guidesIndex } from "./templates/collections.mjs";
 import { plannerPage, toolsIndex, toolPage, partnerPage, aboutPage, newsletterPage, contactPage,
-         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, familyPackPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
+         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, tripDocumentPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUT_DIRS = ["india", "international", "tools", "trips", "local", "family", "safety",
@@ -82,7 +82,7 @@ function main() {
     profilePage(g),
     tripReportsPage(g),
     shareTripPage(g),
-    familyPackPage(g),
+    tripDocumentPage(g),
     localPage(g),
     localJoinPage(g),
     safetyPage(g),

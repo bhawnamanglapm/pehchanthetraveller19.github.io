@@ -1199,40 +1199,57 @@ ${crumbs({ label: "Real trips", href: "/trips/" }, { label: "Share your trip" })
 
 /* ===================== SHARE WITH FAMILY =============================== */
 
-export function familyPackPage(g) {
+/**
+ * The trip document.
+ *
+ * This page replaced the share-link family pack on 29 Sep 2026, on evidence
+ * rather than taste. One complete itinerary was written, shown to a
+ * traveller's parents and persuaded them; the survey independently put
+ * "complete itinerary" and "hotel details" ahead of every safety feature as
+ * the thing that makes a family comfortable. The old pack answered five
+ * questions well and had no itinerary in it at all — and its output was a
+ * URL, which cannot carry forty rows of plan however it is encoded.
+ */
+export function tripDocumentPage(g) {
   const body = `
-${pageHero("Share with Family", "Give them evidence, not reassurance",
-  "The hardest part of a first solo trip is often the conversation at home. This turns your plan into something your family can read, keep, and act on — with the hotel's phone number in it.")}
-${crumbs({ label: "Share with Family" })}
+${pageHero("The document", "The thing that actually gets you permission",
+  "A complete, printed itinerary — days, travel, stays, costs — that you can put in front of your family. We know this works: one was written, shown to a traveller's parents, and they said yes.")}
+${crumbs({ label: "The document" })}
 
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  <p class="engine-note"><strong>Nothing is sent to us.</strong> The pack is built on your phone and
-  travels inside the link itself — there is no account, no server and no copy kept here. That also means
-  the link is the information: anyone who opens it can read your plan, so send it only to the people you
-  want to have it.</p>
+<section class="section section--tight no-print"><div class="wrap wrap--narrow">
+  <p class="engine-note"><strong>Nothing is sent to us.</strong> The document is built in your browser
+  and saved only on this device. When you print it, your own phone or laptop writes the PDF — no
+  account, no server, no copy kept here.</p>
 </div></section>
 
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  ${sectionHead({ eyebrow: "Why this works", title: "“Don’t worry” has never convinced anybody" })}
-  <p>A family that is anxious about a trip is not asking to be reassured. They are asking five specific
-  questions, and they relax when those are answered concretely — where she is staying, how she is getting
-  there, what happens if the train is missed, who else knows, and who to call. A hotel phone number they
-  can dial themselves does more than any promise.</p>
+<section class="section section--tight no-print"><div class="wrap wrap--narrow">
+  ${sectionHead({ eyebrow: "Why a document", title: "A family is shown something. They are not sent a link." })}
+  <p>The one case we can point to went like this: a woman in permanent government employment — her own
+  income, her own life — still had to ask her parents before a trip was agreed. What she was given was a
+  complete itinerary: every day, both flights with the connections spelled out, the ferries costed, the
+  budget split into what is fixed and what is optional. She showed it to them. They said yes.</p>
+  <p>That is one family, and it should be treated as one family. But it points the same way as the
+  survey, where <strong>a complete itinerary and hotel details were asked for more than any safety
+  feature on the list</strong>. Not an app. Not a panic button. A document, on a screen or on paper,
+  that answers the questions before they are asked.</p>
+  <p class="muted">Write the trip on the left; the document builds itself on the right. Every subtotal is
+  calculated from the lines above it, and connection times are worked out from the arrival and departure
+  you enter — so a fifty-minute change of plane gets flagged instead of being discovered at the airport.</p>
 </div></section>
 
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  <div id="family-app">
-    <noscript><p>This page needs JavaScript to build the pack. Everything else on the site works without it.</p></noscript>
+<section class="section section--tight"><div class="wrap">
+  <div id="document-app">
+    <noscript><p>This page needs JavaScript to build the document. Everything else on the site works without it.</p></noscript>
   </div>
 </div></section>`;
 
   return {
-    url: "/family/", template: "family",
-    title: fitTitle(["Share with Family", "Pehchan"]),
-    description: "Turn your trip into a plan your family can read and act on: where you are staying, how you travel, who knows, and who to call. Built on your phone.",
+    url: "/family/", template: "document",
+    title: fitTitle(["The document", "Pehchan"]),
+    description: "Build the trip document your family will actually read: day by day, flights with connections, where you are staying, what it costs. Printed from your own device.",
     body, ogArt: "planner",
-    scripts: ["/assets/js/family-pack.js"],
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Share with Family", href: "/family/" }]
+    scripts: ["/assets/js/trip-document.js"],
+    breadcrumbs: [{ label: "Home", href: "/" }, { label: "The document", href: "/family/" }]
   };
 }
 
