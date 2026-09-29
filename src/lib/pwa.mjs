@@ -23,8 +23,8 @@ export function manifest(site) {
     scope,
     display: "standalone",
     orientation: "portrait-primary",
-    background_color: "#FCFAF7",
-    theme_color: "#1D4E45",
+    background_color: "#F3F6F5",
+    theme_color: "#15695C",
     lang: site.locale,
     dir: "ltr",
     categories: ["travel", "lifestyle"],
@@ -127,18 +127,18 @@ export function offlinePage(site) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Offline — ${site.brand}</title>
-<meta name="theme-color" content="#1D4E45">
+<meta name="theme-color" content="#15695C">
 <style>
   :root { color-scheme: light dark; }
   body { margin:0; min-height:100vh; display:grid; place-items:center; padding:24px;
-         background:#FCFAF7; color:#191411;
+         background:#F3F6F5; color:#14201D;
          font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; }
-  @media (prefers-color-scheme: dark) { body { background:#121110; color:#F2EDE6; } }
+  @media (prefers-color-scheme: dark) { body { background:#0F1513; color:#E8EFEC; } }
   .box { max-width:32rem; text-align:center; }
   h1 { font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:1.75rem; margin:0 0 .5rem; }
   p { margin:0 0 1.5rem; line-height:1.6; opacity:.8; }
   a { display:inline-block; padding:.75rem 1.5rem; border-radius:999px;
-      background:#1D4E45; color:#FBF9F6; text-decoration:none; }
+      background:#15695C; color:#FFFFFF; text-decoration:none; }
 </style>
 </head>
 <body>

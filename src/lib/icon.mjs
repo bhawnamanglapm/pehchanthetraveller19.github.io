@@ -11,8 +11,8 @@
  */
 import { encodePNG } from "./png.mjs";
 
-const GREEN = [0x1D, 0x4E, 0x45];
-const PAPER = [0xFC, 0xFA, 0xF7];
+const GREEN = [0x15, 0x69, 0x5C];
+const PAPER = [0xFF, 0xFF, 0xFF];
 
 /** Signed-distance-ish tests, all in pixel space. */
 const inRect = (x, y, x0, y0, x1, y1) => x >= x0 && x <= x1 && y >= y0 && y <= y1;
@@ -47,21 +47,16 @@ export function drawIcon(size, { maskable = false, square = false } = {}) {
   const gx = size / 2 - H * 0.34;    // glyph left edge (bowl extends right)
   const gy = size / 2 - H / 2;
 
-  const sw = H * 0.15;               // stem width
-  const serifX = H * 0.07;           // serif overhang
-  const serifY = H * 0.045;          // serif thickness
-  const stroke = H * 0.105;          // bowl stroke weight
-
-  const bowlRy = H * 0.30;
-  const bowlRx = H * 0.34;
+  // A grotesque P, matching the brand's UI sans: no serifs, uniform stroke.
+  const sw = H * 0.185;              // stem width
+  const stroke = H * 0.155;          // bowl stroke — optically equal to the stem
+  const bowlRy = H * 0.305;
+  const bowlRx = H * 0.36;
   const bowlCx = gx + sw / 2;
   const bowlCy = gy + bowlRy;
 
   const inGlyph = (x, y) => {
     if (inRect(x, y, gx, gy, gx + sw, gy + H)) return true;                            // stem
-    if (inRect(x, y, gx - serifX, gy, gx + sw + serifX, gy + serifY)) return true;     // top serif
-    if (inRect(x, y, gx - serifX * 1.4, gy + H - serifY * 1.15,
-                     gx + sw + serifX * 1.4, gy + H)) return true;                     // foot serif
     if (x >= bowlCx &&                                                                  // bowl
         inEllipse(x, y, bowlCx, bowlCy, bowlRx, bowlRy) &&
         !inEllipse(x, y, bowlCx, bowlCy, bowlRx - stroke, bowlRy - stroke)) return true;

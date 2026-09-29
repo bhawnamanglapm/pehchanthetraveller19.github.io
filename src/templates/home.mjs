@@ -76,37 +76,13 @@ ${drafts.length ? `<section class="section${hasContent ? "" : " section--tinted"
   </div>
 </div></section>` : ""}
 
-${hotels.length ? `<section class="section"><div class="wrap">
-  ${sectionHead({ eyebrow: "Exceptional stays", title: "Where you sleep is half the journey", link: { href: "/stay/", label: "All stays" } })}
-  <div class="grid grid--4" data-reveal>
-    ${list(hotels.slice(0, 4), (h) => card({ href: h.url, title: h.name, kicker: h.destination_.name, desc: h.kicker,
-      entity: h, ratio: "4x3", footLeft: priceBand(h.priceBand) }))}
-  </div>
-</div></section>` : ""}
 
-${experiences.length ? `<section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "Experiences worth travelling for", title: "The reason you went", link: { href: "/experiences/", label: "All experiences" } })}
-  <div class="grid grid--4" data-reveal>
-    ${list(experiences.slice(0, 4), (e) => card({ href: e.url, title: e.name, kicker: e.destination_.name,
-      desc: e.description, entity: e, ratio: "3x2", footLeft: esc(e.duration) }))}
-  </div>
-</div></section>` : ""}
 
-${itineraries.length ? `<section class="section"><div class="wrap">
-  ${sectionHead({ eyebrow: "Curated journeys", title: "Itineraries built to be travelled", link: { href: "/journeys/", label: "All journeys" } })}
-  <div class="grid grid--3" data-reveal>
-    ${list(itineraries.slice(0, 3), (i) => card({ href: i.url, title: i.title, kicker: `${i.days} days`,
-      desc: i.overview, entity: i, ratio: "3x2", footRight: priceBand(i.budgetBand) }))}
-  </div>
-</div></section>` : ""}
 
-${stories.length ? `<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Travel stories", title: "Writing from the road", link: { href: "/stories/", label: "All stories" } })}
-  <div class="grid grid--3" data-reveal>
-    ${list(stories.slice(0, 3), (s) => card({ href: s.url, title: s.title, kicker: s.readingTime, desc: s.dek,
-      entity: s, ratio: "3x2", flush: true }))}
-  </div>
-</div></section>` : ""}
+
+
+
+
 
 <section class="section section--tight">
   <div class="wrap">
@@ -115,7 +91,7 @@ ${stories.length ? `<section class="section section--tight"><div class="wrap">
       <div class="stack-lg">
         <div>
           <span class="eyebrow">Plan with AI</span>
-          <h2 class="display" style="font-size:var(--t-2xl)">Tell it how you travel. It builds the trip.</h2>
+          <h2 class="display" style="font-size:var(--t-2xl)">Tell us how you travel. We tell you what fits.</h2>
           <p class="lede" style="margin-top:var(--s-4)">Destination, dates, budget, pace and interests — and you get a
           day-by-day itinerary with stays, experiences, transport and a realistic budget attached to every day.</p>
         </div>
@@ -126,7 +102,7 @@ ${stories.length ? `<section class="section section--tight"><div class="wrap">
         </ul>` : `<p class="muted">The planner works from our published guides. It opens for planning as the first
         guides go live — it will not invent a place it has never been told about.</p>`}
         <div class="btn-row">
-          <a class="btn btn--primary" href="/plan/" data-track="cta_planner">Open the AI Trip Planner</a>
+          <a class="btn btn--primary" href="/profile/" data-track="cta_profile">Build my profile</a>
           <a class="btn btn--ghost" href="/tools/">Free travel tools</a>
         </div>
       </div>

@@ -26,12 +26,11 @@ import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
 import { storiesIndex, storyCategoryPage, storyPage } from "./templates/stories.mjs";
 import { collectionsIndex, collectionPage, guidesIndex } from "./templates/collections.mjs";
 import { plannerPage, toolsIndex, toolPage, partnerPage, aboutPage, newsletterPage, contactPage,
-         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, familyPackPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
+         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, tripDocumentPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT_DIRS = ["destinations", "stay", "experiences", "journeys", "stories", "collections", "guides",
-  "plan", "tools", "deals", "partner", "about", "newsletter", "contact", "search", "dashboard", "legal",
-  "women-and-travel", "profile", "trips", "family", "local", "safety", "report"];
+const OUT_DIRS = ["india", "international", "tools", "trips", "local", "family", "safety",
+  "report", "profile", "women-and-travel", "partner", "about", "contact", "search", "legal"];
 
 function write(relPath, contents) {
   const full = join(ROOT, relPath);
@@ -71,39 +70,25 @@ function main() {
     ...g.countries.filter(c => c.destinations.length).map(c => countryPage(c, g)),
     ...g.published.map(d => destinationPage(d, g)),
     ...g.drafts.map(d => destinationDraftPage(d, g)),
-    stayIndex(g),
-    ...g.taxonomies.stayCategories.filter(c => c.hotels_.length).map(c => stayCategoryPage(c, g)),
-    ...g.hotels.map(h => hotelPage(h, g)),
-    experiencesIndex(g),
-    ...g.taxonomies.experienceCategories.filter(c => c.experiences_.length).map(c => experienceCategoryPage(c, g)),
-    ...g.experiences.map(e => experiencePage(e, g)),
-    journeysIndex(g),
-    ...g.itineraries.map(i => itineraryPage(i, g)),
-    storiesIndex(g),
-    ...g.taxonomies.storyCategories.filter(c => c.stories_.length).map(c => storyCategoryPage(c, g)),
-    ...g.stories.map(s => storyPage(s, g)),
-    collectionsIndex(g),
-    ...g.taxonomies.collections.filter(c => c.total).map(c => collectionPage(c, g)),
-    guidesIndex(g),
-    plannerPage(g),
+    // Removed 26 Sep 2026: the browse trees, planner, deals, collections and
+    // newsletter shipped 0 items each and told a visitor "here is a section"
+    // before showing her nothing. Templates are kept in src/templates/ so any
+    // of them can come back the day there is content behind it.
     toolsIndex(g),
     ...g.taxonomies.tools.filter(t => !t.redirect).map(t => toolPage(t, g)),
-    dealsPage(g),
     partnerPage(g),
     aboutPage(g),
-    newsletterPage(g),
     womenAndTravelPage(g),
     profilePage(g),
     tripReportsPage(g),
     shareTripPage(g),
-    familyPackPage(g),
+    tripDocumentPage(g),
     localPage(g),
     localJoinPage(g),
     safetyPage(g),
     reportPage(g),
     contactPage(g),
     searchPage(g),
-    dashboardPage(g),
     ...legalSlugs.map(s => legalPage(s, g)),
     notFoundPage(g)
   ];
