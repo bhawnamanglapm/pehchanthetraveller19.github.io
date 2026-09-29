@@ -80,15 +80,21 @@ Done properly here for the first time.
 
 ## The problem
 
-> An Indian woman who wants to travel alone is stopped twice: once by her own
-> fear of the practical parts, and again by a family who will not agree.
-> Travel companies address neither. They sell destinations to people who have
-> already decided to go.
+> An Indian woman who wants to travel is stopped twice: once by her own fear of
+> the practical parts, and again by a family who will not agree. Travel
+> companies address neither. They sell destinations to people who have already
+> decided to go — and who already have permission.
 
 The second half is the part nobody builds for, and it is the one this product
 found first: the survey's permission gradient runs from *"some influence"*
 through *"significant influence"* to **"I cannot travel without their
 approval."**
+
+**The word "alone" was removed from this statement on 29 Sep**, after reading
+the survey. None of the three respondents wants to travel solo (`docs/16`,
+finding 1). The problem is permission and competence, not solitude. Everything
+downstream that still says *solo* is inherited from an earlier draft and is
+listed as assumption 4 below.
 
 ## The job she is hiring us for
 
@@ -98,6 +104,10 @@ Not *"find me a destination."* It is:
 > something my family will accept."**
 
 Three parts, in that order. Most travel products answer none of them.
+
+*"This"* is whatever trip she is actually considering — with friends, with a
+group, or alone. The job does not require her to be solo, and reading it as if
+it does is what produced the solo framing now in question.
 
 ## Who — three hypotheses, not findings
 
@@ -189,12 +199,16 @@ for a habit-forming app. It suits a service bought per trip.
 **The permission problem is real, measurable and national.** This is the
 strongest external evidence found, and it supports the product's core thesis:
 
-> In NFHS-4 (2015–16), only **41% of Indian women** were allowed to go alone to
-> all three of the market, a health facility, and anywhere outside their own
-> village or community. 54% were permitted a market trip, 50% a health facility,
-> 48% anywhere outside the community. **6% were permitted none of the three.**
+> In **NFHS-5 (2019–21)**, **42% of Indian women** were "usually allowed to go
+> alone" to all three of the market, a health facility, and anywhere outside
+> their own village or community — 56% the market, 52% a health facility, 50%
+> outside the community.
 
-And the gradients matter more than the headline:
+**The movement over five years is the finding: 41% → 42%.** In NFHS-4 (2015–16)
+it was 41% (54% / 50% / 48%), with 6% permitted none of the three. One
+percentage point in half a decade. This is not a problem that is solving itself.
+
+Two gradients from NFHS-4, which reports the breakdowns:
 
 - Age 15–19: **22%**. Age 40–49: **55%**. Permission is granted with age.
 - Poorest wealth quintile: 35%. **Richest quintile: 47%.** Money barely moves it
@@ -205,13 +219,38 @@ That last line is the single most useful fact in this document. It says the
 family gate is not a poverty problem that economic growth will dissolve, and it
 is exactly why a product aimed at the family conversation can exist at all.
 
-**The fear is not irrational.** NCRB recorded 192 cases with foreign victims in
-2022, up 28% from 150 in 2021, including 28 rapes. Between 2016 and 2022, only
-16 of 148 rape cases involving foreign victims reached court and **7 ended in
-conviction — under 5%** — with 56% still pending at investigation. The rate of
-crimes against women in India rose 12.9% between 2018 and 2022. Whatever the
-per-trip probability, the *consequence* is severe and the system's response is
-weak. A family refusing permission is reading the same numbers.
+**But be honest about what this number is not.** Three limitations, each of
+which a sharp reader will find:
+
+1. **It measures everyday mobility, not leisure travel.** The market and the
+   health facility are not a five-day trip to Goa. Permission for one does not
+   imply permission for the other — it almost certainly *understates* the
+   barrier for travel, but that is an inference, not a measurement.
+2. **It measures permissibility, not autonomy.** The question asks whether she
+   is *allowed*, not whether she decides. Critics of the instrument note it
+   never asks whose permission, or how it is negotiated.
+3. **The state spread makes it unreliable as a proxy.** Himachal Pradesh 82%,
+   Mizoram 75%, Sikkim 66% — but **Kerala 15%**, the lowest in India, in the
+   state with the highest female literacy. A measure that ranks Kerala last is
+   capturing a norm about how the question is answered, not freedom itself.
+
+Use the 42% as evidence that the constraint exists and is not shrinking. Do not
+use it to size a market. **Haryana's own figure was not looked up and should
+be** — it is where the founder is.
+
+**The fear is not irrational — though the data is a proxy.** NCRB recorded 192
+cases with **foreign** victims in 2022, up 28% from 150 in 2021, including 28
+rapes. Between 2016 and 2022, only 16 of 148 rape cases involving foreign
+victims reached court and **7 ended in conviction — under 5%** — with 56% still
+pending at investigation. The rate of crimes against women in India overall rose
+12.9% between 2018 and 2022.
+
+**These are figures about foreign tourists, not about Indian women travelling
+domestically.** No equivalent dataset for Indian women travellers was found, and
+the two populations are not interchangeable. What the conviction rate does show
+— under 5%, 56% stuck at investigation — holds regardless of victim
+nationality, and that is the part a worried family is reacting to: not the odds
+of something happening, but what follows if it does.
 
 **The market is moving, fast, off a small base.**
 
@@ -233,13 +272,14 @@ estimated. Anyone quoting a number for it is guessing.
 Each line here now has a number behind it.
 
 - **The behaviour is growing fast off a small base.** Zostel's solo female
-  bookings went 18,372 (2020) → 33,357 (2018 level) → 92,192 (2025). Scapia
-  reports ~9× year-on-year growth. 30% of Indian women booking accommodation in
-  2023 travelled alone.
-- **The blocker has not moved with it.** NFHS-4 still puts the share of women
-  permitted to go out alone at 41%, and at only 47% among the wealthiest. Rising
-  income is not dissolving the family gate, so demand grows against a constraint
-  nobody is selling into.
+  bookings: **33,357 (2018) → 18,372 (2020 low) → 92,192 (2025)** — roughly 5×
+  the pandemic floor and near 3× the pre-pandemic level. Scapia reports ~9×
+  year-on-year growth. 30% of Indian women booking accommodation in 2023
+  travelled alone.
+- **The blocker has not moved with it.** Freedom of movement went **41%
+  (NFHS-4, 2015–16) → 42% (NFHS-5, 2019–21)** — one point in five years, and
+  only 47% even in the richest quintile. Demand is growing against a constraint
+  that is not shrinking, and nobody is selling into it.
 - **The incumbents are twenty years old and all sell the same thing** — a seat
   on a trip. None sells the family conversation.
 - Adventure-sector safety guidelines remain voluntary, so nothing is verified by
@@ -269,7 +309,7 @@ here are hard to copy:
 |---|---|---|
 | A founder who has actually done the travel, writing from her own trips | **No** — it took years to acquire | **Unverified.** Needs the real trip count, destinations and dates written down |
 | Verified first-hand reports from other Indian women, accumulated | **No** — it compounds and cannot be bought | **Zero collected so far.** The machinery is built; the corpus is empty |
-| Owning the *family* conversation rather than the booking | **Not yet** — no competitor sells it | **Built, untested** |
+| Owning the *family* conversation rather than the booking | **Not yet** — no competitor sells it | **Built, untested.** Claim rests on operators' public marketing read via search, not a page-by-page audit — verify before using it in a pitch |
 | Women-only positioning | **Yes** — five operators, one since 2005 | Not a moat |
 | AI itinerary planning | **Yes** — named as a failure mode | Not a moat |
 
@@ -361,13 +401,29 @@ wrong segment is every downstream stage built on it.
   most crowded part of the market
 - Not planning around government recognition, which is three years out by rule
 
+## What this section still owes
+
+Audited 29 Sep, after writing. All eleven parts are present; these are the known
+soft spots, recorded rather than papered over.
+
+| Gap | Why it matters | Who can close it |
+|---|---|---|
+| Haryana's NFHS-5 freedom-of-movement figure not looked up | It is the founder's own state and the likeliest first market | Research — 10 minutes |
+| No dataset on crime against **Indian** women travelling domestically | The NCRB figures used are about foreign tourists. The proxy is flagged, not fixed | Research — may not exist publicly |
+| Operator claims rest on marketing pages read via search summaries, not audited page by page | The "nobody sells the family conversation" claim is the whole opening | Stage 2 |
+| No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
+| The founder's actual travel history is not written down | It is row 1 of the moat table and currently an assertion | **Only Bhawna** |
+| Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
+
 ## Sources
 
 Everything in the four research sections above traces to one of these. Figures
 are as published; where two sources disagree the disagreement is stated in the
 text rather than resolved silently.
 
-- NFHS-4 women's mobility and permission — [Ideas for India](https://www.ideasforindia.in/topics/social-identity/urbanisation-gender-and-social-change-women-s-mobility-in-north-india), [SPRF](https://sprf.in/womens-mobility-and-public-transportation/)
+- NFHS-5 (2019–21) freedom of movement, 42%, and state spread — [Feminism in India](https://feminisminindia.com/2022/12/07/what-nfhs-data-says-or-does-not-say-about-womens-freedom-of-movement/), [NFHS-5 India report (DHS)](https://dhsprogram.com/pubs/pdf/FR375/FR375.pdf)
+- NFHS-4 (2015–16) breakdowns by age and wealth quintile — [Ideas for India](https://www.ideasforindia.in/topics/social-identity/urbanisation-gender-and-social-change-women-s-mobility-in-north-india), [SPRF](https://sprf.in/womens-mobility-and-public-transportation/)
+- Critique of the freedom-of-movement instrument — [Feminism in India](https://feminisminindia.com/2022/12/07/what-nfhs-data-says-or-does-not-say-about-womens-freedom-of-movement/), [The Lancet](https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(23)00338-0/fulltext)
 - NCRB crimes against foreign victims, conviction rates — [Deccan Chronicle](https://www.deccanchronicle.com/news/ncrb-says-192-foreign-tourists-raped-in-2022-1870366), [CJP](https://cjp.org.in/mapping-gender-based-violence-in-india-trends-determinants-and-institutional-frameworks/)
 - Solo female travel growth, Airbnb and Zostel figures — [Outlook Traveller](https://www.outlooktraveller.com/News/solo-confident-and-on-the-move-new-data-reveals-how-indian-women-are-redefining-travel), [Curly Tales](https://curlytales.com/india/trending/solo-female-travel-surges-in-with-bookings-goa-jaipur-gokarna-top-picks/), [Women's Media Center](https://womensmediacenter.com/news-features/women-in-india-join-global-trend-of-increased-solo-travel)
 - Trip-planning behaviour and hours — [bestmediainfo](https://bestmediainfo.com/insights/over-60-of-indian-travellers-spend-more-than-10-hours-planning-a-trip-12236034), [MMGY Travel Intelligence](https://mmgyintel.com/indian-travellers-go-global-safety-social-media-and-sustainability-stand-out-in-new-mmgy-study/), [Business Traveller](https://www.businesstraveller.com/business-travel/smarter-savvier-how-indians-are-travelling-in-2025/)
@@ -386,7 +442,7 @@ threshold and rate election with a CA before acting on them.
 | Stage | Next action | Blocked by |
 |---|---|---|
 | **1 Discovery** | ✅ This document. Remaining: write down the real travel history (see *Why us*) | The founder, one hour |
-| **2 Market** | Research women's travel in India: who else, how good, how big | Nothing. Do next. |
+| **2 Market** | Partly done in *What she does today* above. Remaining: pricing and positioning of the five named operators, page by page; their actual scale; whether any is profitable | Nothing. Do next. |
 | **3 Validation** | Talk to five women first, then drive the survey to 50. Instagram bio, Google Form | The founder, five hours |
 | **4 Positioning** | Rewrite `site.json` brand copy once a segment is chosen. **Re-examine the word "solo"** — `docs/16`, finding 1 | Stage 3 |
 | **8 Quality** | Put it in front of five real women and watch | Nothing |
