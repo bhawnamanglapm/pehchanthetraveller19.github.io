@@ -479,16 +479,41 @@ Two cautions before leaning on it:
   is what opened it — and that, not the fact of asking, is what the product
   would have to reproduce.
 
-**The unresolved question, and it is the important one:** was the Andaman
-itinerary produced **before** the permission conversation, as the thing that won
-the yes — or **after** it, once the trip was already agreed?
+**Resolved 29 Sep: the itinerary was made first.** The document existed, then
+the conversation with the parents happened, then permission was granted.
 
-| If | Then |
+That is the sequence the whole thesis requires, and it is the first time the
+product's central mechanism has an actual instance behind it rather than a
+survey answer. State it carefully, because sequence is not causation:
+
+| Established | Not established |
 |---|---|
-| **Before** — the document was used to get permission | The Family Pack thesis has worked once, in the wild, unprompted. That is the strongest evidence this product has, and the itinerary is the prototype of the real product |
-| **After** — permission came first, the plan followed | The document is a planning tool, the family thesis remains untested, and the central bet still rides on three survey responses |
+| A complete itinerary existed **before** the permission conversation | Whether it was actually shown to the parents |
+| The conversation happened and **permission was granted** | Whether it was decisive, or whether they would have agreed anyway |
 
-What to build next turns on that one answer. It is unanswered as of this commit.
+**Two independent sources now point the same way.** The survey's most-requested
+reassurance, in 3 of 4 responses, was *"Complete itinerary"* — ahead of every
+safety feature. And in the one observed case, a complete itinerary preceded a
+successful permission conversation. Those are different kinds of evidence
+agreeing, which is worth more than either alone.
+
+**And note what was missing from the winning document.** *Hotel details* was the
+survey's joint-first request, and the Andaman itinerary names no property at
+all — just "Port Blair 2 nights, ₹10,000". The yes came anyway. Either the
+itinerary carries most of the weight on its own, or naming the stays would have
+made it easier still. Unknown, and worth asking the next family.
+
+### What this implies for what is built
+
+The Family Pack currently produces a **web link** — state encoded in a URL
+fragment, opened in a browser. The thing that actually worked was a **branded
+PDF document**: four pages, a wordmark on every page, contact details in the
+footer, something that can be sent on WhatsApp, forwarded, or put in front of a
+parent at a kitchen table.
+
+A parent is shown a document. That is a real and specific difference between
+what works and what the site makes, and it is the clearest product instruction
+to come out of Stage 1. Recorded here; not yet acted on.
 
 **Two things follow immediately.**
 
@@ -512,7 +537,7 @@ soft spots, recorded rather than papered over.
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
 | The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
 | The Andaman trip report is not yet commissioned | 25 Oct is the first chance to fill an empty corpus, and it will pass | **Only Bhawna** |
-| Whether the itinerary came before or after the permission conversation | Decides whether the family thesis has any real-world evidence at all | **Only Bhawna — one sentence** |
+| Whether the itinerary was **shown** to the parents, and whether it was decisive | The sequence is established; the causal link is not | **Only Bhawna** |
 | What the parents actually asked for before saying yes | It is the Family Pack specification, written by a real family | **Only Bhawna** |
 | Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
 
