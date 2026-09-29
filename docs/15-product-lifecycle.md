@@ -32,7 +32,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | Stage | State | Evidence |
 |---|---|---|
 | 1 Discovery | 🟢 **Written and researched** | All eleven parts present, 29 Sep. Alternatives, severity, moat, assumptions, constraints and exit criteria are sourced, not assumed |
-| 2 Market | 🔴 **Researched the wrong market** | Real research on pilgrimage logistics, adventure safety, government schemes — then we pivoted to women's travel and never researched *that* market at all |
+| 2 Market | 🟢 **Done, 29 Sep** | `docs/17`. Nine operators, twenty years, zero outside funding, ~10% margins. The conclusion is not to become the ninth |
 | 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
 | 4 Positioning | 🟠 **Decided four times, never applied** | `site.json` still reads *"Journeys & Stays / Handcrafted journeys. Beautiful stays."* — the media-era copy. "Find your identity" appears nowhere on the site |
 | 5 Definition | 🟢 **Done** | `docs/10`, `docs/11`, the nine points |
@@ -54,10 +54,14 @@ distribution that decides whether anyone sees it.
 
 Three specific consequences:
 
-1. **The market was never researched.** Competitive work was done on pilgrimage
-   and adventure. Then the product became women's solo travel, and no research
-   followed it. We do not know who else serves this, how well, or how large it
-   is. That is the most important gap in this document.
+1. ~~**The market was never researched.**~~ **Closed 29 Sep — `docs/17`.** Nine
+   women-only operators, the oldest running since 2005, and **not one has
+   raised outside money**. The best of them, WOW Club, turns ~₹18 crore on
+   3,000–4,000 travellers a year with twelve staff, and the category's only
+   published margin is **10%**. Meanwhile Veena World and Kesari already serve
+   the segment at national scale. The finding is that becoming operator number
+   nine is a bad trade, and the document — no cost of goods, no competitor
+   found — is the defensible position.
 
 2. **Three real survey responses are steering a whole product.** The
    family-permission insight now rests on three women and some reasoning. All
@@ -563,7 +567,7 @@ soft spots, recorded rather than papered over.
 |---|---|---|
 | Haryana's NFHS-5 freedom-of-movement figure not looked up | It is the founder's own state and the likeliest first market | Research — 10 minutes |
 | No dataset on crime against **Indian** women travelling domestically | The NCRB figures used are about foreign tourists. The proxy is flagged, not fixed | Research — may not exist publicly |
-| Operator claims rest on marketing pages read via search summaries, not audited page by page | The "nobody sells the family conversation" claim is the whole opening | Stage 2 |
+| Operator revenue and margin figures come from press coverage, not filings | The decision not to become an operator rests on them | Would need paid company data |
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
 | The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
 | The Andaman trip report is not yet written | The trip runs 20–25 Oct, so there is nothing to report yet. The capture brief for it is built — `src/briefs/andaman-2026-10.html` — and Part 1 must be answered **before** departure | **Only the traveller** |
@@ -598,7 +602,7 @@ threshold and rate election with a CA before acting on them.
 | Stage | Next action | Blocked by |
 |---|---|---|
 | **1 Discovery** | ✅ This document. Remaining: write down the real travel history (see *Why us*) | The founder, one hour |
-| **2 Market** | Partly done in *What she does today* above. Remaining: pricing and positioning of the five named operators, page by page; their actual scale; whether any is profitable | Nothing. Do next. |
+| **2 Market** | ✅ `docs/17` | — |
 | **3 Validation** | Talk to five women first, then drive the survey to 50. Instagram bio, Google Form | The founder, five hours |
 | **3 Validation** | **Price the Andaman-style itinerary for the next person who asks.** The deliverable already exists | Nothing |
 | **7 Build** | Capture the 20–25 Oct Andaman trip as the first real trip report | The traveller, after 25 Oct |
