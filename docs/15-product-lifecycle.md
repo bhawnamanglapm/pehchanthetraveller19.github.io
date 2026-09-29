@@ -326,7 +326,7 @@ each with a condition that kills it. A belief with no kill condition never dies
 
 | # | We believe | Evidence now | **Dead if** |
 |---|---|---|---|
-| **1** | Family permission is the real blocker, not destination choice | NFHS-4: 41% of women may go out alone; only 47% in the richest quintile. Our n=3: all report family influence, mean family support 2.0/5 | At n=30, fewer than half report family influence — **then the Family Pack comes out** |
+| **1** | Family permission is the real blocker, not destination choice | NFHS-5 42%, and only 47% in the richest quintile (NFHS-4). Our n=3: all report family influence, mean family support 2.0/5. **Plus one observed case — see below** | At n=30, fewer than half report family influence — **then the Family Pack comes out** |
 | **2** | She will pay for reassurance, not just for a trip | 3 of 3 said "definitely/probably". **No one has paid anything.** One unpaid request exists — a sister, Andaman, Oct 2026 | 20 people see a price and fewer than 2 proceed |
 | **3** | First-hand reports from Indian women beat operator marketing | Named in the research as the one defensible moat | 10 women read a real report and a polished operator page and prefer the operator page |
 | **4** | She wants to travel *solo* | **Contradicted already.** 0 of 3 would book a solo trip (`docs/16`) | Already failing. At n=20, if under 20% want solo, **the word comes out of the positioning** |
@@ -451,6 +451,45 @@ they are not yet instinctive. Both readings are worth taking seriously, and the
 gap between this artefact and the live site is the most interesting finding in
 Stage 1.
 
+### The observed case: a government employee still had to ask
+
+Reported 29 Sep. The traveller — a woman in the founder's own family, salaried,
+in **permanent government employment** — held a conversation with her parents
+and obtained permission before the trip was agreed. Permission was granted.
+
+This is n=1 and it is the founder's own family, so it is an observation, not
+evidence. But it is a *well-chosen* n=1, close to a natural experiment. Stack up
+the independence markers: adult, her own income, and a permanent government job
+— in India the most secure and most socially respectable employment there is,
+and the usual shorthand for having arrived.
+
+**And she still had to ask.**
+
+That is the NFHS finding seen close up. Nationally, the share of women permitted
+to go out alone rises only from 35% in the poorest wealth quintile to 47% in the
+richest — income barely moves the line. This case says the same thing with a
+face on it: the permission norm is not about whether she can afford it, cope
+with it, or be trusted to hold down a job. All of that is settled here, and the
+conversation happened anyway.
+
+Two cautions before leaning on it:
+
+- **It is the founder's own family**, the least independent possible sample.
+- **Permission was granted.** The gate opened. What has *not* been established
+  is what opened it — and that, not the fact of asking, is what the product
+  would have to reproduce.
+
+**The unresolved question, and it is the important one:** was the Andaman
+itinerary produced **before** the permission conversation, as the thing that won
+the yes — or **after** it, once the trip was already agreed?
+
+| If | Then |
+|---|---|
+| **Before** — the document was used to get permission | The Family Pack thesis has worked once, in the wild, unprompted. That is the strongest evidence this product has, and the itinerary is the prototype of the real product |
+| **After** — permission came first, the plan followed | The document is a planning tool, the family thesis remains untested, and the central bet still rides on three survey responses |
+
+What to build next turns on that one answer. It is unanswered as of this commit.
+
 **Two things follow immediately.**
 
 1. **This trip is the empty corpus's first entry.** It happens 20–25 October,
@@ -473,6 +512,8 @@ soft spots, recorded rather than papered over.
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
 | The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
 | The Andaman trip report is not yet commissioned | 25 Oct is the first chance to fill an empty corpus, and it will pass | **Only Bhawna** |
+| Whether the itinerary came before or after the permission conversation | Decides whether the family thesis has any real-world evidence at all | **Only Bhawna — one sentence** |
+| What the parents actually asked for before saying yes | It is the Family Pack specification, written by a real family | **Only Bhawna** |
 | Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
 
 ## Sources
