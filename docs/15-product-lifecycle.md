@@ -566,7 +566,7 @@ soft spots, recorded rather than papered over.
 | Operator claims rest on marketing pages read via search summaries, not audited page by page | The "nobody sells the family conversation" claim is the whole opening | Stage 2 |
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
 | The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
-| The Andaman trip report is not yet commissioned | 25 Oct is the first chance to fill an empty corpus, and it will pass | **Only Bhawna** |
+| The Andaman trip report is not yet written | The trip runs 20–25 Oct, so there is nothing to report yet. The capture brief for it is built — `src/briefs/andaman-2026-10.html` — and Part 1 must be answered **before** departure | **Only the traveller** |
 | Whether the itinerary was **shown** to the parents, and whether it was decisive | The sequence is established; the causal link is not | **Only Bhawna** |
 | What the parents actually asked for before saying yes | It is the Family Pack specification, written by a real family | **Only Bhawna** |
 | Segment C is still listed although it has zero evidence | Internal inconsistency; assumption 7 says remove it | One edit, once agreed |
