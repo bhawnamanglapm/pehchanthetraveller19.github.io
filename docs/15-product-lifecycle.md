@@ -33,7 +33,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 |---|---|---|
 | 1 Discovery | 🟠 **Assumed, never written** | The problem was circled over many turns; never stated once as a problem, a segment and a job |
 | 2 Market | 🔴 **Researched the wrong market** | Real research on pilgrimage logistics, adventure safety, government schemes — then we pivoted to women's travel and never researched *that* market at all |
-| 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **3 responses, one of them the founder's own test.** n=2 |
+| 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
 | 4 Positioning | 🟠 **Decided four times, never applied** | `site.json` still reads *"Journeys & Stays / Handcrafted journeys. Beautiful stays."* — the media-era copy. "Find your identity" appears nowhere on the site |
 | 5 Definition | 🟢 **Done** | `docs/10`, `docs/11`, the nine points |
 | 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
@@ -59,9 +59,11 @@ Three specific consequences:
    followed it. We do not know who else serves this, how well, or how large it
    is. That is the most important gap in this document.
 
-2. **Two real survey responses are steering a whole product.** Everything
-   about the family-permission insight rests on two women and some reasoning.
-   It is a *good* hypothesis. It is not validated.
+2. **Three real survey responses are steering a whole product.** The
+   family-permission insight now rests on three women and some reasoning. All
+   three report family influence over the decision, and rate their family's
+   likely support at 2.0 out of 5 — so the hypothesis is holding. It is still
+   not validated. `docs/16` reads the responses in full.
 
 3. **Nothing measures anything.** The analytics layer was built and never
    connected, so even after launch there would be no signal — the site could
@@ -99,26 +101,32 @@ Three parts, in that order. Most travel products answer none of them.
 
 ## Who — three hypotheses, not findings
 
-With n=2 these are segments to **test**, not personas to design against. Each
-is written so it can be proved wrong.
+With n=3 these are segments to **test**, not personas to design against. Each
+is written so it can be proved wrong. `docs/16` scores them against the
+responses received so far.
 
 **A. The metro professional (25–35).**
 Earns her own money, parents still have a significant say, blocked by annual
 leave more than by cost. Wants nearly every safety feature offered. *Source:
-one survey respondent, plus the shape of the Instagram audience.*
+**two** survey respondents, plus the shape of the Instagram audience.*
 *Test:* does leave, not money, come up as the main blocker at n=30?
+*Status 29 Sep:* two of two name time — "limited annual paid leave", "timing".
+The only segment with more than one data point.
 
 **B. The older married woman (45–60), smaller town.**
 Cannot travel without spousal approval, low comfort across almost everything,
 budget around ₹10,000, wants the whole trip arranged, leans religious.
 *Source: one survey respondent.*
 *Test:* does she exist in numbers, and will she pay anything at all?
+*Status 29 Sep:* still exactly one. No second instance has appeared.
 
 **C. The NRI daughter.**
 Abroad, planning for herself or her parents, has money, no local knowledge, no
 one to trust. *Source: reasoning from the fraud research, not from any
 respondent.*
 *Test:* pure conjecture until one appears in the data.
+*Status 29 Sep:* still zero. Should stop being listed as a segment until one
+appears.
 
 **The segments are very different.** A product that serves A well probably
 serves B badly. Choosing between them is a real decision and it has not been
@@ -153,8 +161,8 @@ family-permission hypothesis and to pick one segment of the three.
 |---|---|---|
 | **1 Discovery** | ✅ This document | — |
 | **2 Market** | Research women's travel in India: who else, how good, how big | Nothing. Do next. |
-| **3 Validation** | Drive the survey to 50. Instagram bio, Google Form, ask five women directly | The founder, one hour |
-| **4 Positioning** | Rewrite `site.json` brand copy once a segment is chosen | Stage 3 |
+| **3 Validation** | Talk to five women first, then drive the survey to 50. Instagram bio, Google Form | The founder, five hours |
+| **4 Positioning** | Rewrite `site.json` brand copy once a segment is chosen. **Re-examine the word "solo"** — `docs/16`, finding 1 | Stage 3 |
 | **8 Quality** | Put it in front of five real women and watch | Nothing |
 | **9 Launch** | Content, distribution, a reason to visit | Stage 3 |
 | **10 Measure** | Connect analytics — one config line | Nothing |
