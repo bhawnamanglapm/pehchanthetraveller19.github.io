@@ -68,6 +68,14 @@ Asked what would make family comfortable, **"Complete itinerary" and "Hotel
 details" appear in three of four responses** — more than any other answer.
 That is exactly what the Family Pack sends. Keep it.
 
+> **Correction, 29 Sep.** The means below average three people who cannot be
+> averaged — a 25–30 metro freelancer, a 51–60 married woman in a town, and a
+> 25–30 metro professional. **Do not quote these figures as segment-level
+> truth.** What survives a mixed sample of three is only what was unanimous:
+> all three report family influence, all three scored "travelling with people I
+> met online" at 1/5, and none would book a solo or women-only trip. The rest is
+> directional at best. `docs/19` replaces the instrument.
+
 ## Finding 3 — the safety features we ranked highest are not the ones they rank highest
 
 Mean rating, 1–5, real respondents only:

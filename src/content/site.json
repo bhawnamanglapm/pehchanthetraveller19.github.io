@@ -1,9 +1,9 @@
 {
   "brand": "Pehchan",
   "wordmark": "PEHCHAN",
-  "descriptor": "Journeys & Stays",
-  "promise": "Handcrafted journeys. Beautiful stays. Stories worth travelling for.",
-  "positioning": "A global travel discovery platform helping modern travellers discover exceptional destinations, stays, experiences and thoughtfully designed journeys.",
+  "descriptor": "Find your identity",
+  "promise": "Solo travel for Indian women — and the plan that gets your family to yes.",
+  "positioning": "A solo travel platform for Indian women: the confidence to go, and a complete plan your family can read before you do.",
   "origin": "https://bhawnamanglapm.github.io",
   "customDomain": null,
   "customDomainNote": "Set this to a bare domain (e.g. \"pehchan.travel\") once its DNS points at GitHub Pages. It then overrides origin/basePath and the build emits a CNAME file. Do NOT set it before DNS resolves — GitHub will start serving the custom domain and the site becomes unreachable until DNS is correct.",
