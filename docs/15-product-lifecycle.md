@@ -35,7 +35,7 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | 2 Market | 🟢 **Done, 29 Sep** | `docs/17`. Nine operators, twenty years, zero outside funding, ~10% margins. The conclusion is not to become the ninth |
 | 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
 | 4 Positioning | 🟢 **Applied 29 Sep** | Founder's call: target **solo** and **women**. `site.json` rewritten, "Find your identity" now on every page. See the decision record below — it runs ahead of the evidence, deliberately |
-| 5 Definition | 🟢 **Done, re-cut 29 Sep** | `docs/10`, `docs/11`. Ten components reweighted around the document; Pehchan Local and `last_verified` retired against MakeMyTrip; the Trust Layer reassigned to phase 3; sequencing rewritten against the audience roadmap |
+| 5 Definition | 🟢 **Done. Re-cut 29 Sep, document specified 30 Sep** | `docs/10`, `docs/11`. Ten components reweighted around the document; Pehchan Local and `last_verified` retired against MakeMyTrip; the Trust Layer reassigned to phase 3; sequencing rewritten against the audience roadmap. Section 3, the document itself, now has a real spec: anatomy, computed fields, privacy posture, acceptance criteria and what ₹2,500 buys |
 | 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
 | 7 Build | 🟢 **Done** | 85 pages, the profile engine, six product surfaces, PWA, voice |
 | 8 Quality | 🟠 **Started** | Build integrity checks caught real bugs, and `src/test-document.mjs` now runs 34 assertions against the real itinerary. Still: **nobody outside this session has ever used it**, no device or accessibility pass |
@@ -585,6 +585,7 @@ soft spots, recorded rather than papered over.
 | No dataset on crime against **Indian** women travelling domestically | The NCRB figures used are about foreign tourists. The proxy is flagged, not fixed | Research — may not exist publicly |
 | Operator revenue and margin figures come from press coverage, not filings | The decision not to become an operator rests on them | Would need paid company data |
 | No evidence anyone will pay anything | Assumption 2 is completely untested | A price test, not a survey |
+| **No scope-and-liability text for paid advice** | The legal pages cover privacy, terms, cookies, affiliate and editorial standards — none covers selling an itinerary. **This blocks taking the first payment** | A short paragraph; a lawyer's eye before volume |
 | The founder's actual travel history is not written down | Row 1 of the moat table. The Andaman document is future-dated, so it does not close this | **Only Bhawna** |
 | The Andaman trip report is not yet written | The trip runs 20–25 Oct, so there is nothing to report yet. The capture brief for it is built — `src/briefs/andaman-2026-10.html` — and Part 1 must be answered **before** departure | **Only the traveller** |
 | Whether the itinerary was **shown** to the parents, and whether it was decisive | The sequence is established; the causal link is not | **Only Bhawna** |

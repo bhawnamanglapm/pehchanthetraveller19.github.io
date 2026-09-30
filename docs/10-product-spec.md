@@ -161,22 +161,158 @@ being asked to disclose what she is afraid of.
 > **So sections 1 and 2 are buildable on the current static site, now.**
 > Everything below needs a server.
 
-## 3. Share with Family
+## 3. The trip document  *(was: Share with Family)*
 
-A generated pack covering: destination · accommodation · airport transfer ·
-daily itinerary · emergency contacts · location-sharing plan · local women
-support · arrival and departure times · total estimated cost · insurance ·
-check-in schedule.
+> **Specified properly 30 Sep 2026.** What stood here was fourteen lines
+> describing a URL-based "pack". That predates the evidence, and it predates
+> the build. This is the component the whole product now rests on, so it gets a
+> real specification.
 
-Then **"family questions answered"** — where will she stay, how will she
-travel, what happens in an emergency, who knows where she is, what if she
-misses her transport.
+### What it is
 
-This replaces reassurance with evidence, and it is the sharpest insight in the
-brief. The survey data already shows why: the permission gradient runs from
-"some influence" through "significant influence" to "I cannot travel without
-their approval." **The buyer is often not the traveller.** Nobody else in
-travel builds for the person who has to say yes.
+**A four-page A4 document, printed by the traveller's own browser, that a woman
+puts in front of her family.** Not a link, not a web page she sends. A parent
+is *shown* something.
+
+The evidence for this shape is narrow but it is the only evidence the product
+has: one such document was written, shown to a traveller's parents, and it won
+permission (`docs/15`). The survey independently ranks *"complete itinerary"*
+and *"hotel details"* above every safety feature as what makes a family
+comfortable.
+
+### Who it is written for
+
+**The family, not the traveller.** This is the line that makes the document
+different from every itinerary on the internet, and every choice below follows
+from it. The traveller already knows where she is going. The document exists so
+that somebody who is worried can stop being worried without having to ask her
+for anything.
+
+Practical consequence: it is written in the third person about her, not the
+second person to her, and it answers questions before they are put.
+
+### Privacy posture — and the trap in it
+
+**The document is private and carries exactly what a published trip report must
+never carry.**
+
+`docs/12` forbids publishing a named property together with a date range,
+because "a named property, a date range and a lone woman is an
+identification". **That rule does not apply here, and must not be applied
+here.** The document is sent by the traveller to her own family, and the named
+hotel plus the dates is the single most-requested thing in it.
+
+The two artefacts are opposites and must never be confused by anyone building
+on this:
+
+| | The document | A published trip report |
+|---|---|---|
+| Audience | Her family, chosen by her | Anyone on the internet |
+| Property named | **Yes — the point of it** | Only without the dates |
+| Exact dates | **Yes** | Only without the property |
+| Route | Never leaves her device | Reviewed, then published |
+
+**Nothing in the document is transmitted anywhere.** It is assembled in the
+browser, saved in `localStorage` on her own device, and printed locally. There
+is no account, no upload and no copy retained. Any future change that sends
+document contents to a server is a change to this contract and needs saying out
+loud.
+
+### Anatomy
+
+Seven blocks, in this order. Mandatory means the document is not worth sending
+without it.
+
+| | Block | Status | Contents |
+|---|---|---|---|
+| 1 | **Cover** | Mandatory | Wordmark, destination, date range, route, who it is for, and a stat line: days/nights, places, estimated total |
+| 2 | **Day by day** | **Mandatory** | One row per stop: time, place, what she is doing, priority. Add-on rows hang off the stop above them |
+| 3 | **Travel** | Mandatory if she is flying or on a train | Each leg with service, origin, departure, destination, arrival — and the connection between legs |
+| 4 | **Stays** | **Strongly recommended, not mandatory** | Place, nights, property, **phone number**, address |
+| 5 | **Budget** | Mandatory | Grouped lines with subtotals, fixed separated from optional, and a total |
+| 6 | **Staying in touch** | Optional | Her number, check-in cadence, who else knows, emergency numbers, insurance |
+| 7 | **Footer** | Mandatory | Brand and contact, repeated on every printed page |
+
+**Why stays are not mandatory.** The one document known to have worked named no
+property at all — "Port Blair 2 nights, ₹10,000" — and the family said yes
+anyway. So the honest rule is that it is the strongest single line available
+and the document still functions without it. A phone number a parent can dial
+themselves does more than any promise; it is simply not the thing that makes or
+breaks the yes.
+
+### What the system computes rather than asks for
+
+This is where the document earns its price. A traveller supplies facts; the
+document supplies arithmetic she would otherwise get wrong.
+
+- **Leg durations and total journey time**, from the departure and arrival she
+  entered, handling legs that cross midnight as an overnight roll.
+- **Connection gaps between legs**, labelled: **under 60 minutes is flagged as
+  tight**, three hours or more as long. A fifty-minute change of plane belongs
+  on the page a family reads, not discovered at the airport.
+- **Budget subtotals and totals**, from the lines above them, so a figure can
+  never drift out of step with what it sums. Optional spending is totalled
+  separately from fixed, and lines marked excluded are shown and not counted.
+- **Nights, day count and place count** for the cover.
+
+Nothing on the cover or in a total is typed by hand.
+
+### What it must never contain
+
+- **Anything about harassment or assault.** There is a private route for that
+  which is never published and never stored in a spreadsheet. A document that
+  gets forwarded around a family is the worst possible place for it.
+- **Another person's contact details** without their agreement — a local
+  friend's number goes in only if she has asked them.
+- **Invented certainty.** An unnamed hotel should read *"to be confirmed"*, not
+  a plausible-sounding placeholder. A family that catches one invented detail
+  stops believing the rest of the page.
+- **Any claim the business cannot stand behind.** The document reports what she
+  has booked and planned. It does not certify that a property is safe.
+
+### Acceptance criteria
+
+A document is finished when all of these are true:
+
+1. A parent who has never discussed the trip can answer **where she is, when,
+   and who to call** without asking her anything.
+2. Every figure on the cover and in every total is **calculated**, not entered.
+3. Any connection under an hour is **visibly flagged**.
+4. It prints to A4 with the brand on **every** page, and no block is split
+   across a page fold where it fits on one.
+5. It contains nothing she would mind a relative forwarding to another
+   relative.
+6. The rupee sign renders. (Not a joke — it is why the document is printed by
+   the browser rather than by a hand-rolled PDF writer.)
+
+### Packaging — what ₹2,500 buys
+
+The price and its derivation are in `docs/18`; this is the scope attached to it.
+
+**Included:** one trip of up to eight days · the full document, all seven
+blocks · research into the transport options and costs · **one round of
+changes** · delivered as a PDF within **three working days**.
+
+**Not included, and stated plainly to the buyer:** no bookings are made and no
+payments are handled on her behalf; the document reports her plan, it does not
+execute it. No property is certified as safe. Prices are researched at the time
+of writing and are not held.
+
+> **Open, and it blocks taking money.** Selling advice creates exposure the
+> site's existing legal pages do not cover — privacy, terms, cookies, affiliate
+> disclosure and editorial standards say nothing about a paid advisory
+> relationship. A short scope-and-liability paragraph needs to exist **before
+> the first payment**, not after it. Recorded in `docs/15` as an open gap.
+
+### Build status
+
+Built and shipping at `/family/` since 29 Sep, with the arithmetic above
+covered by 34 assertions in `src/test-document.mjs` that check the parsers
+against the real Andaman itinerary's published figures.
+
+**Not yet true of it:** no human outside this session has used it. The first
+honest test is the founder rebuilding her own Andaman itinerary inside the tool
+and finding out whether it is faster than how she made it the first time.
 
 ## 4. The Trust Layer
 
