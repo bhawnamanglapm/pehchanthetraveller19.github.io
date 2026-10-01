@@ -20,16 +20,12 @@ import { page as renderPage, ogCard } from "./lib/shell.mjs";
 import { esc, truncate, clean } from "./lib/html.mjs";
 import { home } from "./templates/home.mjs";
 import { indiaIndex, internationalIndex, regionPage, countryPage, destinationPage, destinationDraftPage } from "./templates/destinations.mjs";
-import { stayIndex, stayCategoryPage, hotelPage } from "./templates/stay.mjs";
-import { experiencesIndex, experienceCategoryPage, experiencePage } from "./templates/experiences.mjs";
-import { journeysIndex, itineraryPage } from "./templates/journeys.mjs";
-import { storiesIndex, storyCategoryPage, storyPage } from "./templates/stories.mjs";
-import { collectionsIndex, collectionPage, guidesIndex } from "./templates/collections.mjs";
-import { plannerPage, toolsIndex, toolPage, partnerPage, aboutPage, newsletterPage, contactPage,
-         dealsPage, searchPage, dashboardPage, legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage, shareTripPage, tripDocumentPage, localPage, localJoinPage, safetyPage, reportPage } from "./templates/pages.mjs";
+import { toolsIndex, toolPage, partnerPage, aboutPage, contactPage, searchPage,
+         legalPage, legalSlugs, notFoundPage, womenAndTravelPage, profilePage, tripReportsPage,
+         shareTripPage, tripDocumentPage, safetyPage, reportPage } from "./templates/pages.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT_DIRS = ["india", "international", "tools", "trips", "local", "family", "safety",
+const OUT_DIRS = ["india", "international", "tools", "trips", "family", "safety",
   "report", "profile", "women-and-travel", "partner", "about", "contact", "search", "legal"];
 
 function write(relPath, contents) {
@@ -83,8 +79,6 @@ function main() {
     tripReportsPage(g),
     shareTripPage(g),
     tripDocumentPage(g),
-    localPage(g),
-    localJoinPage(g),
     safetyPage(g),
     reportPage(g),
     contactPage(g),
@@ -175,14 +169,6 @@ function main() {
   for (const d of g.destinations) addOg(`dest-${d.slug}`, `${d.name} Travel Guide`, d.country_.name, d.art, d.slug);
   for (const r of g.regions) addOg(`region-${r.slug}`, `${r.name} Travel Guides`, "Destinations", r.art, r.slug);
   for (const c of g.countries) addOg(`country-${c.slug}`, `${c.name} Travel Guide`, c.region_.name, c.region_.art, c.slug);
-  for (const h of g.hotels) addOg(`hotel-${h.slug}`, h.name, h.destination_.name, h.art, h.slug);
-  for (const e of g.experiences) addOg(`exp-item-${e.slug}`, e.name, e.destination_.name, e.art, e.slug);
-  for (const i of g.itineraries) addOg(`journey-${i.slug}`, i.title, `${i.days} day itinerary`, i.art, i.slug);
-  for (const s of g.stories) addOg(`story-${s.slug}`, s.title, "Travel story", s.art, s.slug);
-  for (const c of g.taxonomies.collections) addOg(`col-${c.slug}`, c.title, "Collection", c.art, c.slug);
-  for (const c of g.taxonomies.stayCategories) addOg(`stay-${c.slug}`, c.name, "Where to stay", c.art, c.slug);
-  for (const c of g.taxonomies.experienceCategories) addOg(`exp-${c.slug}`, `${c.name} Experiences`, "Experiences", "asia-hills", c.slug);
-  for (const c of g.taxonomies.storyCategories) addOg(`story-cat-${c.slug}`, c.name, "Travel stories", "europe-city", c.slug);
   for (const t of g.taxonomies.tools) addOg(`tool-${t.slug}`, t.name, "Free travel tool", "andes-terrace", t.slug);
   for (const s of legalSlugs) addOg(`legal-${s}`, s.replace(/-/g, " "), "Trust & transparency", "europe-city", s);
   for (const k of ["destinations", "stay", "experiences", "journeys", "stories", "collections", "guides", "planner",
@@ -232,17 +218,6 @@ function main() {
     ...g.countries.map(c => ({ t: "destination", u: c.url, n: c.name,
       d: `${c.destinations.length} destination guides. Best months: ${c.bestMonths}.`, k: `${c.region_.name} country ${c.languages.join(" ")}` })),
     ...g.regions.map(r => ({ t: "destination", u: r.url, n: r.name, d: truncate(r.blurb, 120), k: "region " + r.kicker })),
-    ...g.hotels.map(h => ({ t: "stay", u: h.url, n: h.name, d: truncate(h.kicker, 120),
-      k: [h.destination_.name, h.destination_.country_.name, h.destination_.region_.name, ...h.categories, ...h.bestFor, "$".repeat(h.priceBand)].join(" ") })),
-    ...g.experiences.map(e => ({ t: "experience", u: e.url, n: e.name, d: truncate(e.description, 120),
-      k: [e.destination_.name, e.destination_.country_.name, ...e.categories, e.duration].join(" ") })),
-    ...g.itineraries.map(i => ({ t: "journey", u: i.url, n: i.title, d: truncate(i.subtitle, 120),
-      k: [`${i.days} days`, i.style, ...i.countries_.map(c => c.name), ...i.destinations_.map(d => d.name)].join(" ") })),
-    ...g.stories.map(s => ({ t: "story", u: s.url, n: s.title, d: truncate(s.dek, 120),
-      k: [...s.categories, s.destination_?.name || ""].join(" ") })),
-    ...g.taxonomies.collections.map(c => ({ t: "collection", u: c.url, n: c.title, d: truncate(c.intro, 120), k: c.type })),
-    ...g.taxonomies.stayCategories.map(c => ({ t: "stay", u: c.url, n: c.name, d: truncate(c.intro, 120), k: "category hotels stay" })),
-    ...g.taxonomies.experienceCategories.map(c => ({ t: "experience", u: c.url, n: c.name, d: truncate(c.intro, 120), k: "category experiences" })),
     ...g.taxonomies.tools.map(t => ({ t: "tool", u: t.redirect || `/tools/${t.slug}/`, n: t.name, d: truncate(t.blurb, 120), k: "tool calculator planner" })),
     { t: "tool", u: "/plan/", n: "AI Trip Planner", d: "Build a day-by-day itinerary from your dates, budget, pace and interests.", k: "planner itinerary generator ai" },
     { t: "collection", u: "/deals/", n: "Travel Deals", d: "Hotel, flight, tour and experience offers from booking partners.", k: "deals offers discounts" },
@@ -262,23 +237,10 @@ function main() {
       whereToStay: d.whereToStay, thingsToDo: d.thingsToDo, food: d.food, budgetNotes: d.budgetNotes,
       culture: d.culture, safety: d.safety, currency: d.country_.currency, coords: d.coords,
       gettingThere: d.gettingThere
-    })),
-    hotels: g.hotels.map(h => ({
-      slug: h.slug, name: h.name, url: withBase(h.url), destination: h.destination, kicker: h.kicker,
-      categories: h.categories, priceBand: h.priceBand, bestFor: h.bestFor, sample: !!h.sample
-    })),
-    experiences: g.experiences.map(e => ({
-      slug: e.slug, name: e.name, url: withBase(e.url), destination: e.destination, categories: e.categories,
-      duration: e.duration, difficulty: e.difficulty, recommendedTime: e.recommendedTime,
-      description: e.description, sample: !!e.sample
-    })),
-    itineraries: g.itineraries.map(i => ({
-      slug: i.slug, title: i.title, url: withBase(i.url), days: i.days, style: i.style,
-      destinations: i.destinations, budgetBand: i.budgetBand
     }))
   }));
 
-  /* ---- sitemap, robots, feed, favicon -------------------------------- */
+  /* ---- sitemap, robots, favicon --------------------------------------- */
   const today = new Date().toISOString().slice(0, 10);
   const indexable = pages.filter(p => !p.noindex && !p.url.endsWith(".html"));
   write("sitemap.xml",
@@ -288,16 +250,7 @@ function main() {
       return `  <url><loc>${g.site.siteUrl}${p.url}</loc><lastmod>${today}</lastmod><priority>${pri}</priority></url>`;
     }).join("\n") + `\n</urlset>\n`);
 
-  write("robots.txt", `# ${g.site.brand}\nUser-agent: *\nAllow: /\nDisallow: ${BASE}/search/\nDisallow: ${BASE}/dashboard/\n\nSitemap: ${g.site.siteUrl}/sitemap.xml\n`);
-
-  write("feed.xml",
-    `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n` +
-    `<title>${esc(g.site.brand)} — Travel Stories</title>\n<link>${g.site.siteUrl}/stories/</link>\n` +
-    `<description>${esc(g.site.promise)}</description>\n<language>en</language>\n` +
-    g.stories.map(s => `<item><title>${esc(s.title)}</title><link>${g.site.siteUrl}${s.url}</link>` +
-      `<guid>${g.site.siteUrl}${s.url}</guid><pubDate>${new Date(s.publishedAt).toUTCString()}</pubDate>` +
-      `<description>${esc(s.dek)}</description></item>`).join("\n") +
-    `\n</channel></rss>\n`);
+  write("robots.txt", `# ${g.site.brand}\nUser-agent: *\nAllow: /\nDisallow: ${BASE}/search/\n\nSitemap: ${g.site.siteUrl}/sitemap.xml\n`);
 
   write("assets/favicon.svg",
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#1D4E45"/>` +
