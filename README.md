@@ -204,3 +204,14 @@ current state — nothing is transmitted and nothing is stored.**
   recommendation to a catalogue slug; anything unresolvable is dropped.
 
 
+Solo Women Travel Survey Form
+https://docs.google.com/forms/d/e/1FAIpQLSeyPQU29lfXT9xK4wh24XoBr5gygs0vQQEIW7-7hv48Cs--DA/viewform
+
+Editable Form Link-
+https://docs.google.com/forms/d/1XERt0pSjb4nhm4UDFp0GbM3dZ5bpCNmnc66B1bsOJfI/edit
+
+Women and Travel Responses-
+https://docs.google.com/spreadsheets/d/11jJw_rMb50PSgj8WMH7UGuD6j0zLxUffvSuV7nPC0eg/edit?gid=948957260#gid=948957260
+
+
+
