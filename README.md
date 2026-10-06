@@ -138,14 +138,14 @@ these — the addresses are long-standing but GitHub is the authority):
 
 | Type | Host | Value |
 |---|---|---|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| AAAA | `@` | `2606:50c0:8000::153` |
-| AAAA | `@` | `2606:50c0:8001::153` |
-| AAAA | `@` | `2606:50c0:8002::153` |
-| AAAA | `@` | `2606:50c0:8003::153` |
+| A | `@` | `-` |
+| A | `@` | `-` |
+| A | `@` | `-` |
+| A | `@` | `-` |
+| AAAA | `@` | `-` |
+| AAAA | `@` | `-` |
+| AAAA | `@` | `` |
+| AAAA | `@` | `` |
 | CNAME | `www` | `bhawnamanglapm.github.io.` |
 
 Then: repo **Settings → Pages → Custom domain**, enter the domain, wait for the
@@ -203,6 +203,4 @@ current state — nothing is transmitted and nothing is stored.**
   `assets/js/planner.js` against a hosted endpoint. It must still resolve every
   recommendation to a catalogue slug; anything unresolvable is dropped.
 
-## Licence
 
-Code is MIT (see `LICENSE`). Written content and the brand are not.
