@@ -112,5 +112,14 @@
     },
     "fallbackField": null,
     "fallbackFieldNote": "Entry ID of one long-answer Google Form question that collects any fields with no mapping of their own. Strongly recommended — without it, unmapped answers are dropped."
+  },
+  "newsletter": {
+    "googleForm": {
+      "actionUrl": null,
+      "actionUrlNote": "The Google Form's POST target: https://docs.google.com/forms/d/e/<FORM_ID>/formResponse. Free, never pauses, and the linked Sheet is the list. Make a one-question form asking for an email, then paste the URL here. Setup in docs/14.",
+      "emailField": null,
+      "emailFieldNote": "The entry ID of that one question, e.g. \"entry.123456789\". From the form's pre-filled link."
+    },
+    "fallbackNote": "With no actionUrl set, the form opens the visitor's email app addressed to contactEmail. She still reaches you; it is just one tap more. Nothing is silently dropped."
   }
 }

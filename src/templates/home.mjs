@@ -15,18 +15,18 @@ export function home(g) {
 <section class="hero">
   ${figure({ art: "himalaya", slug: "home-hero" }, { ratio: "16x9", label: "Mountain horizon", note: false })}
   <div class="hero__inner">
-    <span class="eyebrow" style="color:rgba(255,255,255,.75)">${esc(site.promise)}</span>
-    <h1>Can I do this on my own?</h1>
-    <p class="hero__sub">The question that actually stops women travelling — and the one no travel site answers.
-    Twelve questions about how you really feel, and you get a profile of the traveller you are and the trips that will suit you.</p>
+    <span class="eyebrow" style="color:rgba(255,255,255,.75)">Solo travel for Indian women</span>
+    <h1>Get your family to yes</h1>
+    <p class="hero__sub">A complete printed itinerary — days, travel, stays, costs — that you can put in front of them.
+    One was written, shown to a traveller's parents, and they said yes.</p>
     <div class="btn-row" style="margin-top:var(--s-3)">
-      <a class="btn btn--light" href="/profile/" data-track="cta_primary" data-track-label="Solo Travel Profile">Find out</a>
-      <a class="btn btn--ghost" href="/india/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Destinations">Where we have been</a>
+      <a class="btn btn--light" href="/family/" data-track="cta_primary" data-track-label="Trip document">Make the document</a>
+      <a class="btn btn--ghost" href="/profile/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Solo Travel Profile">Can I do this on my own?</a>
     </div>
     <div class="hero__meta">
-      <span>Twelve questions</span>
-      <span>Stays on your device</span>
-      <span>No account needed</span>
+      <span>Built in your browser</span>
+      <span>Nothing is sent to us</span>
+      <span>Prints to PDF</span>
     </div>
   </div>
 </section>
@@ -45,6 +45,8 @@ export function home(g) {
         <p class="muted">Every guide comes from first-hand travel, and every destination is rated on the same twelve
         things you rate yourself on. This site grows slowly and honestly: a page appears when there is something worth
         reading on it, and not before.</p>
+        <p class="muted">Twelve questions about how you really feel — flying, buses, eating alone, arriving after
+        dark — and you get back the kind of trip to start with, and the parts to plan around. It stays on your device.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="/profile/">Build my profile</a>
           <a class="btn btn--ghost" href="/women-and-travel/">The research behind it</a>

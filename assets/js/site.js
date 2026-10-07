@@ -230,9 +230,36 @@ $$("[data-newsletter]").forEach(form => {
       return;
     }
     track("newsletter_submit", { placement: form.dataset.placement });
-    status.hidden = false; status.dataset.tone = "ok";
-    status.textContent = "Thank you — no email provider is connected yet, so nothing was transmitted or stored. "
-      + "This form is wired and waiting for a provider endpoint.";
+    const { endpoint, emailField, fallbackEmail } = form.dataset;
+    status.hidden = false;
+
+    // A Google Form will not let us read its response, so a fetch that does not
+    // throw is as much confirmation as exists. That is fine: the row lands in
+    // the Sheet either way, and a false "failed" would cost us the address.
+    if (endpoint && emailField) {
+      status.dataset.tone = "ok";
+      status.textContent = "Adding you…";
+      const payload = new URLSearchParams();
+      payload.append(emailField, email);
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: payload })
+        .then(() => {
+          status.textContent = "You are on the list. One email a week, and nothing else.";
+          form.reset();
+        })
+        .catch(() => {
+          status.dataset.tone = "err";
+          status.textContent = "That did not go through. Email " + fallbackEmail + " and we will add you by hand.";
+        });
+      return;
+    }
+
+    // No endpoint configured: hand the address to her email app rather than
+    // thanking somebody for nothing.
+    status.dataset.tone = "ok";
+    status.textContent = "Opening your email app — send the message and you are on the list.";
+    const subject = encodeURIComponent("Add me to the weekly email");
+    const body = encodeURIComponent(`Please add ${email} to the weekly email.`);
+    location.href = `mailto:${fallbackEmail}?subject=${subject}&body=${body}`;
     form.reset();
   });
 });

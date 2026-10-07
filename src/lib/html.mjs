@@ -158,11 +158,19 @@ export function bookingModule(entity, site, { type = "stay", ctaLabel = "Check A
 }
 
 export function newsletterBlock(site, placement) {
+  // Configured endpoint if there is one, her inbox if there is not. Either way
+  // an address that is typed in reaches somebody.
+  const nl = site.newsletter?.googleForm || {};
+  const wiring = [
+    nl.actionUrl ? `data-endpoint="${esc(nl.actionUrl)}"` : "",
+    nl.emailField ? `data-email-field="${esc(nl.emailField)}"` : "",
+    `data-fallback-email="${esc(site.contactEmail)}"`
+  ].filter(Boolean).join(" ");
   return `<section class="newsletter" data-reveal data-placement="${esc(placement)}">
     ${eyebrow(site.newsletterName)}
     <h2>One considered email a week. Nothing else.</h2>
     <p>New destinations, stays worth knowing about, quiet-season timing and the occasional itinerary — sent once a week.</p>
-    <form data-newsletter data-placement="${esc(placement)}" novalidate>
+    <form data-newsletter data-placement="${esc(placement)}" ${wiring} novalidate>
       <label class="visually-hidden" for="nl-${esc(placement)}">Email address</label>
       <input id="nl-${esc(placement)}" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
       <button class="btn btn--light" type="submit">Subscribe</button>
