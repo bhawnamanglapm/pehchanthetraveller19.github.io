@@ -150,9 +150,8 @@ function duration(root) {
   });
 }
 
-/* ---------------- filters (best time, visa) ---------------------------- */
+/* ---------------- filters (best time) ----------------------------------- */
 function besttime(root) { filterTable(root); }
-function visa(root) { filterTable(root); }
 function filterTable(root) {
   const input = $("[data-filter]", root), rows = $$("[data-rows] tr", root);
   input?.addEventListener("input", () => {
@@ -246,6 +245,6 @@ async function compare(root) {
  * whole module throws before any tool wires up.                            */
 const panel = $("[data-tool]");
 if (panel) {
-  const handlers = { budget, currency, packing, duration, besttime, checklist, compare, visa };
+  const handlers = { budget, currency, packing, duration, besttime, checklist, compare };
   (handlers[panel.dataset.tool] || (() => {}))(panel);
 }

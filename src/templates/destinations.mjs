@@ -181,8 +181,7 @@ ${pageHero(`${c.region_.name} · ${c.type === "state" ? "State" : "Country"}`, c
   ])}
   <div class="disclosure" style="margin-top:var(--s-6)">
     <div><strong>Entry requirements.</strong> ${esc(c.visaNote)} Requirements change and depend on your nationality —
-    always confirm with the official government source for your passport before booking. See our
-    <a href="/tools/visa-information/">visa information tool</a>.</div>
+    always confirm with the official government source for your passport before booking.</div>
   </div>
 </div></section>
 ${c.draftDestinations.length ? `<section class="section section--tinted"><div class="wrap">

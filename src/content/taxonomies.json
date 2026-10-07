@@ -23,12 +23,6 @@
       "name": "Travel Checklist",
       "blurb": "A pre-departure checklist that saves your progress in your browser.",
       "phase": "mvp"
-    },
-    {
-      "slug": "visa-information",
-      "name": "Visa Information",
-      "blurb": "Entry-requirement starting points for every country we cover, with links to official sources.",
-      "phase": "mvp"
     }
   ]
 }

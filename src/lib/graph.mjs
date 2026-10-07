@@ -71,10 +71,15 @@ export function buildGraph() {
     c.destinations.push(d);
     (d.status === "draft" ? (c.draftDestinations ||= []) : (c.publishedDestinations ||= [])).push(d);
   }
+  // A region with nothing in it is a promise the site cannot keep. Empty regions
+  // stay in regions.json so they come back the day they have content, but until
+  // then they get no page, no nav entry and no share image.
+  const liveRegions = regions.filter(r => r.countries.some(c => c.destinations.length));
+
   const g = {
-    site, regions, countries, destinations, taxonomies, comfort, tripReports,
-    intlRegions: regions.filter(r => r.scope === "international"),
-    indiaRegions: regions.filter(r => r.scope === "india"),
+    site, regions: liveRegions, allRegions: regions, countries, destinations, taxonomies, comfort, tripReports,
+    intlRegions: liveRegions.filter(r => r.scope === "international"),
+    indiaRegions: liveRegions.filter(r => r.scope === "india"),
     intlDestinations: destinations.filter(d => d.scope === "international" && d.status === "published"),
     indiaDestinations: destinations.filter(d => d.scope === "india" && d.status === "published"),
     intlDrafts: destinations.filter(d => d.scope === "international" && d.status === "draft"),

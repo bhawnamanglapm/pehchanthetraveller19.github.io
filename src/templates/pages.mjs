@@ -117,21 +117,6 @@ const TOOL_PANELS = {
   <div class="tool-output" data-output hidden></div>
 </form>`,
 
-  "visa-information": (g) => `
-<div class="tool-panel" data-tool="visa">
-  <div class="disclosure" style="margin-bottom:var(--s-5)">
-    <div><strong>Starting points, not legal advice.</strong> Entry requirements depend on your nationality, your purpose of
-    travel and the date you arrive, and they change without notice. Always confirm with the destination government's own
-    website or your nearest embassy before booking anything.</div>
-  </div>
-  <div class="field"><label for="v-search">Find a country</label><input id="v-search" type="search" placeholder="Search countries" data-filter></div>
-  <div class="table-scroll" style="margin-top:var(--s-5)">
-    <table class="data"><thead><tr><th>Country</th><th>Region</th><th>General entry note</th></tr></thead>
-    <tbody data-rows>${list(g.countries, (c) => `<tr data-text="${esc((c.name + " " + c.region_.name).toLowerCase())}">
-      <td><strong>${c.destinations.length ? `<a href="${esc(c.url)}">${esc(c.name)}</a>` : esc(c.name)}</strong></td><td>${esc(c.region_.name)}</td>
-      <td>${esc(c.visaNote)}</td></tr>`)}</tbody></table>
-  </div>
-</div>`
 };
 
 const PHASE2_PANEL = (t) => `
@@ -175,8 +160,8 @@ ${crumbs({ label: "Tools" })}
 </div></section>
 <section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "tools-index")}</div></section>`;
   return {
-    url: "/tools/", template: "tools-index", title: "Free Travel Planning Tools — Budget, Packing, Visas | Pehchan",
-    description: "Free travel tools: trip budget calculator, currency converter, packing list generator, best time to visit, travel checklist and visa information.",
+    url: "/tools/", template: "tools-index", title: "Free Travel Planning Tools — Budget, Packing, Seasons | Pehchan",
+    description: "Free travel tools: trip budget calculator, packing list generator, best time to visit and a pre-departure travel checklist.",
     body, ogArt: "tools",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Tools", href: "/tools/" }],
     schema: { "@type": "CollectionPage", name: "Travel planning tools", url: g.site.siteUrl + "/tools/" }
@@ -193,7 +178,7 @@ ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
   title: "Next", steps: [
     { href: "/family/", title: "Show your family", desc: "Turn the numbers into a plan they can read." },
     { href: "/india/", title: "Pick a destination", desc: "India by region, or travel international." },
-    { href: "/tools/", title: "Other tools", desc: "Budget, packing, visas, comparison and more." }
+    { href: "/tools/", title: "Other tools", desc: "Budget, packing, seasons and a checklist." }
   ]})}</div></section>`;
   return {
     url: `/tools/${t.slug}/`, template: "tool", title: fitTitle([t.name, "Free Travel Tool", "Pehchan"]),
@@ -740,8 +725,8 @@ function reportCard(r) {
       <p class="trip-report__meta">${r.days} day${r.days === 1 ? "" : "s"} · from ${esc(r.startedFrom)}
         · ${esc(r.travelledAs)}${r.firstSolo ? " · first solo trip" : ""}</p>
     </div>
-    <span class="badge-verify badge-verify--${r.verified ? "yes" : "community"}">
-      ${r.verified ? "✓ Trip verified" : "Community experience"}</span>
+    ${r.sample ? "" : `<span class="badge-verify badge-verify--${r.verified ? "yes" : "community"}">
+      ${r.verified ? "✓ Trip verified" : "Community experience"}</span>`}
   </div>
 
   ${moved > 0 ? `<p class="trip-report__growth">Went out feeling

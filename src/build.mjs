@@ -168,11 +168,10 @@ function main() {
   addOg("home", "Your next extraordinary journey starts here", g.site.descriptor, "himalaya", "home");
   for (const d of g.destinations) addOg(`dest-${d.slug}`, `${d.name} Travel Guide`, d.country_.name, d.art, d.slug);
   for (const r of g.regions) addOg(`region-${r.slug}`, `${r.name} Travel Guides`, "Destinations", r.art, r.slug);
-  for (const c of g.countries) addOg(`country-${c.slug}`, `${c.name} Travel Guide`, c.region_.name, c.region_.art, c.slug);
+  for (const c of g.countries.filter(c => c.destinations.length)) addOg(`country-${c.slug}`, `${c.name} Travel Guide`, c.region_.name, c.region_.art, c.slug);
   for (const t of g.taxonomies.tools) addOg(`tool-${t.slug}`, t.name, "Free travel tool", "andes-terrace", t.slug);
   for (const s of legalSlugs) addOg(`legal-${s}`, s.replace(/-/g, " "), "Trust & transparency", "europe-city", s);
-  for (const k of ["destinations", "stay", "experiences", "journeys", "stories", "collections", "guides", "planner",
-                   "tools", "deals", "partner", "about", "newsletter", "contact", "search", "dashboard", "404"]) {
+  for (const k of ["tools", "partner", "about", "contact", "search", "404"]) {
     if (!ogSpecs.has(k)) addOg(k, k.replace(/-/g, " ").replace(/^./, c => c.toUpperCase()), g.site.brand, "asia-ridge", k);
   }
   for (const [name, [title, kicker, artKey, seed]] of ogSpecs) {

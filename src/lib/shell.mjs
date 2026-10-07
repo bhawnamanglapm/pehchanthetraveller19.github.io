@@ -127,7 +127,6 @@ function footer(g) {
     </div>` : ""}
     <div class="footer__bottom">
       <span>© ${new Date().getFullYear()} ${esc(site.legalEntity)}. All rights reserved.</span>
-      <span>Some links are affiliate links — <a href="/legal/affiliate-disclosure/">what that means</a>.</span>
       <span>${esc(site.contactEmail)}</span>
     </div>
   </div>
