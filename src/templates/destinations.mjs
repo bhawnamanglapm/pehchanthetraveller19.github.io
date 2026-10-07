@@ -148,9 +148,9 @@ ${drafts.length ? `<section class="section section--tight"><div class="wrap">
 
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Keep going",
-  intro: `Everything in ${r.name} connects — guides to stays, stays to experiences, experiences to a plan.`,
+  intro: `Working out whether ${r.name} suits you, and getting everyone at home comfortable with it.`,
   steps: [
-    { href: "/local/", title: "Women-run services", desc: "Guides, drivers and hosts, each one checked." },
+    { href: "/profile/", title: "Can I do this?", desc: "Answer honestly and find out what this trip asks of you." },
     { href: "/safety/", title: "Get ready to go", desc: "The checklist, the reminders, the numbers." },
     { href: "/family/", title: "Bring your family with you", desc: "A plan they can read, keep and act on." }
   ]})}</div></section>`;
@@ -263,15 +263,8 @@ ${sec("why-visit", "", `<div class="grid grid--asym">
   <aside class="stack" style="position:sticky;top:calc(var(--header-h) + 24px)">
     <div class="booking"><div class="booking__head"><h3>Plan ${esc(d.name)}</h3></div>
       <a class="btn btn--primary btn--block" href="/profile/" data-track="cta_profile_destination">Can I do this?</a>
-      <a class="btn btn--ghost btn--block" href="#stay">See ${d.hotels.length} stays</a>
-      <a class="btn btn--ghost btn--block" href="#experiences">See ${d.experiences.length} experiences</a>
-      <p class="affiliate-note">Booking links on this page may earn us a commission at no cost to you.
-      <a href="/legal/affiliate-disclosure/">Details</a>.</p>
     </div>
-    <div class="tag-row">${list(d.tags, (t) => {
-      const col = g.taxonomies.collections.find(c => (c.filter.destinationTags || []).includes(t));
-      return col ? chip(col.title, col.url) : chip(t.replace(/-/g, " "));
-    })}</div>
+    <div class="tag-row">${list(d.tags, (t) => chip(t.replace(/-/g, " ")))}</div>
   </aside>
 </div>`)}
 
@@ -281,18 +274,6 @@ ${sec("things-to-do", "", `<div class="prose" style="max-width:none">
     <div>${bullets(d.thingsToDo)}</div>
     <div><h3 style="margin-top:0">Food</h3>${bullets(d.food)}</div>
   </div></div>`)}
-
-${d.experiences.length ? `<section class="section section--tinted" id="experiences"><div class="wrap">
-  ${sectionHead({ eyebrow: "Experiences", title: `Experiences in ${d.name}` })}
-  <div class="grid grid--3">${list(d.experiences, (e) => card({ href: e.url, title: e.name, kicker: e.categories[0].replace(/-/g, " "),
-    desc: e.description, entity: e, ratio: "3x2", badges: e.sample ? ["sample"] : [], footLeft: esc(e.duration), footRight: esc(e.difficulty.split("—")[0]) }))}</div>
-</div></section>` : ""}
-
-${d.hotels.length ? `<section class="section" id="stay"><div class="wrap">
-  ${sectionHead({ eyebrow: "Stay", title: `Where to stay in ${d.name}`, intro: d.whereToStay })}
-  <div class="grid grid--3">${list(d.hotels, (h) => card({ href: h.url, title: h.name, kicker: h.kicker, desc: h.overview,
-    entity: h, ratio: "3x2", badges: h.sample ? ["sample"] : [], footLeft: priceBand(h.priceBand), footRight: esc(g.taxonomies.stayCategories.find(c => c.slug === h.categories[0])?.name || "") }))}</div>
-</div></section>` : ""}
 
 ${sec("practical", "", `<div class="grid grid--2">
   <div class="prose" style="max-width:none"><h2 style="margin-top:0">Budget</h2><p>${esc(d.budgetNotes)}</p>

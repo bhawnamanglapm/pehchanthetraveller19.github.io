@@ -2,6 +2,5 @@
 User-agent: *
 Allow: /
 Disallow: /pehchanthetraveller19.github.io/search/
-Disallow: /pehchanthetraveller19.github.io/dashboard/
 
 Sitemap: https://bhawnamanglapm.github.io/pehchanthetraveller19.github.io/sitemap.xml

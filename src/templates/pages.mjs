@@ -10,139 +10,6 @@ const pageHero = (kicker, title, sub, extra = "") => `
 
 const crumbs = (...parts) => `<div class="wrap">${breadcrumbs([{ label: "Home", href: "/" }, ...parts])}</div>`;
 
-/* ===================== AI TRIP PLANNER ================================== */
-
-export function plannerPage(g) {
-  const opt = (v, l) => `<option value="${esc(v)}">${esc(l)}</option>`;
-  const choice = (name, v, l, type = "checkbox") =>
-    `<label class="choice"><input type="${type}" name="${esc(name)}" value="${esc(v)}"> ${esc(l)}</label>`;
-
-  const body = `
-${pageHero("AI Trip Planner", "Tell it how you travel. It builds the trip.",
-  "Destination, dates, budget, pace, interests and who is coming — and you get a day-by-day itinerary with stays, experiences, transport and a realistic budget attached to every day.")}
-${crumbs({ label: "Plan" })}
-
-<section class="section section--tight"><div class="wrap">
-  <p class="engine-note"><strong>How this planner works, honestly.</strong> Version one runs entirely in your browser: a
-  deterministic matching engine over our own curated catalogue of ${g.published.length} published destination${g.published.length === 1 ? "" : "s"},
-  ${g.hotels.length} stays and ${g.experiences.length} experiences. It sends nothing to a server and stores nothing about you.
-  It is designed as a drop-in for a language-model provider — see <code>plannerProvider</code> in
-  <code>assets/js/planner.js</code> — so a live model can be connected without changing the interface or the funnel.
-  It will never invent a hotel, a price or an availability.</p>
-</div></section>
-
-<section class="section section--tight"><div class="wrap">
-  <form class="planner-form" id="planner" novalidate>
-    <div class="planner-step">
-      <h2><span>01</span> Where and when</h2>
-      <p>Pick a destination we cover, or let the planner suggest one from your interests.</p>
-      <div class="field-grid">
-        <div class="field"><label for="p-dest">Destination</label>
-          <select id="p-dest" name="destination"${g.published.length ? "" : " disabled"}>
-            <option value="">${g.published.length ? "Suggest one for me" : "No guides published yet"}</option>
-            ${list(g.regions.filter(r => r.countries.some(c => c.publishedDestinations.length)), (r) => `<optgroup label="${esc(r.name)}">${
-              list(r.countries.flatMap(c => c.publishedDestinations), (d) => opt(d.slug, `${d.name}, ${d.country_.name}`))
-            }</optgroup>`)}
-          </select></div>
-        <div class="field"><label for="p-start">Start date</label><input id="p-start" name="start" type="date"></div>
-        <div class="field"><label for="p-days">Trip length (days)</label>
-          <input id="p-days" name="days" type="number" min="2" max="45" value="7" inputmode="numeric"></div>
-        <div class="field"><label for="p-travellers">Travellers</label>
-          <input id="p-travellers" name="travellers" type="number" min="1" max="12" value="2" inputmode="numeric"></div>
-      </div>
-    </div>
-
-    <div class="planner-step">
-      <h2><span>02</span> Who is travelling</h2>
-      <p>This changes the stays and the pace more than anything else you tell us.</p>
-      <div class="choice-row">
-        ${["Solo", "Couple", "Family", "Group", "Friends"].map(v => choice("party", v.toLowerCase(), v, "radio")).join("")}
-      </div>
-      <div class="field-grid" style="margin-top:var(--s-5)">
-        <div class="field"><label for="p-pace">Desired pace</label>
-          <select id="p-pace" name="pace">
-            ${opt("slow", "Slow — two or three bases, long stays")}
-            ${opt("balanced", "Balanced — move every three days")}
-            ${opt("fast", "Fast — see as much as possible")}
-          </select></div>
-        <div class="field"><label for="p-activity">Activity level</label>
-          <select id="p-activity" name="activity">
-            ${opt("gentle", "Gentle — walking, no hard days")}
-            ${opt("moderate", "Moderate — a full day hike is fine")}
-            ${opt("high", "High — altitude, scrambles, long trails")}
-          </select></div>
-      </div>
-    </div>
-
-    <div class="planner-step">
-      <h2><span>03</span> Budget and standard</h2>
-      <p>We plan in bands, not invented totals. Use the <a href="/tools/trip-budget-calculator/">budget calculator</a> for a number.</p>
-      <div class="choice-row">
-        ${[["1", "Budget"], ["2", "Mid-range"], ["3", "Premium"], ["4", "Luxury"]].map(([v, l]) => choice("budget", v, l, "radio")).join("")}
-      </div>
-      <div class="field-grid" style="margin-top:var(--s-5)">
-        <div class="field"><label for="p-hotel">Hotel preference</label>
-          <select id="p-hotel" name="hotelPref">
-            <option value="">No preference</option>
-            ${list(g.taxonomies.stayCategories, (c) => opt(c.slug, c.name))}
-          </select></div>
-        <div class="field"><label for="p-currency">Show budgets in</label>
-          <select id="p-currency" name="currency">${list(g.site.currencies, (c) => opt(c.code, `${c.code} — ${c.label}`))}</select></div>
-      </div>
-    </div>
-
-    <div class="planner-step">
-      <h2><span>04</span> Interests</h2>
-      <p>Pick as many as apply — these drive which experiences get scheduled.</p>
-      <div class="choice-row">
-        ${list(g.taxonomies.experienceCategories, (c) => choice("interests", c.slug, c.name))}
-      </div>
-      <div class="field-grid" style="margin-top:var(--s-5)">
-        <div class="field"><label for="p-food">Food preferences</label>
-          <select id="p-food" name="food">
-            ${opt("everything", "I eat everything")}${opt("vegetarian", "Vegetarian")}
-            ${opt("vegan", "Vegan")}${opt("halal", "Halal")}${opt("no-alcohol", "No alcohol")}${opt("allergies", "Allergies — I will specify with operators")}
-          </select></div>
-        <div class="field"><label for="p-style">Travel style</label>
-          <select id="p-style" name="style">
-            ${opt("culture", "Culture and craft")}${opt("adventure", "Adventure and outdoors")}
-            ${opt("romantic", "Romantic")}${opt("luxury", "Luxury")}${opt("slow-travel", "Slow travel")}
-            ${opt("solo", "Solo-friendly")}${opt("wellness", "Wellness")}
-          </select></div>
-      </div>
-    </div>
-
-    <div class="btn-row">
-      <button class="btn btn--primary" type="submit" data-track="planner_generate">Generate my itinerary</button>
-      <button class="btn btn--ghost" type="reset">Reset</button>
-    </div>
-    <p class="form-note">Nothing is sent anywhere. Your answers stay in this browser tab.</p>
-  </form>
-
-  <div class="planner-result" id="planner-result" aria-live="polite" tabindex="-1"></div>
-</div></section>
-
-<section class="section section--tight"><div class="wrap">${nextSteps({
-  title: "Prefer a ready-made plan?",
-  steps: [
-    { href: "/journeys/", title: "Browse curated journeys", desc: `${g.itineraries.length} itineraries, written day by day.` },
-    { href: "/india/", title: "Start from a destination", desc: "India by region, or travel international." },
-    { href: "/partner/", title: "Have it designed for you", desc: "Premium trip planning — enquire about availability." }
-  ]})}</div></section>
-<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "planner")}</div></section>`;
-
-  return {
-    url: "/plan/", template: "planner",
-    title: "AI Trip Planner — Build a Day-by-Day Itinerary | Pehchan",
-    description: "Enter your destination, dates, budget, pace and interests, and get a day-by-day itinerary with stays, experiences, transport and a budget estimate.",
-    body, ogArt: "planner", scripts: ["/assets/js/planner.js"],
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Plan", href: "/plan/" }],
-    schema: { "@type": "WebApplication", name: "Pehchan AI Trip Planner", url: g.site.siteUrl + "/plan/",
-      applicationCategory: "TravelApplication", operatingSystem: "Any modern browser",
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" } }
-  };
-}
-
 /* ===================== TOOLS =========================================== */
 
 const TOOL_PANELS = {
@@ -318,19 +185,10 @@ ${crumbs({ label: "Tools" })}
 
 export function toolPage(t, g) {
   const panel = TOOL_PANELS[t.slug] ? TOOL_PANELS[t.slug](g) : PHASE2_PANEL(t);
-  const pool = g.taxonomies.collections.filter(c => c.total);
-  const related = (t.slug === "trip-budget-calculator" ? pool.filter(c => c.type === "budget")
-    : t.slug === "best-time-to-visit" ? pool.filter(c => c.type === "landscape")
-    : pool.filter(c => c.type === "length")).slice(0, 4);
   const body = `
 ${pageHero("Travel tools", t.name, t.blurb)}
 ${crumbs({ label: "Tools", href: "/tools/" }, { label: t.name })}
 <section class="section section--tight"><div class="wrap wrap--narrow">${panel}</div></section>
-${related.length ? `<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Related", title: "Where this leads" })}
-  <div class="grid grid--4">${list(related, (c) => card({ href: c.url, title: c.title, kicker: "Collection",
-    desc: c.intro, entity: c, ratio: "4x3", flush: true }))}</div>
-</div></section>` : ""}
 <section class="section section--tight"><div class="wrap">${nextSteps({
   title: "Next", steps: [
     { href: "/family/", title: "Show your family", desc: "Turn the numbers into a plan they can read." },
@@ -495,9 +353,8 @@ ${crumbs({ label: "About" })}
         ["Founded", g.site.founded],
         ["Regions covered", String(g.regions.length)],
         ["Destination guides", String(g.published.length)],
-        ["Stays", String(g.hotels.length)],
-        ["Experiences", String(g.experiences.length)],
-        ["Curated journeys", String(g.itineraries.length)]
+        ["Destinations mapped", String(g.destinations.length)],
+        ["Trip reports", String(g.tripReports.length)]
       ])}
     </div>
   </div>
@@ -515,42 +372,6 @@ ${crumbs({ label: "About" })}
     body, ogArt: "about",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "About", href: "/about/" }],
     schema: { "@type": "AboutPage", name: "About Pehchan", url: g.site.siteUrl + "/about/" }
-  };
-}
-
-export function newsletterPage(g) {
-  const body = `
-${pageHero(g.site.newsletterName, "One considered email a week. Nothing else.",
-  "New destinations, stays worth knowing about, quiet-season timing, hidden gems and the occasional full itinerary.")}
-${crumbs({ label: "Newsletter" })}
-<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "newsletter-page")}</div></section>
-<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "What is in it", title: "Six things it covers" })}
-  <div class="grid grid--3">
-    ${list([
-      ["New destinations", "One guide a week, in full, before it is promoted anywhere else."],
-      ["Hotel discoveries", "Small properties worth knowing about, with the honest caveats."],
-      ["Travel deals", "Only when they are genuinely good, and always labelled if commercial."],
-      ["Hidden gems", "The places that have not yet been optimised for visitors."],
-      ["Curated itineraries", "Day-by-day plans, occasionally as a downloadable."],
-      ["Luxury travel inspiration", "What a premium actually buys, and when it does not."]
-    ], ([t, d]) => `<article class="card"><div class="card__body">
-      <h3 class="card__title" style="font-size:var(--t-md)">${esc(t)}</h3><p class="card__desc">${esc(d)}</p></div></article>`)}
-  </div>
-</div></section>
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  ${faq([
-    { q: "How often is it sent?", a: "Once a week. If there is nothing worth sending, we skip a week rather than pad it." },
-    { q: "Will you sell or share my email address?", a: "No. It is used to send the newsletter and nothing else. See the privacy policy." },
-    { q: "Is it free?", a: "Yes. It may carry clearly labelled partner placements in future; it will never be gated." },
-    { q: "How do I unsubscribe?", a: "One click in the footer of any issue. No retention flow, no confirmation gauntlet." }
-  ])}
-</div></section>`;
-  return {
-    url: "/newsletter/", template: "newsletter", title: fitTitle([g.site.newsletterName, "Weekly Travel Newsletter", "Pehchan"]),
-    description: "One considered email a week: new destinations, hotel discoveries, hidden gems, curated itineraries and travel deals worth acting on.",
-    body, ogArt: "newsletter",
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Newsletter", href: "/newsletter/" }]
   };
 }
 
@@ -580,57 +401,6 @@ ${crumbs({ label: "Contact" })}
     description: "Contact Pehchan for editorial enquiries, corrections, partnerships and press.",
     body, ogArt: "contact",
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Contact", href: "/contact/" }]
-  };
-}
-
-/* ===================== DEALS =========================================== */
-
-export function dealsPage(g) {
-  const body = `
-${pageHero("Travel deals", "Deals, when they are genuinely deals",
-  "This section is built and instrumented, and deliberately empty. We will not manufacture an offer to fill a page.")}
-${crumbs({ label: "Deals" })}
-<section class="section section--tight"><div class="wrap">
-  <div class="disclosure">
-    <div><strong>Nothing here is fabricated, which is why there is nothing here yet.</strong> Live rates, availability and
-    offers come from booking partners through their APIs and feeds. Until those integrations are signed and connected, the
-    honest thing to publish is the structure, not invented prices, fake countdown timers or a “was/now” that was never true.
-    Each category below is a live, tracked slot waiting for a partner feed.</div>
-  </div>
-</div></section>
-<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Categories", title: "How this section will work" })}
-  <div class="grid grid--3">
-    ${list(g.taxonomies.dealCategories, (c) => `<article class="card"><div class="card__body">
-      <span class="badge badge--placeholder">Awaiting partner feed</span>
-      <h3 class="card__title" style="font-size:var(--t-md);margin-top:var(--s-3)">${esc(c.name)}</h3>
-      <p class="card__desc">${esc(c.note)}</p>
-      <div class="partner-slot" style="margin-top:var(--s-4)">
-        <p>Offer cards render here once the ${esc(c.name.toLowerCase())} feed is connected. Every card will show its source,
-        its expiry and whether the link is commercial.</p>
-      </div></div></article>`)}
-  </div>
-</div></section>
-<section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "In the meantime", title: "Genuinely good value, without a countdown timer",
-    intro: "The most reliable saving in travel is not a flash sale. It is going in the right month and staying in the right town." })}
-  <div class="grid grid--4">
-    ${list(g.taxonomies.collections.filter(c => c.type === "budget" && c.total), (c) => card({ href: c.url, title: c.title,
-      kicker: "By budget", desc: c.intro, entity: c, ratio: "4x3", flush: true }))}
-  </div>
-</div></section>
-<section class="section section--tight"><div class="wrap">${newsletterBlock(g.site, "deals")}</div></section>
-<section class="section section--tight"><div class="wrap">${nextSteps({
-  title: "Better than a deal page", steps: [
-    { href: "/tools/best-time-to-visit/", title: "Check the quiet season", desc: "Shoulder-season timing beats most discounts." },
-    { href: "/collections/", title: "Browse collections", desc: "By style, landscape, trip length and budget." },
-    { href: "/plan/", title: "Plan around a budget", desc: "The planner works in bands you set." }
-  ]})}</div></section>`;
-  return {
-    url: "/deals/", template: "deals", title: "Travel Deals — Hotel, Flight & Experience Offers | Pehchan",
-    description: "Hotel, flight, tour and experience offers. We publish deals only from connected booking partners — never invented prices or manufactured urgency.",
-    body, ogArt: "deals",
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Deals", href: "/deals/" }]
   };
 }
 
@@ -667,90 +437,6 @@ ${crumbs({ label: "Search" })}
     description: "Search every destination guide, stay, experience, curated journey, collection and travel story on Pehchan.",
     body, ogArt: "search", scripts: ["/assets/js/search-page.js"], noindex: true,
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "Search", href: "/search/" }]
-  };
-}
-
-/* ===================== DASHBOARD CONCEPT =============================== */
-
-export function dashboardPage(g) {
-  const kpi = (label, value, sub) => `<div class="kpi"><dt>${esc(label)}</dt><dd>${esc(value)}</dd>
-    <span class="kpi-sub">${esc(sub)}</span></div>`;
-  const body = `
-${pageHero("Business intelligence", "The dashboard concept",
-  "A design specification for the numbers this business will be run on — defined before the pipeline exists, so the metrics are decided by strategy rather than by whatever the tool happens to report.")}
-${crumbs({ label: "Dashboard" })}
-<section class="section section--tight"><div class="wrap">
-  <div class="disclosure"><div><strong>This is a wireframe, not live data.</strong> Every figure below is shown as a dash
-  because no analytics provider is connected. The purpose of this page is to fix the metric definitions and the event
-  taxonomy now — see <code>docs/02-journeys-monetization-conversion.md</code> — so that when a provider is configured in
-  <code>src/content/site.json</code>, there is no argument about what counts.</div></div>
-</div></section>
-<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Acquisition", title: "Traffic and audience" })}
-  <dl class="kpi-grid">
-    ${kpi("Sessions", "—", "Total sessions, 30-day rolling")}
-    ${kpi("Users", "—", "Unique users, 30-day rolling")}
-    ${kpi("Organic share", "—", "Sessions from search / all sessions")}
-    ${kpi("Newsletter subscribers", "—", "Total confirmed, plus net weekly growth")}
-    ${kpi("Return rate", "—", "Users with 2+ sessions in 30 days")}
-    ${kpi("Pages per session", "—", "Depth signal for internal linking")}
-  </dl>
-</div></section>
-<section class="section section--tinted"><div class="wrap">
-  ${sectionHead({ eyebrow: "Revenue", title: "Commerce and conversion" })}
-  <dl class="kpi-grid">
-    ${kpi("Affiliate clicks", "—", "Tracked outbound clicks to booking partners")}
-    ${kpi("Click-through rate", "—", "Affiliate clicks / sessions on commerce pages")}
-    ${kpi("Confirmed bookings", "—", "Reported by partner networks, lagging 30–60 days")}
-    ${kpi("Revenue", "—", "Commission, by network and by month")}
-    ${kpi("Revenue per session", "—", "The single number that governs content investment")}
-    ${kpi("Partner leads", "—", "Enquiries from the partnership form, by budget band")}
-  </dl>
-</div></section>
-<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Content", title: "What is working" })}
-  <div class="table-scroll">
-    <table class="data"><thead><tr><th>Report</th><th>Dimension</th><th>Primary metric</th><th>Decision it drives</th></tr></thead><tbody>
-      ${list([
-        ["Top destinations", "Destination", "Revenue per session", "Where to invest guide and photography budget"],
-        ["Most clicked stays", "Hotel", "Affiliate clicks + CTR", "Which properties to pursue for direct partnerships"],
-        ["Most popular experiences", "Experience", "Affiliate clicks", "Which activity categories to expand"],
-        ["Top-performing content", "URL", "Assisted conversions", "What to update, expand or repeat"],
-        ["Planner funnel", "Step", "Completion rate", "Where the planner loses people"],
-        ["Search demand", "Query", "Searches with zero results", "The content gaps our own users are naming"],
-        ["Newsletter capture", "Placement", "Submit rate", "Which surfaces actually build the list"],
-        ["Partner pipeline", "Business type", "Leads and value", "Which B2B segment to target next"]
-      ], (r) => `<tr>${r.map((c, i) => i === 0 ? `<td><strong>${esc(c)}</strong></td>` : `<td>${esc(c)}</td>`).join("")}</tr>`)}
-    </tbody></table>
-  </div>
-</div></section>
-<section class="section section--tight"><div class="wrap">
-  ${sectionHead({ eyebrow: "Instrumentation", title: "Events the site already emits" })}
-  <div class="table-scroll">
-    <table class="data"><thead><tr><th>Event</th><th>Key properties</th><th>Status</th></tr></thead><tbody>
-      ${list([
-        ["page_view", "template, region, country, destination", "Emitted"],
-        ["affiliate_click", "partner, network, entityType, entitySlug, ctaLabel", "Emitted on every booking anchor"],
-        ["outbound_click", "host, context", "Emitted"],
-        ["planner_start / planner_generate", "style, budget, days, travellers, interests", "Emitted"],
-        ["newsletter_view / newsletter_submit", "placement", "Emitted"],
-        ["partner_enquiry_submit", "businessType, partnershipType, budgetBand, country", "Emitted"],
-        ["search / search_result_click", "query, resultCount, resultType, rank", "Emitted"],
-        ["save_item / share_trip / download_itinerary", "entityType, slug", "Emitted"],
-        ["tool_use", "tool", "Emitted"],
-        ["scroll_depth / read_complete", "template, slug", "Emitted"]
-      ], (r) => `<tr><td><code>${esc(r[0])}</code></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`)}
-    </tbody></table>
-  </div>
-  <p class="muted" style="margin-top:var(--s-5);font-size:var(--t-sm)">Events are buffered by
-  <code>assets/js/analytics.js</code> and forwarded to GA4, Plausible or a warehouse endpoint once one is configured.
-  With no provider configured, nothing is transmitted and nothing is stored — the site ships privacy-clean by default.</p>
-</div></section>`;
-  return {
-    url: "/dashboard/", template: "dashboard", title: "Business Dashboard Concept | Pehchan",
-    description: "The metric definitions and event taxonomy this platform is run on: traffic, affiliate clicks, conversion rate, revenue per session, top content and partner leads.",
-    body, ogArt: "dashboard", noindex: true,
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Dashboard", href: "/dashboard/" }]
   };
 }
 
@@ -1250,157 +936,6 @@ ${crumbs({ label: "The document" })}
     body, ogArt: "planner",
     scripts: ["/assets/js/trip-document.js"],
     breadcrumbs: [{ label: "Home", href: "/" }, { label: "The document", href: "/family/" }]
-  };
-}
-
-/* ===================== PEHCHAN LOCAL =================================== */
-
-/**
- * A signal is only worth showing with its date and its expiry. Anything past
- * its window renders as needing a re-check rather than quietly still claiming
- * to be true.
- */
-function signalState(sig, type, today = new Date()) {
-  const checked = new Date(sig.checkedOn + "T00:00:00");
-  const expires = new Date(checked);
-  expires.setMonth(expires.getMonth() + type.months);
-  const stale = today > expires;
-  const months = Math.max(0, Math.round((today - checked) / 2629800000));
-  return {
-    stale,
-    when: months < 1 ? "this month" : months === 1 ? "1 month ago" : `${months} months ago`,
-    expiresOn: expires.toISOString().slice(0, 10)
-  };
-}
-
-function providerCard(p, g, today) {
-  const types = new Map(g.local.signalTypes.map(t => [t.key, t]));
-  const cat = g.local.categories.find(c => c.slug === p.category);
-  const dest = g.byDest.get(p.destination);
-
-  const sigs = (p.signals || []).map(s => {
-    const t = types.get(s.key);
-    if (!t) return "";
-    const st = signalState(s, t, today);
-    return `<li class="sig${st.stale ? " sig--stale" : ""}">
-      <span class="sig__mark" aria-hidden="true">${st.stale ? "!" : "✓"}</span>
-      <span><strong>${esc(t.label)}</strong> — ${esc(t.means)}
-      <em>${st.stale ? `Last checked ${esc(st.when)}; due a re-check.` : `Checked ${esc(st.when)}.`}</em></span></li>`;
-  }).join("");
-
-  return `<article class="provider${p.sample ? " provider--sample" : ""}">
-  ${p.sample ? `<p class="provider__sample">Sample — invented, for layout only. Not a real listing.</p>` : ""}
-  <div class="provider__head">
-    <div>
-      <span class="eyebrow">${esc(cat ? cat.single : p.category)}${p.area ? ` · ${esc(p.area)}` : ""}</span>
-      <h3 class="provider__name">${esc(p.name)}</h3>
-    </div>
-    ${p.rateBand ? `<span class="provider__rate" title="Indicative price band">${esc(p.rateBand)}</span>` : ""}
-  </div>
-  <p class="provider__blurb">${esc(p.blurb)}</p>
-  ${(p.languages || []).length ? `<p class="provider__langs">Speaks ${esc(p.languages.join(", "))}</p>` : ""}
-  ${sigs ? `<ul class="sigs">${sigs}</ul>` : ""}
-  <p class="provider__foot">${dest ? `In <a href="${esc(dest.url)}">${esc(dest.name)}</a>. ` : ""}
-    Contact details are shared when you enquire, not published here.</p>
-</article>`;
-}
-
-export function localPage(g) {
-  const today = new Date();
-  const providers = g.local.providers;
-  const real = providers.filter(p => !p.sample);
-
-  // Group by destination so a woman planning one trip sees one list.
-  const byDest = new Map();
-  for (const p of providers) {
-    if (!byDest.has(p.destination)) byDest.set(p.destination, []);
-    byDest.get(p.destination).push(p);
-  }
-
-  const body = `
-${pageHero("Pehchan Local", "Women who work where you are going",
-  "Photographers, guides, drivers, instructors and hosts — all women-run, each one checked, and every check dated so you can see how fresh it is.",
-  `<div class="btn-row" style="margin-top:var(--s-3)"><a class="btn btn--light" href="/local/join/">List your business</a></div>`)}
-${crumbs({ label: "Pehchan Local" })}
-
-${real.length === 0 ? `
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  <div class="disclosure">
-    <div><strong>No real listings yet.</strong> The cards below are invented samples, kept only so the page
-    has a shape while the first women are found and checked. They are deleted the day a real listing goes up.</div>
-  </div>
-</div></section>` : ""}
-
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  ${sectionHead({ eyebrow: "How to read this", title: "No trust scores, only things we checked" })}
-  <p>A badge saying <em>98% trusted</em> tells you nothing you can act on, and it hides how it was
-  calculated. So there is no score here. Each listing shows what was actually checked, when, and what
-  the check means — and when a check gets old it says so rather than continuing to claim it is current.</p>
-  ${factList(g.local.signalTypes.map(t => [t.label, `${t.means} Re-checked every ${t.months} months.`]))}
-</div></section>
-
-${list([...byDest.entries()], ([slug, ps]) => {
-  const d = g.byDest.get(slug);
-  return `<section class="section section--tight"><div class="wrap">
-    ${sectionHead({ eyebrow: "Where", title: d ? d.name : slug })}
-    <div class="stack-lg">${list(ps, (p) => providerCard(p, g, today))}</div>
-  </div></section>`;
-})}
-
-<section class="section section--tight section--tinted"><div class="wrap wrap--narrow">
-  ${sectionHead({ eyebrow: "For providers", title: "If you run a business where travellers come" })}
-  <p>Pehchan Local lists women-run businesses only. There is no charge to be listed, and no payment can
-  buy a signal — the checks are the whole point of the page, and they are the only thing on it we will
-  vouch for.</p>
-  <div class="btn-row"><a class="btn btn--primary" href="/local/join/">List your business</a></div>
-</div></section>`;
-
-  return {
-    url: "/local/", template: "local",
-    title: fitTitle(["Pehchan Local", "Women-run services", "Pehchan"]),
-    description: "Women-run photographers, guides, drivers, instructors and hosts where you are travelling. Each one checked, every check dated.",
-    body, ogArt: "experiences",
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" }]
-  };
-}
-
-export function localJoinPage(g) {
-  const cats = g.local.categories.map(c => c.name.toLowerCase()).join(", ");
-  const body = `
-${pageHero("List your business", "Women-run businesses, listed free",
-  "If you run something travellers use — and you are a woman running it — Pehchan Local will list you at no charge.")}
-${crumbs({ label: "Pehchan Local", href: "/local/" }, { label: "List your business" })}
-
-<section class="section section--tight"><div class="wrap wrap--narrow">
-  ${sectionHead({ eyebrow: "What we list", title: "Any service a traveller needs" })}
-  <p>${esc(cats.charAt(0).toUpperCase() + cats.slice(1))} — and anything else we have not thought of.</p>
-
-  ${sectionHead({ eyebrow: "What it costs", title: "Nothing, and no signal is for sale" })}
-  <p>Listing is free. Payment cannot buy a check mark and never will: the checks are the only reason a
-  traveller trusts this page, so selling them would destroy the thing you are being listed on.</p>
-
-  ${sectionHead({ eyebrow: "What we check", title: "And what each check means" })}
-  ${factList(g.local.signalTypes.map(t => [t.label, t.means]))}
-  <p class="muted">Every check carries its date on your listing, and expires. We will come back to you
-  before it does — a check that has quietly gone stale is worse than no check at all.</p>
-
-  ${sectionHead({ eyebrow: "How to be listed", title: "Tell us about your work" })}
-  <p>Email <a href="mailto:${esc(g.site.contactEmail)}">${esc(g.site.contactEmail)}</a> with what you do,
-  where you work, the languages you speak, and a number we can call. We call every applicant — that call
-  is the first check.</p>
-  <div class="btn-row">
-    <a class="btn btn--primary" href="mailto:${esc(g.site.contactEmail)}?subject=${encodeURIComponent("Pehchan Local — listing enquiry")}">Email us</a>
-    <a class="btn btn--ghost" href="/local/">See the listings</a>
-  </div>
-</div></section>`;
-
-  return {
-    url: "/local/join/", template: "local-join",
-    title: fitTitle(["List Your Business", "Pehchan Local"]),
-    description: "Women-run businesses are listed on Pehchan Local free of charge. Here is what we check, what each check means, and how to apply.",
-    body, ogArt: "partner",
-    breadcrumbs: [{ label: "Home", href: "/" }, { label: "Pehchan Local", href: "/local/" },
-                  { label: "List your business", href: "/local/join/" }]
   };
 }
 

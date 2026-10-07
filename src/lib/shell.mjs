@@ -32,12 +32,6 @@ export function navModel(g) {
         { label: "Women & Travel", href: "/women-and-travel/" }
       ]}
     ]},
-    { label: "Local", href: "/local/", columns: [
-      { title: "Women-run services", links: [
-        { label: "Browse Pehchan Local", href: "/local/" },
-        { label: "List your business", href: "/local/join/" }
-      ]}
-    ]},
     { label: "Safety", href: "/safety/", columns: [
       { title: "Before, during, after", links: [
         { label: "Safety by journey", href: "/safety/" },
@@ -101,8 +95,6 @@ function footer(g) {
     { title: "From other women", links: [
       { label: "Real Trips", href: "/trips/" },
       { label: "Share Your Trip", href: "/trips/share/" },
-      { label: "Pehchan Local", href: "/local/" },
-      { label: "List your business", href: "/local/join/" },
       { label: "Report something", href: "/report/" }
     ]},
     { title: "Company", links: [

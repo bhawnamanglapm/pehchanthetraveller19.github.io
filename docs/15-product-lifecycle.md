@@ -36,8 +36,8 @@ Wrapped around all of them: **Operations** — entity, tax, legal, support.
 | 3 Validation | 🟠 **Started, stalled** | Survey live since 23 Sep. **4 responses, one of them the founder's own test.** n=3 — see `docs/16` |
 | 4 Positioning | 🟢 **Applied 29 Sep** | Founder's call: target **solo** and **women**. `site.json` rewritten, "Find your identity" now on every page. See the decision record below — it runs ahead of the evidence, deliberately |
 | 5 Definition | 🟢 **Done. Re-cut 29 Sep, document specified 30 Sep** | `docs/10`, `docs/11`. Ten components reweighted around the document; Pehchan Local and `last_verified` retired against MakeMyTrip; the Trust Layer reassigned to phase 3; sequencing rewritten against the audience roadmap. Section 3, the document itself, now has a real spec: anatomy, computed fields, privacy posture, acceptance criteria and what ₹2,500 buys |
-| 6 Design | 🟢 **Done** | Product redesign, one type family, cool neutrals, 44px targets |
-| 7 Build | 🟢 **Done** | 85 pages, the profile engine, six product surfaces, PWA, voice |
+| 6 Design | 🟢 **Done, document pass 1 Oct** | Product redesign, one type family, cool neutrals, 44px targets. Print sizes raised for the reader the document is actually put in front of — a parent, typically 45+. Still no accessibility or device pass |
+| 7 Build | 🟢 **Done, pruned 1 Oct** | 82 pages, the profile engine, the document, PWA, voice. 2,544 lines of media-era machinery deleted so the build matches the definition. **But the content is empty**: all 26 destinations are `draft`, `visited: false`, `personalNote: null`, and no destination has a demand vector |
 | 8 Quality | 🟠 **Started** | Build integrity checks caught real bugs, and `src/test-document.mjs` now runs 34 assertions against the real itinerary. Still: **nobody outside this session has ever used it**, no device or accessibility pass |
 | 9 Launch | 🔴 **Not started** | Site is live and nothing points at it. Instagram bio unchanged, no content, no form connected |
 | 10 Measure | 🔴 **Blind** | `analytics.provider` is `null`. Zero visitors measured, ever |
