@@ -14,15 +14,37 @@ export const list = (arr, fn) => (arr || []).map(fn).join("");
 
 /* ---------- media ---------------------------------------------------- */
 
+/**
+ * A photograph if there is one, generated art if there is not.
+ *
+ * A photograph we did not take must say so, every time it appears. The site's
+ * whole claim is first-hand travel, so an uncredited stock image would be the
+ * one lie on it — and a CC-BY image without attribution also breaks its licence.
+ * `photo.credit` is therefore required by the build (see graph.mjs), not
+ * optional here.
+ */
 export function figure(entity, { ratio = "16x9", label = "", note = true, className = "" } = {}) {
   const key = entity?.art || "asia-ridge";
   const seed = entity?.slug || label || "seed";
-  const inner = entity?.image
-    ? `<img src="${esc(entity.image)}" alt="${esc(entity.imageAlt || label)}" loading="lazy" decoding="async" width="1200" height="800">`
+  const photo = entity?.photo;
+  const src = photo?.src || entity?.image;
+  const inner = src
+    ? `<img src="${esc(src)}" alt="${esc(photo?.alt || entity?.imageAlt || label)}" loading="lazy" decoding="async" width="1200" height="800">`
     : art(key, seed, { label });
-  return `<div class="art art--${ratio} ${className}">${inner}`
-    + (note && !entity?.image ? `<span class="art__note">Illustrated placeholder</span>` : "")
-    + `</div>`;
+
+  let footnote = "";
+  if (photo?.credit) {
+    const who = photo.creditUrl
+      ? `<a href="${esc(photo.creditUrl)}" rel="nofollow noopener" target="_blank">${esc(photo.credit)}</a>`
+      : esc(photo.credit);
+    const lic = photo.licenseUrl
+      ? `<a href="${esc(photo.licenseUrl)}" rel="nofollow noopener" target="_blank">${esc(photo.license)}</a>`
+      : esc(photo.license || "");
+    footnote = `<span class="art__credit">Photo ${who}${lic ? ` · ${lic}` : ""} · not our photograph</span>`;
+  } else if (note && !src) {
+    footnote = `<span class="art__note">Illustrated placeholder</span>`;
+  }
+  return `<div class="art art--${ratio} ${className}">${inner}${footnote}</div>`;
 }
 
 /* ---------- primitives ------------------------------------------------ */

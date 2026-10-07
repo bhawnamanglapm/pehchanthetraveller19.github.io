@@ -53,6 +53,20 @@ export function buildGraph() {
   }
   const GUIDE_FIELDS = ["summary", "whyVisit", "bestTime", "gettingThere", "howManyDays",
                         "whereToStay", "thingsToDo", "food", "budgetNotes", "safety", "culture", "faqs"];
+  // A photograph we did not take is allowed, but never unattributed: CC-BY
+  // requires the credit, and the site's first-hand claim requires the label.
+  // Missing either is a build failure, not a warning somebody skims past.
+  const PHOTO_REQUIRED = ["src", "alt", "credit", "license"];
+  for (const d of destinations) {
+    if (d.photo) {
+      for (const f of PHOTO_REQUIRED) {
+        if (!d.photo[f]) errors.push(`destination ${d.slug}: photo is missing "${f}"`);
+      }
+      if (d.photo.src && !d.photo.src.startsWith("/assets/photos/")) {
+        errors.push(`destination ${d.slug}: photo.src must be a local file under /assets/photos/ — hotlinking someone else's server is not ours to do`);
+      }
+    }
+  }
   for (const d of destinations) {
     d.status = d.status || "published";
     const c = byCountry.get(d.country);
