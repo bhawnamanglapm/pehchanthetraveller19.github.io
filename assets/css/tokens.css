@@ -35,8 +35,13 @@
   /* ---- Type ---- */
   --font-ui: system-ui, -apple-system, "Segoe UI Variable", "Segoe UI", Roboto,
              "Helvetica Neue", Arial, "Noto Sans", "Noto Sans Devanagari", sans-serif;
-  --font-display: var(--font-ui);
-  --fw-display: 640;
+  /* A real display face, from what the device already has. A webfont would be
+     a request to someone else's server on a site that tells people nothing is
+     sent anywhere, so the stack is local-only: Iowan and Charter on Apple,
+     Georgia on Windows, Noto Serif on Android. */
+  --font-display: "Iowan Old Style", "Charter", Georgia, "Noto Serif",
+                  "Source Serif 4", serif;
+  --fw-display: 600;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
   --t-xs:   0.75rem;
@@ -52,7 +57,7 @@
   --lh-tight: 1.14;
   --lh-snug:  1.28;
   --lh-body:  1.6;
-  --ls-caps:  .1em;
+  --ls-caps:  .06em;
 
   /* ---- Space ---- */
   --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;

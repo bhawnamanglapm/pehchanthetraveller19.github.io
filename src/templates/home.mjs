@@ -17,8 +17,8 @@ export function home(g) {
   <div class="hero__inner">
     <span class="eyebrow" style="color:rgba(255,255,255,.75)">Solo travel for Indian women</span>
     <h1>Get your family to yes</h1>
-    <p class="hero__sub">A complete printed itinerary — days, travel, stays, costs — that you can put in front of them.
-    One was written, shown to a traveller's parents, and they said yes.</p>
+    <p class="hero__sub">A printed plan you can put in front of them — days, travel, stays, costs.
+    <strong>One was shown to a traveller's parents. They said yes.</strong></p>
     <div class="btn-row" style="margin-top:var(--s-3)">
       <a class="btn btn--light" href="/family/" data-track="cta_primary" data-track-label="Trip document">Make the document</a>
       <a class="btn btn--ghost" href="/profile/" style="border-color:rgba(255,255,255,.5);color:#fff" data-track="cta_secondary" data-track-label="Solo Travel Profile">Can I do this on my own?</a>
