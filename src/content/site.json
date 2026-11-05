@@ -5,7 +5,7 @@
   "promise": "Solo travel for Indian women — and the plan that gets your family to yes.",
   "positioning": "A solo travel platform for Indian women: the confidence to go, and a complete plan your family can read before you do.",
   "origin": "https://bhawnamanglapm.github.io",
-  "customDomain": null,
+  "customDomain": "www.pehchanthetraveller.com",
   "customDomainNote": "Set this to a bare domain (e.g. \"pehchan.travel\") once its DNS points at GitHub Pages. It then overrides origin/basePath and the build emits a CNAME file. Do NOT set it before DNS resolves — GitHub will start serving the custom domain and the site becomes unreachable until DNS is correct.",
   "basePath": "/pehchanthetraveller19.github.io",
   "legalEntity": "Pehchan Travel Studio",

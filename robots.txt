@@ -1,6 +1,6 @@
 # Pehchan
 User-agent: *
 Allow: /
-Disallow: /pehchanthetraveller19.github.io/search/
+Disallow: /search/
 
-Sitemap: https://bhawnamanglapm.github.io/pehchanthetraveller19.github.io/sitemap.xml
+Sitemap: https://www.pehchanthetraveller.com/sitemap.xml
