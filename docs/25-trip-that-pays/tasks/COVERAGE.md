@@ -44,7 +44,7 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | 9 | AI rules, labels, cost control, `checks.ts`, evals and pass marks | 3.05, 3.06 |
 | 10 | Keeping the page current: refresh table, amber after 30 days | 1.13, 1.14, 1.15, 2.02 |
 | 11 | Income line 1: booking commission | 1.35, 1.24, 2.03, 2.08, 2.09 |
-| 11 | Income line 2: Pehchan's own documentary trips, and the travel tech fest talk | 0.02, 4.02, 4.03 |
+| 11 | Income line 2: Pehchan's own documentary trips, and the travel tech fest talk | 4.04, 4.02, 4.03 |
 | 11 | Income line 3: paid Creator tier | 2.11, 3.11 |
 | 11 | Income line 4: "Open to creator stays" listings; how the first hotels arrive | 2.13 |
 | 11 | Income line 5: sponsored destination guides | 2.14 |
@@ -61,7 +61,9 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | 14 | The monthly routine | 1.38 |
 | 15 | Events tracked | 1.19 |
 | 15 | Measures and the analytics tool | 1.39, 0.01 (D7) |
-| 16 | Phase 0 steps 0–5 | 0.02–0.07 |
+| 16 | Phase 0 (decisions) | 0.01 |
+| 16 | AI picks the launch place | 1.41 |
+| 16 | Last: the people steps | 4.04–4.08, the CA part of 1.34 |
 | 16 | Phase 1 "before it starts" (builder, budget, CA, lawyer) | 0.01 (D5, D6), 1.34 |
 | 16 | Phase 2 "before it starts" | 2.01 |
 | 16 | Phase 3 "before it starts" | 3.01 |
@@ -95,7 +97,7 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | 1 | Who admin is, roles, Draft & Publish, the webhook to the trip app | 1.07, 1.13 |
 | 2 | Collections: destination facts, stays, steps, templates and settings, queues, money | 1.08, 1.09, 1.10, 1.11, 1.12 |
 | 3 | Adding a destination (the ten items) | 1.36, 2.12 |
-| 4 | Checking a stay (seven steps) | 0.04, 1.36, 1.38 |
+| 4 | Checking a stay (seven steps) | 4.06, 1.36, 1.38 |
 | 5 | Queues | 1.12, 1.16, 1.38 |
 | 6 | The monthly routine | 1.38 |
 | 7 | What runs on its own: link check, backup, advisory check, rates, creator counts, cache refresh | 1.15, 1.06, 1.14, 2.02, 1.13 |

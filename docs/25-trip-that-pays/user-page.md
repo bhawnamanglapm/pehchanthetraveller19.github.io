@@ -125,7 +125,7 @@ Always visible, one line each, with a "why" link:
 
 | | |
 |---|---|
-| **Already on the page** | Checked stays for the destination: area, women-safety notes, WiFi, power backup, locker, laundry, free cancellation, booking link, and two badges (below). The stay-mix guide. The 6-point check |
+| **Already on the page** | Checked stays for the destination (none at launch: until the first are checked, 0b says "No checked stays are published for this place yet" and the traveller adds their own): area, women-safety notes, WiFi, power backup, locker, laundry, free cancellation, booking link, and two badges (below). The stay-mix guide. The 6-point check |
 | **Traveller enters** | Dates, budget per night, stay style, a shortlist, answers to the 6-point check for each, and any stay not on Pehchan's list (sent to admin to review) |
 | **Choose the area first** | Areas are listed before properties, each with a short note on its character (old town, market street, waterfront) |
 
@@ -313,7 +313,7 @@ digital products, licensing, workshops; redeem points for the next flight; pitch
 
 | Phase | What the traveller gets |
 |---|---|
-| **1** | Stepper, Trip Card, both modes, first-visit screens, every stage's Do and safety checklists, stage 1 guided steps and checkpoint, honesty strip, booking links, export, import, delete. One destination. The worked example comes later, after Pehchan's own trip Data: GOV.UK, REST Countries, Frankfurter plus fixed rates, Strapi |
+| **1** | Stepper, Trip Card, both modes, first-visit screens, every stage's Do and safety checklists, stage 1 guided steps and checkpoint, honesty strip, booking links, export, import, delete. One destination, picked by AI and published by admin, with no checked stays at first. The worked example comes later, after Pehchan's own trip Data: GOV.UK, REST Countries, Frankfurter plus fixed rates, Strapi |
 | **2** | Live scoring data (YouTube, Travelpayouts), partner tracker, media kit builder, Hindi, opt-in email reminders, a price test for the Creator tier, tours with booking links in 0b and stage 2, the opt-in for anonymous pitch totals, more destinations |
 | **3** | Accounts and sync, connected YouTube and Instagram numbers, automatic partner reports, AI drafts with "Flag this draft", checked radar alerts, showcase, the paid Creator tier |
 | **After 3** | **Travelling with a friend:** one shared trip both people edit, with the Trip Balance split between them. It needs accounts, so it can't come earlier |

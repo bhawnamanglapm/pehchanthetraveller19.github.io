@@ -88,7 +88,7 @@ account with 5k+ followers, per earlier research quoted in 25 §16. So step 1 ma
 | # | Do | Task |
 |---|---|---|
 | 1 | Answer D1–D7, or say "go with the defaults" for D1, D2, D6 and D7 | [0.01](../25-trip-that-pays/tasks/0.01-decisions.md) |
-| 2 | Open Pehchan's Instagram account if it doesn't exist. Put the live site in the bio | [0.02](../25-trip-that-pays/tasks/0.02-instagram-account.md) |
+| 2 | Open Pehchan's Instagram account if it doesn't exist. Put the live site in the bio | [4.04](../25-trip-that-pays/tasks/4.04-instagram-account.md) (was 0.02) |
 | 3 | Write down 3–5 real candidate places (D3) and the pass mark (D4) **before** any talks | 0.01 |
 | 4 | Decide the parked items in §6 below. "Park all" is a valid answer | — |
 

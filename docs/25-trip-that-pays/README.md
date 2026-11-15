@@ -35,7 +35,7 @@ whether the trip is paying for itself.
 
 **Where it lives (changed 15 Nov 2026):** the trip pages are part of the existing Next.js app, at
 `www.pehchanthetraveller.com/trip/` (decision D2 in [tasks/0.01](tasks/0.01-decisions.md)). They are merged in
-switched off and turned on after 0.07. This replaces the 14 Nov decision for a separate app on its own subdomain; the
+switched off and turned on at launch (1.40). This replaces the 14 Nov decision for a separate app on its own subdomain; the
 points below still describe that earlier setup until the docs are reworked. In this plan, `/trip` means the stage
 pages (`/trip/0a` to `/trip/3`).
 
@@ -1175,8 +1175,11 @@ help, but each deal stays between the two parties, and Pehchan's terms say so.
 **How the first hotels and travellers arrive:** a marketplace needs both sides, so Pehchan starts with what it
 controls.
 
-1. Stage 0a, run by hand in phase 0, picks the first destination.
-2. You check 10–20 stays there yourself, remotely; they're the first supply.
+1. AI picks the first destination (task 1.41), with sourced facts, and publishes it without waiting for you; you
+   check it only if something is found wrong. **Changed 16 Nov 2026
+   (owner):** this used to be a hand run of stage 0a, which now comes at the end as a check (4.05).
+2. The pages launch with no Pehchan-checked stays. You check 10–20 there yourself, remotely, after launch (4.06);
+   each one goes live as it passes, and they're the first supply.
 3. The pages launch without a worked example. When you take your own trip (the last step), it becomes the worked
    example, documented on Instagram.
 4. Hotels are approached with "featured in the documentary and on the page" once there's footage to show.
@@ -1301,31 +1304,34 @@ monthly pace.
 
 ## 16. Build order
 
-### Phase 0: check the idea before launch
+### Phase 0: decisions
 
-None of it needs travel. **Changed 16 Nov 2026 (owner):** Pehchan's own trip moved from here to the last step of the
-plan, so the pages can launch first and bring in customers. The cost: the pages launch without a worked example, and
-assumption A4 ("a first trip can visibly cut its cost") is untested at launch.
+Decisions D1–D7 are closed (task 0.01). **Changed 16 Nov 2026 (owner):** first Pehchan's own trip, then every other
+phase 0 step that needs people, moved to the end of the plan, so the pages can launch first and bring in customers.
+They're listed under "Last: the people steps" below. **What that costs:**
 
-| Step | What | What it proves |
-|---|---|---|
-| 0 | **Start Pehchan's Instagram account now,** if it doesn't exist yet. Barter platforms ask for account age and followers (TripGyani: a one-year-old account and 5k+, from earlier research), so every month it exists counts | The content channel that income lines 2 and 4 depend on |
-| 1 | Run stage 0a on your 3–5 real candidate places, with sources | Picks the launch destination and tests the scoring |
-| 2 | Check 10–20 stays there yourself, remotely: photos, reviews, messages and the stay's written OK | The first supply, and how long a destination pack takes |
-| 3 | Talk to **10 Indian travel creators** and **10 stays** in that destination | Real demand, real barter terms, real prices for income lines 3 and 4 |
-| 4 | Decide whether to build, against a pass mark you set **before** the talks | So the result isn't bent to fit afterwards |
+- The pages launch without a worked example.
+- The launch place is picked by AI (1.41), not by a hand run of stage 0a.
+- The pages launch with no Pehchan-checked stays.
+- No person reads the place or the pack before they go live: AI publishes them, with automatic checks on the safety
+  facts (1.41). The lawyer review waits until something is found wrong, so the consent form stays hidden and the
+  privacy policy and terms launch unchecked (1.34).
+- Demand, barter terms and prices (assumptions A1–A5) are untested at launch.
+- The pass mark is judged after launch, so stopping is no longer cheap.
 
 ### Phase 1: the trip app goes live
 
 - **Pages:** the stepper, Trip Card, both modes, every stage's checklists and safety items, the honesty strip,
-  booking links, export and import. Trips are saved in the browser. One destination pack. No worked example yet:
-  its links stay hidden until Pehchan's own trip is done.
+  booking links, export and import. Trips are saved in the browser. One destination pack, its place picked by AI
+  (1.41) and published by AI, with no checked stays yet. No worked example yet: its links stay hidden until
+  Pehchan's own trip is done.
 - **Data:** GOV.UK, REST Countries, Frankfurter plus the fixed rates, and admin-entered content in Strapi.
 - **Before it starts:**
   - Confirm who builds it (Bhavu211 or Rajpal) and their hours.
   - Confirm whether any money is allowed for paid data services; the default is ₹0.
-  - A CA checks the tax wording.
-  - A lawyer checks the consent text, consent form and terms.
+  - **Changed 16 Nov 2026 (owner):** the lawyer check of the consent text, consent form, privacy policy and terms no
+    longer comes first. It comes back as soon as something is found wrong (1.34).
+  - The CA check of the tax wording moved to the people steps; the tax line stays hidden until it's done.
 
 ### Phase 2
 
@@ -1354,6 +1360,22 @@ assumption A4 ("a first trip can visibly cut its cost") is untested at launch.
 - **Travelling with a friend:** a shared trip that both people edit, with one Trip Balance split between them. It
   needs accounts, so it can't come earlier.
 
+### Last: the people steps
+
+Moved here from phase 0 on 16 Nov 2026 (owner), so the pages launch first. They start as soon as the pages are live,
+and can run in parallel with phase 2. The Instagram account (step 0) never waited and keeps growing from today.
+
+| Step | What | What it proves |
+|---|---|---|
+| 0 | **Grow Pehchan's Instagram account** (task 4.04). Barter platforms ask for account age and followers (TripGyani: a one-year-old account and 5k+, from earlier research), so every month it exists counts | The content channel that income lines 2 and 4 depend on |
+| 1 | Run stage 0a by hand on 3–5 places, including the AI pick, with sources (4.05) | Checks the AI pick and tests the scoring |
+| 2 | Check 10–20 stays in the launch place yourself, remotely: photos, reviews, messages and the stay's written OK (4.06) | The first supply, and how long a destination pack takes |
+| 3 | Talk to **10 Indian travel creators** and **10 stays**, who can try the live pages (4.07) | Real demand, real barter terms, real prices for income lines 3 and 4 |
+| 4 | Keep, change or stop, against the pass mark you set **before** the talks (4.08) | So the result isn't bent to fit afterwards |
+| 5 | A CA checks the tax wording (the CA part of 1.34); the tax line shows once the date is entered | Travellers see the tax line only once it's approved |
+| 6 | **Only if something is found wrong:** you check the place and its pack in Strapi admin, safety facts first (emergency numbers, visa, permits). A wrong safety fact is unpublished at once (1.41) | The facts travellers rely on are right |
+| 7 | **Only if something is found wrong** (recommended anyway before the first paid feature): a lawyer checks the consent text, consent form, privacy policy and terms (1.34). The consent form shows once the lawyer date is entered | Legal wording that holds up |
+
 ### Last: Pehchan's own trip
 
 Moved here from phase 0 on 16 Nov 2026 (owner), because the owner can't travel to every place yet. It can start
@@ -1370,10 +1392,10 @@ earlier whenever the owner can travel; it just no longer holds up the launch.
 |---|---|---|
 | 1 | ~~Confirm the page lives in the Next.js app, not this static repo~~ **Decided 14 Nov 2026:** a separate app on its own subdomain. **Changed 15 Nov 2026 (owner):** part of the existing Next.js app at `/trip/`, reading the same Strapi | Every technical choice above assumes it |
 | 2 | ~~Confirm or change the one-line description of Pehchan (section 1)~~ **Decided 15 Nov 2026 (owner):** the proposed line in section 1 is kept | It goes on the page, in pitches and at the fest |
-| 3 | ~~Name 3–5 real candidate places for the phase 0 trip (now the last step, 4.02)~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter. **Later on 15 Nov the owner asked for AI to choose the place from anywhere in the world instead;** the five places stay as background research. How that works is still to be designed | Phase 0 can't start without them |
-| 4 | ~~Set the phase 0 pass mark, before the creator and stay talks~~ **Set 15 Nov 2026 (owner), before any talk:** kept in the private phase 0 workbook and judged in 0.07 | So the result isn't bent to fit afterwards |
+| 3 | ~~Name 3–5 real candidate places for the phase 0 trip (now the last step, 4.02)~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter. **Later on 15 Nov the owner asked for AI to choose the place from anywhere in the world instead;** the five places stay as background research. **Designed 16 Nov 2026:** AI picks the launch place in a working session, with sources, and publishes it; you check it only if something is found wrong (task 1.41) | The launch place |
+| 4 | ~~Set the phase 0 pass mark, before the creator and stay talks~~ **Set 15 Nov 2026 (owner), before any talk:** kept in the private phase 0 workbook and judged in 4.08 (was 0.07), after launch since 16 Nov 2026 | So the result isn't bent to fit afterwards |
 | 5 | ~~Who builds it (Bhavu211 or Rajpal) and their hours~~ **Decided 15 Nov 2026 (owner):** Bhavu211, 10 hours a week | Sets the pace |
-| 6 | ~~Budget for paid data services and AI (default ₹0 and AI off)~~ **Decided 15 Nov 2026 (owner):** ₹0 a month, AI off. **Under review:** the later wish for AI to choose places (row 3) needs AI on, so this has to be decided again | Decides what's in phase 1 |
+| 6 | ~~Budget for paid data services and AI (default ₹0 and AI off)~~ **Decided 15 Nov 2026 (owner):** ₹0 a month, AI off. **16 Nov 2026:** the launch pick (row 3) is made in a working session, not inside the app, so ₹0 and AI off still hold for launch. AI choosing places for travellers inside the app would need AI on and is decided separately | Decides what's in phase 1 |
 | 7 | ~~The trip app's address and nav label~~ **Decided 15 Nov 2026 (owner):** `trip.pehchanthetraveller.com`, then **changed the same day** to `www.pehchanthetraveller.com/trip/` (row 1). Nav label "Plan a trip that pays", in the main app's header | Tasks 1.02 and 1.20 |
 | 8 | ~~Analytics tool for the trip app~~ **Decided 15 Nov 2026 (owner):** Umami, the tool the existing app already uses | Task 1.19 |
 

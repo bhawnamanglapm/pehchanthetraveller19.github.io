@@ -86,7 +86,7 @@ A destination appears in the trip app only when every item below is published, s
 | 4 | Festivals | Official tourism calendar |
 | 5 | Permit notes | Official filming and drone rules |
 | 6 | Dong rate (Vietnam only) | A named source, monthly. Also confirm the fixed dirham and Nepali rupee rates on the central banks' sites |
-| 7 | 10–20 checked stays | Checked by you against the 6-point check |
+| 7 | 10–20 checked stays (none at launch; added after it, task 4.06) | Checked by you against the 6-point check |
 | 8 | Emergency numbers | Official sources |
 | 9 | Tourism board media contact | The board's own site |
 | 10 | Step links for the destination's airlines and hotel chains | Their official sign-up pages |
