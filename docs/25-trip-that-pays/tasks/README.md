@@ -75,7 +75,7 @@ Numbers like `1.23` are task IDs: the first digit is the phase.
 
 | Role | Who | Leads on |
 |---|---|---|
-| **Owner** | Pehchan's founder | Phase 0, decisions D1–D7, the build decision (0.07), budget, the first destination pack |
+| **Owner** | Pehchan's founder | Decisions D1–D7, budget, accepting the AI-picked place (1.41), the first destination pack, and the people steps at the end (4.04–4.08) |
 | **PM** | To be named | Content, legal and tax reviews, partner accounts, measurement, launch, research tasks |
 | **Designer** | To be named | Design system, screens, accessibility, media kit builder |
 | **Developer** | Bhavu211 or Rajpal (D5) | The app, its API routes, jobs and the nav link |
@@ -101,35 +101,33 @@ Change the **Status** row in the task file itself, so the folder is always the s
 
 | Phase | What it proves or delivers | Gate to move on |
 |---|---|---|
-| **0 · Check the idea** | Stage 0a run by hand on real places, stays checked remotely, and 20 creator and stay talks. No travel needed | 0.07: the result meets the pass mark set before the talks |
+| **0 · Decisions** | D1–D7 closed (0.01, done). The steps that need people moved to the end of the plan on 16 Nov 2026 | Done |
 | **1 · The trip app goes live** | Both modes, every stage, safety, booking links, export and import, one destination pack. Trips saved in the browser. No worked example yet: its links stay hidden | 1.40 launch checklist |
 | **2 · Live data and more places** | Live scoring data, partner tracker, media kit builder, Hindi, tours, more destinations, new income lines 4 and 5 | 2.01 research done first |
 | **3 · Accounts and AI** | Accounts and sync, connected YouTube and Instagram, AI drafts, partner reports, radar alerts, paid Creator tier | 3.01 research and approvals done first |
 | **After 3** | Travelling with a friend | Accounts live |
+| **Last · the people steps** | Instagram growth, the hand check of the AI pick, stay checks, 20 creator and stay talks, then keep, change or stop. Moved here from phase 0 on 16 Nov 2026 | 4.08: the result judged against the pass mark set before the talks |
 | **Last · Pehchan's own trip** | The owner's documentary trip, planned and logged on the live pages, then the worked example with its real Trip Balance. Moved here from phase 0 on 16 Nov 2026 | The trip done, every number traceable |
 
 ---
 
 ## 6. All tasks
 
-### Phase 0: check the idea
+### Phase 0: decisions
+
+The other phase 0 tasks (0.02–0.07) moved to "Last: the people steps" on 16 Nov 2026, so the pages launch first.
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
 | [0.01](0.01-decisions.md) | Close the decisions that block everything | Owner | — |
-| [0.02](0.02-instagram-account.md) | Start Pehchan's Instagram account now | Owner | — |
-| [0.03](0.03-run-stage-0a-on-paper.md) | Run stage 0a by hand on 3–5 real places | Owner | 0.01 (D3) |
-| [0.04](0.04-check-stays.md) | Check 10–20 stays in the chosen place, and time it | Owner | 0.03 |
-| [0.05](0.05-creator-and-stay-talks.md) | Talk to 10 Indian travel creators and 10 stays | Owner | 0.01 (D4), 0.03 |
-| [0.07](0.07-build-decision.md) | Decide whether to build, against the pass mark | Owner | 0.01 (D4), 0.04, 0.05 |
 
 ### Phase 1: foundation
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
-| [1.01](1.01-app-setup.md) | Set up the separate trip app | Developer | 0.01 (D2, D5), 0.07 |
+| [1.01](1.01-app-setup.md) | Set up the separate trip app | Developer | 0.01 (D2, D5) |
 | [1.02](1.02-subdomain-and-seo.md) | Subdomain, HTTPS and search basics | Developer | 0.01 (D2), 1.01 |
-| [1.03](1.03-design-system-and-screens.md) | Design system and screen designs | Designer | 0.05, 1.01 |
+| [1.03](1.03-design-system-and-screens.md) | Design system and screen designs | Designer | 1.01 |
 | [1.04](1.04-port-code-from-existing-app.md) | Copy what's reusable from the existing Next.js app | Developer | 1.01 |
 | [1.20](1.20-main-website-nav-link.md) | Link the trip app from the main website's navigation | Developer | 0.01 (D2), 1.02, 1.19 |
 
@@ -142,8 +140,8 @@ Change the **Status** row in the task file itself, so the folder is always the s
 | [1.07](1.07-strapi-roles-and-rules.md) | Strapi roles, publishing and enforced rules | Strapi owner | 1.08–1.12 |
 | [1.08](1.08-destination-collections.md) | Destination-fact collections | Strapi owner | 1.05, 1.06 |
 | [1.09](1.09-stay-collections.md) | Stay and stay-suggestion collections | Strapi owner | 1.05, 1.08 |
-| [1.10](1.10-step-collections-and-seed.md) | Step-guide and step-link collections, with seed content | PM | 1.05, 0.05 |
-| [1.11](1.11-template-and-settings.md) | Template and trip-page-settings collections | PM | 1.05, 0.03, 0.05 |
+| [1.10](1.10-step-collections-and-seed.md) | Step-guide and step-link collections, with seed content | PM | 1.05 |
+| [1.11](1.11-template-and-settings.md) | Template and trip-page-settings collections | PM | 1.05 |
 | [1.12](1.12-queue-and-money-collections.md) | Offer-report and commission-log collections | Strapi owner | 1.05 |
 
 ### Phase 1: backend and data
@@ -164,7 +162,7 @@ Change the **Status** row in the task file itself, so the folder is always the s
 |---|---|---|---|
 | [1.21](1.21-landing-and-first-visit.md) | Landing page and first-visit screens | Designer, then Developer | 1.03, 1.11, 1.13, 1.17 |
 | [1.22](1.22-app-shell.md) | App shell: Trip Card, Trip Balance, stepper, honesty strip, trip menu | Developer | 1.03, 1.11, 1.13, 1.17 |
-| [1.23](1.23-stage-0a.md) | Stage 0a: choose the place, and why | Developer | 0.03, 1.13, 1.14, 1.22 |
+| [1.23](1.23-stage-0a.md) | Stage 0a: choose the place, and why | Developer | 1.13, 1.14, 1.22 |
 | [1.24](1.24-stage-0b.md) | Stage 0b: choose the stays | Developer | 1.09, 1.13, 1.16, 1.22, 1.23, 1.35 |
 | [1.25](1.25-stage-1-do-and-safety.md) | Stage 1: the Do checklist and safety items | Developer | 1.04, 1.11, 1.13, 1.16, 1.18, 1.22 |
 | [1.26](1.26-step-engine.md) | Step engine: the parts every guided step shares | Developer | 1.03, 1.10, 1.13, 1.17, 1.22 |
@@ -182,10 +180,11 @@ Change the **Status** row in the task file itself, so the folder is always the s
 |---|---|---|---|
 | [1.34](1.34-legal-and-tax-reviews.md) | Lawyer, CA and rules reviews | PM | 1.11, 1.21, 1.25 |
 | [1.35](1.35-affiliate-accounts-and-disclosure.md) | Pehchan's own booking-partner accounts and disclosure | PM | 0.01, 1.34 |
-| [1.36](1.36-first-destination-pack.md) | The first destination pack | Admin (owner) | 0.03, 0.04, 1.08–1.11, 1.35 |
+| [1.36](1.36-first-destination-pack.md) | The first destination pack | Admin (owner) | 1.41, 1.08–1.11, 1.35 |
 | [1.38](1.38-admin-runbook.md) | Admin runbook | PM | 1.06, 1.07, 1.12, 1.15, 1.16, 1.36 |
 | [1.39](1.39-measurement.md) | Measuring how it's working | PM | 0.01 (D7), 1.19, 1.35 |
-| [1.40](1.40-launch-checklist.md) | Launch checklist | PM | All of 1.01–1.39 |
+| [1.40](1.40-launch-checklist.md) | Launch checklist | PM | All of 1.01–1.39, and 1.41 |
+| [1.41](1.41-ai-picks-launch-place.md) | AI picks the launch place (added 16 Nov 2026) | Builder, owner publishes | 0.01 (D3, D6), 1.08 |
 
 ### Phase 2
 
@@ -229,28 +228,36 @@ Change the **Status** row in the task file itself, so the folder is always the s
 |---|---|---|---|
 | [4.01](4.01-travelling-with-a-friend.md) | Travelling with a friend | Developer | 3.03 |
 
+### Last: the people steps (moved from phase 0 on 16 Nov 2026)
+
+| ID | Task | Lead | Depends on |
+|---|---|---|---|
+| [4.04](4.04-instagram-account.md) | Start Pehchan's Instagram account now; it keeps running (was 0.02) | Owner | — |
+| [4.05](4.05-check-the-ai-pick.md) | Check the AI-picked launch place by hand (was 0.03) | Owner | 0.01 (D3), 1.41 |
+| [4.06](4.06-check-stays.md) | Check 10–20 stays in the launch place, and time it (was 0.04) | Owner | 1.41 |
+| [4.07](4.07-creator-and-stay-talks.md) | Talk to 10 Indian travel creators and 10 stays (was 0.05) | Owner | 0.01 (D4), 1.40 |
+| [4.08](4.08-keep-change-or-stop.md) | Keep, change or stop, against the pass mark (was 0.07) | Owner | 0.01 (D4), 1.40, 4.06, 4.07 |
+| CA part of [1.34](1.34-legal-and-tax-reviews.md) | The CA checks the tax wording; the tax line stays hidden until then | PM | 1.40 |
+
 ### Last: Pehchan's own trip (moved from phase 0 on 16 Nov 2026)
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
-| [4.02](4.02-take-the-trip.md) | Take the trip and keep the real Trip Balance (was 0.06) | Owner | 0.02, 0.03, 0.04 |
+| [4.02](4.02-take-the-trip.md) | Take the trip and keep the real Trip Balance (was 0.06) | Owner | 4.04, 4.05, 4.06 |
 | [4.03](4.03-worked-example.md) | The worked example (Pehchan's own trip, was 1.37) | PM | 4.02, 1.32 |
 
 ---
 
 ## 7. The order of work
 
-Phase 0 needs no travel. The owner's own trip comes last (4.02), after the pages are live. In phase 1, three tracks run side by side once the app exists, and meet at the stage
-pages.
+Phase 0 is done. The steps that need people (4.04–4.08) and the owner's own trip (4.02) come after the pages are
+live. In phase 1, three tracks run side by side once the app exists, and meet at the stage pages.
 
 ```mermaid
 flowchart TD
-  D["0.01 Decisions"] --> P0["0.03 → 0.04 places and stays, no travel"]
-  D --> T["0.05 Creator and stay talks"]
-  IG["0.02 Instagram, start now"]
-  P0 --> G{"0.07 Build?"}
-  T --> G
-  G -->|yes| A["1.01 App setup"]
+  D["0.01 Decisions, done"] --> A["1.01 App setup"]
+  D --> AI["1.41 AI picks the launch place"]
+  IG["4.04 Instagram, keeps running"]
   A --> F["Foundation: 1.02, 1.04, 1.20 waits for launch"]
   A --> S["Strapi: 1.05 → 1.08–1.12 → 1.07"]
   A --> DS["Design: 1.03 → 1.33"]
@@ -259,11 +266,14 @@ flowchart TD
   DS --> UI["Page: 1.21, 1.22 → 1.23 → 1.24 → 1.25–1.29 → 1.30 → 1.31 → 1.32"]
   B --> UI
   S --> C["Content and business: 1.34–1.39"]
+  AI --> C
   UI --> L["1.40 Launch, then 1.20 nav link goes live"]
   C --> L
   L --> R2["2.01 research → phase 2"]
   R2 --> R3["3.01 research → phase 3"]
   R3 --> AF["4.01 after phase 3"]
+  L --> PS["People steps: 4.05, 4.06, 4.07 → 4.08 keep, change or stop"]
+  PS --> R2
   L -.->|"when the owner can travel"| OT["4.02 Pehchan's own trip → 4.03 worked example"]
 ```
 
@@ -284,7 +294,7 @@ shared. The main website links to it from the nav bar (1.20).
 
 **Who builds it (D5):** Bhavu211, 10 hours a week. Decided 15 Nov 2026 by the owner.
 
-### The build decision (0.07)
+### The keep, change or stop decision (4.08, was the build decision 0.07)
 
 | | |
 |---|---|

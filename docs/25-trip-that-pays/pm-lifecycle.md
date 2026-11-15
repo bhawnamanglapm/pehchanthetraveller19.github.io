@@ -19,10 +19,10 @@ where it came from. Where there's no source, the doc says so.
 |---|---|---|
 | **Indian traveller making content, women first** (Creator mode) | Picks a place from reels without knowing if it can earn; pays for the whole trip; doesn't know how to pitch stays, which programmes to join, how to label ads, or that free stays can be taxable | Reels and similar posts shape where 44% of Indians travel (Business Standard, 25 §3). ASCI counts free stays as a "material connection" (25 §12). **No traveller interviewed yet** ⬜ |
 | **Safety-first traveller** (Just plan it safely mode) | Wants a checked place, checked stays and a safety plan, without the earning parts | Pehchan's earlier audience (docs/10, 15). The old survey is n=3, so treat it as weak ([docs/16](../16-survey-findings.md)) |
-| **Stays** (homestays, hostels, hotels) | Get creator requests with nothing in writing and no way to judge the creator | **Assumption.** 0.05 asks 10 stays ⬜ |
+| **Stays** (homestays, hostels, hotels) | Get creator requests with nothing in writing and no way to judge the creator | **Assumption.** 4.07 asks 10 stays, after launch ⬜ |
 | **Pehchan** | Needs income lines that don't require holding money or becoming a tour operator ([docs/17](../17-market.md)) | Six income lines, 25 §11 ✅ |
 
-### Problem statement (draft for the PM to confirm after 0.05)
+### Problem statement (draft for the PM to confirm after 4.07)
 
 > An Indian traveller who wants to turn a trip into content has no single place that shows which destination can
 > earn, which stays are safe and open to creators, and what to do before, during and after the trip to earn, collect
@@ -30,19 +30,23 @@ where it came from. Where there's no source, the doc says so.
 
 ### Assumptions the build depends on, and what would kill each
 
-| # | We believe | Tested by | Dead if (PM sets the number before 0.05) |
+| # | We believe | Tested by | Dead if (PM sets the number before 4.07) |
 |---|---|---|---|
-| A1 | Creators want help choosing a place that can earn, not just a pretty one | 0.05 creator talks | Fewer than __ of 10 say place choice is a problem |
-| A2 | Creators would use a stage-by-stage planner | 0.05, then real use after launch | Fewer than __ of 10 say they'd use it |
-| A3 | Stays will agree in writing to consider creator deals | 0.05 stay talks | Fewer than __ of 10 would sign a written OK |
+| A1 | Creators want help choosing a place that can earn, not just a pretty one | 4.07 creator talks | Fewer than __ of 10 say place choice is a problem |
+| A2 | Creators would use a stage-by-stage planner | Real use after launch (1.39), then 4.07 | Fewer than __ of 10 say they'd use it |
+| A3 | Stays will agree in writing to consider creator deals | 4.07 stay talks | Fewer than __ of 10 would sign a written OK |
 | A4 | A first documentary trip can visibly cut its cost through points, barter and links. **Untested at launch** (since 16 Nov 2026 the trip comes last) | 4.02 Trip Balance | The real Trip Balance shows no saving at all |
-| A5 | Some creators would pay for the Creator tier | 0.05 price reactions, then 2.11 | Nobody reacts positively to either price point |
+| A5 | Some creators would pay for the Creator tier | 4.07 price reactions, then 2.11 | Nobody reacts positively to either price point |
 
 These blanks are the **pass mark (D4)**. They're filled before the talks, never after.
 
+**Untested at launch (since 16 Nov 2026):** the owner moved the talks, the stay checks and the build decision to the
+end of the plan so the pages launch first. A1, A2, A3 and A5 are judged after launch, at 4.08, with real use of the
+live pages as extra evidence.
+
 ### PM to-do in step 1
 - ⬜ Fill the "Dead if" blanks with the owner. That's decision D4 in [0.01](tasks/0.01-decisions.md).
-- ⬜ Rewrite the problem statement in the creators' own words after 0.05.
+- ⬜ Rewrite the problem statement in the creators' own words after 4.07.
 - ⬜ Confirm the one-line description of Pehchan (D1).
 
 ---
@@ -93,23 +97,24 @@ doesn't. `trip_closed` sends a band (loss, break-even, profit), never the exact 
 
 ## Step 3 · Validate: do real people say what we assume?
 
-This is **phase 0**. It needs no travel. The launch waits for it; Pehchan's own trip doesn't (moved last on 16 Nov
-2026).
+**Changed 16 Nov 2026 (owner):** these steps moved from phase 0 to the end of the plan (4.04–4.08, were 0.02–0.07),
+so the pages launch first. The launch place is picked by AI instead (1.41). Validation now happens **after** launch,
+with real use of the live pages as extra evidence.
 
 | Task | What happens | PM's part |
 |---|---|---|
-| [0.02](tasks/0.02-instagram-account.md) | Pehchan's Instagram starts | Track account age and followers monthly; barter platforms check both |
-| [0.03](tasks/0.03-run-stage-0a-on-paper.md) | The owner scores 3–5 places by hand | **Build the sheet**, one column per question, a source and date per fact. Record how long each question took |
-| [0.04](tasks/0.04-check-stays.md) | The owner checks 10–20 stays | Time every stay check. That sets how fast destinations can grow |
-| [0.05](tasks/0.05-creator-and-stay-talks.md) | 10 creators and 10 stays | Schedule, take notes, keep answers as said, with dates. Build the one-page tally |
-| [0.07](tasks/0.07-build-decision.md) | Build, build with changes, or don't build | Put the tally next to the pass mark. If "build with changes", update the plan files and tasks |
+| [4.04](tasks/4.04-instagram-account.md) | Pehchan's Instagram keeps growing (it never waited) | Track account age and followers monthly; barter platforms check both |
+| [4.05](tasks/4.05-check-the-ai-pick.md) | The owner scores 3–5 places by hand and compares with the AI pick (1.41) | **Build the sheet**, one column per question, a source and date per fact. Record how long each question took |
+| [4.06](tasks/4.06-check-stays.md) | The owner checks 10–20 stays; each goes live once it passes | Time every stay check. That sets how fast destinations can grow |
+| [4.07](tasks/4.07-creator-and-stay-talks.md) | 10 creators and 10 stays, who can try the live pages | Schedule, take notes, keep answers as said, with dates. Build the one-page tally |
+| [4.08](tasks/4.08-keep-change-or-stop.md) | Keep, change or stop | Put the tally and launch numbers next to the pass mark. If "change", update the plan files and tasks before phase 2 |
 
 ### How the PM runs the 20 talks well
-- **Recruit:** creators from accounts the owner already follows or knows; stays from the 0.04 list. Don't only ask
+- **Recruit:** creators from accounts the owner already follows or knows; stays from the 4.06 list. Don't only ask
   friends; note who is a friend.
-- **Ask about the past, not the future:** "show me the last time" beats "would you use…". The questions are in 0.05.
+- **Ask about the past, not the future:** "show me the last time" beats "would you use…". The questions are in 4.07.
 - **Two price points** are set by the owner before the talks. Show both; don't suggest a right answer.
-- **Never promise** a listing, a badge or a deal (0.05 rules).
+- **Never promise** a listing, a badge or a deal (4.07 rules).
 - **Write up within a day,** while it's fresh. One row per talk.
 
 ### Tally template (one page)
@@ -125,9 +130,9 @@ This is **phase 0**. It needs no travel. The launch waits for it; Pehchan's own 
 | Most important stage (0a, 0b, 1, 2, 3) | | — |
 
 ### PM to-do in step 3
-- ⬜ Build the 0.03 sheet and the tally template above.
+- ⬜ Build the 4.05 sheet and the tally template above.
 - ⬜ Book the 20 talks.
-- ⬜ Write the 0.07 decision with the date, next to the pass mark.
+- ⬜ Write the 4.08 decision with the date, next to the pass mark.
 
 ---
 
@@ -215,7 +220,7 @@ order, and the owner decides:
 
 ### PM to-do in step 5
 - ⬜ Close each open point and write the answer into the task it changes.
-- ⬜ After 0.07, update every file the decision changes before phase 1 starts.
+- ⬜ After 4.08, update every file the decision changes before phase 2 starts.
 
 ---
 
@@ -244,8 +249,8 @@ For every screen the designer shows, the PM checks:
 - [ ] **Nothing blocks moving on** because a check is unfinished (1.22).
 
 ### Test the design before it's built
-⬜ PM proposal, not in the plan yet: show clickable designs for the first visit and 0a to 3–5 of the creators from
-0.05. Watch where they get stuck. It costs a few hours and catches problems before code.
+⬜ PM proposal, not in the plan yet: show clickable designs for the first visit and 0a to 3–5 creators the owner
+knows (the 4.07 talks now come after launch). Watch where they get stuck. It costs a few hours and catches problems before code.
 
 ### PM to-do in step 6
 - ⬜ Run a review for each screen group, using the checklist.
@@ -284,10 +289,10 @@ not code.
 |---|---|---|
 | Builder hours unknown (D5) | No real dates | Get hours per week before 1.01 |
 | Vercel's free plan is described as non-commercial; the app has booking links | Hosting may need a paid plan | Developer checks the current terms before 1.01; owner approves any cost |
-| Affiliate programmes reject or delay (1.35) | Income line 1 starts late | Apply early, during phase 0 |
-| Lawyer or CA takes weeks | Launch blocked (1.40) | Book them as soon as 0.07 says build |
+| Affiliate programmes reject or delay (1.35) | Income line 1 starts late | Apply now, before launch |
+| Lawyer or CA takes weeks | Launch blocked (1.40) | Book the lawyer now; the CA can come after launch (1.34) |
 | Strapi is one EC2 server with SQLite | Content loss | Daily backup and a tested restore (1.06) before launch |
-| Destination pack takes longer than expected | Launch slips, monthly pace slips | Use the 0.04 timing to plan; start 1.36 early |
+| Destination pack takes longer than expected | Launch slips, monthly pace slips | Time the 1.36 pack and use it to plan; the 4.06 stay timing comes later |
 | Data-source terms (GOV.UK credit, booking programmes' price rules) | Takedown or rejection | Check each before it's built (25 §12) |
 
 ### PM to-do in step 7
@@ -322,7 +327,7 @@ not code.
 | 11 | Returning visitor | "Continue my trip" shows |
 
 ### Real people
-⬜ Before launch, 3–5 creators from 0.05 use the staging app on their own phones, without help. The PM watches and
+⬜ Before launch, 3–5 creators the owner knows use the staging app on their own phones, without help. The PM watches and
 writes down where they get stuck.
 
 ### Bug levels
@@ -358,8 +363,8 @@ owner signs off a named exception.
 |---|---|---|
 | Instagram followers | The trip, and the tool that planned it | Post, reel, bio link |
 | Newsletter subscribers | Same, with the worked example | Email, once the main site's form is connected |
-| The 10 creators from 0.05 | "You helped shape it; here it is" | Direct message |
-| The checked stays from 0.04 | They're listed; here's the page | Direct message |
+| Creators the owner knows | "Try it and tell us where you got stuck" (they become the 4.07 talks) | Direct message |
+| Stays checked later (4.06) | They're listed; here's the page | Direct message, as each goes live |
 | Main site visitors | The nav link | Site |
 
 ### Support
@@ -409,9 +414,7 @@ One view in the analytics tool, plus the commission total from Strapi.
 
 | When | Do |
 |---|---|
-| Now | Pass mark blanks (D4) with the owner · build the 0.03 sheet and the tally template · book the 20 talks |
-| During phase 0 | Run the talks · time the stay checks · keep the trip sheet · get D5 answered and a designer named · apply for affiliate programmes |
-| At 0.07 | Write the decision · update the plan · agree the cut line · settle the open points |
-| Phase 1 | Design reviews · weekly updates · risk table · book the lawyer and CA · acceptance test · real-people test |
+| Now | Get a designer named · apply for affiliate programmes · book the lawyer |
+| Phase 1 | AI pick accepted (1.41) · design reviews · weekly updates · risk table · acceptance test · real-people test |
 | Launch | Go/no-go · launch messages · support · daily checks for 7 days |
-| After launch | Baseline · targets · monthly review · traveller talks |
+| After launch | Baseline · targets · monthly review · the people steps: build the 4.05 sheet and the tally template, time the 4.06 stay checks, run the 4.07 talks, write the 4.08 decision · CA review |
