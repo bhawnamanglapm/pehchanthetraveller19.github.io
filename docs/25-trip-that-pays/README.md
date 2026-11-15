@@ -33,9 +33,11 @@ whether the trip is paying for itself.
 | **Creator** | Everything: Do, Earn, Points and Stay free at every stage, pitches, partner tracker, reports | For the traveller making a documentary or content |
 | **Just plan it safely** | The planner, safety layer and Pehchan-checked stays. The Earn, Points and Stay free blocks are hidden | Keeps Pehchan's original safety-first travellers and reaches more people with the same page |
 
-**Where it lives (decided 14 Nov 2026):** a **separate website on its own subdomain**, proposed
-`trip.pehchanthetraveller.com` (decision D2 in [tasks/0.01](tasks/0.01-decisions.md)). In this plan, `/trip` means
-that app's stage pages (`/trip/0a` to `/trip/3`).
+**Where it lives (changed 15 Nov 2026):** the trip pages are part of the existing Next.js app, at
+`www.pehchanthetraveller.com/trip/` (decision D2 in [tasks/0.01](tasks/0.01-decisions.md)). They are merged in
+switched off and turned on after 0.07. This replaces the 14 Nov decision for a separate app on its own subdomain; the
+points below still describe that earlier setup until the docs are reworked. In this plan, `/trip` means the stage
+pages (`/trip/0a` to `/trip/3`).
 
 - **Its own private repo and Vercel project**, on the same stack as the existing Next.js app (Next.js 16, Tailwind 4,
   daisyUI 5), so its code can be copied across.
@@ -1353,12 +1355,14 @@ Your own documentary trip, run through stages 0a to 3 using a Google Sheet (or N
 
 | # | Decision | Why it matters |
 |---|---|---|
-| 1 | ~~Confirm the page lives in the Next.js app, not this static repo~~ **Decided 14 Nov 2026:** a separate app on its own subdomain, reading the shared Strapi, linked from this site's nav | Every technical choice above assumes it |
-| 2 | Confirm or change the one-line description of Pehchan (section 1) | It goes on the page, in pitches and at the fest |
-| 3 | Name 3–5 real candidate places for the phase 0 trip | Phase 0 can't start without them |
-| 4 | Set the phase 0 pass mark, before the creator and stay talks | So the result isn't bent to fit afterwards |
-| 5 | Who builds it (Bhavu211 or Rajpal) and their hours | Sets the pace |
-| 6 | Budget for paid data services and AI (default ₹0 and AI off) | Decides what's in phase 1 |
+| 1 | ~~Confirm the page lives in the Next.js app, not this static repo~~ **Decided 14 Nov 2026:** a separate app on its own subdomain. **Changed 15 Nov 2026 (owner):** part of the existing Next.js app at `/trip/`, reading the same Strapi | Every technical choice above assumes it |
+| 2 | ~~Confirm or change the one-line description of Pehchan (section 1)~~ **Decided 15 Nov 2026 (owner):** the proposed line in section 1 is kept | It goes on the page, in pitches and at the fest |
+| 3 | ~~Name 3–5 real candidate places for the phase 0 trip~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter. **Later on 15 Nov the owner asked for AI to choose the place from anywhere in the world instead;** the five places stay as background research. How that works is still to be designed | Phase 0 can't start without them |
+| 4 | ~~Set the phase 0 pass mark, before the creator and stay talks~~ **Set 15 Nov 2026 (owner), before any talk:** kept in the private phase 0 workbook and judged in 0.07 | So the result isn't bent to fit afterwards |
+| 5 | ~~Who builds it (Bhavu211 or Rajpal) and their hours~~ **Decided 15 Nov 2026 (owner):** Bhavu211, 10 hours a week | Sets the pace |
+| 6 | ~~Budget for paid data services and AI (default ₹0 and AI off)~~ **Decided 15 Nov 2026 (owner):** ₹0 a month, AI off. **Under review:** the later wish for AI to choose places (row 3) needs AI on, so this has to be decided again | Decides what's in phase 1 |
+| 7 | ~~The trip app's address and nav label~~ **Decided 15 Nov 2026 (owner):** `trip.pehchanthetraveller.com`, then **changed the same day** to `www.pehchanthetraveller.com/trip/` (row 1). Nav label "Plan a trip that pays", in the main app's header | Tasks 1.02 and 1.20 |
+| 8 | ~~Analytics tool for the trip app~~ **Decided 15 Nov 2026 (owner):** Umami, the tool the existing app already uses | Task 1.19 |
 
 **Model guidance:** planning and architecture on Opus, building on Sonnet, entering destination packs on Haiku.
 
