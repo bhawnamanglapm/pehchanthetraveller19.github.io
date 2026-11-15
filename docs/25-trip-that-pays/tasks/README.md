@@ -101,17 +101,18 @@ Change the **Status** row in the task file itself, so the folder is always the s
 
 | Phase | What it proves or delivers | Gate to move on |
 |---|---|---|
-| **0 · The test trip** | Pehchan's own documentary trip, run through stages 0a to 3 on a Google Sheet and WhatsApp, before any code | 0.07: the result meets the pass mark set before the talks |
-| **1 · The trip app goes live** | Both modes, every stage, safety, the worked example, booking links, export and import, one destination pack. Trips saved in the browser | 1.40 launch checklist |
+| **0 · Check the idea** | Stage 0a run by hand on real places, stays checked remotely, and 20 creator and stay talks. No travel needed | 0.07: the result meets the pass mark set before the talks |
+| **1 · The trip app goes live** | Both modes, every stage, safety, booking links, export and import, one destination pack. Trips saved in the browser. No worked example yet: its links stay hidden | 1.40 launch checklist |
 | **2 · Live data and more places** | Live scoring data, partner tracker, media kit builder, Hindi, tours, more destinations, new income lines 4 and 5 | 2.01 research done first |
 | **3 · Accounts and AI** | Accounts and sync, connected YouTube and Instagram, AI drafts, partner reports, radar alerts, paid Creator tier | 3.01 research and approvals done first |
 | **After 3** | Travelling with a friend | Accounts live |
+| **Last · Pehchan's own trip** | The owner's documentary trip, planned and logged on the live pages, then the worked example with its real Trip Balance. Moved here from phase 0 on 16 Nov 2026 | The trip done, every number traceable |
 
 ---
 
 ## 6. All tasks
 
-### Phase 0: the test trip
+### Phase 0: check the idea
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
@@ -120,8 +121,7 @@ Change the **Status** row in the task file itself, so the folder is always the s
 | [0.03](0.03-run-stage-0a-on-paper.md) | Run stage 0a by hand on 3–5 real places | Owner | 0.01 (D3) |
 | [0.04](0.04-check-stays.md) | Check 10–20 stays in the chosen place, and time it | Owner | 0.03 |
 | [0.05](0.05-creator-and-stay-talks.md) | Talk to 10 Indian travel creators and 10 stays | Owner | 0.01 (D4), 0.03 |
-| [0.06](0.06-take-the-trip.md) | Take the trip and keep the real Trip Balance | Owner | 0.03, 0.04 |
-| [0.07](0.07-build-decision.md) | Decide whether to build, against the pass mark | Owner | 0.01 (D4), 0.05, 0.06 |
+| [0.07](0.07-build-decision.md) | Decide whether to build, against the pass mark | Owner | 0.01 (D4), 0.04, 0.05 |
 
 ### Phase 1: foundation
 
@@ -129,7 +129,7 @@ Change the **Status** row in the task file itself, so the folder is always the s
 |---|---|---|---|
 | [1.01](1.01-app-setup.md) | Set up the separate trip app | Developer | 0.01 (D2, D5), 0.07 |
 | [1.02](1.02-subdomain-and-seo.md) | Subdomain, HTTPS and search basics | Developer | 0.01 (D2), 1.01 |
-| [1.03](1.03-design-system-and-screens.md) | Design system and screen designs | Designer | 0.06, 1.01 |
+| [1.03](1.03-design-system-and-screens.md) | Design system and screen designs | Designer | 0.05, 1.01 |
 | [1.04](1.04-port-code-from-existing-app.md) | Copy what's reusable from the existing Next.js app | Developer | 1.01 |
 | [1.20](1.20-main-website-nav-link.md) | Link the trip app from the main website's navigation | Developer | 0.01 (D2), 1.02, 1.19 |
 
@@ -142,8 +142,8 @@ Change the **Status** row in the task file itself, so the folder is always the s
 | [1.07](1.07-strapi-roles-and-rules.md) | Strapi roles, publishing and enforced rules | Strapi owner | 1.08–1.12 |
 | [1.08](1.08-destination-collections.md) | Destination-fact collections | Strapi owner | 1.05, 1.06 |
 | [1.09](1.09-stay-collections.md) | Stay and stay-suggestion collections | Strapi owner | 1.05, 1.08 |
-| [1.10](1.10-step-collections-and-seed.md) | Step-guide and step-link collections, with seed content | PM | 1.05, 0.06 |
-| [1.11](1.11-template-and-settings.md) | Template and trip-page-settings collections | PM | 1.05, 0.03, 0.06 |
+| [1.10](1.10-step-collections-and-seed.md) | Step-guide and step-link collections, with seed content | PM | 1.05, 0.05 |
+| [1.11](1.11-template-and-settings.md) | Template and trip-page-settings collections | PM | 1.05, 0.03, 0.05 |
 | [1.12](1.12-queue-and-money-collections.md) | Offer-report and commission-log collections | Strapi owner | 1.05 |
 
 ### Phase 1: backend and data
@@ -162,7 +162,7 @@ Change the **Status** row in the task file itself, so the folder is always the s
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
-| [1.21](1.21-landing-and-first-visit.md) | Landing page and first-visit screens | Designer, then Developer | 1.03, 1.11, 1.13, 1.17, 1.37 |
+| [1.21](1.21-landing-and-first-visit.md) | Landing page and first-visit screens | Designer, then Developer | 1.03, 1.11, 1.13, 1.17 |
 | [1.22](1.22-app-shell.md) | App shell: Trip Card, Trip Balance, stepper, honesty strip, trip menu | Developer | 1.03, 1.11, 1.13, 1.17 |
 | [1.23](1.23-stage-0a.md) | Stage 0a: choose the place, and why | Developer | 0.03, 1.13, 1.14, 1.22 |
 | [1.24](1.24-stage-0b.md) | Stage 0b: choose the stays | Developer | 1.09, 1.13, 1.16, 1.22, 1.23, 1.35 |
@@ -183,7 +183,6 @@ Change the **Status** row in the task file itself, so the folder is always the s
 | [1.34](1.34-legal-and-tax-reviews.md) | Lawyer, CA and rules reviews | PM | 1.11, 1.21, 1.25 |
 | [1.35](1.35-affiliate-accounts-and-disclosure.md) | Pehchan's own booking-partner accounts and disclosure | PM | 0.01, 1.34 |
 | [1.36](1.36-first-destination-pack.md) | The first destination pack | Admin (owner) | 0.03, 0.04, 1.08–1.11, 1.35 |
-| [1.37](1.37-worked-example.md) | The worked example (Pehchan's own trip) | PM | 0.06, 1.32 |
 | [1.38](1.38-admin-runbook.md) | Admin runbook | PM | 1.06, 1.07, 1.12, 1.15, 1.16, 1.36 |
 | [1.39](1.39-measurement.md) | Measuring how it's working | PM | 0.01 (D7), 1.19, 1.35 |
 | [1.40](1.40-launch-checklist.md) | Launch checklist | PM | All of 1.01–1.39 |
@@ -230,16 +229,23 @@ Change the **Status** row in the task file itself, so the folder is always the s
 |---|---|---|---|
 | [4.01](4.01-travelling-with-a-friend.md) | Travelling with a friend | Developer | 3.03 |
 
+### Last: Pehchan's own trip (moved from phase 0 on 16 Nov 2026)
+
+| ID | Task | Lead | Depends on |
+|---|---|---|---|
+| [4.02](4.02-take-the-trip.md) | Take the trip and keep the real Trip Balance (was 0.06) | Owner | 0.02, 0.03, 0.04 |
+| [4.03](4.03-worked-example.md) | The worked example (Pehchan's own trip, was 1.37) | PM | 4.02, 1.32 |
+
 ---
 
 ## 7. The order of work
 
-Phase 0 runs before any code. In phase 1, three tracks run side by side once the app exists, and meet at the stage
+Phase 0 needs no travel. The owner's own trip comes last (4.02), after the pages are live. In phase 1, three tracks run side by side once the app exists, and meet at the stage
 pages.
 
 ```mermaid
 flowchart TD
-  D["0.01 Decisions"] --> P0["0.03 → 0.04 → 0.06 the test trip"]
+  D["0.01 Decisions"] --> P0["0.03 → 0.04 places and stays, no travel"]
   D --> T["0.05 Creator and stay talks"]
   IG["0.02 Instagram, start now"]
   P0 --> G{"0.07 Build?"}
@@ -258,6 +264,7 @@ flowchart TD
   L --> R2["2.01 research → phase 2"]
   R2 --> R3["3.01 research → phase 3"]
   R3 --> AF["4.01 after phase 3"]
+  L -.->|"when the owner can travel"| OT["4.02 Pehchan's own trip → 4.03 worked example"]
 ```
 
 The critical path in phase 1 is **1.01 → 1.05 → 1.08–1.11 → 1.13 → 1.22 → 1.23 → 1.24 → 1.26 → 1.27–1.29 → 1.30 →

@@ -21,7 +21,7 @@ Plan stage. Nothing is built. This is the traveller-facing half of [README.md](R
 ## 2. First visit
 
 Most visitors arrive from the main website's nav, so the app's address opens on a **landing page** first: what the
-page does, the two modes, the worked example, and a "Start my trip" button. If a trip is already saved in this
+page does, the two modes, the worked example (once Pehchan's own trip is done), and a "Start my trip" button. If a trip is already saved in this
 browser, it also shows "Continue my trip", which opens the current stage. Details are in
 [tasks/1.21](tasks/1.21-landing-and-first-visit.md).
 
@@ -34,7 +34,8 @@ After "Start my trip", the traveller sees four short screens, then lands on stag
 | 3 | **Your trip basics** | Home city, budget (₹), travel month, passport country, trip length | These fill the facts in 0a and the checks in stage 1 (for example, P4's "reachable" test) |
 | 4 | **The honest timeline** (Creator only) | Trip 1: you pay most of it. Trips 2–3: some free stays and paid reels. After that: trips mostly pay for themselves. Labelled "a typical pattern, not a sourced figure" | Sets expectations before anyone feels misled |
 
-A **worked example** link (your own documentary trip from phase 0) sits on every one of these screens.
+A **worked example** link (your own documentary trip) sits on every one of these screens **once the trip is done**.
+The pages launch before it (changed 16 Nov 2026), so until then the link is hidden and nothing claims proof.
 
 ---
 
@@ -312,10 +313,11 @@ digital products, licensing, workshops; redeem points for the next flight; pitch
 
 | Phase | What the traveller gets |
 |---|---|
-| **1** | Stepper, Trip Card, both modes, first-visit screens, every stage's Do and safety checklists, stage 1 guided steps and checkpoint, honesty strip, worked example, booking links, export, import, delete. One destination. Data: GOV.UK, REST Countries, Frankfurter plus fixed rates, Strapi |
+| **1** | Stepper, Trip Card, both modes, first-visit screens, every stage's Do and safety checklists, stage 1 guided steps and checkpoint, honesty strip, booking links, export, import, delete. One destination. The worked example comes later, after Pehchan's own trip Data: GOV.UK, REST Countries, Frankfurter plus fixed rates, Strapi |
 | **2** | Live scoring data (YouTube, Travelpayouts), partner tracker, media kit builder, Hindi, opt-in email reminders, a price test for the Creator tier, tours with booking links in 0b and stage 2, the opt-in for anonymous pitch totals, more destinations |
 | **3** | Accounts and sync, connected YouTube and Instagram numbers, automatic partner reports, AI drafts with "Flag this draft", checked radar alerts, showcase, the paid Creator tier |
 | **After 3** | **Travelling with a friend:** one shared trip both people edit, with the Trip Balance split between them. It needs accounts, so it can't come earlier |
+| **Last** | **The worked example:** Pehchan's own trip with its real Trip Balance, linked from every first-visit screen |
 
 ---
 

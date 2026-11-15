@@ -44,7 +44,7 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | 9 | AI rules, labels, cost control, `checks.ts`, evals and pass marks | 3.05, 3.06 |
 | 10 | Keeping the page current: refresh table, amber after 30 days | 1.13, 1.14, 1.15, 2.02 |
 | 11 | Income line 1: booking commission | 1.35, 1.24, 2.03, 2.08, 2.09 |
-| 11 | Income line 2: Pehchan's own documentary trips, and the travel tech fest talk | 0.02, 0.06, 1.37 |
+| 11 | Income line 2: Pehchan's own documentary trips, and the travel tech fest talk | 0.02, 4.02, 4.03 |
 | 11 | Income line 3: paid Creator tier | 2.11, 3.11 |
 | 11 | Income line 4: "Open to creator stays" listings; how the first hotels arrive | 2.13 |
 | 11 | Income line 5: sponsored destination guides | 2.14 |
@@ -75,7 +75,7 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | § | Plan point | Tasks |
 |---|---|---|
 | 1 | Address, login, cost, devices, language | 1.01, 1.02, 1.17, 1.33, 2.06, 3.03 |
-| 2 | Landing page and the four first-visit screens; worked example link on each | 1.21, 1.37 |
+| 2 | Landing page and the four first-visit screens; worked example link on each (hidden until 4.03) | 1.21, 4.03 |
 | 3 | Trip Card, Trip Balance figures, stepper, honesty strip, trip menu | 1.22, 1.17, 1.18, 1.25 |
 | 4 | Stage 0a | 1.23 |
 | 5 | Stage 0b | 1.24 |

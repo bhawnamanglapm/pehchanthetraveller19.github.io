@@ -33,9 +33,9 @@ where it came from. Where there's no source, the doc says so.
 | # | We believe | Tested by | Dead if (PM sets the number before 0.05) |
 |---|---|---|---|
 | A1 | Creators want help choosing a place that can earn, not just a pretty one | 0.05 creator talks | Fewer than __ of 10 say place choice is a problem |
-| A2 | Creators would use a stage-by-stage planner | 0.05, 0.06 | Fewer than __ of 10 say they'd use it |
+| A2 | Creators would use a stage-by-stage planner | 0.05, then real use after launch | Fewer than __ of 10 say they'd use it |
 | A3 | Stays will agree in writing to consider creator deals | 0.05 stay talks | Fewer than __ of 10 would sign a written OK |
-| A4 | A first documentary trip can visibly cut its cost through points, barter and links | 0.06 Trip Balance | The real Trip Balance shows no saving at all |
+| A4 | A first documentary trip can visibly cut its cost through points, barter and links. **Untested at launch** (since 16 Nov 2026 the trip comes last) | 4.02 Trip Balance | The real Trip Balance shows no saving at all |
 | A5 | Some creators would pay for the Creator tier | 0.05 price reactions, then 2.11 | Nobody reacts positively to either price point |
 
 These blanks are the **pass mark (D4)**. They're filled before the talks, never after.
@@ -78,7 +78,7 @@ doesn't. `trip_closed` sends a band (loss, break-even, profit), never the exact 
 
 | Line | First goal | Target |
 |---|---|---|
-| 2 · Own trips | One documentary trip finished, with a real Trip Balance | The trip itself (0.06) |
+| 2 · Own trips | One documentary trip finished, with a real Trip Balance | The trip itself (4.02, the last step) |
 | 1 · Commission | Affiliate links live and clicked | ⬜ Set after the first month's baseline |
 | 4 · Creator stays | About 20 checked stays in the first destination | From 25 §11 |
 | 5 · Sponsored guides | Enough traffic to pitch a tourism board | ⬜ The PM and owner set the number |
@@ -93,7 +93,8 @@ doesn't. `trip_closed` sends a band (loss, break-even, profit), never the exact 
 
 ## Step 3 · Validate: do real people say what we assume?
 
-This is **phase 0**. No code is written until it's done.
+This is **phase 0**. It needs no travel. The launch waits for it; Pehchan's own trip doesn't (moved last on 16 Nov
+2026).
 
 | Task | What happens | PM's part |
 |---|---|---|
@@ -101,7 +102,6 @@ This is **phase 0**. No code is written until it's done.
 | [0.03](tasks/0.03-run-stage-0a-on-paper.md) | The owner scores 3–5 places by hand | **Build the sheet**, one column per question, a source and date per fact. Record how long each question took |
 | [0.04](tasks/0.04-check-stays.md) | The owner checks 10–20 stays | Time every stay check. That sets how fast destinations can grow |
 | [0.05](tasks/0.05-creator-and-stay-talks.md) | 10 creators and 10 stays | Schedule, take notes, keep answers as said, with dates. Build the one-page tally |
-| [0.06](tasks/0.06-take-the-trip.md) | The owner takes the trip with a real Trip Balance | Keep the sheet and screenshots so every number in the worked example traces back |
 | [0.07](tasks/0.07-build-decision.md) | Build, build with changes, or don't build | Put the tally next to the pass mark. If "build with changes", update the plan files and tasks |
 
 ### How the PM runs the 20 talks well
