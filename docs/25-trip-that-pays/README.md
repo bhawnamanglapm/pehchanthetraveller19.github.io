@@ -23,8 +23,10 @@ whether the trip is paying for itself.
 **Who it's for:**
 - Indian travellers, women first.
 - Travelling solo first. Travelling with a friend comes later, through a shared trip.
-- Going within India or to the five corridor destinations you've travelled: Dubai/UAE, Vietnam, Thailand, Malaysia
-  and Nepal.
+- Going within India or anywhere in the world. **Changed 16 Nov 2026 (owner):** this used to be India plus the five
+  corridor destinations you've travelled (Dubai/UAE, Vietnam, Thailand, Malaysia and Nepal). Those stay as
+  background, not a limit. A destination goes live only when its pack passes the checks in 1.36. If the rate service
+  doesn't cover its currency, that needs a small code change first (1.14).
 
 **Two modes, chosen at the start:**
 
@@ -59,9 +61,10 @@ pages (`/trip/0a` to `/trip/3`).
 
 The tasks for building it are in [tasks/](tasks/README.md).
 
-**Launch scope:** one destination, picked by running stage 0a for real on your own documentary trip, plus basics for
-India. After that, one new destination is added each month, until India and all five corridor countries are covered,
-about six months after launch. The pace is set by how fast admin can check facts and stays, never faster.
+**Launch scope:** one destination, picked by AI from anywhere in the world (1.41), plus basics for India. After that,
+one new destination is added each month, chosen by what travellers pick in 0a. There's no fixed list. The pace is set
+by how fast admin can check facts and stays, never faster. **Changed 16 Nov 2026 (owner):** the target used to be
+India plus the five corridor countries, about six months after launch.
 
 ---
 
@@ -358,7 +361,8 @@ Not shown until their commission rates are researched and sourced. Not part of t
 - [Air India Maharaja Club](https://www.airindia.com/in/en/maharaja-club/about.html). One source says there are 1,000
   bonus points after the first flight; check the official terms.
 - [IndiGo BluChip](https://www.goindigo.in/loyalty.html)
-- Corridor airlines and hotel chains: admin adds the official sign-up link for each destination, after checking it.
+- The destination's airlines and hotel chains: admin adds the official sign-up link for each destination, after
+  checking it.
 
 **Your output:**
 - programme name
@@ -375,7 +379,7 @@ these points."
 
 **How to do it**
 - Pick your main airline from the one you fly most on your home routes.
-- Pick your main hotel chain from the one present across your corridor destinations.
+- Pick your main hotel chain from the one present across the places you travel to most.
 - Note how long points last. For example, a third-party guide says IndiGo BluChips last 24 months and are extended
   by any activity; check the official terms.
 
@@ -590,7 +594,7 @@ approved; the traveller reports it. Partner APIs such as Travelpayouts and YouTu
 | **User page** | A row per programme: name, airline or hotel, date joined, an optional field for the last 4 digits of the membership number, and the date of the first booking. Shows a warning if the booking came before joining |
 | **Frontend** | Compares the dates. The membership field accepts 4 digits only; there's no field for the full number |
 | **Backend** | Nothing beyond the shared parts |
-| **Admin page** | Links for each destination: Air India Maharaja Club, IndiGo BluChip, and the corridor airlines and hotel chains once checked. Notes on sign-up bonuses, with sources |
+| **Admin page** | Links for each destination: Air India Maharaja Club, IndiGo BluChip, and each destination's airlines and hotel chains once checked. Notes on sign-up bonuses, with sources |
 | **APIs** | None. Outbound sign-up links only; no loyalty programme API |
 | **Done rule** | At least one airline programme and one hotel programme, each joined on or before the first booking |
 | **Feeds** | The choices in P2 |
