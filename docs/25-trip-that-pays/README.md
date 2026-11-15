@@ -1163,7 +1163,7 @@ The planner is free for travellers. Pehchan earns from six lines, each starting 
 | # | Income | Starts | How it works |
 |---|---|---|---|
 | 1 | **Booking commission** | Phase 1 | Stays, tours, flights, insurance, eSIMs and forex cards booked through the page. Sourced rates: Agoda about 4–7%, GetYourGuide about 8%, Klook 5–6.5%. Insurance, eSIM and forex rates are researched and sourced before they're shown |
-| 2 | **Your own documentary trips** | The test trip (phase 0) | Each trip becomes Instagram and YouTube content, then barter stays, then paid reels, then a sponsor slot in the film. It's also the page's worked example and the travel tech fest story |
+| 2 | **Your own documentary trips** | Pehchan's own trip, the last step of the plan (moved from phase 0 on 16 Nov 2026) | Each trip becomes Instagram and YouTube content, then barter stays, then paid reels, then a sponsor slot in the film. Once done, it's also the page's worked example and the travel tech fest story |
 | 3 | **Paid Creator tier** | Phase 3 | AI drafts beyond the free daily limit, synced accounts, connected Instagram and YouTube numbers, automatic partner reports. Built on the existing `/trip-plan/premium` and Razorpay pattern, copied into the trip app. **The price isn't set:** two price points are tested in phase 2 |
 | 4 | **"Open to creator stays" listings** | When a destination has about 20 checked stays | The first hotels list free to fill the supply. Then two models are tested with real hotels before any price is set: a listing fee, or a fee per confirmed collaboration. **Never tied to the "Pehchan-checked" badge** |
 | 5 | **Sponsored destination guides** | Once there's traffic | A tourism board sponsors a destination's guide, labelled "Sponsored". Visa and safety facts in it stay admin-checked, and the sponsor can't edit them |
@@ -1175,9 +1175,10 @@ help, but each deal stays between the two parties, and Pehchan's terms say so.
 **How the first hotels and travellers arrive:** a marketplace needs both sides, so Pehchan starts with what it
 controls.
 
-1. Your own trip picks the first destination through stage 0a.
-2. You check 10–20 stays there yourself; they're the first supply.
-3. Your trip is the page's worked example, documented on Instagram.
+1. Stage 0a, run by hand in phase 0, picks the first destination.
+2. You check 10–20 stays there yourself, remotely; they're the first supply.
+3. The pages launch without a worked example. When you take your own trip (the last step), it becomes the worked
+   example, documented on Instagram.
 4. Hotels are approached with "featured in the documentary and on the page" once there's footage to show.
 
 Travellers come through the Instagram content and the safety-first audience Pehchan already serves.
@@ -1300,23 +1301,25 @@ monthly pace.
 
 ## 16. Build order
 
-### Phase 0: the test trip, before any code
+### Phase 0: check the idea before launch
 
-Your own documentary trip, run through stages 0a to 3 using a Google Sheet (or Notion) and WhatsApp.
+None of it needs travel. **Changed 16 Nov 2026 (owner):** Pehchan's own trip moved from here to the last step of the
+plan, so the pages can launch first and bring in customers. The cost: the pages launch without a worked example, and
+assumption A4 ("a first trip can visibly cut its cost") is untested at launch.
 
 | Step | What | What it proves |
 |---|---|---|
 | 0 | **Start Pehchan's Instagram account now,** if it doesn't exist yet. Barter platforms ask for account age and followers (TripGyani: a one-year-old account and 5k+, from earlier research), so every month it exists counts | The content channel that income lines 2 and 4 depend on |
 | 1 | Run stage 0a on your 3–5 real candidate places, with sources | Picks the launch destination and tests the scoring |
-| 2 | Check 10–20 stays there yourself | The first supply, and how long a destination pack takes |
+| 2 | Check 10–20 stays there yourself, remotely: photos, reviews, messages and the stay's written OK | The first supply, and how long a destination pack takes |
 | 3 | Talk to **10 Indian travel creators** and **10 stays** in that destination | Real demand, real barter terms, real prices for income lines 3 and 4 |
-| 4 | Take the trip and keep the real Trip Balance | The worked example and the proof |
-| 5 | Decide whether to build, against a pass mark you set **before** the talks | So the result isn't bent to fit afterwards |
+| 4 | Decide whether to build, against a pass mark you set **before** the talks | So the result isn't bent to fit afterwards |
 
 ### Phase 1: the trip app goes live
 
-- **Pages:** the stepper, Trip Card, both modes, every stage's checklists and safety items, the honesty strip, the
-  worked example, booking links, export and import. Trips are saved in the browser. One destination pack.
+- **Pages:** the stepper, Trip Card, both modes, every stage's checklists and safety items, the honesty strip,
+  booking links, export and import. Trips are saved in the browser. One destination pack. No worked example yet:
+  its links stay hidden until Pehchan's own trip is done.
 - **Data:** GOV.UK, REST Countries, Frankfurter plus the fixed rates, and admin-entered content in Strapi.
 - **Before it starts:**
   - Confirm who builds it (Bhavu211 or Rajpal) and their hours.
@@ -1351,13 +1354,23 @@ Your own documentary trip, run through stages 0a to 3 using a Google Sheet (or N
 - **Travelling with a friend:** a shared trip that both people edit, with one Trip Balance split between them. It
   needs accounts, so it can't come earlier.
 
+### Last: Pehchan's own trip
+
+Moved here from phase 0 on 16 Nov 2026 (owner), because the owner can't travel to every place yet. It can start
+earlier whenever the owner can travel; it just no longer holds up the launch.
+
+| Step | What | What it proves |
+|---|---|---|
+| 1 | Take the trip, planned and logged on the live pages, and keep the real Trip Balance (task 4.02) | The proof, and a real test of stages 1–3 |
+| 2 | Publish the worked example (task 4.03) and turn its links on | The page's promise, shown with real numbers, losses included |
+
 ### Waiting on you before anything starts
 
 | # | Decision | Why it matters |
 |---|---|---|
 | 1 | ~~Confirm the page lives in the Next.js app, not this static repo~~ **Decided 14 Nov 2026:** a separate app on its own subdomain. **Changed 15 Nov 2026 (owner):** part of the existing Next.js app at `/trip/`, reading the same Strapi | Every technical choice above assumes it |
 | 2 | ~~Confirm or change the one-line description of Pehchan (section 1)~~ **Decided 15 Nov 2026 (owner):** the proposed line in section 1 is kept | It goes on the page, in pitches and at the fest |
-| 3 | ~~Name 3–5 real candidate places for the phase 0 trip~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter. **Later on 15 Nov the owner asked for AI to choose the place from anywhere in the world instead;** the five places stay as background research. How that works is still to be designed | Phase 0 can't start without them |
+| 3 | ~~Name 3–5 real candidate places for the phase 0 trip (now the last step, 4.02)~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter. **Later on 15 Nov the owner asked for AI to choose the place from anywhere in the world instead;** the five places stay as background research. How that works is still to be designed | Phase 0 can't start without them |
 | 4 | ~~Set the phase 0 pass mark, before the creator and stay talks~~ **Set 15 Nov 2026 (owner), before any talk:** kept in the private phase 0 workbook and judged in 0.07 | So the result isn't bent to fit afterwards |
 | 5 | ~~Who builds it (Bhavu211 or Rajpal) and their hours~~ **Decided 15 Nov 2026 (owner):** Bhavu211, 10 hours a week | Sets the pace |
 | 6 | ~~Budget for paid data services and AI (default ₹0 and AI off)~~ **Decided 15 Nov 2026 (owner):** ₹0 a month, AI off. **Under review:** the later wish for AI to choose places (row 3) needs AI on, so this has to be decided again | Decides what's in phase 1 |
