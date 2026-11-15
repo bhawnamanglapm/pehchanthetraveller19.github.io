@@ -75,7 +75,7 @@ Numbers like `1.23` are task IDs: the first digit is the phase.
 
 | Role | Who | Leads on |
 |---|---|---|
-| **Owner** | Pehchan's founder | Decisions D1–D7, budget, accepting the AI-picked place (1.41), the first destination pack, and the people steps at the end (4.04–4.08) |
+| **Owner** | Pehchan's founder | Decisions D1–D7, budget, the people steps at the end (4.04–4.08), and checking the AI-published place and pack if something is found wrong (1.41) |
 | **PM** | To be named | Content, legal and tax reviews, partner accounts, measurement, launch, research tasks |
 | **Designer** | To be named | Design system, screens, accessibility, media kit builder |
 | **Developer** | Bhavu211 or Rajpal (D5) | The app, its API routes, jobs and the nav link |
@@ -180,11 +180,11 @@ The other phase 0 tasks (0.02–0.07) moved to "Last: the people steps" on 16 No
 |---|---|---|---|
 | [1.34](1.34-legal-and-tax-reviews.md) | Lawyer, CA and rules reviews | PM | 1.11, 1.21, 1.25 |
 | [1.35](1.35-affiliate-accounts-and-disclosure.md) | Pehchan's own booking-partner accounts and disclosure | PM | 0.01, 1.34 |
-| [1.36](1.36-first-destination-pack.md) | The first destination pack | Admin (owner) | 1.41, 1.08–1.11, 1.35 |
+| [1.36](1.36-first-destination-pack.md) | The first destination pack | Builder; owner checks if something is wrong | 1.41, 1.08–1.11, 1.35 |
 | [1.38](1.38-admin-runbook.md) | Admin runbook | PM | 1.06, 1.07, 1.12, 1.15, 1.16, 1.36 |
 | [1.39](1.39-measurement.md) | Measuring how it's working | PM | 0.01 (D7), 1.19, 1.35 |
 | [1.40](1.40-launch-checklist.md) | Launch checklist | PM | All of 1.01–1.39, and 1.41 |
-| [1.41](1.41-ai-picks-launch-place.md) | AI picks the launch place (added 16 Nov 2026) | Builder, owner publishes | 0.01 (D3, D6), 1.08 |
+| [1.41](1.41-ai-picks-launch-place.md) | AI picks the launch place (added 16 Nov 2026) | Builder publishes | 0.01 (D3, D6), 1.08 |
 
 ### Phase 2
 
@@ -238,6 +238,8 @@ The other phase 0 tasks (0.02–0.07) moved to "Last: the people steps" on 16 No
 | [4.07](4.07-creator-and-stay-talks.md) | Talk to 10 Indian travel creators and 10 stays (was 0.05) | Owner | 0.01 (D4), 1.40 |
 | [4.08](4.08-keep-change-or-stop.md) | Keep, change or stop, against the pass mark (was 0.07) | Owner | 0.01 (D4), 1.40, 4.06, 4.07 |
 | CA part of [1.34](1.34-legal-and-tax-reviews.md) | The CA checks the tax wording; the tax line stays hidden until then | PM | 1.40 |
+| Owner check in [1.41](1.41-ai-picks-launch-place.md) | Only if something is found wrong: check the place and pack, safety facts first | Owner | 1.40 |
+| Lawyer part of [1.34](1.34-legal-and-tax-reviews.md) | Only if something is found wrong (recommended before the first paid feature): consent text, consent form, privacy, terms | PM | 1.40 |
 
 ### Last: Pehchan's own trip (moved from phase 0 on 16 Nov 2026)
 

@@ -274,7 +274,7 @@ not code.
 | Developer | Bhavu211 or Rajpal (D5) | Hours per week not set yet ⬜ |
 | Designer | ⬜ Not named in the plan | |
 | Admin helpers | Strapi editors (1.07) | Destination packs (Haiku suits the data entry) |
-| Lawyer, CA | ⬜ Not chosen | Fees need the owner's OK (1.34) |
+| Lawyer, CA | ⬜ Not chosen | Not needed for launch. Fees need the owner's OK (1.34) |
 
 ### PM's routine during the build
 - **Weekly:** one short plan for the week, and one update to the owner covering done, blocked, and decisions needed.
@@ -290,7 +290,7 @@ not code.
 | Builder hours unknown (D5) | No real dates | Get hours per week before 1.01 |
 | Vercel's free plan is described as non-commercial; the app has booking links | Hosting may need a paid plan | Developer checks the current terms before 1.01; owner approves any cost |
 | Affiliate programmes reject or delay (1.35) | Income line 1 starts late | Apply now, before launch |
-| Lawyer or CA takes weeks | Launch blocked (1.40) | Book the lawyer now; the CA can come after launch (1.34) |
+| Unchecked legal text or a wrong safety fact goes live | A traveller relies on a wrong fact; a complaint under the DPDP Act 2023 | Since 16 Nov 2026 neither blocks launch. Safety facts pass automatic checks (1.41); the consent form stays hidden until a lawyer checks it; the owner and the lawyer step in as soon as something is found wrong |
 | Strapi is one EC2 server with SQLite | Content loss | Daily backup and a tested restore (1.06) before launch |
 | Destination pack takes longer than expected | Launch slips, monthly pace slips | Time the 1.36 pack and use it to plan; the 4.06 stay timing comes later |
 | Data-source terms (GOV.UK credit, booking programmes' price rules) | Takedown or rejection | Check each before it's built (25 §12) |
@@ -414,7 +414,7 @@ One view in the analytics tool, plus the commission total from Strapi.
 
 | When | Do |
 |---|---|
-| Now | Get a designer named · apply for affiliate programmes · book the lawyer |
-| Phase 1 | AI pick accepted (1.41) · design reviews · weekly updates · risk table · acceptance test · real-people test |
+| Now | Get a designer named · apply for affiliate programmes |
+| Phase 1 | AI pick and pack published (1.41) · design reviews · weekly updates · risk table · acceptance test · real-people test |
 | Launch | Go/no-go · launch messages · support · daily checks for 7 days |
 | After launch | Baseline · targets · monthly review · the people steps: build the 4.05 sheet and the tally template, time the 4.06 stay checks, run the 4.07 talks, write the 4.08 decision · CA review |
