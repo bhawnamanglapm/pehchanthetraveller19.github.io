@@ -275,7 +275,7 @@ and who decided.
 Vercel project, reading content from the existing Strapi on EC2. Code from the existing Next.js app is copied in, not
 shared. The main website links to it from the nav bar (1.20).
 
-**Who builds it (D5):** _not yet decided._ Name and hours per week go here once decided.
+**Who builds it (D5):** Bhavu211, 10 hours a week. Decided 15 Nov 2026 by the owner.
 
 ### The build decision (0.07)
 

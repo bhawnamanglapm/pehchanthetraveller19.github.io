@@ -1354,11 +1354,13 @@ Your own documentary trip, run through stages 0a to 3 using a Google Sheet (or N
 | # | Decision | Why it matters |
 |---|---|---|
 | 1 | ~~Confirm the page lives in the Next.js app, not this static repo~~ **Decided 14 Nov 2026:** a separate app on its own subdomain, reading the shared Strapi, linked from this site's nav | Every technical choice above assumes it |
-| 2 | Confirm or change the one-line description of Pehchan (section 1) | It goes on the page, in pitches and at the fest |
-| 3 | Name 3–5 real candidate places for the phase 0 trip | Phase 0 can't start without them |
-| 4 | Set the phase 0 pass mark, before the creator and stay talks | So the result isn't bent to fit afterwards |
-| 5 | Who builds it (Bhavu211 or Rajpal) and their hours | Sets the pace |
-| 6 | Budget for paid data services and AI (default ₹0 and AI off) | Decides what's in phase 1 |
+| 2 | ~~Confirm or change the one-line description of Pehchan (section 1)~~ **Decided 15 Nov 2026 (owner):** the proposed line in section 1 is kept | It goes on the page, in pitches and at the fest |
+| 3 | ~~Name 3–5 real candidate places for the phase 0 trip~~ **Set 15 Nov 2026 (owner):** five places, kept in the private phase 0 workbook, not here, because the trip's place and dates are a safety matter | Phase 0 can't start without them |
+| 4 | ~~Set the phase 0 pass mark, before the creator and stay talks~~ **Set 15 Nov 2026 (owner), before any talk:** kept in the private phase 0 workbook and judged in 0.07 | So the result isn't bent to fit afterwards |
+| 5 | ~~Who builds it (Bhavu211 or Rajpal) and their hours~~ **Decided 15 Nov 2026 (owner):** Bhavu211, 10 hours a week | Sets the pace |
+| 6 | ~~Budget for paid data services and AI (default ₹0 and AI off)~~ **Decided 15 Nov 2026 (owner):** ₹0 a month, AI off | Decides what's in phase 1 |
+| 7 | ~~The trip app's address and nav label~~ **Decided 15 Nov 2026 (owner):** `trip.pehchanthetraveller.com`, nav label "Plan a trip that pays" | Tasks 1.02 and 1.20 |
+| 8 | ~~Analytics tool for the trip app~~ **Decided 15 Nov 2026 (owner):** Umami, the tool the existing app already uses | Task 1.19 |
 
 **Model guidance:** planning and architecture on Opus, building on Sonnet, entering destination packs on Haiku.
 
