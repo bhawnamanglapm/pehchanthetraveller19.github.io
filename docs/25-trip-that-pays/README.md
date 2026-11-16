@@ -37,15 +37,14 @@ whether the trip is paying for itself.
 
 **Where it lives (changed 15 Nov 2026):** the trip pages are part of the existing Next.js app, at
 `www.pehchanthetraveller.com/trip/` (decision D2 in [tasks/0.01](tasks/0.01-decisions.md)). They are merged in
-switched off and turned on at launch (1.40). This replaces the 14 Nov decision for a separate app on its own subdomain; the
-points below still describe that earlier setup until the docs are reworked. In this plan, `/trip` means the stage
-pages (`/trip/0a` to `/trip/3`).
+switched off and turned on at launch (1.40). This replaces the 14 Nov decision for a separate app on its own subdomain.
+In this plan, `/trip` means the stage pages (`/trip/0a` to `/trip/3`).
 
-- **Its own private repo and Vercel project**, on the same stack as the existing Next.js app (Next.js 16, Tailwind 4,
-  daisyUI 5), so its code can be copied across.
-- **Content from the existing Strapi on EC2,** in new collections, so admin stays in one place. A second Strapi
-  webhook points at the trip app's own `/api/revalidate`.
-- **Code copied from the existing Next.js app, not shared at runtime:**
+- **Same repo and Vercel project as the main Next.js app** (Next.js 16, Tailwind 4, daisyUI 5). The pages were first
+  built in their own private repo, then merged in behind the `tripApp` switch.
+- **Content from the existing Strapi on EC2,** in new collections, so admin stays in one place. The main site's
+  existing webhook to `/api/revalidate` covers them; the trip pages have their own cache tags.
+- **Code reused from the existing app** (first copied into the separate repo, now in the same app):
   - the trip plan's sharing approach (from `/trip-plan`)
   - Resend email
   - the AI code with `checks.ts`, which blocks invented phone numbers and amounts
@@ -56,8 +55,8 @@ pages (`/trip/0a` to `/trip/3`).
   - Razorpay checkout and the `/trip-plan/premium` pattern (phase 3)
 - **Not copied:** the `/stays` directory, because stays in 0b come straight from Strapi. The `/safety` pages are
   linked to, not copied; each stage has its own safety items.
-- **This static GitHub Pages repo gets only a nav link** to the trip app, in the desktop nav, the phone drawer and the
-  footer. It's public, so no app code, tokens or admin content go here.
+- **The nav link is in the Next.js app's** header, phone menu and footer, hidden until launch (1.20). This static
+  GitHub Pages repo is public, so no app code, tokens or admin content go here.
 
 The tasks for building it are in [tasks/](tasks/README.md).
 
@@ -730,7 +729,7 @@ flowchart LR
     UI --> Rules --> CP
     UI <--> IDB
   end
-  subgraph Next["Trip app on Vercel (own subdomain)"]
+  subgraph Next["Main Next.js app on Vercel (/trip/)"]
     Steps["GET /api/trip/steps"]
     Report["POST /api/report-offer"]
     Draft["POST /api/ai/draft, phase 3"]

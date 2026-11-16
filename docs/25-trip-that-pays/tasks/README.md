@@ -5,31 +5,32 @@ The plan itself is in [../README.md](../README.md), [../user-page.md](../user-pa
 Every task links back to the sections it comes from. [COVERAGE.md](COVERAGE.md) shows where each point in the plan is
 covered.
 
-Nothing is built yet.
+**Progress (16 Nov 2026):** the phase 1 pages, API routes and Strapi collections are built and merged, switched off
+behind `tripApp`. The first destination's safety items are published. Each task's **Status** row says what's left;
+the main gaps before launch are the step and template content (1.10, 1.11), the scheduled jobs (1.15), backups
+(1.06), the measures (1.39) and the launch checks (1.40).
 
 ---
 
 ## 1. What's being built
 
-The trip app is a **separate website** on its own subdomain, with the main Pehchan website linking to it from its
-navigation bar.
+The trip pages are part of the **existing Next.js app**, at `www.pehchanthetraveller.com/trip/` (changed 15 Nov 2026,
+D2; first planned as a separate website on a subdomain). They're switched off behind `tripApp` until launch.
 
 | Part | What it is | Task |
 |---|---|---|
-| **Trip app** | New private repo and new Vercel project. Next.js 16 (App Router), Tailwind 4, daisyUI 5, TypeScript | 1.01 |
-| **Address** | Proposed `trip.pehchanthetraveller.com` (decision D2) | 1.02 |
+| **Trip pages** | In the existing Next.js app's private repo and Vercel project. Next.js 16 (App Router), Tailwind 4, daisyUI 5, TypeScript | 1.01 |
+| **Address** | `www.pehchanthetraveller.com/trip/` (decision D2, changed 15 Nov 2026) | 1.02 |
 | **Content** | Read from the **existing Strapi on EC2**, in new collections. Admin stays in one place | 1.05, 1.08–1.12 |
 | **Code** | Useful parts copied from the existing Next.js app (trip-plan sharing, Resend, `checks.ts` and evals, safety router, offline, `/hi/` approach). Nothing is shared at runtime | 1.04 |
 | **Traveller trips** | Saved in the traveller's browser (IndexedDB) in phases 1 and 2. A traveller database comes with accounts in phase 3 | 1.17, 3.02 |
-| **Main website (this repo)** | Gets **only a nav link**: desktop nav, phone drawer and footer. No app code, no tokens, no admin content, because this repo is public | 1.20 |
+| **Nav link** | In the Next.js app's header, phone menu and footer, hidden until launch. This static repo is public: no app code, no tokens, no admin content go here | 1.20 |
 
 ```mermaid
 flowchart LR
-  subgraph Main["Main website (this public repo, GitHub Pages)"]
+  subgraph Trip["Main Next.js app (private repo, Vercel, www.pehchanthetraveller.com)"]
     NAV["Nav link: Plan a trip that pays"]
-  end
-  subgraph Trip["Trip app (private repo, Vercel, trip subdomain)"]
-    PAGES["/ · /start · /trip/0a … /trip/3 · /example · /legal/*"]
+    PAGES["/trip/ · /trip/start · /trip/0a … /trip/3 · /legal/*"]
     API["/api/* · /api/revalidate · cron jobs"]
     IDB[("Trips in the browser (IndexedDB)")]
   end
@@ -40,7 +41,7 @@ flowchart LR
   PAGES --> IDB
   PAGES --> API
   API -->|read token| COLL
-  COLL -->|second webhook| API
+  COLL -->|existing webhook| API
   API -->|"limited write token: offer reports, stay suggestions"| COLL
 ```
 
@@ -125,11 +126,11 @@ The other phase 0 tasks (0.02–0.07) moved to "Last: the people steps" on 16 No
 
 | ID | Task | Lead | Depends on |
 |---|---|---|---|
-| [1.01](1.01-app-setup.md) | Set up the separate trip app | Developer | 0.01 (D2, D5) |
-| [1.02](1.02-subdomain-and-seo.md) | Subdomain, HTTPS and search basics | Developer | 0.01 (D2), 1.01 |
+| [1.01](1.01-app-setup.md) | Set up the trip pages | Developer | 0.01 (D2, D5) |
+| [1.02](1.02-subdomain-and-seo.md) | Address, HTTPS and search basics | Developer | 0.01 (D2), 1.01 |
 | [1.03](1.03-design-system-and-screens.md) | Design system and screen designs | Designer | 1.01 |
 | [1.04](1.04-port-code-from-existing-app.md) | Copy what's reusable from the existing Next.js app | Developer | 1.01 |
-| [1.20](1.20-main-website-nav-link.md) | Link the trip app from the main website's navigation | Developer | 0.01 (D2), 1.02, 1.19 |
+| [1.20](1.20-main-website-nav-link.md) | Link the trip pages from the site's navigation | Developer | 0.01 (D2), 1.02, 1.19 |
 
 ### Phase 1: Strapi and content model
 
@@ -291,8 +292,8 @@ The open decisions D1–D7 are in [0.01](0.01-decisions.md), with their defaults
 and who decided.
 
 **Decided on 14 Nov 2026:** the trip app is a separate website on its own subdomain, with its own private repo and
-Vercel project, reading content from the existing Strapi on EC2. Code from the existing Next.js app is copied in, not
-shared. The main website links to it from the nav bar (1.20).
+Vercel project, reading content from the existing Strapi on EC2. **Changed 15 Nov 2026 (owner):** the trip pages are
+part of the existing Next.js app at `/trip/`, switched off until launch, with the nav link in that app's header (1.20).
 
 **Who builds it (D5):** Bhavu211, 10 hours a week. Decided 15 Nov 2026 by the owner.
 

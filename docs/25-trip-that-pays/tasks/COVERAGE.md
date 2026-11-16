@@ -15,7 +15,7 @@ Plan files: [README.md](../README.md) · [user-page.md](../user-page.md) · [adm
 | 1 | What the page is, Trip Balance | 1.22 |
 | 1 | Who it's for: India and anywhere in the world (was the five corridor destinations, until 16 Nov 2026) | 1.36, 2.12 |
 | 1 | Two modes | 1.21, 1.22, and every stage task |
-| 1 | Where it lives: a separate app on its own subdomain, shared Strapi, code copied from the existing app, nav link on the main site | 1.01, 1.02, 1.04, 1.05, 1.20 |
+| 1 | Where it lives: `/trip/` in the existing Next.js app (changed 15 Nov 2026 from a separate app on a subdomain), shared Strapi, code reused from the existing app, nav link in the app's header | 1.01, 1.02, 1.04, 1.05, 1.20 |
 | 1 | Launch scope: one destination plus basics for India, then one a month for about six months | 1.36, 2.12 |
 | 2 | Trip Card, stage stepper, honesty strip | 1.22 |
 | 2 | Honest timeline | 1.11, 1.21 |
