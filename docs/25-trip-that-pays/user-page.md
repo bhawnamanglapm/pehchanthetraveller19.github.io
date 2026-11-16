@@ -9,8 +9,8 @@ Plan stage. Nothing is built. This is the traveller-facing half of [README.md](R
 
 | | |
 |---|---|
-| **Address** | A separate app on its own subdomain, proposed `trip.pehchanthetraveller.com` (decided 14 Nov 2026). Stage pages are `/trip/0a` to `/trip/3`. The main website links to it from its nav bar and footer; it gets no other new page |
-| **Who** | Indian travellers, women first, travelling solo, within India or to Dubai/UAE, Vietnam, Thailand, Malaysia or Nepal |
+| **Address** | `www.pehchanthetraveller.com/trip/`, part of the existing Next.js app (changed 15 Nov 2026; first planned as a separate app on a subdomain). Stage pages are `/trip/0a` to `/trip/3`. The site's header, phone menu and footer link to it |
+| **Who** | Indian travellers, women first, travelling solo, within India or anywhere in the world (changed 16 Nov 2026) |
 | **Login** | None in phases 1–2. The trip is saved in the traveller's browser. Accounts with an email sign-in link come in phase 3 |
 | **Cost to the traveller** | Free. A paid Creator tier comes in phase 3, at a price tested in phase 2 |
 | **Devices** | Phone first for stage 2. Wider comparison tables on a laptop for stages 0a to 1 |
