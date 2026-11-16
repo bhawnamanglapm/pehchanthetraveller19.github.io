@@ -27,7 +27,7 @@ marked *(new here)* weren't listed in README section 14 and are added by this pl
 
 | Collection | Fields | Notes |
 |---|---|---|
-| **destination** | name, slug, country, `inIndia` (yes/no), daily cost range (₹ min and max, sources), tourism-board note, `tourismBoardMediaContact`, creator-friendly stays note, dong rate with source (Vietnam only), status | `inIndia` sets P3 to "Not needed". A destination stays a draft until its whole pack is in (section 3) |
+| **destination** | name, slug, country, `inIndia` (yes/no), daily cost range (₹ min and max, sources), tourism-board note, `tourismBoardMediaContact`, creator-friendly stays note, dong rate with source (Vietnam only), status | `inIndia` sets P3 to "Not needed". A destination stays a draft until its visa note (outside India) and emergency numbers are published (section 3) |
 | **visa-note** | destination, rule text, official link | AI never writes or rewrites this |
 | **climate** | destination, best months, source | Open-Meteo isn't used because its free API is non-commercial |
 | **festival** | destination, name, dates, year, source | Entered once a year |
@@ -76,13 +76,16 @@ marked *(new here)* weren't listed in README section 14 and are added by this pl
 
 ## 3. Adding a destination (the destination pack)
 
-A destination appears in the trip app only when every item below is published, sourced and dated.
+A destination appears in the trip app once its **safety items** are published, sourced and dated: the visa note
+(item 1, outside India) and the emergency numbers (item 8). Publish every other item when you find an official source
+for it. Until then, leave it empty: the site shows "Not entered yet". Never guess a fact to fill a gap.
+**Changed 16 Nov 2026 (owner):** this used to need every item.
 
 | # | Item | Where it comes from |
 |---|---|---|
 | 1 | Visa note | The official government site |
 | 2 | Daily cost range | Admin judgement, with sources |
-| 3 | Best months | The national weather service or tourism board |
+| 3 | Best months | The national weather service or tourism board. With no official months, leave them empty and say in the note why and what to avoid |
 | 4 | Festivals | Official tourism calendar |
 | 5 | Permit notes | Official filming and drone rules |
 | 6 | Dong rate (Vietnam only) | A named source, monthly. Also confirm the fixed dirham and Nepali rupee rates on the central banks' sites |

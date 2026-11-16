@@ -1262,10 +1262,12 @@ asked first if it costs money.
 - festivals
 - permit notes
 - the dong rate, if it applies
-- 10–20 checked stays
+- 10–20 checked stays (none at launch; added after it, 4.06)
 - emergency numbers
 
-Everything is dated and sourced.
+Everything is dated and sourced. A destination goes live once its visa note and emergency numbers are published.
+Anything without an official source stays empty, shown as "Not entered yet", never guessed. **Changed 16 Nov 2026
+(owner):** a destination used to need every item.
 
 **The monthly routine (one session):**
 - Recheck everything past 30 days.
